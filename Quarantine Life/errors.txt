@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3: invalid syntax
-    Character("Prince" color="#bc42f5")
-                            ^
-
-File "game/script.rpy", line 4: invalid syntax
-    Character("Carla (Mom)" color="#f5d442")
-                                 ^
+File "game/script.rpy", line 643: expected statement.
+    shw prince angry
+                    ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Apr 25 20:48:10 2021
+Thu Apr 29 01:16:21 2021
