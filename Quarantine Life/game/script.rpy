@@ -3,7 +3,12 @@ define pl = Character("[player_name]")
 define plt = Character("[player_name]", what_color="#add8e6")
 define pr = Character("Prince", color="#bc42f5")
 define c = Character("Carla (Mom)", color="#f5d442")
-define i = Character("Ian", color="00ff00")
+define i = Character("Ian", color="#00ff00")
+define m = Character("Mark", color="#808080")
+define a = Character("Alyssa", color="0000ff")
+
+# Event Flags
+default groceryscore = 0
 
 # Transitions
 define wipeleft = CropMove(0.2, "wipeleft")
@@ -12,6 +17,7 @@ define wipeleftlong = CropMove(0.5, "wipeleft")
 define wiperightlong = CropMove(0.5, "wiperight")
 
 # Transforms
+
 transform moveright:
     linear 0.5 xpos 0.85
 
@@ -23,6 +29,8 @@ transform bounce:
     easein .175 yoffset -4
     easeout .175 yoffset 0
     yoffset 0
+
+define memed = False
 
 # Music
 
@@ -41,12 +49,13 @@ label start:
 
     ############### Testing Code
 
-    #jump quarantine
+    #jump project
 
     ############### Here
-    scene bg living room
+
+    scene bg living room back afternoon
     with fade
-    play music "audio/bgm/DBD file No 05.mp3"
+    play music "audio/bgm/living room.mp3"
 
     plt "(A normal and peaceful afternoon.)"
 
@@ -76,9 +85,11 @@ label start:
     hide prince point
     with dissolve
 
-    play sound "audio/phone buzz.wav"
+    play sound "audio/phone ring.mp3"
     with hpunch
     "*phone buzz*"
+
+    stop sound
 
     pl "Huh? A new notification?"
 
@@ -89,6 +100,7 @@ label start:
             jump news
 
         "Check your phone":
+            $ memed = True
             pl "I’m sure checking my phone for a bit wouldn’t hurt. I can always do my chores later."
 
             scene black
@@ -96,8 +108,9 @@ label start:
 
             centered "{color=#ffffff}Two hours later...{/color}"
 
-            scene bg living room
+            scene bg living room back evening
             with wiperight
+            play music "audio/bgm/crickets.mp3"
 
             pl "Pfft! Hahaha! This meme is so relatable. I wonder what time it is."
 
@@ -118,8 +131,10 @@ label news:
 
     centered "An hour later..."
 
-    scene bg living room
+    scene bg living room back evening
     with wiperight
+    if(renpy.music.get_playing() != "audio/bgm/crickets.mp3"):
+        play music "audio/bgm/crickets.mp3"
 
     pl "Finally done with chores. I wanna go on a vacation so bad."
 
@@ -136,6 +151,15 @@ label news:
 
     show prince point
 
+    if(memed):
+        pr "Says the one who leaves the trash for two hours just to browse memes."
+
+        play sound "audio/fail.wav."
+        with hpunch
+        pl "Well that's... a fair point i guess."
+        python:
+            del memed
+
     pr "Don’t question my study methods. As long as I maintain my scores I’m good. Besides, I’m in high school, I know what I’m doing."
 
     plt "(This kid. If he fails another test he’ll get another butt whooping from mom.)"
@@ -145,9 +169,15 @@ label news:
     hide prince point
     with dissolve
 
+    show bg living room left evening tvon
+    with dissolve
+
     "Reporter" "Breaking news, the Philippines has been suspending all flights from Wuhan City that is considered to be ground zero for the new coronavirus..."
 
     "Reporter" "...that has been causing respiratory illness, called SARS-Cov-2. A variant of coronavirus. Flights from other parts of China will also be strictly monitored… In other news…"
+
+    show bg living room back evening tvon
+    with dissolve
 
     pl "Man, what’s with this new coronavirus? I’ve been hearing about them a lot lately."
 
@@ -162,7 +192,7 @@ label news:
 
             c "But still, I can’t help but worry for your father. I hope he’s doing ok. I’ll call him later after his work."
 
-            jump emersion
+            jump emergence
         "The government will handle it":
             pl "I’m sure the government will do something about it."
 
@@ -170,7 +200,7 @@ label news:
 
             c "We can’t always depend on the government to do everything for us. We still have to do our part."
 
-            jump emersion
+            jump emergence
         "We should be careful":
             pl "If that’s the case, the best thing we could do right now is to remain cautious and wait for further reports on this coronavirus."
 
@@ -178,7 +208,7 @@ label news:
 
             c "I’ll contact your father. Oh, I hope he is doing alright."
 
-label emersion:
+label emergence:
     hide carla
     with moveoutleft
     show prince confused
@@ -198,21 +228,27 @@ label lockdown:
     scene black
     with wipeleft
 
-    if(renpy.music.get_playing() != "audio/bgm/DBD file No 05.mp3"):
-        play music "audio/bgm/DBD file No 05.mp3"
+    if(renpy.music.get_playing() != "audio/bgm/living room.mp3"):
+        play music "audio/bgm/living room.mp3"
 
     centered "Three months later..."
 
-    scene bg living room
+    scene bg living room back
     with wiperight
 
     plt "(It’s been three months since the COVID-19 was first announced. There have been a lot of reports going around the world related to this virus. This is so scary.)"
+
+    show bg living room left tvon
+    with dissolve
 
     "Reporter" "This just in, the president has declared a state of public health emergency."
 
     "Reporter" "Classes have been suspended and work-from-home is sought among local coronavirus cases. Citizens must remain in their homes until further notice."
 
     "Reporter" "Residents who refuse to follow the mandatory quarantine may be arrested under a state of public emergency with six months imprisonment and penalty fine."
+
+    show bg living room back tvon
+    with dissolve
 
     show prince happy at bounce, left
     with dissolve
@@ -293,14 +329,18 @@ label lockdown:
 
 label quarantine:
     scene black
-    with wipeleftlong
-    scene bg living room
-    with wiperightlong
+    with wipeleft
+
+    centered "Few days later..."
+
+    scene bg living room back
+    with wiperight
 
     plt "(Ever since the lockdown started I have been able to have some time to myself and just relax, not worrying about anything else.)"
 
     plt "(Hmmm… Finally finished my chores for today, but it’s quiet. Too quiet. Very suspicious.)"
 
+    play sound "punch.wav"
     with hpunch
     pr "AHHH!"
 
@@ -350,6 +390,11 @@ label quarantine:
         "Open your Social Media":
             pl "Well it’s just you and me now, buddy. What new memes do you have for me today?"
 
+            scene black
+            with wipeleftlong
+            scene bg living room back afternoon
+            with wiperightlong
+
             pl "Hey Prince! Come check this out."
 
             show prince angry
@@ -379,12 +424,23 @@ label quarantine:
 
             "Puzzle still in construction :)"
 
+            scene black
+            with wipeleftlong
+            scene bg bedroom back afternoon
+            with wiperightlong
+
             pl "Finally! I solved it. It feels as if my brain ran for a couple of miles."
 
             jump newnormal
 
         "Take a nap":
             plt "(Ugh. Everything is so boring, nothing else to do and we have to do this for who knows how long.)"
+
+            scene black
+            with wipeleft
+            scene bg bedroom back
+            with wiperight
+            stop music
 
             plt "(I’ll just catch some z’s. Nothing’s better than some good ‘ol sleep.)"
 
@@ -393,9 +449,11 @@ label quarantine:
 
             "Insert Nightmare Jumpscare here"
 
-            scene bg living room
+            scene bg bedroom back evening
             with dissolve
+            play sound("audio/bgm/crickets.mp3")
 
+            with hpunch
             pl "Ahh! What a terrible nightmare. I’m glad that’s over."
 
             jump newnormal
@@ -423,7 +481,7 @@ label quarantine:
 
             scene black
             with wipeleftlong
-            scene bg living room
+            scene bg living room back afternoon
             with wiperightlong
 
             play sound "audio/eating.mp3"
@@ -443,8 +501,12 @@ label quarantine:
 label newnormal:
     scene black
     with wipeleftlong
-    scene bg living room
+
+    centered "Three months later..."
+
+    scene bg living room back
     with wiperightlong
+    play music "audio/bgm/living room.mp3"
 
     pl "How long do we have to keep this up? It’s been three months since quarantine started and I’m starting to feel restless. I have nothing else to do and I’m getting bored."
 
@@ -456,11 +518,17 @@ label newnormal:
     hide carla handstop
     with dissolve
 
+    scene bg living room left tvon
+    with dissolve
+
     "Reporter" "Good afternoon and welcome to ABC News Network…"
 
     "Reporter" "Areas under MECQ and GCQ may allow business activities to resume - requiring strict compliance with minimum safety standards and protocols."
 
     "Reporter" "Public transportations is limited and crossing over to other regions remains banned…"
+
+    show bg living room back tvon
+    with dissolve
 
     show prince confused at left
     with dissolve
@@ -488,19 +556,19 @@ label newnormal:
 
     pr "*Gulp* Yes mom."
 
-    scene black
-    with wipeleftlong
-
-    scene bg living room
-    with wiperightlong
+    hide carla angry
+    hide prince scared
+    with dissolve
 
     plt "(Return to work, huh? I should contact the company for more information about this.)"
 
     "..."
 
-    play sound "audio/phone buzz.wav"
+    play sound "audio/phone ring.mp3"
     with hpunch
     "*Phone buzz*"
+
+    stop sound
 
     plt "(That was fast.)"
 
@@ -509,18 +577,18 @@ label newnormal:
     plt "(The new normal… I wonder what’s in store for me.)"
 
 label commuting:
-
     scene black
     with wipeleft
 
     centered "Next Day..."
 
-    scene bg living room
+    scene bg living room back
     with wiperight
 
     pl "Mom, I’m leaving for work."
 
     show carla please
+    with dissolve
 
     c "Wait! Don’t forget to wear your facemask."
 
@@ -536,11 +604,13 @@ label commuting:
 
     c "I love you too. Take care."
 
+    stop music # Crowd/Outside music here
     scene black
     with wipeleftlong
 
     scene bg outside
     with wiperightlong
+    play music "audio/bgm/Ryoushin ga tsuyosugiru dorobou tekina BGM.mp3"
 
     pl "*Yawn* I’m so sleepy. Staying up all night on social media was not the best idea."
 
@@ -550,6 +620,8 @@ label commuting:
 
     menu:
         "Eavesdrop":
+            plt "(I’m sure it’s fine as long as they won’t find out I’m listening to them.)"
+
             "Worker 2" "I know, right? I heard that some small businesses shot down because of the pandemic. I feel bad for the people who lost their jobs because of Covid-19. People are struggling with their financial needs."
 
             "Worker 1" "This virus really made a huge impact in the economy. It’s really scary how much can change in a span of five months."
@@ -578,6 +650,7 @@ label office:
 
     scene bg office
     with wiperight
+    play music "audio/bgm/office.mp3"
 
     pl "First day back on the job and I am loaded with paper works. My back hurts from sitting all day, I need to stretch."
 
@@ -634,7 +707,7 @@ label office:
                     jump friend
 
                 "I can't tonight.":
-                    pl "Like I said, I’m rather busy."
+                    pl "Not tonight. Maybe some other time."
 
                     show ian embarrased
 
@@ -657,26 +730,20 @@ label office:
 
             jump home
 
-label friend:
-    scene black
-    with wipeleft
-
-    centered " Under construction"
-
-    scene bg office
-    with wiperight
-    return
-
+# ROUTE HOME
 label home:
     scene black
     with wipeleft
 
     centered "Few days of work Later..."
 
-    scene bg living room
+    scene bg living room back
     with wiperight
+    play music "audio/bgm/living room.mp3" fadein 1.0 fadeout 1.0
 
-    plt "(I am so tired. Good thing it’s my day off today. The workload keeps piling up, it's getting a little too much for me to handle sometimes, my body can’t keep up. Damn, I really need to exercise.)"
+    plt "(I am so tired. Good thing it’s my day off today.)"
+
+    plt "(The workload keeps piling up, it's getting a little too much for me to handle sometimes, my body can’t keep up. Damn, I really need to exercise.)"
 
     with vpunch
     plt "(Ugh! My back is sore.)"
@@ -704,7 +771,9 @@ label home:
     show carla thinking
     with dissolve
 
-    c "A grocery list. It helps me complete my shopping faster than walking around wondering what to buy. It also lessens my time outside, less interaction with people the better."
+    c "A grocery list. It helps me complete my shopping faster than walking around wondering what to buy."
+
+    c "It also lessens my time outside, less interaction with people the better."
 
     menu:
         "I can help.":
@@ -722,7 +791,7 @@ label home:
 
             show carla support at bounce, center
 
-            c "Take care"
+            c "Take care."
 
             jump supermarket
 
@@ -747,7 +816,7 @@ label home:
 
             scene black
             with wipeleftlong
-            scene bg living room
+            scene bg living room back
             with wiperightlong
 
             #play sound "phonesfx.wav" (Will be added later)
@@ -760,14 +829,19 @@ label home:
 
             c "That sounds good. I’ll go relax in my room for a bit then. Call me if the delivery arrives."
 
-            pl "Will do"
+            pl "Will do."
 
             scene black
             with wipeleftlong
-            scene bg living room
+            scene bg bedroom back
             with wiperightlong
 
             plt "(Now what should I do to pass the time? Maybe I should watch a movie.)"
+
+            scene black
+            with wipeleftlong
+            scene bg living room left evening tvon
+            with wiperightlong
 
             "Actor" "How could you?! After everything I’ve done for you, you would just come and betray me like that?!"
 
@@ -775,17 +849,14 @@ label home:
 
             plt "(Romance movies are so cliche. Why am I even watching this in the first place.)"
 
-            scene black
-            with wipeleftlong
-            scene bg living room
-            with wiperightlong
-
             "Actress" "I love you, but we can never be together. We’re two different people, it will never work out between us."
 
             "Actor" "No. Don’t do this."
 
+            with hpunch
             pl "Just kiss already!"
 
+            scene bg living room left evening tvon
             show prince smile
             with dissolve
 
@@ -810,6 +881,8 @@ label supermarket:
     scene bg supermarket
     with wiperight
 
+    stop music # Super market bgm here
+
     plt "(So mom gave me 3000 pesos, subtracting transportation cost to get here. Now I just need to complete the list and maybe buy some snacks to munch on for later. What should I do first?)"
 
     scene black
@@ -825,10 +898,114 @@ label supermarket:
     scene black
     with wipeleft
 
-    centered "Groceries game outcome here (Under Construction)"
+    $ grocerScore = 4
+    if grocerScore == 1:
+        scene bg living room back afternoon
+        with wiperight
 
-    scene bg supermarket
-    with wiperight
+        pl "I’m back. I bought everything on the list."
+
+        show carla happy
+        with dissolve
+
+        c "Thank you for helping me, you can go rest while I store these away."
+
+        pl "You’re welcome,mom. I’m glad I could help."
+
+        hide carla happy
+        with moveoutleft
+        show prince happy
+        with dissolve
+
+        pr "Did you buy me some snacks at least?"
+
+        pl "Sorry, I was kind of in a hurry and only ended up buying everything included in the list."
+
+        show prince confused
+
+        pr "Aw… That’s disappointing, I was hoping for some biscuits."
+
+    elif grocerScore == 2:
+        scene bg living room back afternoon
+        with wiperight
+
+        pl "I’m back."
+
+        show carla happy
+        with dissolve
+
+        c "Welcome back."
+
+        show carla worried
+
+        c "You didn’t buy everything from the list."
+
+        pl "I didn’t? Huh. I guess I forgot."
+
+        show carla confused
+
+        c "It’s fine, I do appreciate that you decided to help. You go ahead and rest, I’ll store these away and start cooking dinner."
+
+    elif grocerScore == 3:
+        scene bg living room back afternoon
+        with wiperight
+
+        pl "I’m back."
+
+        show carla happy at left
+        with dissolve
+
+        c "Welcome back."
+
+        show prince happy at bounce, right
+        with dissolve
+
+        pr "Hey, did you buy any snacks for me?"
+
+        pl "Sure did"
+
+        show prince happy at bounce, right
+
+        pr "Alright! You’re the best."
+
+    else:
+        scene bg outside
+        with wiperight
+
+        plt "(Finally done. Now time to head home…)"
+
+        plt "(Oh no… I used up all the money and now I don’t have enough for transportation.)"
+
+        plt "(I’ll just call Prince and…)"
+
+        plt "(You have got to be kidding me, I forgot my phone at home. They won’t be able to come pick me up. What do I do now?!)"
+
+        scene black
+        with wipeleftlong
+
+        centered "After a long walk..."
+
+        scene bg living room back evening
+        with wiperightlong
+        play music "audio/bgm/crickets.mp3"
+
+        with hpunch
+        plt "(I’m so tired… I can’t feel my legs.)"
+        with vpunch
+
+        show carla angry
+        with dissolve
+
+        c "I told you to manage the money wisely. I was so worried you were gone for so long, luckily I found you on the way to the market. Just rest up while I store the groceries away."
+
+        hide carla angry
+        with moveoutleft
+        show prince smile
+        with dissolve
+
+        pr "You really decided to walk all the way home. This is hilarious. Hahaha!"
+
+        pl "Shut up"
 
     jump proceed
 
@@ -838,6 +1015,8 @@ label kitchen:
     scene bg kitchen
     with wiperightlong
 
+    play music "audio/bgm/Lets cooking.mp3"
+
     plt "(Tonight I’ll be cooking chicken adobo. I have onions, garlic, chicken and Vinegar. Is there something else I should add?)"
 
     menu:
@@ -846,7 +1025,7 @@ label kitchen:
 
             scene black
             with wipeleftlong
-            scene bg kitchen
+            scene bg living room back afternoon
             with wiperightlong
 
             show prince scared at left
@@ -861,9 +1040,9 @@ label kitchen:
 
             c "I thought you would be cooking chicken adobo."
 
-            pl "I did"
+            pl "I did."
 
-            jump proceed
+            jump project
 
         "Soy sauce":
             plt "(Soy sauce. Duh!)"
@@ -872,7 +1051,7 @@ label kitchen:
 
             scene black
             with wipeleftlong
-            scene bg kitchen
+            scene bg living room back afternoon
             with wiperightlong
 
             show carla support at left
@@ -883,21 +1062,21 @@ label kitchen:
             show prince happy at right
             with dissolve
 
-            pr "It's alright"
+            pr "It's alright."
 
-            pl "Thank you"
+            pl "Thank you."
 
-            jump proceed
+            jump project
 
         "Fish sauce":
             plt "(I’m sure I need to add fish sauce.)"
 
             scene black
             with wipeleftlong
-            scene bg kitchen
+            scene bg living room back afternoon
             with wiperightlong
 
-            show prince rage at left
+            show prince point at left
             with dissolve
 
             pr "This is terrible. What did you even cook?"
@@ -914,19 +1093,23 @@ label kitchen:
             play sound "audio/eating.mp3"
             pl "*munch munch*"
 
+
+            pl "...!"
+
             play sound "audio/fail.wav"
             with vpunch
-            pl "I see your point."
 
-            jump proceed
+            pl "I... see your point."
 
-        "This is good.":
+            jump project
 
-            plt "(I don’t think I have any more ingredients. This should be enough.)"
+        "I don’t think I have to add anything else.":
+
+            plt "(I don’t think I have any more ingredients to add into the dish. This should be enough.)"
 
             scene black
             with wipeleftlong
-            scene bg kitchen
+            scene bg living room back afternoon
             with wiperightlong
 
             show prince scared at left
@@ -946,20 +1129,364 @@ label kitchen:
             play sound "audio/fail.wav"
             c " I can’t believe you don’t know how to cook adobo."
 
+label project:
+    scene black
+    with wipeleftlong
+    scene bg living room back evening
+    with wiperightlong
+    play music "audio/bgm/crickets.mp3"
+
+    plt "(Man, I’m stuffed. Nothing beats home cooked meals.)"
+
+    show prince curious at left
+    with dissolve
+
+    pr "Hey mom, can I ask you something?"
+
+    show carla happy at right
+    with dissolve
+
+    c "Sure, what is it?"
+
+    pr "I just wanted to ask if I could go to a classmate’s house. You see, we have this school group project and…"
+
+    show carla thinking
+
+    c "I’m not sure if that is a good idea."
+
+    show prince angry
+
+    pr "But mom, it’s for a school project. A lot of people have been going out now that it’s Modified GCQ. People are allowed to go out as long as people follow the health protocols of wearing masks and proper social distancing."
+
+    show carla handstop
+
+    c "Just because people are roaming around the streets doesn’t mean you should too. Even if everything has returned to normal people can still get covid."
+
+    menu:
+        "Agree with mom.":
+            pl "Mom’s got a point. The virus is still out there, who knows what would happen if you go out. You might encounter someone with the virus along the way."
+
+            show carla please
+
+            c "Prince, please understand that we are doing this to keep you safe."
+
+            show prince confused
+
+            pr "I understand."
+
+            pr "I’ll go tell them that I won’t be able to come."
+
+            hide prince confused
+            with moveoutleft
+
+            plt "(Is it just me or Prince seems disappointed? I’ll go see what’s wrong.)"
+
+            scene black
+            with wipeleftlong
+            scene bg bedroom back evening
+            with wiperightlong
+
+            pl "Hey Prince. You seem down, is there something wrong?"
+
+            show prince angry
+            with dissolve
+
+            pr "Nothing’s wrong, just leave me alone."
+
+            pl "Don’t tell me nothing is wrong. I can see it in your face that something is bothering you."
+
+            show prince confused
+
+            pr "I hate quarantine. I’ve been stuck home for months now. I miss going out."
+
+            pl "I thought you were going out for a school project?"
+
+            show prince angry at bounce, center
+
+            pr "I am. Of course meeting up with my friends is also a plus in my part. I haven’t seen them for a while now, I kind of miss them."
+
+            pl "I understand your trouble. But just like what mom said, we are doing this for you, if anything bad happens I don’t think we’ll be able to take it well."
+
+            show prince confused
+
+            pr "I know that, but I can’t help it. It gets lonely around here from time to time."
+
+            plt "(Maybe I should spend some quality time with him to lift his mood. But what can we do?)"
+
+            menu:
+                "Have a karaoke session.":
+                    pl "I have a bluetooth microphone. Do you want to have a karaoke session with me?"
+
+                    pl "We can flex to the neighbors our amazing singing skills."
+
+                    show prince happy at bounce, center
+
+                    pr "Sure, sounds fun."
+
+                    scene black
+                    with wipeleftlong
+                    scene bg living room back evening tvon
+                    with wiperightlong
+
+                    show prince happy at bounce, left
+                    with dissolve
+
+                    pr "*Singing*"
+
+                    show carla support at bounce, right
+
+                    c "Bravo, son!"
+
+                    pl "I am so posting this on my social media accounts."
+
+                    show prince point
+
+                    pr "Your turn to sing."
+
+                    pl "Alright"
+
+                    jump bros
+
+                "Watch a movie together.":
+                    pl "Let’s go watch a movie together. You get to pick what we’re going to watch."
+
+                    show prince happy at bounce, center
+
+                    pr "That doesn’t seem like a bad idea. Let’s do it."
+
+                    scene black
+                    with wipeleftlong
+                    scene bg living room back evening tvon
+                    with wiperightlong
+
+                    "Actor" "...Movie under construction"
+
+                    jump bros
+
+                "Play video games.":
+                    pl "How about we play some video games, Legendary Mobile?"
+
+                    show prince happy at bounce, center
+
+                    pr "Sure, I haven’t played that in a while. Sure, let’s play."
+
+                    scene black
+                    with wipeleftlong
+                    scene bg living room back evening tvon
+                    with wiperightlong
+
+                    with hpunch
+                    pl "Stop farming and back us up! Ugh! This guy is such a noob."
+
+                    show prince angry at bounce, left
+                    with dissolve
+                    with vpunch
+
+                    pr "Damn, we’re losing big time. And our teammate is a feeder."
+
+                    show carla handstop at bounce, right
+                    with moveinright
+
+                    c "Can you two keep it down while you play? You’re being too loud."
+
+                    jump bros
+
+        "Convince mom to let Prince go.":
+            pl "I’m sure nothing bad will happen. There are no reports of covid patients in our area anyway, so why not let him go to his classmate's house? It is for a school project after all."
+
+            show carla thinking
+
+            c "If it’s for a school project, maybe I can allow you to go."
+
+            show prince happy
+
+            pr "Really?"
+
+            show carla angry
+
+            c "But just this once. And I want you back home before dark."
+
+            show prince happy at bounce, left
+
+            pr "I will. Thank you."
+
+            scene black
+            with wipeleft
+
+            centered "Few days later..."
+
+            scene bg bedroom back
+            with wiperight
+            stop music
+
+            pl "Hey Prince. Are you ok? You haven’t left your room all day."
+
+            show prince tired
+            with dissolve
+
+            pr "[player_name], I don’t feel so good."
+
+            pl "You’re burning up. I’ll go get mom."
+
+            scene black
+            with wipeleftlong
+            scene bg bedroom back
+            with wiperightlong
+
+            show carla worried
+            with dissolve
+
+            c "This is what I’m afraid of. We need to get you to the clinic right away."
+
             jump proceed
-label proceed:
-    "TBC"
-return
+
+# ROUTE FRIEND
+label friend:
+    scene black
+    with wipeleft
+    scene bg office
+    with wiperight
+
+    show mark glad at left
+    with dissolve
+
+    m "Hey [player_name]. Glad to see you’ll be joining us tonight."
+
+    pl "Glad to be here."
+
+    show alyssa smile at right
+    with dissolve
+
+    a "Yeah. It’s been a while since we all hung out together."
+
+    with dissolve
+    show ian invite at bounce, center
+    with moveinright
+
+    i "You guys ready to go?"
+
+    show mark glad at bounce, left
+
+    m "Yeah, let’s go."
+
+    jump restaurant
+
+label restaurant:
+
+    scene black
+    with wipeleft
+    scene bg restaurant
+    with wiperight
+    play music "audio/bgm/Ensolorado.mp3"
+
+    show ian embarrased at left
+    with dissolve
+
+    i "I’m so full I feel like my stomach is gonna burst any minute now."
+
+    pl "Haha. You ate like a starved man."
+
+    show ian confused
+
+    i "Can’t help it. I’m sick of home cooked meals."
+
+    show mark confused at right
+    with dissolve
+
+    play sound "audio/fail.wav"
+    m "That’s why you need to learn how to cook. You can’t live on canned goods forever."
+
+    with dissolve
+    show alyssa glad
+    with dissolve
+    show mark glad
+
+    a "This is a nice change of scenery. I don’t have anyone to converse with back home."
+
+    pl "I mostly just chat with friends online."
+
+    show alyssa thinking
+
+    a " I really missed this. We should do this more often once the pandemic situation has settled down."
+
+    show ian greet at bounce, left
+
+    i "I agree."
+
+    show mark closeye at bounce, right
+    
+    m "Yeah, I'm looking forward to it."
+
+    pl "So do I."
+
+    scene black
+    with wipeleftlong
+    scene bg living room back evening tvon
+    with wiperightlong
+    play music "audio/bgm/crickets.mp3"
+
+    plt "(Is it just me? I feel like Alyssa keeps staring at me earlier.)"
+
+    plt "(Must be my imagination. Anyways, I need to get some shut eye, I have a long day ahead of me.)"
+
+    jump withalyssa
+
+label withalyssa:
+    scene black
+    with wipeleft
+
+    centered "Next day..."
+
+    scene bg office
+    with wiperight
+    play music "audio/bgm/office.mp3"
+
+    show alyssa worried
+    with dissolve
+
+    a "Hey [player_name]."
+
+    pl "Hey Alyssa. Do you need anything?"
+
+    show alyssa smile
+
+    a "Nothing really. I just wanted to say that I enjoy spending time with you."
+
+    pl "I am glad to hear that."
+
+    show alyssa thinking
+
+    a " I was thinking… Would you like to have lunch with me tomorrow?"
+
+    pl "You mean just the two of us?"
+
+    show alyssa shy
+
+    a "Yeah. Only if you want to, that is…"
+
+    menu:
+        "No, Thank you.":
+            "..."
+        "It's a date.":
+            "..."
+        "You're buying.":
+            "..."
+    jump proceed
+
+    return
+
 # Endings
 label getcaught:
     scene black
     with wipeleft
     centered "After a couple of days..."
 
-    scene bg living room
+    scene bg living room back evening
     with wiperight
-    play music "audio/bgm/Despair City.mp3" fadeout 2.0 fadein 2.0
     show prince serious
+    with dissolve
+
+    play music "audio/bgm/crickets.mp3"
 
     pr "Wow, you’re serious about going out? You’re even trying to sneak out at night so mom wouldn’t know."
 
@@ -975,7 +1502,7 @@ label getcaught:
 
     pr "Hey! Wait!"
 
-    scene bg outside
+    scene bg outside evening
     with dissolve
 
     pl "Wow. I’ve never seen the neighborhood so quiet before."
@@ -986,18 +1513,51 @@ label getcaught:
     pl "What are you doing?! Let go of me!"
     with hpunch
 
-    "Police" "You are under arrest for quarantine violation."
+    "Police" "You are under arrest for quarantine protocol violation."
 
     scene black
     with dissolve
-    stop music
+    play music "audio/bgm/bad end.mp3" fadeout 1.0 fadein 1.0
 
     centered "{color=#f00}{b}Bad End: Quarantine Violator{/b}{/color}"
 
     menu:
         "Choose another route":
-            centered "You will now be returned to a previous decision..."
+            centered "You will now be returned to a previous decision point..."
             jump lockdown
         "Return to main menu":
             return
+
+label bros:
+    scene black
+    with wipeleftlong
+    scene bg living room back evening tvon
+    with wiperightlong
+
+    show prince happy
+    with dissolve
+
+    pr "That was fun. Thanks for spending time with me."
+
+    pl "No problem. If you ever get bored I’m here for you."
+
+    show prince happy at bounce, center
+
+    pr "Thanks"
+
+    scene black
+    with dissolve
+
+    centered "{color=#0f0}{b}Good End: Bros{/b}{/color}"
+
+    menu:
+        "Choose another route":
+            centered "You will now be returned to a previous decision point..."
+
+            jump project
+        "Return to main menu":
+            return
+
+label proceed:
+    "TBC"
 return
