@@ -1,28 +1,66 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 53, in script
-    with timeskip("bg living room back afternoon")
-  File "game/script.rpy", line 53, in <module>
-    with timeskip("bg living room back afternoon")
-NameError: name 'timeskip' is not defined
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/options.rpy", line 100, in script
+    return
+Exception: Could not find return label (u'game/script.rpy', 1620851542, 100).
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 53, in script
-    with timeskip("bg living room back afternoon")
-  File "renpy/ast.py", line 1390, in execute
-    trans = renpy.python.py_eval(self.expr)
-  File "renpy/python.py", line 2249, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "renpy/python.py", line 2242, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 53, in <module>
-    with timeskip("bg living room back afternoon")
-NameError: name 'timeskip' is not defined
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/script.rpy", line 2476, in script call
+    call screen crypticbox
+  File "game/options.rpy", line 100, in script
+    return
+  File "renpy/ast.py", line 1521, in execute
+    next_node(renpy.game.context().lookup_return(pop=True))
+  File "renpy/execution.py", line 710, in lookup_return
+    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
+Exception: Could not find return label (u'game/script.rpy', 1620851542, 100).
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Quarantine Life 1.0
-Sat May  1 14:13:17 2021
+Thu May 13 05:18:01 2021

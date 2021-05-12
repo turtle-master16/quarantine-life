@@ -85,8 +85,11 @@ define gui.title_text_size = 50
 ## Main and Game Menus #########################################################
 
 ## The images used for the main and game menus.
-define gui.main_menu_background = "gui/main_menu.png"
-define gui.game_menu_background = "gui/game_menu.png"
+define bg_collection = renpy.random.choice(["images/bg/bg outside.png", "images/bg/bg front house.png", "images/bg/bg kitchen.png", "images/bg/bg livingroom back evening.png", "images/bg/bg office.png"])
+
+
+define gui.main_menu_background = bg_collection
+define gui.game_menu_background = bg_collection
 
 
 ## Dialogue ####################################################################

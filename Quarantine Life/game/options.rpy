@@ -13,7 +13,151 @@
 ## The _() surrounding the string marks it as eligible for translation.
 
 define config.name = _("Quarantine Life")
+define config.layers = ['master', 'background', 'middle', 'forward', 'transient', 'screens', 'overlay']
 
+init -1 python:
+    register_3d_layer('background', 'middle', 'forward')
+
+init -1 python hide:
+    def hide(name, layer='master'):
+        for l in _3d_layers:
+            if renpy.showing(name, l):
+                renpy.hide(name, l)
+        else:
+            renpy.hide(name, layer)
+
+    config.hide = hide
+
+    def scene(layer='master'):
+        renpy.scene(layer)
+        for l in _3d_layers:
+            renpy.scene(l)
+
+    config.scene = scene
+# phone start
+transform phone_hide:
+    yalign 1.0 xalign 0.5
+    yoffset 100
+    easein 0.3 yoffset 1300
+
+#### labels to shortcut stuff so you dont need to copypaste stuff repeatedly! #####
+
+label phone_start:
+    window hide
+    show phone at phone_pickup
+    $ renpy.pause(0.2)
+    return
+
+label phone_msg:
+    $ renpy.pause()
+    hide screen phone_message
+    $ renpy.pause(0.1)
+    return
+
+label phone_msg2:
+    $ renpy.pause()
+    hide screen phone_message2
+    $ renpy.pause(0.1)
+    return
+
+label phone_msgi:
+    $ renpy.pause()
+    hide screen phone_message_image
+    $ renpy.pause(0.1)
+    return
+
+
+label phone_after_menu:
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    $ renpy.pause(0.1)
+    return
+
+label phone_end:
+    $ renpy.pause()
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    show phone at phone_hide
+    $ renpy.pause(0.2)
+    return
+
+label message(who, what):
+    $ renpy.pause()
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    $ renpy.pause(0.1)
+    # if you want to change the players name to be something else than "me" you can change it here
+    if who.name.lower() == "me":
+        show screen phone_message2(who.name, what)
+    else:
+        show screen phone_message(who.name, what)
+    return
+
+label reply_message(what, skip=False):
+
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    $ renpy.pause(0.1)
+    show screen phone_message3(what)
+    return
+
+label message_img(who, what,img):
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    $ renpy.pause(0.1)
+    show screen phone_message_image(who, what,img)
+    return
+
+
+label message_start(who, what):
+    # if you want to change the players name to be something else than "me" you can change it here
+    if who.name.lower() == "me":
+        show screen phone_message2(who, what)
+    else:
+        show screen phone_message(who, what)
+    return
+
+label phone_call(who, emotion,  what, status=1):
+    hide screen phone_call
+    hide screen phone_notif
+    show screen phone_call(who.name, emotion, status)
+    "[who.name]" "[what]" (who_color=datecolor[who.name])
+    return
+
+label phone_notif(sprite, who):
+    hide screen phone_notif
+    show screen phone_notif(sprite, who)
+    return
+
+label timeskip(img=None, mes=None):
+    $ renpy.scene('middle')
+    if mes:
+        $ renpy.scene('background')
+        show black onlayer background
+        $ renpy.with_statement(wipeleft)
+        centered "[mes]"
+        $ renpy.scene('background')
+        $ renpy.show(img, layer='background')
+        $ renpy.with_statement(wiperight)
+    else:
+        $ renpy.scene('background')
+        show black onlayer background
+        $ renpy.with_statement(wipeleftlong)
+        $ renpy.scene('background')
+        $ renpy.show(img, layer='background')
+        $ renpy.with_statement(wiperightlong)
+
+# phone end
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
@@ -47,7 +191,7 @@ define build.name = "QuarantineLife"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
 
 
 ## To allow the user to play a test sound on the sound or voice channel,
@@ -150,7 +294,6 @@ define config.save_directory = "QuarantineLife-1618819020"
 ## The icon displayed on the taskbar or dock.
 
 define config.window_icon = "gui/window_icon.png"
-
 
 ## Build configuration #########################################################
 ##

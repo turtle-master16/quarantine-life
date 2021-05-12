@@ -1,0 +1,230 @@
+camera.png
+gui.rpy
+gui.rpyc
+myscreens.rpy
+myscreens.rpyc
+options.rpy
+options.rpyc
+screens.rpy
+screens.rpyc
+script.rpy
+script.rpyc
+Camera\00camera_statements.rpy
+Camera\00camera_statements.rpyc
+Camera\00warper.rpy
+Camera\00warper.rpyc
+Camera\ActionEditor.rpy
+Camera\ActionEditor.rpyc
+Camera\README.md
+Camera\camera.rpy
+Camera\camera.rpyc
+Camera\camera_config.rpy
+Camera\camera_config.rpyc
+Camera\image_viewer.rpy
+Camera\image_viewer.rpyc
+Camera\keymap.rpy
+Camera\keymap.rpyc
+Camera\spline.rpy
+Camera\spline.rpyc
+Phone\call icons.png
+Phone\phone call.png
+Phone\phone.png
+Phone\phone.rpy
+Phone\phone.rpyc
+Phone\phone2.rpy
+Phone\phone2.rpyc
+audio\Cheerful Piano Jingle.wav
+audio\Waiting music.mp3
+audio\chime.wav
+audio\eating.mp3
+audio\fail.wav
+audio\phone ring.mp3
+audio\punch.wav
+audio\roomentry.wav
+audio\sus.wav
+audio\yay.wav
+audio\bgm\Ensolorado.mp3
+audio\bgm\Lets cooking.mp3
+audio\bgm\Ryoushin ga tsuyosugiru dorobou tekina BGM.mp3
+audio\bgm\bad end.mp3
+audio\bgm\crickets.mp3
+audio\bgm\kitchen.mp3
+audio\bgm\living room.mp3
+audio\bgm\main menu.mp3
+audio\bgm\main_menu_bgm2.mp3
+audio\bgm\office.mp3
+audio\bgm\outside.mp3
+audio\bgm\park.mp3
+audio\bgm\suspense.mp3
+cache\bytecode.rpyb
+cache\pyanalysis.rpyb
+cache\screens.rpyb
+gui\frame.png
+gui\game_menu.png
+gui\main_menu.png
+gui\main_menuOg.png
+gui\namebox.png
+gui\notify.png
+gui\nvl.png
+gui\skip.png
+gui\textbox.png
+gui\window_icon.png
+gui\bar\bottom.png
+gui\bar\left.png
+gui\bar\right.png
+gui\bar\top.png
+gui\button\check_foreground.png
+gui\button\check_selected_foreground.png
+gui\button\choice_hover_background.png
+gui\button\choice_idle_background.png
+gui\button\hover_background.png
+gui\button\idle_background.png
+gui\button\quick_hover_background.png
+gui\button\quick_idle_background.png
+gui\button\radio_foreground.png
+gui\button\radio_selected_foreground.png
+gui\button\slot_hover_background.png
+gui\button\slot_idle_background.png
+gui\overlay\confirm.png
+gui\overlay\game_menu.png
+gui\overlay\main_menu.png
+gui\phone\nvl.png
+gui\phone\textbox.png
+gui\phone\bar\bottom.png
+gui\phone\bar\left.png
+gui\phone\bar\right.png
+gui\phone\bar\top.png
+gui\phone\button\check_foreground.png
+gui\phone\button\check_selected_foreground.png
+gui\phone\button\choice_hover_background.png
+gui\phone\button\choice_idle_background.png
+gui\phone\button\hover_background.png
+gui\phone\button\idle_background.png
+gui\phone\button\radio_foreground.png
+gui\phone\button\radio_selected_foreground.png
+gui\phone\button\slot_hover_background.png
+gui\phone\button\slot_idle_background.png
+gui\phone\overlay\game_menu.png
+gui\phone\overlay\main_menu.png
+gui\phone\scrollbar\horizontal_hover_bar.png
+gui\phone\scrollbar\horizontal_hover_thumb.png
+gui\phone\scrollbar\horizontal_idle_bar.png
+gui\phone\scrollbar\horizontal_idle_thumb.png
+gui\phone\scrollbar\vertical_hover_bar.png
+gui\phone\scrollbar\vertical_hover_thumb.png
+gui\phone\scrollbar\vertical_idle_bar.png
+gui\phone\scrollbar\vertical_idle_thumb.png
+gui\phone\slider\horizontal_hover_bar.png
+gui\phone\slider\horizontal_hover_thumb.png
+gui\phone\slider\horizontal_idle_bar.png
+gui\phone\slider\horizontal_idle_thumb.png
+gui\phone\slider\vertical_hover_bar.png
+gui\phone\slider\vertical_hover_thumb.png
+gui\phone\slider\vertical_idle_bar.png
+gui\phone\slider\vertical_idle_thumb.png
+gui\scrollbar\horizontal_hover_bar.png
+gui\scrollbar\horizontal_hover_thumb.png
+gui\scrollbar\horizontal_idle_bar.png
+gui\scrollbar\horizontal_idle_thumb.png
+gui\scrollbar\vertical_hover_bar.png
+gui\scrollbar\vertical_hover_thumb.png
+gui\scrollbar\vertical_idle_bar.png
+gui\scrollbar\vertical_idle_thumb.png
+gui\slider\horizontal_hover_bar.png
+gui\slider\horizontal_hover_thumb.png
+gui\slider\horizontal_idle_bar.png
+gui\slider\horizontal_idle_thumb.png
+gui\slider\vertical_hover_bar.png
+gui\slider\vertical_hover_thumb.png
+gui\slider\vertical_idle_bar.png
+gui\slider\vertical_idle_thumb.png
+images\bg phone notification.png
+images\bg phone vc.png
+images\bg phone.png
+images\bubble-tip.png
+images\bubble-tip2.png
+images\phone answer call.png
+images\phone end call.png
+images\phone.png
+images\Jason\jason amazed.png
+images\Jason\jason confused.png
+images\Jason\jason neutral.png
+images\Jason\jason profile.png
+images\Jason\jason proud.png
+images\bg\bg bedroom afternoon.png
+images\bg\bg bedroom back afternoon.png
+images\bg\bg bedroom back evening.png
+images\bg\bg bedroom back.png
+images\bg\bg bedroom left afternoon.png
+images\bg\bg bedroom left evening.png
+images\bg\bg bedroom left.png
+images\bg\bg front house.png
+images\bg\bg kitchen pot.png
+images\bg\bg kitchen.png
+images\bg\bg livingroom back afternoon.png
+images\bg\bg livingroom back evening tvon.png
+images\bg\bg livingroom back evening.png
+images\bg\bg livingroom back tvon.png
+images\bg\bg livingroom back.png
+images\bg\bg livingroom left afternoon tvon.png
+images\bg\bg livingroom left afternoon.png
+images\bg\bg livingroom left evening tvon.png
+images\bg\bg livingroom left tvon.png
+images\bg\bg office afternoon.png
+images\bg\bg office.png
+images\bg\bg outside evening.jpg
+images\bg\bg outside evening.png
+images\bg\bg outside.png
+images\bg\bg restaurant.png
+images\bg\bg shuttle evening.png
+images\bg\bg shuttle.png
+images\bg\bg supermarket.png
+images\carla\carla angry.png
+images\carla\carla confused.png
+images\carla\carla handstop.png
+images\carla\carla happy.png
+images\carla\carla please.png
+images\carla\carla support.png
+images\carla\carla thinking.png
+images\carla\carla worried.png
+images\ian\ian angry.png
+images\ian\ian back.png
+images\ian\ian confused.png
+images\ian\ian embarrased.png
+images\ian\ian greet.png
+images\ian\ian invite.png
+images\ian\ian thinking.png
+images\ian\ian warning.png
+images\jillian\jillian glad.png
+images\jillian\jillian profile.png
+images\jillian\jillian shy.png
+images\jillian\jillian smile.png
+images\jillian\jillian thinking.png
+images\jillian\jillian worried.png
+images\mark\mark closeye.png
+images\mark\mark confused.png
+images\mark\mark glad.png
+images\misc\arrow.png
+images\prince\prince demanding.png
+images\prince\prince irritated.png
+images\prince\prince lazy.png
+images\prince\prince smug.png
+images\prince\prince unamused.png
+images\prince\prince whatever.png
+saves\_reload-2-LT1.save
+saves\auto-1-LT1.save
+saves\auto-10-LT1.save
+saves\auto-2-LT1.save
+saves\auto-3-LT1.save
+saves\auto-4-LT1.save
+saves\auto-5-LT1.save
+saves\auto-6-LT1.save
+saves\auto-7-LT1.save
+saves\auto-9-LT1.save
+saves\navigation.json
+saves\persistent
+saves\quick-1-LT1.save
+saves\quick-2-LT1.save
+saves\quick-3-LT1.save
+tl\None\common.rpym
+tl\None\common.rpymc

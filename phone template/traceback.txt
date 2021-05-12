@@ -1,0 +1,35 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 21, in script call
+    call reply_message_img("receive cute pics from your friend","images/pic2.png")
+  File "game/options.rpy", line 135, in script
+    show screen reply_phone_message_image(what,img)
+  File "renpy/common/000statements.rpy", line 467, in execute_show_screen
+    renpy.show_screen(name, *args, **kwargs)
+Exception: Screen reply_phone_message_image is not known.
+
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 21, in script call
+    call reply_message_img("receive cute pics from your friend","images/pic2.png")
+  File "game/options.rpy", line 135, in script
+    show screen reply_phone_message_image(what,img)
+  File "C:\Users\nana\Dropbox\Renpy\renpy-6.99.12.4-sdk\renpy\ast.py", line 1801, in execute
+    self.call("execute")
+  File "C:\Users\nana\Dropbox\Renpy\renpy-6.99.12.4-sdk\renpy\ast.py", line 1789, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "C:\Users\nana\Dropbox\Renpy\renpy-6.99.12.4-sdk\renpy\statements.py", line 169, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 467, in execute_show_screen
+    renpy.show_screen(name, *args, **kwargs)
+  File "C:\Users\nana\Dropbox\Renpy\renpy-6.99.12.4-sdk\renpy\display\screen.py", line 1038, in show_screen
+    raise Exception("Screen %s is not known.\n" % (name[0],))
+Exception: Screen reply_phone_message_image is not known.
+
+
+Windows-7-6.1.7601-SP1
+Ren'Py 6.99.14.3135
+phone template 1.0

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 160: expected statement.
-    del memed
-             ^
+File "game/script.rpy", line 2333: expected 'image_name_component' not found.
+    show "images/phone.png" onlayer middle at phone_pickup
+         ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat May  1 15:51:07 2021
+Thu May 13 04:41:40 2021
