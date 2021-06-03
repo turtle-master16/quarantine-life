@@ -1,66 +1,82 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/options.rpy", line 100, in script
-    return
-Exception: Could not find return label (u'game/script.rpy', 1620851542, 100).
+While loading <'Image' u'images/bg phone vc.png'>:
+  File "game/script.rpy", line 1662, in script call
+    call phone_call(js, "amazed", "Oh wow, you look amazing.", 0)
+  File "game/options.rpy", line 134, in script
+    "[who.name]" "[what]" (who_color=charcolor[who.name])
+  File "renpy/common/00library.rpy", line 268, in say
+    who(what, interact=interact, *args, **kwargs)
+IOError: Couldn't find file 'images/bg phone vc.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/script.rpy", line 2476, in script call
-    call screen crypticbox
-  File "game/options.rpy", line 100, in script
-    return
-  File "renpy/ast.py", line 1521, in execute
-    next_node(renpy.game.context().lookup_return(pop=True))
-  File "renpy/execution.py", line 710, in lookup_return
-    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
-Exception: Could not find return label (u'game/script.rpy', 1620851542, 100).
+  File "game/script.rpy", line 1662, in script call
+    call phone_call(js, "amazed", "Oh wow, you look amazing.", 0)
+  File "game/options.rpy", line 134, in script
+    "[who.name]" "[what]" (who_color=charcolor[who.name])
+  File "renpy/ast.py", line 715, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "renpy/exports.py", line 1391, in say
+    renpy.store.say(who, what, *args, **kwargs)
+  File "renpy/common/00library.rpy", line 268, in say
+    who(what, interact=interact, *args, **kwargs)
+  File "renpy/character.py", line 1108, in __call__
+    return Character(kind=self, **kwargs)(what, interact=interact, _call_done=_call_done, multiple=multiple, _mode=_mode, _with_none=_with_none)
+  File "renpy/character.py", line 1205, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "renpy/character.py", line 871, in do_display
+    **display_args)
+  File "renpy/character.py", line 621, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "renpy/display/core.py", line 3101, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3611, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "renpy/display/core.py", line 2441, in draw_screen
+    renpy.config.screen_height,
+  File "render.pyx", line 492, in renpy.display.render.render_screen
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 777, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 777, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 777, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/screen.py", line 681, in render
+    child = renpy.display.render.render(self.child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 777, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/transform.py", line 933, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 116, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 1213, in render
+    back = render(style.background, bw, bh, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/im.py", line 607, in render
+    return cache.get(self, render=True)
+  File "renpy/display/im.py", line 271, in get
+    surf = image.load()
+  File "renpy/display/im.py", line 688, in load
+    raise e
+IOError: Couldn't find file 'images/bg phone vc.png'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Quarantine Life 1.0
-Thu May 13 05:18:01 2021
+Thu May 27 14:46:06 2021

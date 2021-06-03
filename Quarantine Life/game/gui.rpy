@@ -23,21 +23,21 @@ init python:
 ## The colors of text in the interface.
 
 ## An accent color used throughout the interface to label and highlight text.
-define gui.accent_color = u'#cc0000'
+define gui.accent_color = u'#add8e6'
 
 ## The color used for a text button when it is neither selected nor hovered.
-define gui.idle_color = u'#888888'
+define gui.idle_color = u'#ffffff'
 
 ## The small color is used for small text, which needs to be brighter/darker to
 ## achieve the same effect.
 define gui.idle_small_color = u'#aaaaaa'
 
 ## The color that is used for buttons and bars that are hovered.
-define gui.hover_color = u'#e06666'
+define gui.hover_color = u'#999999'
 
 ## The color used for a text button when it is selected but not focused. A
 ## button is selected if it is the current screen or preference value.
-define gui.selected_color = u'#ffffff'
+define gui.selected_color = u'#add8e6'
 
 ## The color used for a text button when it cannot be selected.
 define gui.insensitive_color = u'#8888887f'
@@ -85,11 +85,9 @@ define gui.title_text_size = 50
 ## Main and Game Menus #########################################################
 
 ## The images used for the main and game menus.
-define bg_collection = renpy.random.choice(["images/bg/bg outside.png", "images/bg/bg front house.png", "images/bg/bg kitchen.png", "images/bg/bg livingroom back evening.png", "images/bg/bg office.png"])
 
-
-define gui.main_menu_background = bg_collection
-define gui.game_menu_background = bg_collection
+define gui.main_menu_background = "images/bg/bg mainmenu.png"
+define gui.game_menu_background = "images/bg/bg mainmenu.png"
 
 
 ## Dialogue ####################################################################

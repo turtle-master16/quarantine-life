@@ -131,7 +131,7 @@ label phone_call(who, emotion,  what, status=1):
     hide screen phone_call
     hide screen phone_notif
     show screen phone_call(who.name, emotion, status)
-    "[who.name]" "[what]" (who_color=datecolor[who.name])
+    "[who.name]" "[what]" (who_color=charcolor[who.name])
     return
 
 label phone_notif(sprite, who):
@@ -141,17 +141,15 @@ label phone_notif(sprite, who):
 
 label timeskip(img=None, mes=None):
     $ renpy.scene('middle')
+    $ renpy.scene('background')
+    show black onlayer background
     if mes:
-        $ renpy.scene('background')
-        show black onlayer background
         $ renpy.with_statement(wipeleft)
         centered "[mes]"
         $ renpy.scene('background')
         $ renpy.show(img, layer='background')
         $ renpy.with_statement(wiperight)
     else:
-        $ renpy.scene('background')
-        show black onlayer background
         $ renpy.with_statement(wipeleftlong)
         $ renpy.scene('background')
         $ renpy.show(img, layer='background')

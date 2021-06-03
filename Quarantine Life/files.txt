@@ -39,6 +39,8 @@ audio\chime.wav
 audio\eating.mp3
 audio\fail.wav
 audio\phone ring.mp3
+audio\phone tapping.wav
+audio\phone vibrate.wav
 audio\punch.wav
 audio\roomentry.wav
 audio\sus.wav
@@ -143,8 +145,10 @@ images\bg phone vc.png
 images\bg phone.png
 images\bubble-tip.png
 images\bubble-tip2.png
+images\dad profile.png
 images\phone answer call.png
 images\phone end call.png
+images\phone tindah.png
 images\phone.png
 images\Jason\jason amazed.png
 images\Jason\jason confused.png
@@ -156,6 +160,7 @@ images\bg\bg bedroom back afternoon.png
 images\bg\bg bedroom back evening.png
 images\bg\bg bedroom back.png
 images\bg\bg bedroom left afternoon.png
+images\bg\bg bedroom left evening c.png
 images\bg\bg bedroom left evening.png
 images\bg\bg bedroom left.png
 images\bg\bg front house.png
@@ -179,6 +184,7 @@ images\bg\bg restaurant.png
 images\bg\bg shuttle evening.png
 images\bg\bg shuttle.png
 images\bg\bg supermarket.png
+images\carla\carla - Shortcut.lnk
 images\carla\carla angry.png
 images\carla\carla confused.png
 images\carla\carla handstop.png
@@ -201,25 +207,30 @@ images\jillian\jillian shy.png
 images\jillian\jillian smile.png
 images\jillian\jillian thinking.png
 images\jillian\jillian worried.png
+images\kyle\kyle angry.png
+images\kyle\kyle point.png
+images\kyle\kyle smile.png
+images\kyle\kyle thinking.png
 images\mark\mark closeye.png
 images\mark\mark confused.png
+images\mark\mark explain.png
 images\mark\mark glad.png
 images\misc\arrow.png
+images\misc\arrow2.png
 images\prince\prince demanding.png
 images\prince\prince irritated.png
 images\prince\prince lazy.png
 images\prince\prince smug.png
 images\prince\prince unamused.png
 images\prince\prince whatever.png
+saves\1-1-LT1.save
 saves\_reload-2-LT1.save
-saves\auto-1-LT1.save
 saves\auto-10-LT1.save
 saves\auto-2-LT1.save
-saves\auto-3-LT1.save
-saves\auto-4-LT1.save
 saves\auto-5-LT1.save
 saves\auto-6-LT1.save
 saves\auto-7-LT1.save
+saves\auto-8-LT1.save
 saves\auto-9-LT1.save
 saves\navigation.json
 saves\persistent

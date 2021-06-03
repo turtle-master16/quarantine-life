@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2333: expected 'image_name_component' not found.
-    show "images/phone.png" onlayer middle at phone_pickup
-         ^
+File "game/script.rpy", line 162: end of line expected.
+    show prince confident onlayer middle:            xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.0
+                                                     ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu May 13 04:41:40 2021
+Thu May 27 15:09:13 2021

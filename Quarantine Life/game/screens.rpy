@@ -170,18 +170,23 @@ style say_dialogue:
 ## https://www.renpy.org/doc/html/screen_special.html#input
 
 screen input(prompt):
-    style_prefix "input"
-
     window:
+        background None # otherwise, the ordinary textbox image will be used
+        yfill True   # to stretch the textbox vertically
+        yalign 0.5
+        has vbox xalign 0.5 yalign 0.5   # centers the text onscreen
 
-        vbox:
-            xalign gui.dialogue_text_xalign
-            xpos gui.dialogue_xpos
-            xsize gui.dialogue_width
-            ypos gui.dialogue_ypos
-
-            text prompt style "input_prompt"
-            input id "input"
+        text prompt xalign 0.5    # forces this text to stay at center of line
+        input id "input" xalign 0.5
+    # window:
+    #     vbox:
+    #         xalign gui.dialogue_text_xalign
+    #         xpos gui.dialogue_xpos
+    #         xsize gui.dialogue_width
+    #         ypos gui.dialogue_ypos
+    #
+    #         text prompt style "input_prompt"
+    #         input id "input"
 
 style input_prompt is default
 
@@ -307,7 +312,7 @@ screen navigation():
 
             textbutton _("Save") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+        textbutton _("Load")  action ShowMenu("load")
 
         textbutton _("Preferences") action ShowMenu("preferences")
 
@@ -387,7 +392,7 @@ style main_menu_frame:
     xsize 280
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    # background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -397,12 +402,15 @@ style main_menu_vbox:
     yoffset -20
 
 style main_menu_text:
+    color '#fff'
     properties gui.text_properties("main_menu", accent=True)
 
 style main_menu_title:
+    color '#fff'
     properties gui.text_properties("title")
 
 style main_menu_version:
+    color '#fff'
     properties gui.text_properties("version")
 
 
@@ -1425,10 +1433,10 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
-            textbutton _("Back") action Rollback()
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Menu") action ShowMenu()
+            textbutton _("Back") text_size 20 action Rollback()
+            textbutton _("Skip") text_size 20 action Skip() alternate Skip(fast=True, confirm=True)
+            textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")
+            textbutton _("Menu") text_size 20 action ShowMenu()
 
 
 style window:
