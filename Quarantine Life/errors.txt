@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 162: end of line expected.
-    show prince confident onlayer middle:            xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.0
-                                                     ^
+File "game/PointNClickScreens.rpy", line 114: expected '=' not found.
+    define hasFaceshield
+                        ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu May 27 15:09:13 2021
+Sun Sep 26 00:39:01 2021

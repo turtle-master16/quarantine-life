@@ -1,3 +1,117 @@
+transform phone_hide:
+    yalign 1.0 xalign 0.5
+    yoffset 100
+    easein 0.3 yoffset 1300
+
+transform delay:
+    pause 0.5
+
+# Phone Labels
+label phone_start:
+    window hide
+    show phone at phone_pickup
+    $ renpy.pause(0.2)
+    return
+
+label phone_msg:
+    $ renpy.pause()
+    hide screen phone_message
+    $ renpy.pause(0.1)
+    return
+
+label phone_msg2:
+    $ renpy.pause()
+    hide screen phone_message2
+    $ renpy.pause(0.1)
+    return
+
+label phone_msgi:
+    $ renpy.pause()
+    hide screen phone_message_image
+    $ renpy.pause(0.1)
+    return
+
+label phone_after_menu:
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    $ renpy.pause(0.1)
+    return
+
+label hide_phone_messages:
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    return
+
+label phone_end:
+    $ renpy.pause()
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    show phone at phone_hide
+    $ renpy.pause(0.2)
+    return
+
+label message(who, what, prepause=True):
+    if prepause:
+        $ renpy.pause()
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    $ renpy.pause(0.1)
+    # if you want to change the players name to be something else than "me" you can change it here
+    if who.name.lower() == "me":
+        show screen phone_message2(who.name, what)
+    else:
+        show screen phone_message(who.name, what)
+    return
+
+label reply_message(what, skip=False):
+
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    $ renpy.pause(0.1)
+    show screen phone_message3(what)
+    return
+
+label message_img(who, what,img):
+    hide screen phone_message
+    hide screen phone_message2
+    hide screen phone_message3
+    hide screen phone_message_image
+    $ renpy.pause(0.1)
+    show screen phone_message_image(who, what,img)
+    return
+
+
+label message_start(who, what):
+    # if you want to change the players name to be something else than "me" you can change it here
+    if who.name.lower() == "me":
+        show screen phone_message2(who, what)
+    else:
+        show screen phone_message(who, what)
+    return
+
+label phone_call(who, emotion,  what, status=1):
+    hide screen phone_call
+    hide screen phone_notif
+    show screen phone_call(who.name, emotion, status)
+    "[who.name]" "[what]" (who_color=charcolor[who.name])
+    return
+
+label phone_notif(sprite, who):
+    hide screen phone_notif
+    show screen phone_notif(sprite, who)
+    return
+
+# Phone Styles
 init 5:
     style phone_message_vbox:
         xalign 0.5
@@ -11,7 +125,7 @@ init 5:
         xpadding 10
 
     style phone_message_frame2:
-        background Solid(charcolor['Player'])#"#78E8A0")
+        background Solid(charcolor['Player'])
         ypadding 10
         xpadding 10
 
@@ -46,6 +160,9 @@ init 5:
         ypadding 10
         xpadding 10
 
+image phone_tindah = "images/phone/phone tindah.png"
+image phone = "images/phone/phone.png"
+
 screen phone_message(who, what):
     vbox at incoming_message:
         style_group "phone_message"
@@ -69,7 +186,7 @@ screen phone_message2(who, what):
 
         frame:
             style_group "phone_message2"
-            background Solid(charcolor[who])#"#78E8A0")
+            background Solid(charcolor[who])
             xsize 200
 
             vbox:
@@ -99,6 +216,7 @@ screen phone_reply(reply1, reply2, reply3):
     modal True
     layer "middle"
     vbox:
+        at delay
         xalign 0.529
         yalign 0.65
         spacing 2
