@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/PointNClickScreens.rpy", line 114: expected '=' not found.
-    define hasFaceshield
-                        ^
+File "game/PointNClickScreens.rpy", line 36: else clause expects a non-empty block.
+    else:
+         ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Sep 26 00:39:01 2021
+Fri Oct  1 18:18:19 2021

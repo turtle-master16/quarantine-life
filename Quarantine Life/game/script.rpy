@@ -23,8 +23,8 @@ define m = Character("Mark", color=charcolor['Mark'])
 define js = Character("Jason", color=charcolor['Jason'])
 define jl = Character("Jillian", color=charcolor['Jillian'])
 define ky = Character("Kyle", color=charcolor['Kyle'])
-define nar = Character("", what_color=charcolor['Narration'])
-define ins = Character("", what_color=charcolor['Instruction'])
+define nar = Character(None, what_color=charcolor['Narration'])
+define ins = Character(None, what_color=charcolor['Instruction'])
 
 # The game starts here.
 label start(retmode=False):
@@ -51,18 +51,19 @@ label start(retmode=False):
         if not player_name:
              player_name = "Coby"
 
-        #### Test Jumps Start
-        # jump
-        #### Test Jumps End
 
         if player_name != "xc@lu@g99":
             renpy.jump("start.mainstart")
 
-    $ player_name = "Coby"
+    define player_name = "Coby"
 
     call screen testmode
 
     label .mainstart:
+
+        #### Test Jumps Start
+        jump newnormal
+        #### Test Jumps End
 
         nar "It all changed so fast."
 
@@ -194,8 +195,7 @@ label news:
         parallel:
             xpos 0.5
             linear 0.7 xpos -0.19
-    $ renpy.pause(0.7, hard=True)
-    hide carla
+    $ renpy.pause(0.7)
 
     pl "Alright. Let’s just hope that everything is under control so nothing bad will happen."
 
@@ -449,7 +449,7 @@ label newnormal(fr_escape=False):
     plt "(The new normal… I wonder what’s in store for me.)"
 
     # DATE: MAY 2020, 6:00 pm, week 1, bed room, GCQ
-    call updateDate("May 2020, 6:00 pm, Week 1, Bed room, GCQ")
+    call updateDate("May 2020, 6:00 pm, Week 1, Living room, GCQ")
 
     plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
 
@@ -457,12 +457,8 @@ label newnormal(fr_escape=False):
     pl "I have a list of items I should find, I’m sure they’re around here somewhere."
 
     $ itemselected = itemchoices["Reset"]
+    scene bg livingroom back onlayer background
     jump workprep
-
-    # DATE: MAY 2020, 7:00 pm, week 1, bed room, GCQ
-    call updateDate("May 2020, 7:00 pm, Week 1, Bed room, GCQ")
-
-    plt "(Great. Now I have everything set, I am ready for tomorrow.)"
 
 label commuting:
     call timeskip("bg shuttle")
@@ -2830,41 +2826,30 @@ label mcend:
 
 # Point and Click Scenarios
 label workprep:
-    # Choices (A = Take faceshield)
-    scene bg livingroom back onlayer background
+    if currentRoom == ROOMS['livingroom']:
+        scene bg livingroom back
+        call hideStuff('faceshield', location='livingroom')
+        call hideStuff('bedkey', location='livingroom')
+    elif currentRoom == ROOMS['bedroom']:
+        scene bg bedroom back
+        call hideStuff("wallet", location='bedroom')
+        call hideStuff('draweropen', 'bedroom', isState=True)
+        call hideStuff('boxclosed', 'bedroom', isState=True)
 
-    if itemselected == itemchoices["A"]:
-        $ hasFaceShield = True
+    elif currentRoom == ROOMS['kitchen']:
+        scene bg kitchen
+        call hideStuff('sanitizer', location='kitchen')
 
-        pl "Got it."
-
-        $ itemselected = itemchoices["Reset"]
-
-    call screen workprep
-
-    label .misc_item_dialog(item=None):
-        if item == 1:
-            pl "Not in the mood to watch TV."
-        elif item == 2:
-            pl "There’s something written at the corner of the frame. \n{b}7 _ _ _{/b}"
-        elif item == 3:
-            pl "There’s a piece of paper. 1"
-        elif item == 4:
-            pl "A healthy looking plant."
-        elif item == 5:
-            pl "Empty"
-        elif item == 6:
-            pl "No time to relax now."
-        elif item == 7:
-            pl "Nothing to see here."
-        elif item == 8 and not hasBedkey:
-            $ hasBedkey = True
-
-            pl "There’s a key!"
-
-        $ renpy.pop_call()
-
+    if not(onhand['sanitizer'] and onhand['faceshield'] and onhand['wallet'] and onhand['facemask']):
+        call screen workprep
         jump workprep
+
+    # DATE: MAY 2020, 7:00 pm, week 1, bed room, GCQ
+    call updateDate("May 2020, 7:00 pm, Week 1, Bed room, GCQ")
+
+    plt "(Great. Now I have everything set, I am ready for tomorrow.)"
+
+    jump commuting
 
 label livingroomact:
     # Choices: (A = Watch TV) (B = Return to Point & Click)
@@ -2974,30 +2959,6 @@ label bedroomact:
     if(itemselected == itemchoices["A"]):
         $all_moves(camera_check_points={'y': [(0, 0, None), (1933, 0.5, 'linear')], 'x': [(0, 0, None), (-1537, 0.5, 'linear')], 'z': [(0, 0, None), (778, 0.5, 'linear')]}, focus_check_points={'dof': [(9999999, 0, None), (624, 0.5, 'linear')]})
 
-        plt "(Some say sleep is the cure for boredom...)"
-        menu:
-            "Take a nap":
-                scene bg bedroom back onlayer background
-
-            "Find other activities":
-                plt "(I want to try something more productive this time. Sorry bed...)"
-
-                $all_moves(camera_check_points={'y': [(1933, 0, None), (0, 0.5, 'linear')], 'x': [(-1537, 0, None), (0, 0.5, 'linear')], 'z': [(778, 0, None), (0, 0.5, 'linear')]})
-
-                $ itemselected = itemchoices["Reset"]
-                jump bedroomact
-
-        plt "(And I totally agree!)"
-
-        plt "(I’ll just catch some z’s. Nothing’s better than some good ol' sleep.)"
-
-        stop music fadeout 1.0
-
-        play music "audio/bgm/suspense.mp3"
-
-        $ itemselected = itemchoices["Reset"]
-
-        jump preescaperoom
 
     elif itemselected == itemchoices["B"]:
         $all_moves(camera_check_points={'y': [(0, 0, None), (49, 0.5, 'linear')], 'x': [(0, 0, None), (-3243, 0.5, 'linear')], 'z': [(0, 0, None), (1087, 0.5, 'linear')]}, focus_check_points={'dof': [(624, 0, None), (505, 0.5, 'linear')]})
@@ -3222,30 +3183,6 @@ label bedroomact:
         $ renpy.pop_call()
 
         jump bedroomact
-
-label preescaperoom:
-    call timeskip("bg bedroom left evening")
-
-    plt "Now that's a good nap."
-
-    plt "I'm a little hungry. Maybe I'll grab a snack."
-
-    play sound "audio/door rattle.wav"
-
-    $all_moves(camera_check_points={'y': [(0, 0, 'linear'), (-1850, 0.7, 'linear')], 'x': [(0, 0, 'linear'), (2578, 0.7, 'linear')], 'z': [(0, 0, 'linear'), (767, 0.7, 'linear')]})
-    $ renpy.pause(0.7)
-    with hpunch
-    stop sound
-
-    plt "Huh? Strange. It's locked."
-
-    $all_moves(camera_check_points={'y': [(-1850, 0, None), (0, 0.7, 'linear')], 'x': [(2578, 0, None), (0, 0.7, 'linear')], 'z': [(767, 0, None), (0, 0.7, 'linear')]})
-
-    "{color=#0f0}Click on objects to interact with them{/color}"
-
-    show screen escapetimer
-
-    $ renpy.block_rollback()
 
 label escaperoom:
     if itemselected == itemchoices["A"] and not haskey:
