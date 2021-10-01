@@ -1,36 +1,50 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 2938, in script call
-    call screen livingroomact
-  File "game/script.rpy", line 2841, in script call
-    call screen workprep
-  File "game/script.rpy", line 2844, in script
-    if item == 1:
-  File "game/script.rpy", line 2858, in <module>
-    elif item == 8 and not hasBedkey:
-NameError: name 'hasBedkey' is not defined
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", "So [player_name!t], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+SyntaxError: invalid syntax (script.rpy, line 1832)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 2938, in script call
-    call screen livingroomact
-  File "game/script.rpy", line 2841, in script call
-    call screen workprep
-  File "game/script.rpy", line 2844, in script
-    if item == 1:
-  File "renpy/ast.py", line 1852, in execute
-    if renpy.python.py_eval(condition):
-  File "renpy/python.py", line 2249, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "renpy/python.py", line 2242, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 2858, in <module>
-    elif item == 8 and not hasBedkey:
-NameError: name 'hasBedkey' is not defined
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", "So [player_name!t], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+  File "renpy/ast.py", line 1449, in execute
+    args, kwargs = self.arguments.evaluate()
+  File "renpy/ast.py", line 191, in evaluate
+    args.append(renpy.python.py_eval(v, locals=scope))
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1832)
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Quarantine Life 1.0
-Sun Sep 26 00:33:50 2021
+Fri Oct  1 18:13:32 2021

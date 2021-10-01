@@ -1,50 +1,50 @@
-Sun Sep 26 01:36:40 2021
+Fri Oct  1 18:01:55 2021
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
 
-Bootstrap to the start of init.init took 0.21s
-Early init took 0.14s
-Loader init took 0.06s
-Loading error handling took 0.05s
-Loading script took 0.97s
-Loading save slot metadata. took 0.15s
-Loading persistent took 0.00s
+Bootstrap to the start of init.init took 0.28s
+Early init took 0.01s
+Loader init took 0.13s
+Loading error handling took 0.18s
+Loading script took 1.52s
+Loading save slot metadata. took 0.25s
+Loading persistent took 0.01s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.14s
-Loading analysis data took 0.80s
-Analyze and compile ATL took 0.04s
+Running init code took 0.36s
+Loading analysis data took 1.03s
+Analyze and compile ATL took 0.02s
 Index archives took 0.00s
-Dump and make backups. took 0.62s
+Dump and make backups. took 0.22s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.12s
+Initial gc. took 0.17s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: "Couldn't load nvlib." (can be ignored)
-Creating interface object took 0.00s
+Creating interface object took 0.01s
 Cleaning stores took 0.00s
-Init translation took 0.16s
-Build styles took 0.01s
-Load screen analysis took 2.34s
+Init translation took 0.21s
+Build styles took 0.02s
+Load screen analysis took 0.70s
 Analyze screens took 0.00s
 Save screen analysis took 0.00s
-Prepare screens took 0.29s
+Prepare screens took 0.33s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.55s
+Save bytecode. took 0.42s
 Running _start took 0.00s
 Performance test:
-Interface start took 1.04s
+Interface start took 0.36s
 
 Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
+primary display bounds: (0, 0, 1366, 768)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
 Display Info: None
-Number of texture units: 18
+Number of texture units: 32
 Using shader environment.
 Using FBO RTT.
 Root FBO is: 0
@@ -58,12 +58,1668 @@ Texture testing:
 - 512px textures work.
 - 1024px textures work.
 - 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1292, 727) drawable=(1292, 727)
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 9.50652480125s
- physical=(1292, 727) drawable=(1292, 727)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 45.2817270756s
+Total time until interface ready: 7.84999489784s
+Resetting cache.
+Bootstrap to the start of init.init took 338.96s
+Early init took 0.00s
+Loader init took 0.10s
+Loading error handling took 0.23s
+Loading script took 2.36s
+Loading save slot metadata. took 0.21s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.14s
+Loading analysis data took 0.87s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.25s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.22s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.23s
+Build styles took 0.03s
+Load screen analysis took 0.00s
+Analyze screens took 0.06s
+Save screen analysis took 0.27s
+Prepare screens took 0.32s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.04s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.20s
 
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 345.230468035s
+Resetting cache.
+Bootstrap to the start of init.init took 413.73s
+Early init took 0.00s
+Loader init took 0.09s
+Loading error handling took 0.05s
+Loading script took 1.92s
+Loading save slot metadata. took 0.22s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.13s
+Loading analysis data took 0.91s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.24s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.24s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.24s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.06s
+Save screen analysis took 0.26s
+Prepare screens took 0.42s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.04s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.24s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 419.631812096s
+
+Full traceback:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", _"So [player_name], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+  File "renpy/ast.py", line 1449, in execute
+    args, kwargs = self.arguments.evaluate()
+  File "renpy/ast.py", line 191, in evaluate
+    args.append(renpy.python.py_eval(v, locals=scope))
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1832)
+
+While running game code:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", _"So [player_name], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+SyntaxError: invalid syntax (script.rpy, line 1832)
+Resetting cache.
+Bootstrap to the start of init.init took 625.15s
+Early init took 0.00s
+Loader init took 0.15s
+Loading error handling took 0.06s
+Loading script took 2.42s
+Loading save slot metadata. took 0.24s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.14s
+Loading analysis data took 0.94s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.28s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.27s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.29s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.06s
+Save screen analysis took 0.31s
+Prepare screens took 0.36s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.04s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.25s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 631.858464956s
+
+Full traceback:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", _"So [player_name!q], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+  File "renpy/ast.py", line 1449, in execute
+    args, kwargs = self.arguments.evaluate()
+  File "renpy/ast.py", line 191, in evaluate
+    args.append(renpy.python.py_eval(v, locals=scope))
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1832)
+
+While running game code:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", _"So [player_name!q], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+SyntaxError: invalid syntax (script.rpy, line 1832)
+Resetting cache.
+Bootstrap to the start of init.init took 635.01s
+Early init took 0.00s
+Loader init took 0.11s
+Loading error handling took 0.05s
+Loading script took 0.67s
+Loading save slot metadata. took 0.26s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.14s
+Loading analysis data took 1.10s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.24s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.25s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.27s
+Build styles took 0.02s
+Load screen analysis took 4.54s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.37s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.31s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.30s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 644.277618885s
+
+Full traceback:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", _"So [player_name!q], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+  File "renpy/ast.py", line 1449, in execute
+    args, kwargs = self.arguments.evaluate()
+  File "renpy/ast.py", line 191, in evaluate
+    args.append(renpy.python.py_eval(v, locals=scope))
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1832)
+
+While running game code:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", _"So [player_name!q], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+SyntaxError: invalid syntax (script.rpy, line 1832)
+Resetting cache.
+Bootstrap to the start of init.init took 658.86s
+Early init took 0.00s
+Loader init took 0.09s
+Loading error handling took 0.19s
+Loading script took 2.78s
+Loading save slot metadata. took 0.28s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.17s
+Loading analysis data took 1.05s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.26s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.32s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.33s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.08s
+Save screen analysis took 0.29s
+Prepare screens took 0.35s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.04s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.24s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 666.080176115s
+Resetting cache.
+Bootstrap to the start of init.init took 666.44s
+Early init took 0.00s
+Loader init took 0.13s
+Loading error handling took 0.05s
+Loading script took 0.65s
+Loading save slot metadata. took 0.24s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.17s
+Loading analysis data took 0.95s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.23s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.26s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.28s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.06s
+Save screen analysis took 0.31s
+Prepare screens took 0.40s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.24s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 671.09317112s
+
+Full traceback:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", "So [player_name!t], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+  File "renpy/ast.py", line 1449, in execute
+    args, kwargs = self.arguments.evaluate()
+  File "renpy/ast.py", line 191, in evaluate
+    args.append(renpy.python.py_eval(v, locals=scope))
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1832)
+
+While running game code:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", "So [player_name!t], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+SyntaxError: invalid syntax (script.rpy, line 1832)
+Resetting cache.
+Bootstrap to the start of init.init took 672.00s
+Early init took 0.00s
+Loader init took 0.09s
+Loading error handling took 0.05s
+Loading script took 0.64s
+Loading save slot metadata. took 0.23s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.15s
+Loading analysis data took 0.98s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.21s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.24s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.27s
+Build styles took 0.02s
+Load screen analysis took 4.49s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.29s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.27s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.31s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 680.922167063s
+
+Full traceback:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", "So [player_name!t], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+  File "renpy/ast.py", line 1449, in execute
+    args, kwargs = self.arguments.evaluate()
+  File "renpy/ast.py", line 191, in evaluate
+    args.append(renpy.python.py_eval(v, locals=scope))
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1832)
+
+While running game code:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", "So [player_name!t], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+SyntaxError: invalid syntax (script.rpy, line 1832)
+Resetting cache.
+Bootstrap to the start of init.init took 682.03s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.17s
+Loading script took 0.67s
+Loading save slot metadata. took 0.25s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.17s
+Loading analysis data took 0.91s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.22s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.35s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.30s
+Build styles took 0.02s
+Load screen analysis took 0.28s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.35s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.30s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 686.845164061s
+
+Full traceback:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", "So [player_name!t], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+  File "renpy/ast.py", line 1449, in execute
+    args, kwargs = self.arguments.evaluate()
+  File "renpy/ast.py", line 191, in evaluate
+    args.append(renpy.python.py_eval(v, locals=scope))
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1832)
+
+While running game code:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", "So [player_name!t], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+SyntaxError: invalid syntax (script.rpy, line 1832)
+
+Full traceback:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", "So [player_name!t], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+  File "renpy/ast.py", line 1449, in execute
+    args, kwargs = self.arguments.evaluate()
+  File "renpy/ast.py", line 191, in evaluate
+    args.append(renpy.python.py_eval(v, locals=scope))
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (script.rpy, line 1832)
+
+While running game code:
+  File "game/script.rpy", line 66, in script call
+    nar "It all changed so fast."
+  File "game/script.rpy", line 1182, in script call
+    call postdatesearch()
+  File "game/script.rpy", line 1128, in script call
+    call phone(male=False)
+  File "game/script.rpy", line 1195, in script call
+    call postdatesearch(False)
+  File "game/script.rpy", line 1296, in script call
+    call firstdate(male=False)
+  File "game/script.rpy", line 1832, in script call
+    call phone_call(jl, "interested", "So [player_name!t], tell me about yourself.")
+  File "game/Special Features/phone.rpy", line 102, in script
+    label phone_call(who, emotion,  what, status=1):
+SyntaxError: invalid syntax (script.rpy, line 1832)
+Resetting cache.
+Bootstrap to the start of init.init took 768.37s
+Early init took 0.00s
+Loader init took 0.13s
+Loading error handling took 0.17s
+Loading script took 2.82s
+Loading save slot metadata. took 0.31s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.17s
+Loading analysis data took 0.93s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.25s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.35s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.40s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.07s
+Save screen analysis took 0.40s
+Prepare screens took 0.44s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.04s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.30s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 775.969202995s
+Resetting cache.
+Bootstrap to the start of init.init took 784.84s
+Early init took 0.00s
+Loader init took 0.14s
+Loading error handling took 0.06s
+Loading script took 2.30s
+Loading save slot metadata. took 0.23s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.15s
+Loading analysis data took 0.93s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.27s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.26s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.28s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.08s
+Save screen analysis took 0.28s
+Prepare screens took 0.34s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.04s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.25s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 791.209196091s
+Resetting cache.
+Bootstrap to the start of init.init took 818.95s
+Early init took 0.00s
+Loader init took 0.09s
+Loading error handling took 0.05s
+Loading script took 0.66s
+Loading save slot metadata. took 0.35s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.21s
+Loading analysis data took 1.09s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.26s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.28s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.29s
+Build styles took 0.02s
+Load screen analysis took 4.43s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.31s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.27s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.35s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 828.325203896s
+Resetting cache.
+Bootstrap to the start of init.init took 846.22s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.21s
+Loading script took 2.42s
+Loading save slot metadata. took 0.26s
+Loading persistent took 0.02s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.17s
+Loading analysis data took 1.01s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.26s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.26s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.29s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.06s
+Save screen analysis took 0.28s
+Prepare screens took 0.35s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.04s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.25s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 852.978518963s
+Resetting cache.
+Bootstrap to the start of init.init took 934.70s
+Early init took 0.00s
+Loader init took 0.10s
+Loading error handling took 0.05s
+Loading script took 0.61s
+Loading save slot metadata. took 0.24s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.15s
+Loading analysis data took 0.93s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.23s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.26s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.26s
+Build styles took 0.02s
+Load screen analysis took 4.49s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.33s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.30s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.31s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 943.683386087s
+Resetting cache.
+Bootstrap to the start of init.init took 949.48s
+Early init took 0.00s
+Loader init took 0.09s
+Loading error handling took 0.19s
+Loading script took 3.03s
+Loading save slot metadata. took 0.31s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.20s
+Loading analysis data took 1.05s
+Analyze and compile ATL took 0.11s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.34s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.30s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.38s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.07s
+Save screen analysis took 0.39s
+Prepare screens took 0.69s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.05s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.28s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 957.731051922s
+Resetting cache.
+Bootstrap to the start of init.init took 1058.79s
+Early init took 0.00s
+Loader init took 0.11s
+Loading error handling took 0.05s
+Loading script took 1.48s
+Loading save slot metadata. took 0.21s
+Loading persistent took 0.01s
+
+File "game/script.rpy", line 1948: expected statement.
+    subpixel True xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0 rotate None
+                        ^
+
+File "game/script.rpy", line 1949: expected statement.
+    parallel:
+            ^
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Interface start took 0.34s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1061.70110011s
+Resetting cache.
+Bootstrap to the start of init.init took 1067.48s
+Early init took 0.00s
+Loader init took 0.10s
+Loading error handling took 0.06s
+Loading script took 1.51s
+Loading save slot metadata. took 0.22s
+Loading persistent took 0.01s
+
+File "game/script.rpy", line 1948: expected statement.
+    subpixel True xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0 rotate None
+                        ^
+
+File "game/script.rpy", line 1949: expected statement.
+    parallel:
+            ^
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Interface start took 0.24s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1070.23209906s
+Resetting cache.
+Bootstrap to the start of init.init took 1078.40s
+Early init took 0.00s
+Loader init took 0.11s
+Loading error handling took 0.06s
+Loading script took 2.41s
+Loading save slot metadata. took 0.26s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.17s
+Loading analysis data took 0.88s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.26s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.22s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.30s
+Build styles took 0.03s
+Load screen analysis took 0.00s
+Analyze screens took 0.12s
+Save screen analysis took 0.44s
+Prepare screens took 0.45s
+Save pyanalysis. took 3.79s
+Save bytecode. took 0.06s
+Running _start took 0.02s
+Performance test:
+Interface start took 0.27s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1089.015167s
+Resetting cache.
+Bootstrap to the start of init.init took 1111.62s
+Early init took 0.00s
+Loader init took 0.17s
+Loading error handling took 0.08s
+Loading script took 2.29s
+Loading save slot metadata. took 0.20s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.13s
+Loading analysis data took 0.90s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.25s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.29s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.27s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.08s
+Save screen analysis took 0.30s
+Prepare screens took 0.40s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.04s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.38s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1118.3168869s
+Resetting cache.
+Bootstrap to the start of init.init took 1147.13s
+Early init took 0.00s
+Loader init took 0.10s
+Loading error handling took 0.05s
+Loading script took 0.63s
+Loading save slot metadata. took 0.22s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.14s
+Loading analysis data took 0.91s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.22s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.25s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.27s
+Build styles took 0.02s
+Load screen analysis took 4.26s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.29s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.27s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.31s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1155.78220391s
+Resetting cache.
+Bootstrap to the start of init.init took 1197.82s
+Early init took 0.00s
+Loader init took 0.10s
+Loading error handling took 0.18s
+Loading script took 2.15s
+Loading save slot metadata. took 0.23s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.13s
+Loading analysis data took 0.87s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.23s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.24s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.25s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.08s
+Save screen analysis took 0.29s
+Prepare screens took 0.33s
+Save pyanalysis. took 3.42s
+Save bytecode. took 0.05s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.23s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1207.35527802s
+Resetting cache.
+Bootstrap to the start of init.init took 1237.60s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.06s
+Loading script took 2.47s
+Loading save slot metadata. took 0.22s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.15s
+Loading analysis data took 0.97s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.26s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.27s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.35s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.06s
+Save screen analysis took 0.30s
+Prepare screens took 0.47s
+Save pyanalysis. took 3.38s
+Save bytecode. took 0.05s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.25s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1247.76949596s
+Resetting cache.
+Bootstrap to the start of init.init took 1260.58s
+Early init took 0.00s
+Loader init took 0.13s
+Loading error handling took 0.08s
+Loading script took 2.25s
+Loading save slot metadata. took 0.23s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.14s
+Loading analysis data took 0.98s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\mark0\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.26s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.28s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.30s
+Build styles took 0.02s
+Load screen analysis took 0.00s
+Analyze screens took 0.07s
+Save screen analysis took 0.27s
+Prepare screens took 0.35s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.04s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.27s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1267.18882799s
+Resetting cache.
+Bootstrap to the start of init.init took 1297.01s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.05s
+Loading script took 0.66s
+Loading save slot metadata. took 0.21s
+Loading persistent took 0.01s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.13s
+Loading analysis data took 0.94s
+Analyze and compile ATL took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.24s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.27s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.31s
+Build styles took 0.02s
+Load screen analysis took 5.84s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.37s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.34s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.35s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1366, 768)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) HD Graphics 505'
+Version: '4.6.0 - Build 27.20.100.8681'
+Display Info: None
+Number of texture units: 32
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(791, 445) drawable=(791, 445)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 1307.69362402s

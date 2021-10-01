@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/PointNClickScreens.rpy", line 114: expected '=' not found.
-    define hasFaceshield
+File "game/script.rpy", line 1948: expected statement.
+    subpixel True xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0 rotate None
                         ^
 
+File "game/script.rpy", line 1949: expected statement.
+    parallel:
+            ^
+
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sun Sep 26 00:39:01 2021
+Fri Oct  1 18:19:44 2021

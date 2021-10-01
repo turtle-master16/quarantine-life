@@ -4,6 +4,9 @@
 
 init offset = -1
 
+$ timer_range = 0
+$ timer_jump = 0
+
 ################################################################################
 ## Styles
 ################################################################################
@@ -1518,3 +1521,18 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 600
+
+###############@
+# Timer Screen #
+################
+
+screen countdown:
+    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Call(timer_jump)])
+    if time >= 3:
+        text str(time) xpos .1 ypos .1 size 100 at alpha_dissolve
+    elif time == 2:
+        text str(time) xpos .1 ypos .1 color "#FF9B9B" size 100 at alpha_dissolve
+    elif time == 1:
+        text str(time) xpos .1 ypos .1 color "#FF6262" size 100 at alpha_dissolve
+    else:
+        text str(time) xpos .1 ypos .1 color "#F72424" size 100 at alpha_dissolve

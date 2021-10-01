@@ -1,8 +1,13 @@
-camera.png
+PointNClickScreens.rpy
+PointNClickScreens.rpyc
+Transforms.rpy
+Transforms.rpyc
+Transitions.rpy
+Transitions.rpyc
+WorkSans.ttf
+common.rpym
 gui.rpy
 gui.rpyc
-myscreens.rpy
-myscreens.rpyc
 options.rpy
 options.rpyc
 screens.rpy
@@ -16,6 +21,7 @@ Camera\00warper.rpyc
 Camera\ActionEditor.rpy
 Camera\ActionEditor.rpyc
 Camera\README.md
+Camera\camera.png
 Camera\camera.rpy
 Camera\camera.rpyc
 Camera\camera_config.rpy
@@ -26,45 +32,49 @@ Camera\keymap.rpy
 Camera\keymap.rpyc
 Camera\spline.rpy
 Camera\spline.rpyc
-Phone\call icons.png
-Phone\phone call.png
-Phone\phone.png
-Phone\phone.rpy
-Phone\phone.rpyc
-Phone\phone2.rpy
-Phone\phone2.rpyc
-audio\Cheerful Piano Jingle.wav
+Special Features\CodeInput.rpy
+Special Features\CodeInput.rpyc
+Special Features\Date.rpy
+Special Features\Date.rpyc
+Special Features\NameInput.rpy
+Special Features\NameInput.rpyc
+Special Features\TestMode.rpy
+Special Features\TestMode.rpyc
+Special Features\UtilityLabels.rpy
+Special Features\UtilityLabels.rpyc
+Special Features\phone.rpy
+Special Features\phone.rpyc
+audio\Fratto kibun.wav
 audio\Waiting music.mp3
-audio\chime.wav
+audio\beep.wav
+audio\breathing.wav
+audio\door close.wav
+audio\door rattle.wav
 audio\eating.mp3
-audio\fail.wav
+audio\footstep.wav
+audio\phone notif.mp3
 audio\phone ring.mp3
 audio\phone tapping.wav
 audio\phone vibrate.wav
-audio\punch.wav
-audio\roomentry.wav
-audio\sus.wav
-audio\yay.wav
-audio\bgm\Ensolorado.mp3
-audio\bgm\Lets cooking.mp3
-audio\bgm\Ryoushin ga tsuyosugiru dorobou tekina BGM.mp3
+audio\runstep.wav
+audio\bgm\Fluffy Days.mp3
 audio\bgm\bad end.mp3
 audio\bgm\crickets.mp3
+audio\bgm\good end.mp3
 audio\bgm\kitchen.mp3
 audio\bgm\living room.mp3
 audio\bgm\main menu.mp3
-audio\bgm\main_menu_bgm2.mp3
 audio\bgm\office.mp3
 audio\bgm\outside.mp3
 audio\bgm\park.mp3
+audio\bgm\restaurant.mp3
 audio\bgm\suspense.mp3
 cache\bytecode.rpyb
 cache\pyanalysis.rpyb
 cache\screens.rpyb
+cache\shaders.txt
 gui\frame.png
 gui\game_menu.png
-gui\main_menu.png
-gui\main_menuOg.png
 gui\namebox.png
 gui\notify.png
 gui\nvl.png
@@ -112,6 +122,7 @@ gui\phone\scrollbar\horizontal_hover_bar.png
 gui\phone\scrollbar\horizontal_hover_thumb.png
 gui\phone\scrollbar\horizontal_idle_bar.png
 gui\phone\scrollbar\horizontal_idle_thumb.png
+gui\phone\scrollbar\scrollbar - Shortcut.lnk
 gui\phone\scrollbar\vertical_hover_bar.png
 gui\phone\scrollbar\vertical_hover_thumb.png
 gui\phone\scrollbar\vertical_idle_bar.png
@@ -140,30 +151,23 @@ gui\slider\vertical_hover_bar.png
 gui\slider\vertical_hover_thumb.png
 gui\slider\vertical_idle_bar.png
 gui\slider\vertical_idle_thumb.png
-images\bg phone notification.png
-images\bg phone vc.png
-images\bg phone.png
-images\bubble-tip.png
-images\bubble-tip2.png
-images\dad profile.png
-images\phone answer call.png
-images\phone end call.png
-images\phone tindah.png
-images\phone.png
+images\Jason\Jason Agree.png
+images\Jason\Jason Discuss.png
+images\Jason\Jason Discuss1.png
+images\Jason\Jason Happy.png
+images\Jason\Jason discuss2.png
+images\Jason\Jason exercise.png
 images\Jason\jason amazed.png
 images\Jason\jason confused.png
-images\Jason\jason neutral.png
-images\Jason\jason profile.png
-images\Jason\jason proud.png
 images\bg\bg bedroom afternoon.png
 images\bg\bg bedroom back afternoon.png
 images\bg\bg bedroom back evening.png
 images\bg\bg bedroom back.png
 images\bg\bg bedroom left afternoon.png
-images\bg\bg bedroom left evening c.png
 images\bg\bg bedroom left evening.png
 images\bg\bg bedroom left.png
 images\bg\bg front house.png
+images\bg\bg hospital.png
 images\bg\bg kitchen pot.png
 images\bg\bg kitchen.png
 images\bg\bg livingroom back afternoon.png
@@ -175,58 +179,100 @@ images\bg\bg livingroom left afternoon tvon.png
 images\bg\bg livingroom left afternoon.png
 images\bg\bg livingroom left evening tvon.png
 images\bg\bg livingroom left tvon.png
+images\bg\bg mainmenu.png
 images\bg\bg office afternoon.png
 images\bg\bg office.png
-images\bg\bg outside evening.jpg
 images\bg\bg outside evening.png
 images\bg\bg outside.png
 images\bg\bg restaurant.png
 images\bg\bg shuttle evening.png
 images\bg\bg shuttle.png
 images\bg\bg supermarket.png
-images\carla\carla - Shortcut.lnk
-images\carla\carla angry.png
-images\carla\carla confused.png
-images\carla\carla handstop.png
+images\carla\Carla Clap.png
+images\carla\Carla Makesure.png
+images\carla\Carla Sigh.png
+images\carla\carla discuss1.png
 images\carla\carla happy.png
-images\carla\carla please.png
-images\carla\carla support.png
+images\carla\carla mad.png
+images\carla\carla sad.png
+images\carla\carla scold.png
 images\carla\carla thinking.png
-images\carla\carla worried.png
-images\ian\ian angry.png
-images\ian\ian back.png
-images\ian\ian confused.png
-images\ian\ian embarrased.png
+images\ian\Ian Discuss.png
+images\ian\Ian Discuss1.png
+images\ian\Ian Discuss2.png
+images\ian\Ian Farewell.png
+images\ian\Ian Sigh.png
+images\ian\Ian happy.png
+images\ian\Ian whoa.png
 images\ian\ian greet.png
-images\ian\ian invite.png
-images\ian\ian thinking.png
-images\ian\ian warning.png
-images\jillian\jillian glad.png
-images\jillian\jillian profile.png
-images\jillian\jillian shy.png
-images\jillian\jillian smile.png
-images\jillian\jillian thinking.png
+images\jillian\Jillian Anxious.png
+images\jillian\Jillian Discussing.png
+images\jillian\Jillian Dump.png
+images\jillian\Jillian Farewell.png
+images\jillian\Jillian Flattered.png
+images\jillian\Jillian Greet.png
+images\jillian\Jillian Happy.png
+images\jillian\Jillian Happy2.png
+images\jillian\Jillian Interested.png
+images\jillian\Jillian Skeptical.png
+images\jillian\Jillian confused.png
+images\jillian\Jillian speechless.png
 images\jillian\jillian worried.png
-images\kyle\kyle angry.png
-images\kyle\kyle point.png
-images\kyle\kyle smile.png
-images\kyle\kyle thinking.png
-images\mark\mark closeye.png
-images\mark\mark confused.png
-images\mark\mark explain.png
-images\mark\mark glad.png
+images\kyle\Kyle Confident.png
+images\kyle\Kyle Confused.png
+images\kyle\Kyle Explains.png
+images\kyle\Kyle Happy.png
+images\kyle\Kyle Worried.png
+images\mark\Mark Agree.png
+images\mark\Mark Ask.png
+images\mark\Mark Confident.png
+images\mark\Mark Discuss.png
+images\mark\Mark Discuss1.png
+images\mark\Mark Disgust.png
+images\mark\Mark Greet.png
 images\misc\arrow.png
 images\misc\arrow2.png
-images\prince\prince demanding.png
-images\prince\prince irritated.png
-images\prince\prince lazy.png
-images\prince\prince smug.png
-images\prince\prince unamused.png
-images\prince\prince whatever.png
+images\misc\return.png
+images\phone\bg phone notification.png
+images\phone\bg phone vc.png
+images\phone\bg phone.png
+images\phone\bubble-tip.png
+images\phone\bubble-tip2.png
+images\phone\dad profile.png
+images\phone\jason profile.png
+images\phone\jillian profile.png
+images\phone\phone answer call.png
+images\phone\phone end call.png
+images\phone\phone tindah.png
+images\phone\phone.png
+images\prince\Prince Disgust2.png
+images\prince\Prince Embarrased.png
+images\prince\Prince Sad3.png
+images\prince\Prince Shocked1.png
+images\prince\Prince Sick.png
+images\prince\prince angry.png
+images\prince\prince confident.png
+images\prince\prince explain1.png
+images\prince\prince happy.png
+images\prince\prince happy2.png
+images\prince\prince point1.png
+images\prince\prince point2.png
+images\prince\prince sad1.png
+images\prince\prince sad2.png
+images\prince\prince shock2.png
+images\prince\prince slouch.png
+images\prince\prince stretch.png
+images\prince\prince talking1.png
+images\xtras\DateBg.png
+images\xtras\Tanod Arrest.png
+images\xtras\Tanod Point.png
 saves\1-1-LT1.save
 saves\_reload-2-LT1.save
+saves\auto-1-LT1.save
 saves\auto-10-LT1.save
 saves\auto-2-LT1.save
+saves\auto-3-LT1.save
+saves\auto-4-LT1.save
 saves\auto-5-LT1.save
 saves\auto-6-LT1.save
 saves\auto-7-LT1.save
@@ -235,7 +281,13 @@ saves\auto-9-LT1.save
 saves\navigation.json
 saves\persistent
 saves\quick-1-LT1.save
+saves\quick-10-LT1.save
 saves\quick-2-LT1.save
 saves\quick-3-LT1.save
-tl\None\common.rpym
+saves\quick-4-LT1.save
+saves\quick-5-LT1.save
+saves\quick-6-LT1.save
+saves\quick-7-LT1.save
+saves\quick-8-LT1.save
+saves\quick-9-LT1.save
 tl\None\common.rpymc
