@@ -22,10 +22,8 @@ init python:
 
 screen inputbox():
     modal True
-    layer "background"
     frame:
         style "esc_coverall"
-        background "images/bg/bg bedroom back.png"
         hbox:
             style "esc_coverall"
             textbutton "Return":

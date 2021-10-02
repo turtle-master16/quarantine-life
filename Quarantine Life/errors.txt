@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/PointNClickScreens.rpy", line 36: else clause expects a non-empty block.
-    else:
-         ^
+File "game/PointNClickScreens.rpy", line 259: expected statement.
+    ToggleScreen("flapButton", "supermarket_ui")
+                                                ^
+
+File "game/PointNClickScreens.rpy", line 260: expected statement.
+    ToggleScreen("supermarket_ui")
+                                  ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Fri Oct  1 18:18:19 2021
+Sat Oct  2 14:39:53 2021

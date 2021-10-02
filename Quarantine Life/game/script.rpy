@@ -62,7 +62,8 @@ label start(retmode=False):
     label .mainstart:
 
         #### Test Jumps Start
-        jump newnormal
+        $ renpy.hide_screen("returnbutton")
+        # jump quarantine
         #### Test Jumps End
 
         nar "It all changed so fast."
@@ -356,14 +357,13 @@ label quarantine:
 
     plt "(Now that’s out of the way. What should I do now?)"
 
-    ins "Click on objects to interact with them"
+    ins "TASK: Find something to do."
 
-    jump livingroomact
+    ins "Click the arrow to switch rooms and tap an object to interact with them."
 
-label newnormal(fr_escape=False):
-    if fr_escape:
-        $ renpy.block_rollback()
+    jump findActivity
 
+label newnormal:
     call timeskip("bg livingroom back")
     play music "audio/bgm/living room.mp3"
     # DATE: APRIL 2020, 1:00 pm, week 4, living room, ECQ
@@ -585,7 +585,7 @@ label home:
     call timeskip("bg livingroom back")
     play music "audio/bgm/living room.mp3" fadein 1.0 fadeout 1.0
 
-    plt " Day offs are such a blessing. Work can be too much to handle sometimes."
+    plt "Day offs are such a blessing. Work can be too much to handle sometimes."
 
     #--SFX (stomping)
     plt "What's up with you?"
@@ -640,9 +640,13 @@ label home:
 
             c "That is very thoughtful of you."
 
-            jump supermarket
+            c "I'll give you a list and 200.00 worth of money."
 
-        " Just smile and say nothing":
+            c "You need to buy the exact number of groceries worth 200.00, including the items on the list."
+
+            jump intro_to_supermarket
+
+        "Just smile and say nothing":
             show carla happy onlayer middle
 
             c "While I’m away, I need you to cook dinner."
@@ -2851,270 +2855,75 @@ label workprep:
 
     jump commuting
 
-label livingroomact:
+label findActivity:
     # Choices: (A = Watch TV) (B = Return to Point & Click)
     if(not renpy.music.is_playing()):
         play music "audio/bgm/living room.mp3"
 
+    call screen findActivity()
+
     scene bg livingroom back onlayer background
 
-    if itemselected == itemchoices["A"]:
-        $all_moves(camera_check_points={'y': [(0, 0, None), (916, 0.5, 'linear')], 'x': [(0, 0, None), (4156, 0.5, 'linear')], 'z': [(0, 0, None), (961, 0.5, 'linear')]})
+    if _return == 'tv':
+        plt "(I have nothing else to do right now. Maybe I should binge watch some of my favorite TV series.)"
 
-        plt "(I could watch some drama or maybe some anime. I could binge watch some old movies now that I have the time. So many choices, what should I watch?)"
-
-        menu:
-            "Watch some TV drama.":
-                $all_moves(camera_check_points={'y': [(916, 0, None), (0, 0.5, 'linear')], 'x': [(4156, 0, None), (0, 0.5, 'linear')], 'z': [(961, 0, None), (0, 0.5, 'linear')]})
-
-                pl "I could watch some drama or maybe some anime. I could binge watch some old movies now that I have the time. So many choices."
-
-                pl "Oh! I should watch that popular anime series ‘One Kick Man’."
-
-                show prince angry  onlayer middle:
-                    subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.9 rotate None
-                    parallel:
-                        xpos 1.1
-                        linear 0.7 xpos 0.5
-
-                pr "Hey! No fair! You get to watch One Kick Man while I do chores."
-
-                pl "I already finished mine, so get back to cleaning."
-
-                show prince angry onlayer middle:
-                    subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0 zoom 0.9 rotate None
-                    parallel:
-                        xpos 0.5
-                        linear 0.7 xpos 1.06
-                $ renpy.pause(0.7)
-                hide prince
-
-            "Watch the latest news on COVID.":
-                $all_moves(camera_check_points={'y': [(916, 0, None), (0, 0.5, 'linear')], 'x': [(4156, 0, None), (0, 0.5, 'linear')], 'z': [(961, 0, None), (0, 0.5, 'linear')]})
-
-                plt "(I should watch the latest COVID news. It’s better to be updated in situations like this.)"
-
-                scene bg livingroom left tvon onlayer background
-                with dissolve
-
-                "Reporter" "This just in, the Department of Health just reported COVID-19 cases has surpassed 1000. These new cases are still being validated. Three buildings have been converted as quarantine facilities."
-
-                plt "(Wow, that much patients within a month. This is crazy.)"
-
-                "Reporter" "In other related news, the first locally-made COVID-19 test kit has been approved by FDA. Authorities encourage people to remain in their homes and practice COVID prevention procedures."
-
-                plt "(If I remember correctly those practices are regular hand washing, covering of the mouth and nose when sneezing or coughing, and avoiding close contact with people who exhibit the symptoms. Good job me for remembering all this.)"
-
-                plt "(I should keep track of these reports and remember them properly for future references.)"
-
-            "Find other activities.":
-                plt "(Maybe I'll try something else.)"
-
-                $all_moves(camera_check_points={'y': [(916, 0, None), (0, 0.5, 'linear')], 'x': [(4156, 0, None), (0, 0.5, 'linear')], 'z': [(961, 0, None), (0, 0.5, 'linear')]})
-
-                $ itemselected = itemchoices["Reset"]
-                jump livingroomact
-
-        jump newnormal
-
-    elif itemselected == itemchoices["B"]:
-        $ itemselected = itemchoices["Reset"]
+    elif _return == 'phone':
         scene bg bedroom back onlayer background
-        with wipeleft
+        plt "I’ve been hearing a lot of COVID related news, but so far I only know that one of the symptoms of the virus is difficulty in breathing and fever."
 
-        jump bedroomact
+        plt "I should look up for more Coronavirus information, just to be sure."
 
-    call screen livingroomact
-    # Miscellaneous dialog
-    label .misc_item_dialog(item):
-        if item == 1:
-            plt "(Our floor mat.)"
+        plt "..."
 
-            plt "(It's quite impressive that it still looks new even though we bought it a long time ago.)"
-        elif item == 2:
-            plt "(It's Prince's and my coffee mug.)"
+        plt "Wow, I’m learning a lot today."
 
-            plt "(I would go for a cup of Joe right now if it weren't so hot.)"
-        elif item == 3:
-            plt "(Our very own comfy couch.)"
+        plt "There is so much information posted here. I need to keep myself updated."
 
-        elif item == 4:
-            plt "(A mirror.)"
+    elif _return == 'bed':
+        scene bg bedroom back onlayer background
+        plt "(Ugh. Everything is so boring, nothing else to do and we have to do this for who knows how long.)"
 
-            plt "(I look a bit pale. Maybe it's the effect of being stuck at home for a long time.)"
+        plt "(I think I’ll just lay down and take a nap.)"
 
-        elif item == 5:
-            plt "(A beautiful day outside...)"
+        play sound "audio/phone ring.mp3"
 
-            plt "(It's a shame we're not allowed to go out to take a walk or something.)"
+        "..."
 
-        $ renpy.pop_call()
+        stop sound
 
-        jump livingroomact
+        plt "Huh? Who could that be?"
 
-label bedroomact:
-    # Choices: (A = Take a nap) (B = Use Phone) (C = Exercise) (D = Return to Point & Click)
-    scene bg bedroom back onlayer background
+        show phone onlayer middle at phone_pickup
+        $ renpy.pause(0.6)
 
-    if(itemselected == itemchoices["A"]):
-        $all_moves(camera_check_points={'y': [(0, 0, None), (1933, 0.5, 'linear')], 'x': [(0, 0, None), (-1537, 0.5, 'linear')], 'z': [(0, 0, None), (778, 0.5, 'linear')]}, focus_check_points={'dof': [(9999999, 0, None), (624, 0.5, 'linear')]})
+        show screen phone_notif("images/phone/dad profile.png", "Dad")
 
+        plt "Oh, it’s dad. It’s been a while since we last talked. I should answer his call."
 
-    elif itemselected == itemchoices["B"]:
-        $all_moves(camera_check_points={'y': [(0, 0, None), (49, 0.5, 'linear')], 'x': [(0, 0, None), (-3243, 0.5, 'linear')], 'z': [(0, 0, None), (1087, 0.5, 'linear')]}, focus_check_points={'dof': [(624, 0, None), (505, 0.5, 'linear')]})
+        "Dad" "Hey kiddo, glad you picked up. How are you doing?"
 
-        plt "(Ah, my trusty ol' phone. How will you serve me today?)"
+        pl "I’m doing fine dad. How’s things over your side?"
 
-        menu:
-            "Read COVID related articles.":
-                plt "(I’ve been hearing a lot of COVID related news, but so far I only know that one of the symptoms of the virus is difficulty in breathing and fever. I should look up for more coronavirus information, just to be sure.)"
+        "Dad" "I’m doing good. Fortunately, I haven’t lost my job to the COVID pandemic. A heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
 
-                plt "(Let’s see here… For common symptoms there’s fever, dry cough and tiredness.)"
+        pl "Yeah, there are around 13,000 OFW returning this month. It’s quite sad."
 
-                plt "(For less common symptoms there are aches and pain, sore throat, diarrhoea, conjunctivitis, headaches, loss of taste or smell, rash on skin or discoloration of fingers or toes.)"
+        pl "After their arrival they are required to undergo a 14-day facility-based quarantine."
 
-                plt "(People with mild symptoms should be able to manage their symptoms at home. If there’s a serious symptom like difficulty breathing, chest pain or pressure and loss of speech or movement, that person must seek immediate medical attention.)"
+        "Dad" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
 
-                plt "(There is so much information posted here. I need to keep myself updated.)"
+        pl "The house has become livelier than ever now that we have to stay home 24/7."
 
-            "Play a Mobile Game.":
-                plt "(Since I have nothing better to do might as well play some games.)"
+        "Dad" "Don’t drive your mom too crazy with your antics."
 
-                plt "(I have this COVID trivia quiz game that I downloaded but never played. Might as well give it a shot, I might learn a thing or two.)"
+        pl "No promises. Let me tell you that one time when Prince got mad over a video game..."
 
-                call timeskip("bg bedroom back")
+        hide screen phone_notif
 
-                "{color=#555555}{b}QUESTION #1{/b}{/color}" "2019-nCov or novel coronavirus is caused by the virus _____?"
+        $ Hide("phone_call", transition=Dissolve(2.0))()
 
-                menu:
-                    "A. SARS-Cov-2":
-                        "{color=#555555}{b}QUESTION #1{/b}{/color}" "Correct!"
-                        $ correctans = correctans + 1
-                    "B. MARS-Cov-2":
-                        "{color=#555555}{b}QUESTION #1{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: A. SARS-Cov-2{/color}"
-                    "C. SARS-Com-3":
-                        "{color=#555555}{b}QUESTION #1{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: A. SARS-Cov-2{/color}"
-
-                "{color=#555555}{b}QUESTION #2{/b}{/color}" "\“CO\“ in COVID-19 stands for corona, \“VI\” for virus and \“D\” is for what?"
-
-                menu:
-                    "A. Distance":
-                        "{color=#555555}{b}QUESTION #2{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Disease{/color}"
-                    "B. Digest":
-                        "{color=#555555}{b}QUESTION #2{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Disease{/color}"
-                    "C. Disease":
-                        "{color=#555555}{b}QUESTION #2{/b}{/color}" "Correct!"
-                        $ correctans = correctans + 1
-
-                "{color=#555555}{b}QUESTION #3{/b}{/color}" "COVID-19 can spread by coughs or ____ that is generated by an infected person."
-
-                menu:
-                    "A. Sweat":
-                        "{color=#555555}{b}QUESTION #3{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Sneezes{/color}"
-                    "B. Urine":
-                        "{color=#555555}{b}QUESTION #3{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Sneezes{/color}"
-                    "C. Sneezes":
-                        "{color=#555555}{b}QUESTION #3{/b}{/color}" "Correct!"
-                        $ correctans = correctans + 1
-
-                "{color=#555555}{b}QUESTION #4{/b}{/color}" "To prevent and slow the transmission of COVID-19 infection, people should practice physical or social ____. "
-
-                menu:
-                    "A. Events":
-                        "{color=#555555}{b}QUESTION #4{/b}{/color}""{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: B. Distancing{/color}"
-                    "B. Distancing":
-                        "{color=#555555}{b}QUESTION #4{/b}{/color}""Correct!"
-                        $ correctans = correctans + 1
-                    "C. Media":
-                        "{color=#555555}{b}QUESTION #4{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: B. Distancing{/color}"
-
-                "{color=#555555}{b}QUESTION #5{/b}{/color}" "What should be worn to suppress the transmission of the coronavirus?"
-
-                menu:
-                    "A. Leather Jackets":
-                        "{color=#555555}{b}QUESTION #5{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Medical Masks{/color}"
-                    "B. Gas masks":
-                        "{color=#555555}{b}QUESTION #5{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Medical Masks{/color}"
-                    "C. Medical Masks":
-                        "{color=#555555}{b}QUESTION #5{/b}{/color}" "Correct!"
-                        $ correctans = correctans + 1
-
-                "You got [correctans] correct answers."
-
-                call timeskip("bg bedroom back afternoon")
-
-                pl "Finally! I finished it. I hope I could use the trivias I learned at some point in the future."
-
-            "Call father.":
-                plt "(It’s been a while since I last talked to dad. I should call him for some updates, gotta make sure he’s doing alright all on his own abroad.)"
-
-                $all_moves(camera_check_points={'y': [(49, 0, None), (0, 0.5, 'linear')], 'x': [(-3243, 0, None), (0, 0.5, 'linear')], 'z': [(1087, 0, None), (0, 0.5, 'linear')]})
-
-                call timeskip("bg livingroom back")
-
-                play sound "audio/phone ring.mp3"
-
-                $ renpy.pause()
-
-                stop sound
-
-                show phone onlayer middle at phone_pickup
-                $ renpy.pause(0.6)
-
-                show screen phone_notif("images/phone/dad profile.png", "Dad")
-
-                pl "I’m doing fine dad. How’s things over your side?"
-
-                "Dad" "I’m doing good. Fortunately, I haven’t lost my job to the COVID pandemic. A heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
-
-                pl "Yeah, there are around 13,000 OFW returning this month. It’s sad how so much can change in so little time."
-
-                pl "After their arrival they are required to undergo a 14-day facility-based quarantine."
-
-                "Dad" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
-
-                pl "The house has become more livelier than ever now that we have to stay home 24/7."
-
-                "Dad" "Don’t drive your mom too crazy with your antics."
-
-                pl "No promises. Let me tell you that one time when Prince got mad over a video game..."
-
-                hide screen phone_notif
-
-                $ Hide("phone_call", transition=Dissolve(2.0))()
-
-            "Find other activities.":
-                plt "(On second thought, I always spend the whole day with my phone.)"
-
-                plt "(Maybe I should try something new.)"
-
-                $all_moves(camera_check_points={'y': [(49, 0, None), (0, 0.5, 'linear')], 'x': [(-3243, 0, None), (0, 0.5, 'linear')], 'z': [(1087, 0, None), (0, 0.5, 'linear')]})
-
-                $ itemselected = itemchoices["Reset"]
-                jump bedroomact
-
-        jump newnormal
-
-    elif itemselected == itemchoices["C"]:
-
-        $all_moves(camera_check_points={'y': [(0, 0, None), (549, 0.5, 'linear')], 'x': [(0, 0, None), (2287, 0.5, 'linear')], 'z': [(0, 0, None), (687, 0.5, 'linear')]}, focus_check_points={'dof': [(505, 0, None), (1538, 0.5, 'linear')]})
-
-        plt "(Exercise huh, I've been neglecting my body for quite some time now.)"
-        menu:
-            "Exercise":
-                scene bg bedroom back onlayer background
-
-                $all_moves(camera_check_points={'y': [(549, 0, None), (0, 0.5, 'linear')], 'x': [(2287, 0, None), (0, 0.5, 'linear')], 'z': [(687, 0, None), (0, 0.5, 'linear')]})
-
-            "Find other activities":
-                plt "(Nah, not really feeling it today. I'll try something else)"
-
-                $ itemselected = itemchoices["Reset"]
-
-                $all_moves(camera_check_points={'y': [(549, 0, None), (0, 0.5, 'linear')], 'x': [(2287, 0, None), (0, 0.5, 'linear')], 'z': [(687, 0, None), (0, 0.5, 'linear')]})
-
-                jump bedroomact
-
+    elif _return == 'dumbells':
+        scene bg bedroom back onlayer background
         plt "(Alright, time to work hard and get my quarantine bod. Starting with simple stretches.)"
 
         $all_moves(camera_check_points={'z': [(0, 0, None), (1000, 4.0, 'linear')]})
@@ -3155,332 +2964,40 @@ label bedroomact:
         show prince confident onlayer middle
 
         pr "Suuure. Whatever you say."
+    else:
+        jump findActivity
 
-        jump newnormal
+    $ currentRoom = ROOMS['livingroom']
+    jump newnormal
 
-    elif itemselected == itemchoices["D"]:
-        $ itemselected = itemchoices["Reset"]
+label intro_to_supermarket:
+    c "I'll give you a list and 200.00 worth of money."
 
-        scene bg livingroom back onlayer background
-        with wiperight
+    c " You need to buy the exact number of groceries worth 200.00, including the items on the list."
 
-        jump livingroomact
+    call timeskip("bg supermarket")
+    call updateDate("July 2020, 3:00 pm, Week 4, grocery store, GCQ")
 
-    call screen bedroomact
-    # Miscellaneous dialog
-    label .misc_item_dialog(item):
-        if item == 1:
-            plt "(My old books. We have here psychology books, programming books, comic books, and a couple more.)"
+    pl "I’m here. Now let’s check the items on the list."
 
-            plt "(I used to read them a lot that I know them like the back of my hand.)"
-
-        elif item == 2:
-            plt "(My bedroom mirror. )"
-
-            plt "(My hair is a bit of a mess. I'll comb it later.)"
-        elif item == 3:
-            plt "(My personal drawer. Nothing here except my clothes.)"
-        $ renpy.pop_call()
-
-        jump bedroomact
-
-label escaperoom:
-    if itemselected == itemchoices["A"] and not haskey:
-        hide screen escaperoom
-
-        if screenon == False:
-            menu:
-                "Read a book":
-                    "Code" "_ _ _ 9"
-
-                    $ itemselected = itemchoices["Reset"]
-
-                    jump escaperoom
-
-                "Check box":
-                    plt "(Looks like it needs a 4-digit code for it to open.)"
-
-                    $ screenon = True
-
-                    call screen crypticbox
-        else:
-            call screen crypticbox
-
-        plt "(Looks like it needs a 4-digit code for it to open...)"
-
-        $ itemselected = itemchoices["Reset"]
-
-    elif itemselected == itemchoices["B"]:
-        if haskey==True:
-            $ renpy.block_rollback()
-            play music "audio/bgm/living room.mp3"
-            hide screen escapetimer
-            hide screen escaperoom
-
-            scene black onlayer background
-            with Dissolve(2.0)
-            $ renpy.pause(2, hard=True)
-            scene bg bedroom left onlayer background
-            with Dissolve(2.0)
-
-            plt "(That was a weird dream.)"
-
-            $ stk = renpy.call_stack_depth()
-            python:
-                while stk > 0:
-                    stk = stk - 1
-                    renpy.pop_call()
-
-            jump newnormal
-
-        else:
-            plt "(It's locked. What's going on?)"
-
-            window hide
-
-        $ itemselected =  itemchoices["Reset"]
-
-    call screen escaperoom
-    label .misc_item_dialog(itemno=0):
-        if(itemno == 1):
-            "Code" "_ _ _ 1"
-        elif(itemno == 2):
-            plt "(Now is not the time to exercise.)"
-        elif(itemno == 3):
-            "Code" "_ _ 2 _"
-        elif(itemno == 4):
-            "Code" "_ 0 _ _"
-        elif(itemno == 5):
-            plt "(It’s pitch black outside. I can’t see anything.)"
-        elif(itemno == 6):
-            "Code" "7 _ _ _"
-        elif(itemno == 7):
-            plt "(I just woke up. I don’t need to get back to bed.)"
-        call screen escaperoom
+    pl "I have to do is complete the list and spend all 200.00 worth of grocery items."
 
 label supermarket:
-    play music "audio/bgm/Fluffy Days.mp3" fadein 2.0 # temp
-    call timeskip("bg supermarket")
+    call screen supermarket()
+    jump supermarket
+    label .shop_win_conditions:
+        if not(hasAcquiredNeedItems()):
+            pl "I still have some missing items from the list."
+            jump supermarket
+        elif getCost() < 200:
+            pl "I still have some money to spare."
+            jump supermarket
+        elif getCost() > 200:
+            pl "I’m out of budget. I need to remove some items."
+            jump supermarket
+    pl " I have everything I need. Time to check out."
 
-    plt "(Alright. All I have to do is complete the list while maintaining proper safety protocol.)"
-
-    plt "(So this is everything I need to buy.)"
-
-    $ renpy.block_rollback()
-
-    "List" "-Face Mask (1x)\n-Toilet Paper (3x)\n-Red Can (2x)\n-Green Can (2x)"
-
-    "{color=#0f0}Tap on the items you want to take. Be sure to keep track of how many of that item you have.{/color}"
-
-    "{color=#0f0}Tap on the arrow that will appear on the right when you're done shopping.{/color}"
-
-    show screen escapetimer(game="mart")
-
-    label .maingame(done=False):
-        if done:
-            plt "Is this everything I need?"
-            menu:
-                "Yes":
-                    plt "(I think I have everything I need. Time to pay for these goods and head home.)"
-
-                    jump .results
-                "No":
-                    plt "(I think I’m missing something. I should double check.)"
-
-        call screen supermarket
-
-    label .item_take(item=0):
-        if item == 1:
-            if mart_item_count["facemask"] == 0:
-                plt "(Boxes of facemasks. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["facemask"] = mart_item_count["facemask"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Boxes of facemasks. Should I take another or return one?)"
-                menu:
-                    "Take another.":
-                        $ mart_item_count["facemask"] = mart_item_count["facemask"] + 1
-                    "Return one.":
-                        $ mart_item_count["facemask"] = mart_item_count["facemask"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 2:
-            if mart_item_count["toiletpaper"] == 0:
-                plt "(Toilet Paper rolls. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["toiletpaper"] = mart_item_count["toiletpaper"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Toilet paper rolls. Should I take another or return one?)"
-                menu:
-                    "Take another.":
-                        $ mart_item_count["toiletpaper"] = mart_item_count["toiletpaper"] + 1
-                    "Return one.":
-                        $ mart_item_count["toiletpaper"] = mart_item_count["toiletpaper"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 3:
-            if mart_item_count["redcan"] == 0:
-                plt "(Red cans. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["redcan"] = mart_item_count["redcan"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Red cans. Should I take another or return one?)"
-                menu:
-                    "Take another":
-                        $ mart_item_count["redcan"] = mart_item_count["redcan"] + 1
-                    "Return one":
-                        $ mart_item_count["redcan"] = mart_item_count["redcan"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 4:
-            if mart_item_count["greencan"] == 0:
-                plt "(Green cans. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["greencan"] = mart_item_count["greencan"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Green cans. Should I take another or return one?)"
-                menu:
-                    "Take another.":
-                        $ mart_item_count["greencan"] = mart_item_count["greencan"] + 1
-                    "Return one.":
-                        $ mart_item_count["greencan"] = mart_item_count["greencan"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 5:
-            if mart_item_count["orangecan"] == 0:
-                plt "(Orange cans. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["orangecan"] = mart_item_count["orangecan"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Orange cans. Should I take another or return one?)"
-                menu:
-                    "Take another.":
-                        $ mart_item_count["orangecan"] = mart_item_count["orangecan"] + 1
-                    "Return one.":
-                        $ mart_item_count["orangecan"] = mart_item_count["orangecan"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 6:
-            if mart_item_count["browncan"] == 0:
-                plt "(Brown cans. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["browncan"] = mart_item_count["browncan"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Brown cans. Should I take another or return one?)"
-                menu:
-                    "Take another.":
-                        $ mart_item_count["browncan"] = mart_item_count["browncan"] + 1
-                    "Return one.":
-                        $ mart_item_count["browncan"] = mart_item_count["browncan"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 7:
-            if mart_item_count["yellowcan"] == 0:
-                plt "(Yellow cans. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["yellowcan"] = mart_item_count["yellowcan"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Yellow cans. Should I take another or return one?)"
-                menu:
-                    "Take another":
-                        $ mart_item_count["yellowcan"] = mart_item_count["yellowcan"] + 1
-                    "Return one":
-                        $ mart_item_count["yellowcan"] = mart_item_count["yellowcan"] - 1
-                    "No":
-                        pass
-        elif item == 8:
-            if mart_item_count["hygiene"] == 0:
-                plt "(There are hygiene supplies here. Should I take some?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["hygiene"] = mart_item_count["hygiene"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(There are hygiene supplies here. Should I take more or return some?)"
-                menu:
-                    "Take some more":
-                        $ mart_item_count["hygiene"] = mart_item_count["hygiene"] + 1
-                    "Return some":
-                        $ mart_item_count["hygiene"] = mart_item_count["hygiene"] - 1
-                    "Nevermind":
-                        pass
-        jump .maingame
-
-    label .results():
-        play music "audio/bgm/living room.mp3"
-        $ renpy.block_rollback()
-
-        call timeskip("bg livingroom back afternoon")
-        $ sum = 0;
-        python:
-            for item in mart_item_count:
-                sum = sum + mart_item_count[item]
-
-        if sum > 8:
-            pl "I’m home."
-
-            show carla thinking onlayer middle:
-                subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84 rotate None
-            with dissolve
-
-            c "It seems like you bought additional items by mistake."
-
-            pl "I did?"
-
-            show carla sigh onlayer middle
-
-            c "It’s fine. I’ll go take care of these."
-        elif sum < 8:
-            pl "I’m back."
-
-            show carla happy onlayer middle:
-                xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
-            with dissolve
-
-            c "Welcome back"
-
-            show carla sigh onlayer middle
-
-            c "It looks like you missed some of the things in the list."
-
-            pl "I didn’t? Huh. I guess I forgot."
-
-            c "It’s fine, I do appreciate that you decided to help. You go ahead and rest, I’ll store these away and start cooking dinner."
-
-        elif sum == 8 and mart_item_count["facemask"] == 1 and mart_item_count["redcan"] == 2 and mart_item_count["toiletpaper"] == 3:
-            pl "I’m back. I bought everything on the list."
-
-            show carla happy onlayer middle:
-                xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
-            with dissolve
-
-            c "Thank you for helping me, you can go rest while I store these away."
-
-            pl "You’re welcome, mom. I’m glad I could help."
-
-        jump project
+    jump project
 
 # Temporary Event ~ Sends player back to main menu upon jumping here
 label proceed:
