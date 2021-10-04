@@ -1,8 +1,0 @@
--> Patient Status [overlay]
--> Current Quarantine Event (type) & Date [overlay]
--> Animations for Transitions
--> Visual or textual hints [in minigames]
--> Activites or minigames which updates "Patient Status"
--> Story route overview [menu]
--> Events (big decisions) every chapter [menu]
--> Notebook that stores important information (diary contents, trivias, regulations, etc.) [menu]

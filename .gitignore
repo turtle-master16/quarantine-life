@@ -1,0 +1,9 @@
+**/log.txt
+**/errors.txt
+**/traceback.txt
+
+Quarantine\ Life/game/saves/
+Quarantine\ Life/game/cache/
+
+*.rpyc
+*.rpymc
