@@ -39,3 +39,10 @@ transform dissolve2:
     parallel:
         alpha -0.01
         linear 0.8 alpha 1.3
+
+# Used in timer countdown
+transform alpha_dissolve:
+    alpha 0.0
+    linear 0.5 alpha 1.0
+    on hide:
+        linear 0.5 alpha 0
