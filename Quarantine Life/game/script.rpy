@@ -39,7 +39,7 @@ label start(retmode=False):
 
     #### Test Jumps Start
     $ renpy.hide_screen("returnbutton")
-    jump project
+    # jump firstdate
     #### Test Jumps End
 
     if retmode:
