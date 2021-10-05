@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/PointNClickScreens.rpy", line 259: expected statement.
-    ToggleScreen("flapButton", "supermarket_ui")
-                                                ^
-
-File "game/PointNClickScreens.rpy", line 260: expected statement.
-    ToggleScreen("supermarket_ui")
-                                  ^
+File "game/script.rpy", line 1091: choice menuitem expects a non-empty block.
+    "Keep Quiet":
+                 ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Oct  2 14:39:53 2021
+Tue Oct  5 22:57:56 2021

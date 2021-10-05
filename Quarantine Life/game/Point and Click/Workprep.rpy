@@ -10,13 +10,15 @@ default roomstatus = {
     "boxclosed": True,
     "drawerclosed": True
 }
-default takeables = {
+default workprep_item_placement = {
     "faceshield":Transform(xpos=0.79, ypos=0.76, xanchor=0.5, yanchor=1.0, zoom=0.15),
     "bedkey":Transform(xpos=0.11, ypos=0.82, xanchor=0.5, yanchor=1.0, zoom=0.05),
     "wallet":Transform(xpos=0.6, ypos=0.46, yoffset=5, xanchor=0.5, yanchor=1.0, zoom=0.11),
     "sanitizer":Transform(xpos=0.68, ypos=0.34, xanchor=0.5, yanchor=1.0, zoom=0.08),
+    "draweropen": Transform(xpos=0.54, ypos=0.54, yoffset=5, xanchor=0.5, yanchor=1.0, zoom=0.48),
     "drawerclosed":Transform(xpos=0.54, ypos=0.54, yoffset=5,xanchor=0.5, yanchor=1.0, zoom=0.48),
     "boxclosed": Transform(xpos=0.18, ypos=0.49, xanchor=0.5, yanchor=1.0, zoom=0.26),
+    "boxwithmask": Transform(xpos=0.18, ypos=0.49, xanchor=0.5, yanchor=1.0, zoom=0.26),
     "boxnomask": Transform(xpos=0.18, xoffset=2, ypos=0.49, xanchor=0.5, yanchor=1.0, zoom=0.26)
 }
 
@@ -31,6 +33,7 @@ label inputbox():
         else:
             pl "Seems like the code is wrong..."
 screen workprep():
+    $ 
     $ lvroom_items = {
         "drawerLvrm": (35, 573, 199, 141),
         "correctPlant":(854, 419, 54, 84),
@@ -94,17 +97,15 @@ screen workprep():
     if currentRoom == ROOMS["livingroom"]:
         imagemap:
             ground "images/bg/bg livingroom back.png"
-            if not(onhand['faceshield']):
+            showif not(onhand['faceshield']):
                 imagebutton:
                     idle "clickables/faceshield.png"
-                    at transform:
-                        xpos 0.79 ypos 0.76 xanchor 0.5 yanchor 1.0, zoom 0.15
+                    at workprep_item_placement['faceshield']
                     action [SetDict(onhand, "faceshield", True), Call("objDialogue", object_dialogue["faceshield"])]
-            if not(onhand['bedkey']):
+            showif not(onhand['bedkey']):
                 imagebutton:
                     idle "clickables/bedkey.png"
-                    at transform:
-                        xpos 0.11 ypos 0.82 xanchor 0.5 yanchor 1.0 zoom 0.05
+                    at workprep_item_placement['bedkey']
                     action [SetDict(onhand, "bedkey", True),
                             Call("objDialogue", object_dialogue["drawerLvrm"])]
             hotspot lvroom_items["tv"] action Call("objDialogue", object_dialogue["tv"])
@@ -139,36 +140,34 @@ screen workprep():
             hotspot bdroom_items["window"] action Call("objDialogue", object_dialogue["window"])
             hotspot bdroom_items["plant"] action Call("objDialogue", object_dialogue["plant"])
             hotspot bdroom_items["books"] action Call("objDialogue", object_dialogue["books"])
-            if roomstatus['boxclosed']:
+            showif roomstatus['boxclosed']:
                 imagebutton:
                     idle "clickables/boxclosed.png"
-                    at takeables['boxclosed']
+                    at workprep_item_placement['boxclosed']
                     action [Call("objDialogue", object_dialogue["studyTable"], True),
                             Call("inputbox")]
             elif not(roomstatus['boxclosed']) and not(onhand['facemask']):
                 imagebutton:
                     idle "clickables/boxwithmask.png"
-                    at transform:
-                        xpos 0.18 ypos 0.49 xanchor 0.5 yanchor 1.0 zoom 0.26
+                    at workprep_item_placement['boxwithmask']
                     action [SetDict(onhand, 'facemask' ,True),
                             Call("objDialogue", object_dialogue["studyTable2"])]
             elif onhand['facemask']:
                 add Image("clickables/boxnomask.png"):
-                    at takeables['boxnomask']
-            if roomstatus['drawerclosed']:
-                if onhand['bedkey']:
+                    at workprep_item_placement['boxnomask']
+            showif roomstatus['drawerclosed']:
+                showif onhand['bedkey']:
                     hotspot bdroom_items["drawerBdrm"] action [SetDict(roomstatus, "drawerclosed", False),
                                                                Call("objDialogue", object_dialogue["drawerhaskey"])]
                 else:
                     hotspot bdroom_items["drawerBdrm"] action Call("objDialogue", object_dialogue["drawerBdrm"])
             elif not(roomstatus['drawerclosed']):
                 add Image("clickables/draweropen.png"):
-                    xpos 0.54 ypos 0.54 yoffset 5 xanchor 0.5 yanchor 1.0 zoom 0.48
-                if not(onhand['wallet']):
+                    at workprep_item_placement['draweropen']
+                showif not(onhand['wallet']):
                     imagebutton:
                         idle "clickables/wallet.png"
-                        at transform:
-                            xpos 0.6 ypos 0.46 yoffset 5 xanchor 0.5 yanchor 1.0 zoom 0.11
+                        at workprep_item_placement['wallet']
                         action [SetDict(onhand, "wallet", True),
                                 Call("objDialogue", object_dialogue["wallet"])]
         imagebutton:
@@ -183,11 +182,11 @@ screen workprep():
             hotspot kitchen_items["cans"] action Call("objDialogue", object_dialogue["cans"])
             hotspot kitchen_items["cabinet"] action Call("objDialogue", object_dialogue["cabinet"])
             hotspot kitchen_items["stove"] action Call("objDialogue", object_dialogue["stove"])
-            if not(onhand['sanitizer']):
+            showif not(onhand['sanitizer']):
                 hotspot kitchen_items["sanitizer"] action [SetDict(onhand, "sanitizer", True),
                                                            Call("objDialogue", object_dialogue["sanitizer"])]
                 add Image("clickables/sanitizer.png"):
-                    xpos 0.68 ypos 0.34 xanchor 0.5 yanchor 1.0 zoom 0.08
+                    at workprep_item_placement['sanitizer']
         imagebutton:
             idle "images/misc/arrow.png"
             yalign 0.5

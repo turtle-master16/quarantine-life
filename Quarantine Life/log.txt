@@ -1,177 +1,40 @@
-Sat Oct  2 19:51:00 2021
+Wed Oct  6 00:19:00 2021
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
 
-Bootstrap to the start of init.init took 0.37s
-Early init took 0.02s
-Loader init took 0.23s
-Loading error handling took 0.10s
-Loading script took 1.75s
-Loading save slot metadata. took 0.44s
+Bootstrap to the start of init.init took 0.17s
+Early init took 0.01s
+Loader init took 0.05s
+Loading error handling took 0.20s
+Loading script took 0.37s
+Loading save slot metadata. took 0.03s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
- - Init at renpy/common/00updater.rpy:23 took 0.56600 s.
-Running init code took 0.98s
-Loading analysis data took 4.25s
-Analyze and compile ATL took 0.02s
-Index archives took 0.00s
-Dump and make backups. took 0.41s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.48s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Creating interface object took 0.07s
-Cleaning stores took 0.00s
-Init translation took 0.76s
-Build styles took 0.05s
-Load screen analysis took 11.78s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.24s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.41s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.87s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1336, 752) drawable=(1336, 752)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 27.4449088573s
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.01s
-Load screen analysis took 0.07s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.01s
-Resetting cache.
-Bootstrap to the start of init.init took 57.44s
-Early init took 0.00s
-Loader init took 0.11s
-Loading error handling took 0.38s
-Loading script took 6.75s
-Loading save slot metadata. took 0.50s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.36s
-Loading analysis data took 3.94s
-Analyze and compile ATL took 0.03s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\kylel\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
-Dump and make backups. took 0.82s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 1.00s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.85s
-Build styles took 0.02s
-Load screen analysis took 0.00s
-Analyze screens took 0.05s
-Save screen analysis took 0.23s
-Prepare screens took 0.34s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.03s
-Running _start took 0.01s
-Performance test:
-Interface start took 0.53s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1336, 752) drawable=(1336, 752)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 74.1267108917s
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.02s
-Load screen analysis took 0.35s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.01s
-Resetting cache.
-Bootstrap to the start of init.init took 309.51s
-Early init took 0.00s
-Loader init took 0.09s
-Loading error handling took 0.13s
-Loading script took 4.40s
-Loading save slot metadata. took 0.35s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.31s
-Loading analysis data took 1.95s
+Running init code took 0.13s
+Loading analysis data took 1.40s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
-Backing up script files to 'C:\\Users\\kylel\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
-Dump and make backups. took 0.22s
+Dump and make backups. took 0.15s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.46s
+Initial gc. took 0.29s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: "Couldn't load nvlib." (can be ignored)
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.61s
-Build styles took 0.02s
-Load screen analysis took 0.12s
-Analyze screens took 0.05s
-Save screen analysis took 0.27s
-Prepare screens took 0.26s
+Init translation took 0.30s
+Build styles took 0.01s
+Load screen analysis took 0.57s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.20s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.03s
-Running _start took 0.01s
+Save bytecode. took 0.00s
+Running _start took 0.00s
 Performance test:
-Interface start took 0.45s
+Interface start took 0.43s
 
 Initializing gl renderer:
 primary display bounds: (0, 0, 1440, 900)
@@ -189,8 +52,13 @@ FBO Maximum Texture Size: 2048
 Using gl renderer.
 Texture testing:
 - Hardware max texture size: 16384
-- Incorrect pixel color in 64px texture: (0, 0, 0)
-Textures are not rendering properly.
-
-Initializing sw renderer:
-Total time until interface ready: 320.382817984s
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 5.05599999428s

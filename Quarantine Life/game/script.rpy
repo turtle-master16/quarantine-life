@@ -37,6 +37,11 @@ label start(retmode=False):
     scene black
     stop music
 
+    #### Test Jumps Start
+    $ renpy.hide_screen("returnbutton")
+    jump project
+    #### Test Jumps End
+
     if retmode:
         call hide_phone_messages
         call screen testmode
@@ -55,30 +60,30 @@ label start(retmode=False):
         if player_name != "xc@lu@g99":
             renpy.jump("start.mainstart")
 
-    define player_name = "Coby"
+    default player_name = "Coby"
 
     call screen testmode
 
     label .mainstart:
-
-        #### Test Jumps Start
-        $ renpy.hide_screen("returnbutton")
-        # jump quarantine
-        #### Test Jumps End
-
         nar "It all changed so fast."
 
-        nar "You would never expect that everything would change in just a blink of an eye."
+        nar "You would never expect that everything
+            would change in just a blink of an eye."
 
-        nar "One day you were just having fun, laughing with family and friends, going places wherever and whenever..."
+        nar "One day you were just having fun, laughing with
+            family and friends, going places wherever and whenever..."
 
-        nar "simply enjoying spending time outside your home, but the next thing you know, you’re stuck at home..."
+        nar "simply enjoying spending time outside your home,
+            but the next thing you know, you’re stuck at home..."
 
-        nar "Not being able to go out and do the things you normally enjoy, no more parties..."
+        nar "Not being able to go out and do the things
+            you normally enjoy, no more parties..."
 
-        nar "going to the mall and eating out, or even visit friends or family."
+        nar "going to the mall and eating out,
+            or even visit friends or family."
 
-        nar "How could something so small ruin an economy? To cause social disruption? To turn people’s lives upside down?"
+        nar "How could something so small ruin an economy?
+            To cause social disruption? To turn people’s lives upside down?"
 
         #DATE: FEBRUARY 2020, 8:00 am, Week 1, Living Room
         call updateDate("February 2020, 8:00 am, Week 1, Living room")
@@ -89,7 +94,8 @@ label start(retmode=False):
 
         plt "AH! What a peaceful morning."
 
-        plt "(Such a wonderful day to spend my day off. I got my morning coffee and I have nothing else to do today.)"
+        plt "(Such a wonderful day to spend my day off.
+            I got my morning coffee and I have nothing else to do today.)"
 
         plt "(Maybe I can visit my friend later this afternoon.)"
 
@@ -106,7 +112,8 @@ label start(retmode=False):
         show prince point1 onlayer middle:
             xpos 0.53 ypos 1.0 xanchor 0.5 yanchor 1.0
 
-        pr "Mom said to sweep the floor. Just best because it’s your day off doesn’t mean you can laze ignore your chores."
+        pr "Mom said to sweep the floor. Just best because it’s your day off
+            doesn’t mean you can laze ignore your chores."
 
         pr "Mom’s words not mine."
 
@@ -145,29 +152,36 @@ label news:
 
 
     #--SFX (News sfx)
-    plt "(Finally done with my chores, now I can go back to relaxing and enjoying my day off.)"
+    plt "(Finally done with my chores, now I can go back to relaxing and
+        enjoying my day off.)"
 
     plt "(Oh! It’s mom watching some TV. Maybe I should go join her.)"
 
     scene bg livingroom left afternoon tvon onlayer background
     with dissolve
 
-    "Reporter" "This just in, the Philippines has been suspending flights from Wuhan City, China due to the spread of the COVID virus."
+    "Reporter" "This just in, the Philippines has been suspending
+                flights from Wuhan City, China due to the
+                spread of the COVID virus."
 
-    "Reporter" "Flights from other parts of China will also be strictly monitored to prevent the virus from entering the country..."
+    "Reporter" "Flights from other parts of China will also be strictly
+                monitored to prevent the virus from entering the country..."
 
     show bg livingroom back afternoon onlayer background
     with dissolve
 
-    pl "Man, what’s with this new coronavirus? I’ve been hearing about them a lot lately."
+    pl "Man, what’s with this new coronavirus?
+        I’ve been hearing about them a lot lately."
 
     show carla sad onlayer middle:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
     with dissolve
 
-    c "The news said it’s a {b}respiratory illness that is caused by the SARS-Cov-2 virus.{/b}"
+    c "The news said it’s a {b}respiratory illness
+        that is caused by the SARS-Cov-2 virus.{/b}"
 
-    c "Oh dear. I hope your father is doing well abroad. I’m worried for your father’s health."
+    c "Oh dear. I hope your father is doing well abroad.
+        I’m worried for your father’s health."
 
     menu:
         "Dad will be fine":
@@ -198,7 +212,8 @@ label news:
             linear 0.7 xpos -0.19
     $ renpy.pause(0.7)
 
-    pl "Alright. Let’s just hope that everything is under control so nothing bad will happen."
+    pl "Alright. Let’s just hope that everything is under control so nothing
+        bad will happen."
 
     hide prince
     with dissolve
@@ -212,14 +227,17 @@ label lockdown:
     # DATE: MARCH 2020, 7:00 pm, week 2, living room
     call updateDate("March 2020, 7:00 pm, Week 2, Living room")
 
-    plt "(It’s been a couple of months since the COVID-19 virus was first announced. I’ve been seeing a lot of reports regarding the virus."
+    plt "(It’s been a couple of months since the COVID-19 virus was first
+        announced. I’ve been seeing a lot of reports regarding the virus."
 
-    plt "(This is so scary it’s making me worry for the safety of myself and my family.)"
+    plt "(This is so scary it’s making me worry for the safety of myself and
+        my family.)"
 
     show prince sad1 onlayer middle
     with dissolve
 
-    pr "What do you think is going to happen now that there have been reported COVID cases in our country?"
+    pr "What do you think is going to happen now that there have been reported
+        COVID cases in our country?"
 
     pl "I don’t know. Let’s just watch the new and find out more."
 
@@ -228,7 +246,9 @@ label lockdown:
     show bg livingroom left tvon onlayer background
     with dissolve
 
-    "Reporter" "The President has declared a state of public health emergency. Classes have been suspended and work-from-home is sought amid the local Coronavirus cases."
+    "Reporter" "The President has declared a state of public health emergency.
+                Classes have been suspended and work-from-home is sought amid
+                the local Coronavirus cases."
 
     "Reporter" "Strict {b}home quarantine{/b} is implemented in all households."
 
@@ -237,7 +257,8 @@ label lockdown:
     #DATE: MARCH 2020, 7:10 pm, week 2, living room, ECQ
     call updateDate("March 2020, 7:10 pm, Week 2, Living room, ECQ")
 
-    "Reporter" "Residents who refuse to follow the mandatory quarantine may be arrested under the state of public health emergency."
+    "Reporter" "Residents who refuse to follow the mandatory quarantine may be
+                arrested under the state of public health emergency."
 
     show bg livingroom back tvon onlayer background
     with dissolve
@@ -252,7 +273,8 @@ label lockdown:
         xpos 1.0 ypos 1.03 xanchor 1.0 yanchor 1.0 zoom 0.84
     with dissolve
 
-    c "It seems like we’ll be staying home until then. We can’t really do much other than isolate ourselves to for our own health and safety."
+    c "It seems like we’ll be staying home until then. We can’t really do much
+        other than isolate ourselves to for our own health and safety."
 
     menu:
         "I'm not staying home":
@@ -260,14 +282,17 @@ label lockdown:
 
             show prince stretch onlayer middle
 
-            pr "I don’t really mind. No school work means I can play video games all day every day."
+            pr "I don’t really mind. No school work means I can play video
+                games all day every day."
 
             show carla mad onlayer middle:
                 xpos 1.11 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.795
 
-            c "[player_name], the government just said that everyone must remain inside. It’s the safest thing to do to avoid the virus."
+            c "[player_name], the government just said that everyone must
+                remain inside. It’s the safest thing to do to avoid the virus."
 
-            pl "I can make decisions for myself. I don’t need the government to tell me what I can and cannot do."
+            pl "I can make decisions for myself. I don’t need the government
+                to tell me what I can and cannot do."
 
             show carla discuss1 onlayer middle
 
@@ -275,18 +300,24 @@ label lockdown:
 
             menu:
                 "You're right.":
-                    pl "I’m sorry, I wasn’t thinking clearly. You’re right, if I want to remain safe I must follow what the government says. I can always message them online. "
+                    pl "I’m sorry, I wasn’t thinking clearly. You’re right,
+                        if I want to remain safe I must follow what the
+                        government says. I can always message them online. "
 
-                    pl "Besides, I’m sure there are a lot of things I can do to keep myself entertained."
+                    pl "Besides, I’m sure there are a lot of things I can do
+                        to keep myself entertained."
 
                     jump quarantine
 
                 "No, I do what I want.":
-                    pl "Like I said, I’m a grown up, I can make decisions I know are best for me. I’m going to die of boredom if I stay home for that long."
+                    pl "Like I said, I’m a grown up, I can make decisions I
+                        know are best for me. I’m going to die of boredom if I
+                        stay home for that long."
 
                     jump getcaught #BADEND
         "No work!":
-            pl "Alright! I can sleep whenever I want now that I don’t have to wake up early to go to work."
+            pl "Alright! I can sleep whenever I want now that I don’t have
+                to wake up early to go to work."
 
             show prince happy onlayer middle:
                 ypos 1.0 yanchor 1.0 xzoom -1.0 zoom 0.92
@@ -300,9 +331,11 @@ label lockdown:
 
             jump quarantine
         "We should remain positive":
-            pl "We just have to keep calm and stay positive. Everything will pass."
+            pl "We just have to keep calm and stay positive. Everything will
+                pass."
 
-            c "If we’ll be staying here for more than a month, we need to find ways to save money."
+            c "If we’ll be staying here for more than a month, we need to find
+                ways to save money."
 
             show prince happy onlayer middle:
                 ypos 1.0 yanchor 1.0 xzoom -1.0 zoom 0.92
@@ -315,7 +348,9 @@ label quarantine:
     #DATE April 2020, 9:00 am, Week 1, Living room, ECQ
     call updateDate("April 2020, 9:00 am, Week 1, Living room, ECQ")
 
-    plt "(Ever since the lockdown started I have been able to have some time to myself and just relax, not worrying about anything else for the most part.)"
+    plt "(Ever since the lockdown started I have been able to have some time to
+        myself and just relax, not worrying about anything else for the most
+        part.)"
 
     plt "(Hmmm… it’s quiet. Too quiet. Very suspicious.)"
     with hpunch
@@ -329,19 +364,23 @@ label quarantine:
 
     pr "Ugh..."
 
-    pl "Good morning sunshine. Nice pair of eye bags, my guess is that you stayed up all night playing video games. Yes?"
+    pl "Good morning sunshine. Nice pair of eye bags, my guess is that you
+        stayed up all night playing video games. Yes?"
 
     show prince angry onlayer middle
 
     pr "Why does mom have to make me do chores?"
 
-    pl "Just because you don’t have any school work to do doesn’t mean you have to neglect your responsibilities at home. Now finish your chores before mom scolds you again, it will be a lot worse for you."
+    pl "Just because you don’t have any school work to do doesn’t mean you have
+        to neglect your responsibilities at home. Now finish your chores before
+        mom scolds you again, it will be a lot worse for you."
 
     show prince point2 at bounce, center onlayer middle
 
     pr "What about you huh? You’re supposed to be doing yours too right?"
 
-    pl "Just so you know, I’ve done my part of the chores. Now get to work, you couch potato."
+    pl "Just so you know, I’ve done my part of the chores. Now get to work,
+        you couch potato."
 
     show prince sad1 onlayer middle
 
@@ -359,7 +398,8 @@ label quarantine:
 
     ins "TASK: Find something to do."
 
-    ins "Click the arrow to switch rooms and tap an object to interact with them."
+    ins "Click the arrow to switch rooms and tap an object to interact with
+        them."
 
     jump findActivity
 
@@ -369,13 +409,16 @@ label newnormal:
     # DATE: APRIL 2020, 1:00 pm, week 4, living room, ECQ
     call updateDate("April 2020, 1:00 pm, Week 4, Living room, ECQ")
 
-    pl "How long do we have to keep this up? It’s been months since quarantine started and I’m starting to feel restless. I have nothing else to do and I’m getting bored."
+    pl "How long do we have to keep this up? It’s been months since quarantine
+        started and I’m starting to feel restless. I have nothing else to do and
+         I’m getting bored."
 
     show carla mad onlayer middle:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
     with dissolve
 
-    c "You should try helping around the house more often, that way you wouldn’t be bored. Now stop your whining, the news is on."
+    c "You should try helping around the house more often, that way you wouldn’t
+        be bored. Now stop your whining, the news is on."
 
     hide carla handstop
     with dissolve
@@ -385,9 +428,11 @@ label newnormal:
 
     "Reporter" "Good afternoon and welcome to ABC News Network…"
 
-    "Reporter" "Areas under MECQ and GCQ may allow business activities to resume - requiring strict compliance with minimum safety standards and protocols."
+    "Reporter" "Areas under MECQ and GCQ may allow business activities to resume
+     - requiring strict compliance with minimum safety standards and protocols."
 
-    "Reporter" "Public transportations is limited and crossing over to other regions remains banned…"
+    "Reporter" "Public transportations is limited and crossing over to other
+                regions remains banned…"
 
     show bg livingroom back tvon onlayer background
     with dissolve
@@ -402,25 +447,38 @@ label newnormal:
         xpos 0.75 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
     with dissolve
 
-    c "{b}ECQ, or Enhanced Community Quarantine{/b} means there are no activities except for utility services, food, services, water, and other essential sectors. Public transportation and physical classes are suspended for the time being."
+    c "{b}ECQ, or Enhanced Community Quarantine{/b} means there are no
+        activities except for utility services, food, services, water, and
+        other essential sectors. Public transportation and physical classes
+        are suspended for the time being."
 
-    c "{b}MECQ or Modified ECQ{/b} still requires people to stay home, however some can go out as long as they follow safety protocols such as wearing a face mask and maintaining 2 meter distance from other people."
+    c "{b}MECQ or Modified ECQ{/b} still requires people to stay home, however
+        some can go out as long as they follow safety protocols such as wearing
+        a face mask and maintaining 2 meter distance from other people."
 
     c "Government workers can return to work while others remain at home."
 
-    c "{b}General Community Quarantine{/b}, however allows people to travel for work while following the safety protocols. Mass gathering remains prohibited."
+    c "{b}General Community Quarantine{/b}, however allows people to travel for
+        work while following the safety protocols. Mass gathering remains
+        prohibited."
 
-    pl "From what I heard, people are allowed to go out but {b}children and elderly people are most vulnerable to the virus{/b} so they must stay home unless it's an important matter like going to the hospital."
+    pl "From what I heard, people are allowed to go out but {b}children and
+        elderly people are most vulnerable to the virus{/b} so they must stay
+        home unless it's an important matter like going to the hospital."
 
     show prince slouch onlayer middle
 
-    pr "Since we’re under GCQ now that means [player_name] can go back to work right? "
+    pr "Since we’re under GCQ now that means [player_name] can go back to work
+        right?"
 
-    pr "Either way I’m still stuck inside the house. If this goes on I might die of boredom."
+    pr "Either way I’m still stuck inside the house. If this goes on I might
+        die of boredom."
 
     show carla mad onlayer middle
 
-    c "I don’t think so young man. If I remember correctly your school is having {b}flexible learning{/b}. Be sure to study hard, you know what will happen if you get a bad grade."
+    c "I don’t think so young man. If I remember correctly your school is
+        having {b}flexible learning{/b}. Be sure to study hard, you know what
+        will happen if you get a bad grade."
 
     show prince embarrased onlayer middle
 
@@ -433,7 +491,9 @@ label newnormal:
 
     # DATE: APRIL 2020, 8:00 pm, week 4, bed room, GCQ
     call updateDate("April 2020, 1:00 pm, Week 4, Living room, ECQ")
-    plt "(Return to work, huh? I should contact the company for more information about this.)"
+
+    plt "(Return to work, huh? I should contact the company for more information
+        about this.)"
 
     "..."
 
@@ -444,17 +504,20 @@ label newnormal:
 
     plt "(That was fast.)"
 
-    plt "(Oh sweet. They’ll be providing a company shuttle for safety measures. It looks like I’ll be resuming work by next week.)"
+    plt "(Oh sweet. They’ll be providing a company shuttle for safety measures.
+        It looks like I’ll be resuming work by next week.)"
 
     plt "(The new normal… I wonder what’s in store for me.)"
 
     # DATE: MAY 2020, 6:00 pm, week 1, bed room, GCQ
     call updateDate("May 2020, 6:00 pm, Week 1, Living room, GCQ")
 
-    plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
+    plt "(Tomorrow will be my first day back on the job. I should prepare my
+        stuff for tomorrow.)"
 
     # Minigame
-    pl "I have a list of items I should find, I’m sure they’re around here somewhere."
+    pl "I have a list of items I should find, I’m sure they’re around here
+        somewhere."
 
     $ itemselected = itemchoices["Reset"]
     scene bg livingroom back onlayer background
@@ -467,21 +530,29 @@ label commuting:
     call updateDate("May 2020, 6:00 am, Week 2, Shuttle vehicle, GCQ")
 
     #--SFX (yawn)
-    plt "I’m so sleepy. Staying up all night on social media was not a good idea."
+    plt "I’m so sleepy. Staying up all night on social media was not a good
+        idea."
 
-    plt "(I can see that people are sitting {b}one-seat apart in public transportation{/b}, limiting the vehicle’s capacity. That’s good I suppose.)"
+    plt "(I can see that people are sitting {b}one-seat apart in public
+        transportation{/b}, limiting the vehicle’s capacity. That’s good I
+        suppose.)"
 
     "Worker 1" "These past few months have been rough."
 
-    plt "(They’re so loud they need to keep their voices down. Should I listen or just ignore them?)"
+    plt "(They’re so loud they need to keep their voices down. Should I listen
+        or just ignore them?)"
 
     menu:
         "Eavesdrop":
-            "Worker 2" "Yeah, I’m still getting used to wearing a facemask. I can’t exactly breathe properly with this covering the bottom half of my face."
+            "Worker 2" "Yeah, I’m still getting used to wearing a facemask. I
+                        can’t exactly breathe properly with this covering the
+                        bottom half of my face."
 
-            "Worker 2" "Better safe than sorry since {b}facemasks suppress the transmission of the virus{/b}."
+            "Worker 2" "Better safe than sorry since {b}facemasks suppress the
+                        transmission of the virus{/b}."
 
-            "Worker 2" "The use of mask alone is not sufficient but it does help prevent respiratory droplets from reaching others."
+            "Worker 2" "The use of mask alone is not sufficient but it does help
+                        prevent respiratory droplets from reaching others."
 
             "Worker 1" "That’s true."
 
@@ -490,7 +561,8 @@ label commuting:
             jump office
 
         "Ignore them.":
-            plt "(I shouldn’t eavesdrop on other people’s conversation, that's rude.)"
+            plt "(I shouldn’t eavesdrop on other people’s conversation, that's
+                rude.)"
 
 label office:
     call timeskip("bg office")
@@ -498,7 +570,8 @@ label office:
     #DATE: MAY 2020, 7:30 am, week 2, office, GCQ
     call updateDate("May 2020, 7:30 am, Week 2, Office, GCQ")
 
-    pl "First day back on the job and I am loaded with paper work. My back hurts from sitting all day, I need to stretch."
+    pl "First day back on the job and I am loaded with paper work. My back hurts
+        from sitting all day, I need to stretch."
 
     show ian happy onlayer middle:
         subpixel True xpos 0.35 ypos 0.05 xanchor None yanchor None rotate None
@@ -512,25 +585,32 @@ label office:
 
             show ian farewell onlayer middle
 
-            i "Nothing much other than the whole pandemic thing. It’s nice being able to go out after being stuck home for months."
+            i "Nothing much other than the whole pandemic thing. It’s nice being
+                able to go out after being stuck home for months."
 
-            pl "I hear you. Though it was a nice change of pace, being able to relax and all, I can’t stay indoors for that long. I need to at least roam around every once in a while."
+            pl "I hear you. Though it was a nice change of pace, being able to
+                relax and all, I can’t stay indoors for that long. I need to at
+                least roam around every once in a while."
 
             show ian discuss onlayer middle:
                 subpixel True xpos 0.47 ypos 1.02 xanchor 0.5 yanchor 1.0 rotate None zoom 1
 
-            i "That’s true. Speaking of going out, some of our co-workers and I are eating out tonight after work since the {b}restaurants have reopened{/b}. You’re welcome to join us if you want."
+            i "That’s true. Speaking of going out, some of our co-workers and I
+                are eating out tonight after work since the {b}restaurants have
+                reopened{/b}. You’re welcome to join us if you want."
 
             menu:
                 "Sure. I'll join.":
-                    pl "I could do some outside activity for a change. Count me in."
+                    pl "I could do some outside activity for a change.
+                        Count me in."
 
                     i "Nice! We’ll see you after work."
 
                     jump friend
 
                 "Sorry. Maybe next time.":
-                    pl "Sorry Ian, I have somewhere else to be after work. Maybe we can hang out together some other time."
+                    pl "Sorry Ian, I have somewhere else to be after work. Maybe
+                        we can hang out together some other time."
 
                     show ian farewell onlayer middle
 
@@ -542,7 +622,9 @@ label office:
 
             show ian happy onlayer middle
 
-            i "Sure, but before I go I just wanted to ask if you would like to join us after work, we’ll be having dinner at a nearby restaurant that just reopened."
+            i "Sure, but before I go I just wanted to ask if you would like to
+                join us after work, we’ll be having dinner at a nearby
+                restaurant that just reopened."
 
             menu:
                 "Dinner sounds good.":
@@ -563,14 +645,16 @@ label office:
 
                     jump home
         "Stay away!":
-            pl "Woah! Keep your distance please. At least five meters away, I don’t want to get infected by COVID."
+            pl "Woah! Keep your distance please. At least five meters away,
+                I don’t want to get infected by COVID."
 
             show ian whoa onlayer middle:
                 xpos 0.45 ypos 1.06 xanchor 0.5 yanchor 1.05
 
             i "Relax. I don’t have the virus."
 
-            pl "Virus or no virus, we must {b}maintain proper social distancing{/b}."
+            pl "Virus or no virus, we must {b}maintain proper social
+                distancing{/b}."
 
             show ian sigh onlayer middle:
                 xpos 0.5 ypos 1.06 xanchor 0.5 yanchor 1.05
@@ -585,10 +669,11 @@ label home:
     call timeskip("bg livingroom back")
     play music "audio/bgm/living room.mp3" fadein 1.0 fadeout 1.0
 
+    # DATE: July 2020, 2:00 pm, week 4, living room, GCQ
+    call updateDate("July 2020, 2:00 pm, Week 4, Living room, GCQ")
     plt "Day offs are such a blessing. Work can be too much to handle sometimes."
 
     #--SFX (stomping)
-    plt "What's up with you?"
 
     show prince sad2 at bounce, center onlayer middle
     with dissolve
@@ -596,15 +681,15 @@ label home:
 
     pl "What’s up with you?"
 
-    pr "Online classes are so different from face-to-face. There is so much stuff to keep me distracted from my studies, I ended up procrastinating."
-
-    pr "Now I’m paying the price of rushing my homework."
+    pr "I ended up sleeping late last night trying to level up my video game
+        character."
 
     pl "You need to manage your time better."
 
     show prince angry onlayer middle
 
-    pr "I know, but I can’t help it. Anyways, I better go and finish my assignments."
+    pr "I know, but I can’t help it. Especially when there a lot of prizes
+        during game events."
 
     pl "Good luck with that."
 
@@ -616,6 +701,8 @@ label home:
     $ renpy.pause(0.7)
     hide prince
 
+    # DATE: July 2020, 2:10 pm, week 4, living room, GCQ
+    call updateDate("July 2020, 2:10 pm, Week 4, Living room, GCQ")
     pl "Hey mom, what are you writing?"
 
     show carla thinking onlayer middle:
@@ -626,15 +713,18 @@ label home:
 
     pl "Why? You don't usually make a list."
 
-    c "I’m making a list {b}to keep my shopping time shorter{/b} instead of wandering around the market aimlessly..."
+    c "I’m making a list {b}to keep my shopping time shorter{/b} instead of
+        wandering around the market aimlessly..."
 
-    c "Reducing my time shopping for groceries {b}means less interaction with others.{/b}"
+    c "Reducing my time shopping for groceries {b}means less interaction with
+        others.{/b}"
 
     plt "(What should I say?)"
 
     menu:
         "Volunteer to do the grocery shopping":
-            pl "I can do the grocery shopping for you, that way you wouldn’t have to carry all the heavy bags when you return."
+            pl "I can do the grocery shopping for you, that way you wouldn’t
+                have to carry all the heavy bags when you return."
 
             show carla happy onlayer middle
 
@@ -642,7 +732,8 @@ label home:
 
             c "I'll give you a list and 200.00 worth of money."
 
-            c "You need to buy the exact number of groceries worth 200.00, including the items on the list."
+            c "You need to buy the exact number of groceries worth 200.00,
+                including the items on the list."
 
             jump intro_to_supermarket
 
@@ -666,9 +757,11 @@ label home:
             jump kitchen
 
         "Suggest doing online shopping":
-            pl "Why not do online shopping? It allows you to buy goods and services over the internet using a browser or a mobile app."
+            pl "Why not do online shopping? It allows you to buy goods and
+                services over the internet using a browser or a mobile app."
 
-            pl "That way, you can complete your shopping without ever needing to go outside. It’s easy, convenient and a much safer option."
+            pl "That way, you can complete your shopping without ever needing
+                to go outside. It’s easy, convenient and a much safer option."
 
             jump project
 
@@ -677,7 +770,8 @@ label kitchen:
 
     play music "audio/bgm/kitchen.mp3"
 
-    plt "(Tonight I’ll be cooking chicken adobo. I have onions, garlic, chicken and vinegar. Is there something else I should add?)"
+    plt "(Tonight I’ll be cooking chicken adobo. I have onions, garlic, chicken
+        and vinegar. Is there something else I should add?)"
 
     scene bg kitchen pot
     with dissolve
@@ -767,7 +861,8 @@ label kitchen:
 
         "I don’t think I have to add anything else.":
 
-            plt "(I don’t think I have any more ingredients to add into the dish. This should be enough.)"
+            plt "(I don’t think I have any more ingredients to add into the
+                dish. This should be enough.)"
 
             call timeskip("bg livingroom back afternoon")
 
@@ -777,7 +872,6 @@ label kitchen:
             with dissolve
 
             pr "It tastes bland."
-
 
             show carla mad onlayer middle:
                 xpos 1.03 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
@@ -793,194 +887,120 @@ label kitchen:
 
 label project:
     call timeskip("bg livingroom back evening")
+    # DATE: August 2020, 10:00am, week 3, living room, GCQ
+    call updateDate("August 2020, 10:00am, Week 3, Bedroom, GCQ")
 
     if(renpy.music.get_playing() != "audio/bgm/crickets.mp3"):
         play music "audio/bgm/crickets.mp3"
 
-    plt "(Man, I’m stuffed. Nothing beats home cooked meals.)"
 
     show prince explain1  onlayer middle:
         subpixel True xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0 rotate None
     with dissolve
 
-    pr "Hey mom, can I ask you something?"
+    pr "Mom, I’m going out."
 
-    show carla happy onlayer middle:
+    show carla sigh onlayer middle:
         subpixel True xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
     with dissolve
 
-    c "Sure, what is it?"
+    c "And where do you think you’re going mister?"
 
-    pr "I just wanted to ask if I could go to a classmate’s house. You see, we have this school group project and…"
+    pr "To my friend’s house. It’s only a few blocks down anyway."
 
-    show carla thinking onlayer middle
+    show carla scold onlayer middle:
+        xpos 0.93 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
 
-    c "I’m not sure if that is a good idea."
+    c "Just because you’re friend’s house is nearby doesn’t mean I approve of
+        you going out."
 
     show prince angry at bounce onlayer middle:
-        subpixel True xpos -0.01 ypos 1.0 xanchor None yanchor 1.0 xzoom -1.0 rotate None
+        subpixel True xpos -0.01 ypos 1.0 xanchor None yanchor 1.0 xzoom -1.0
+        rotate None
 
-    pr "But mom, it’s for a school project. A lot of people have been going out now that it’s Modified GCQ. People are allowed to go out as long as people follow the health protocols of wearing masks and proper social distancing."
+    pr "According to the law, {b}any person below ten years old and those who are
+        over sixty-five years of age shall be required to remain in their
+        residence at all times.{/b}"
 
-    show carla scold at bounce onlayer middle:
-        xpos 0.98 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
+    pr "And I’m a teenager, so those rules don’t apply to me."
 
-    c "Just because people are roaming around the streets doesn’t mean you should too. Even if everything has returned to normal people can still get COVID."
+
+    show carla scold onlayer middle at bounce:
+        xpos 0.93 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
+
+    c "You have nothing important to do. So why do you have to go?"
+
+    show prince at bounce
+
+    pr "To hang out. I’m getting bored inside the house. And besides, it’s not
+        like we’re going anywhere crowded. We’ll just stay there and play some
+        video games."
+
+    plt "(Should I say something?)"
 
     menu:
-        "Agree with mom.":
-            pl "Mom’s got a point. The virus is still out there, who knows what would happen if you go out. You might encounter someone with the virus along the way."
+        "Tell Prince to stay.":
+            pl "Mom’s got a point. Just because you’re wearing a medical mask
+                and a face shield doesn’t mean you’re immune to the virus."
 
-            show carla sad  onlayer middle:
-                xpos 0.98 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
+            pl "You can still get sick even with all the precautions you take when you go outside."
+
+            show carla sad onlayer middle:
+                xpos 0.98 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.86
 
             c "Prince, please understand that we are doing this to keep you safe."
 
             show prince sad1  onlayer middle:
-                subpixel True xpos -0.01 ypos 1.0 xanchor None yanchor 1.0 xzoom -1.0 rotate None
+                xpos -0.01 ypos 1.0 xanchor None yanchor 1.0 xzoom -1.0
 
             pr "I understand."
 
-            pr "I’ll go tell them that I won’t be able to come."
+        "Keep Quiet":
+            pl "..."
 
-            show prince sad1 onlayer middle:
-                subpixel True xpos -0.01 ypos 1.0 xanchor None yanchor 1.0 xzoom 1.0 rotate None
-                parallel:
-                    xpos -0.01
-                    linear 0.7 xpos -0.49
-            $ renpy.pause(0.7)
-            hide prince
+            show carla scold onlayer middle
 
-            plt "(Is it just me or Prince seems disappointed? I’ll go see what’s wrong.)"
+            c "That’s it. I’m not having this conversation. Go to your room."
 
-            call timeskip("bg bedroom back evening")
+            show prince at bounce
 
-            pl "Hey Prince. You seem down, is there something wrong?"
+            pr "Fine."
 
-            show prince sad2  onlayer middle:
-                xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0
-            with dissolve
+        "Convince mom to allow him go.":
+            pl "Can’t he? I mean, it’s just for a few hours. So why not allows him to visit a friend?"
 
-            pr "Nothing’s wrong, just leave me alone."
+            pl "He’s been stuck in this house for months, a change of scenery could do him good."
 
-            pl "Don’t tell me nothing is wrong. I can see it in your face that something is bothering you."
+            show carla sigh onlayer middle:
+                xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
 
-            show prince sad3 onlayer middle
+            c "Even if you try to convince me [player_name] my answer is still no. I care for you and I don’t want you getting sick."
 
-            pr "I hate quarantine. I’ve been stuck home for months now. I miss going out."
+            show carla sad onlayer middle:
+                xpos 0.93 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.86
 
-            pl "I thought you were going out for a school project?"
+            c "Please understand from my point of view as a mother that I just want to keep you safe."
 
-            show prince angry at bounce, center onlayer middle
+            pr "I understand."
 
-            pr "I am. Of course meeting up with my friends is also a plus in my part. I haven’t seen them for a while now, I kind of miss them."
+    pr "I’ll go tell them that I won’t be able to come."
 
-            pl "I understand your trouble. But just like what mom said, we are doing this for you, if anything bad happens I don’t think we’ll be able to take it well."
+    show prince angry onlayer middle:
+        subpixel True xpos -0.01 ypos 1.0 xanchor None yanchor 1.0 xzoom -1.0 rotate None
+        parallel:
+            xpos -0.07
+            linear 0.5 xpos -0.52
+        parallel:
+            xzoom 1.0
+            linear 0.5 xzoom 1.0
+    $ renpy.pause(0.5)
 
-            show prince sad1 onlayer middle
+    plt "(Is it just me or Prince seems disappointed?)"
 
-            pr "I know that, but I can’t help it. It gets lonely around here from time to time."
+    plt "(Maybe it’s best if I cheer him up.)"
 
-            plt "(Maybe I should spend some quality time with him to lift his mood. But what can we do?)"
+    jump bros
 
-            menu:
-                "Have a karaoke session.":
-                    pl "I have a Bluetooth microphone. Do you want to have a karaoke session with me?"
-
-                    pl "We can flex to the neighbors our amazing singing skills."
-
-                    show prince happy at bounce onlayer middle:
-                        xpos 0.5 ypos 1.07 xanchor 0.5 yanchor 1.0
-
-                    pr "Sure, sounds fun."
-
-                    call timeskip("bg livingroom back evening tvon")
-
-                    show prince happy2 at bounce, left onlayer middle:
-                        xzoom -1.0
-                    with dissolve
-
-                    pr "*singing*"
-
-                    show carla clap onlayer middle:
-                        xpos 1.0 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.76
-                    with dissolve
-
-                    c "Bravo, son!"
-
-                    pl "I am so posting this on my social media accounts."
-
-                    show prince point2 onlayer middle
-
-                    pr "Your turn to sing."
-
-                    pl "Alright."
-
-                    jump bros
-
-                "Watch a movie together.":
-                    pl "Let’s go watch a movie together. You get to pick what we’re going to watch."
-
-                    show prince happy at bounce onlayer middle:
-                        xpos 0.5 ypos 1.07 xanchor 0.5 yanchor 1.0
-
-                    pr "That doesn’t seem like a bad idea. Let’s do it."
-
-                    call timeskip("bg livingroom back evening tvon")
-
-                    "Actor" "How could you?! After everything I’ve done for you, you would just come and betray me like that?!"
-
-                    "Actress" "I don’t have a choice!"
-
-                    pl "Romance movies are so cliche."
-
-                    show prince disgust2 onlayer middle
-                    with dissolve
-
-                    pr "Why did we even pick this movie?"
-
-                    pl "I have no idea. It was the first movie I saw in my movie list that I haven’t watched yet. I don’t even know why I have this in my laptop."
-
-                    "Actress" "I loved you and yet you had the guts to stab me in the back."
-
-                    pl "Just kiss already!"
-
-                    jump bros
-
-                "Play video games.":
-                    pl "How about we play some video games, Legendary Mobile?"
-
-                    show prince point1 at bounce onlayer middle:
-                        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0
-
-                    pr "Sure, I haven’t played that in a while. Sure, let’s play."
-
-                    call timeskip("bg livingroom back evening tvon")
-
-                    with hpunch
-                    pl "Stop farming and back us up! Ugh! This guy is such a noob."
-
-
-                    show prince shock2 at bounce onlayer middle:
-                        xpos -0.11 ypos 1.0 yanchor 1.0 xzoom -1.0
-                    with dissolve
-                    with vpunch
-
-                    pr "Damn, we’re losing big time. And our teammate is a feeder."
-
-                    show carla mad onlayer middle:
-                        subpixel True xpos 1.0 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
-                        parallel:
-                            xpos 1.76
-                            linear 0.7 xpos 1.15
-                    $ renpy.pause(0.5)
-
-                    c "Can you two keep it down while you play? You’re being too loud."
-
-                    jump bros
-
-        "Convince mom to let Prince go.":
-            jump falsealarm
 
 # ROUTE FRIEND
 label friend:
@@ -1024,27 +1044,34 @@ label restaurant:
         xpos 0.71 ypos 1.0 xanchor 0.5 yanchor 1.0
     with dissolve
 
-    m "I’m glad the quarantine rules have eased and now we’re allowed to eat at restaurants."
+    m "I’m glad the quarantine rules have eased and now we’re allowed to eat at
+        restaurants."
 
     show mark agree onlayer middle
 
-    m "Sure, there are take-outs and food delivery services, but nothing beats eating outside of your own home."
+    m "Sure, there are take-outs and food delivery services, but nothing beats
+    eating outside of your own home."
 
-    pl "Yeah, the staff are very mindful of the {b}restaurant hygiene{/b} and apply strict health measures."
+    pl "Yeah, the staff are very mindful of the {b}restaurant hygiene{/b} and
+        apply strict health measures."
 
     show mark discuss onlayer middle:
         xpos 0.69 ypos 1.0 xanchor 0.5 yanchor 1.0
 
-    m "I agree. The seating arrangements are one chair apart to {b}maintain proper social distance.{/b}"
+    m "I agree. The seating arrangements are one chair apart to {b}maintain
+        proper social distance.{/b}"
 
-    m "Everything is {b}sanitized, staff are wearing masks{/b}. They make sure to follow precautionary measures to reassure customers."
+    m "Everything is {b}sanitized, staff are wearing masks{/b}. They make sure
+        to follow precautionary measures to reassure customers."
 
     show ian discuss1 onlayer middle:
         xpos 0.3 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0
 
-    i "I like how consistent they are with the health monitoring of the staff and customers."
+    i "I like how consistent they are with the health monitoring of the staff
+        and customers."
 
-    m "I can’t wait for the pandemic to be over so this can be a regular thing again."
+    m "I can’t wait for the pandemic to be over so this can be a regular thing
+        again."
 
     "Waiter" "Here are your orders. Enjoy."
 
@@ -1057,8 +1084,8 @@ label restaurant:
         subpixel True xpos 0.27 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0 rotate None
 
     #--SFX (eating)
-    i "You know, ever since this whole pandemic thing started. I’ve been feeling rather lonely these days."
-
+    i "You know, ever since this whole pandemic thing started. I’ve been feeling
+        rather lonely these days."
 
     show mark ask onlayer middle:
         subpixel True xpos 0.67 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom 1.0 yzoom 1.0 rotate None
@@ -1067,16 +1094,20 @@ label restaurant:
 
     show ian whoa onlayer middle
 
-    i "Well, yeah. But we haven't been able to see each other since the pandemic started. Normally, we'd see each other. "
+    i "Well, yeah. But we haven't been able to see each other since the pandemic
+        started. Normally, we'd see each other. "
 
     show ian discuss onlayer middle:
         zoom 1
 
-    i "Now, I can't visit because of the fear that I might get her sick or something, especially if we go out on dates."
+    i "Now, I can't visit because of the fear that I might get her sick or
+        something, especially if we go out on dates."
 
-    i "Sure we do home dates, but it’s nothing compared to actually being with each other, to be able to hold each other."
+    i "Sure we do home dates, but it’s nothing compared to actually being with
+        each other, to be able to hold each other."
 
-    i "Sure, we call and text each other; we even go on virtual dates, but nothing could compare to actually having her by my side, physically."
+    i "Sure, we call and text each other; we even go on virtual dates, but
+        nothing could compare to actually having her by my side, physically."
 
     show mark disgust onlayer middle
 
@@ -1088,7 +1119,8 @@ label restaurant:
 
     show mark discuss onlayer middle
 
-    m "Oh puh-lease. Romance just gets in the way of my work. I prefer to focus on myself and my goals."
+    m "Oh puh-lease. Romance just gets in the way of my work. I prefer to focus
+        on myself and my goals."
 
     show ian discuss1 onlayer middle
 
@@ -1100,20 +1132,24 @@ label restaurant:
 
     menu:
         "Romance is not for me.":
-            pl "Like what Mark said, I would like to focus on my own before I pursue anything romantic."
+            pl "Like what Mark said, I would like to focus on my own before I
+                pursue anything romantic."
 
             show mark confident onlayer middle
 
             m "See? Great minds think alike."
 
-            m "And besides, going out for work is already scary enough as it is during the pandemic."
+            m "And besides, going out for work is already scary enough as it is
+                during the pandemic."
 
-            m "Plus, I don't need to add another reason that would only cause more headaches."
+            m "Plus, I don't need to add another reason that would only cause
+                more headaches."
 
             jump kylehome
 
         "Having a romantic partner sounds good.":
-            pl "Being in a relationship with someone sounds nice. Maybe I should try some online dating and meet new people for a change."
+            pl "Being in a relationship with someone sounds nice. Maybe I should
+                try some online dating and meet new people for a change."
 
             show ian at bounce onlayer middle
 
@@ -1121,7 +1157,8 @@ label restaurant:
 
             show mark disgust at bounce onlayer middle
 
-            m "Will you stop that? If you talk about romance one more time I’ll walk out the door and make you pay for my dinner."
+            m "Will you stop that? If you talk about romance one more time I’ll
+                walk out the door and make you pay for my dinner."
 
             show ian whoa onlayer middle
 
@@ -1132,7 +1169,8 @@ label datesearch:
     play music "audio/bgm/living room.mp3"
     call updateDate("May 2020, 9:00 pm, Week 2, Bedroom, GCQ")
 
-    plt " (I never thought about being in a romantic relationship since I was in high school.)"
+    plt "(I never thought about being in a romantic relationship since I was
+        in high school.)"
 
     plt "(It sounds troublesome, but interesting at the same time.)"
 
@@ -1141,7 +1179,8 @@ label datesearch:
     call timeskip("bg livingroom back")
     call updateDate("May 2020, 7:00 pm, Week 3, Living room, GCQ")
 
-    plt "(I just came home from work and ended up downloading a dating app either way.)"
+    plt "(I just came home from work and ended up downloading a dating app
+        either way.)"
 
     show prince point2 onlayer middle
     with dissolve
@@ -1162,7 +1201,8 @@ label datesearch:
 
     pl "(That brat. I swear that kid exist to annoy me.)"
 
-    plt "(Whatever. All I have to do now is setup my account and select my gender preference.)"
+    plt "(Whatever. All I have to do now is setup my account and select my
+        gender preference.)"
 
     plt "(And hopefully, Prince doesn’t come back to make fun of me.)"
     #--SFX (typing)
@@ -1254,19 +1294,23 @@ label postdatesearch(male=True):
         show ian whoa onlayer middle:
             xpos 0.48 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.94
 
-        i "A while. I've been calling your name but you were too busy texting. And you have that weird smile on your face. Are you seeing someone?"
+        i "A while. I've been calling your name but you were too busy texting.
+            And you have that weird smile on your face. Are you seeing someone?"
 
-        pl "I downloaded this dating app and met a guy who I’m texting right now. And I have to say, he’s really nice."
+        pl "I downloaded this dating app and met a guy who I’m texting right
+            now. And I have to say, he’s really nice."
 
         show ian discuss onlayer middle:
             xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.98
 
-        i "Look, it's nice that you're finally seeing someone, but please don't let it distract your work."
+        i "Look, it's nice that you're finally seeing someone, but please don't
+            let it distract your work."
 
         show ian discuss1 onlayer middle:
             xpos 0.48 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.98
 
-        i "If the manager finds you slacking off you'll be in big trouble. Now drop your phone and focus on your work."
+        i "If the manager finds you slacking off you'll be in big trouble. Now
+            drop your phone and focus on your work."
 
         show ian discuss2 onlayer middle:
             xpos 0.51 ypos 1.0 xanchor 0.5 yanchor 1.0
@@ -1282,17 +1326,20 @@ label postdatesearch(male=True):
 
         play music "audio/bgm/living room.mp3"
 
-        plt "(Hair. Check. Clothes. Check. [player_name]? Oh yeah, I’m looking good and ready.)"
+        plt "(Hair. Check. Clothes. Check. [player_name]? Oh yeah, I’m looking
+            good and ready.)"
 
         show prince stretch  onlayer middle:
             xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0
         with dissolve
 
-        pr "Hey, what’s with the getup? Are you going somewhere? On a date perhaps?"
+        pr "Hey, what’s with the getup? Are you going somewhere? On a date
+            perhaps?"
 
         menu:
             "It's none of your business.":
-                pl "It doesn't have anything to do with you. Now run along and leave me alone."
+                pl "It doesn't have anything to do with you. Now run along and
+                    leave me alone."
 
                 show prince embarrased onlayer middle:
                     xpos 0.43 ypos 1.0 xanchor 0.5 yanchor 1.0
@@ -1317,11 +1364,15 @@ label postdatesearch(male=True):
                 show prince shocked1  onlayer middle:
                     xpos 0.5 ypos 1.1 xanchor 0.5 yanchor 1.0
 
-                pr "It’s not like I’m against you going on dates, but are you sure it’s a good idea to go out on a date because, you know, with the whole COVID pandemic happening outside?"
+                pr "It’s not like I’m against you going on dates, but are you
+                    sure it’s a good idea to go out on a date because, you know,
+                     with the whole COVID pandemic happening outside?"
 
-                pl "Just because people are free to go out doesn't mean we should. It’s best to limit our activities outside the house."
+                pl "Just because people are free to go out doesn't mean we
+                    should. It’s best to limit our activities outside the house."
 
-                pl "We're meeting online so there's no worry about me going out. I just want to look nice at least."
+                pl "We're meeting online so there's no worry about me going out.
+                    I just want to look nice at least."
 
                 show prince point2 onlayer middle:
                     xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0
@@ -1393,7 +1444,8 @@ label firstdate(male=True):
         $ renpy.pause(1)
         stop sound
 
-        plt "(It’s been days since I downloaded this dating app but still no match.)"
+        plt "(It’s been days since I downloaded this dating app but still no
+            match.)"
 
         plt "(Maybe I should change my profile or something?)"
 
@@ -1473,7 +1525,8 @@ label firstdate(male=True):
 
                 call phone_call(jl, "speechless", "Umm...")
 
-                pl "Are you alright? Cuz’ you look like you’re suffering from a lack of vitamin ME."
+                pl "Are you alright? Cuz’ you look like you’re suffering from a
+                    lack of vitamin ME."
 
                 call phone_call(jl, "speechless", "...")
 
@@ -1503,13 +1556,15 @@ label kyle:
         xpos 0.2
     with dissolve
 
-    m "You're not using your phone. Hmm, let me guess, your online date didn't go so well."
+    m "You're not using your phone. Hmm, let me guess, your online date didn't
+        go so well."
 
     pl "It scares how you know all these things."
 
     show mark confident onlayer middle
 
-    m "It's not scary, I'm just observant. Besides, I speak the truth and nothing but the truth. And the truth is you suck at romance."
+    m "It's not scary, I'm just observant. Besides, I speak the truth and
+        nothing but the truth. And the truth is you suck at romance."
 
     pl "You are really bad at comforting people."
 
@@ -1519,7 +1574,8 @@ label kyle:
 
     show mark discuss1 onlayer middle
 
-    m "But still, you shouldn't let yourself down just because of some failed online date. It happens."
+    m "But still, you shouldn't let yourself down just because of some failed
+        online date. It happens."
 
     pl "You're right, I should pace myself. Thanks, I needed to hear that."
 
@@ -1535,7 +1591,8 @@ label kyle:
 
     play sound "audio/footstep.wav"
 
-    pl "Maybe it's for the best, this way I could focus more on myself and my goals."
+    pl "Maybe it's for the best, this way I could focus more on myself and my
+        goals."
 
     play sound "audio/phone vibrate.wav"
     with hpunch
@@ -1638,7 +1695,8 @@ label kylehome:
 
     show carla scold onlayer middle
 
-    c "No. Go take a shower this instant and sanitize your things. There is no such thing as going overboard when it comes to health."
+    c "No. Go take a shower this instant and sanitize your things. There is no
+        such thing as going overboard when it comes to health."
 
     pl "Alright."
     #--SFX (Footsteps -> Shower)
@@ -1649,7 +1707,8 @@ label kylehome:
 
     pl "That's better."
 
-    pl "I have some time to spare before dinner, so what should I do to kill some time?"
+    pl "I have some time to spare before dinner, so what should I do to kill
+        some time?"
 
     play sound "audio/phone vibrate.wav"
     $ renpy.pause()
@@ -1662,7 +1721,7 @@ label kylehome:
     show phone onlayer middle at phone_pickup
     $ renpy.pause(0.6, hard=True)
 
-    call message(ky, "Hey. I know we haven’t talked in a long time. So I thought why not use this time to reconnect with an old friend.")
+    call message(ky, "Hey. I know we haven’t talked in a long time. So I thoughtwhy not use this time to reconnect with an old friend.")
 
     call message(ky, "How about we hang out just like old times?")
 
@@ -1702,19 +1761,25 @@ label kylehome:
 
             i "Wow, you’re working hard today, what’s up?"
 
-            pl "I tried online dating, things didn’t work well for me. It’s either I get catfished or I feel uncomfortable talking to them."
+            pl "I tried online dating, things didn’t work well for me. It’s
+                either I get catfished or I feel uncomfortable talking to them."
 
             show ian discuss2 onlayer middle
 
-            i "That’s why you gotta be careful. Some rude people and some are just trying to scam others for their benefit."
+            i "That’s why you gotta be careful. Some rude people and some are
+                just trying to scam others for their benefit."
 
             pl "I want to find something else to do for entertainment."
 
-            pl "Limiting my interaction with other people and staying at home can be a bore and I don’t want to keep spending my time online all the time."
+            pl "Limiting my interaction with other people and staying at home
+                can be a bore and I don’t want to keep spending my time online
+                all the time."
 
             show ian happy onlayer middle
 
-            i "Why not try to find a new hobby? There are a lot of home activities you can try out and maybe develop some new skills along the way."
+            i "Why not try to find a new hobby? There are a lot of home
+                activities you can try out and maybe develop some new skills
+                along the way."
 
             show ian farewell onlayer middle
 
@@ -1743,7 +1808,8 @@ label kylehome:
 
             show prince confident onlayer middle
 
-            pr "Hope you don’t mind me recording you. Just pretend like I’m not here."
+            pr "Hope you don’t mind me recording you. Just pretend like I’m
+                not here."
 
             pl "Leave!"
 
@@ -1802,7 +1868,8 @@ label kylemeet:
 
     menu:
         "Tell him it’s not fine.":
-            pl "That is not okay. It’s not safe walking around in public without wearing a face mask."
+            pl "That is not okay. It’s not safe walking around in public without
+                wearing a face mask."
 
             show kyle confused onlayer middle
 
@@ -1814,7 +1881,8 @@ label kylemeet:
 
             ky "Fine, I’ll fix it. There, happy?"
 
-            pl "Very. Please don’t do that again. Who knows what might happen if you don’t follow safety protocols?"
+            pl "Very. Please don’t do that again. Who knows what might happen
+                if you don’t follow safety protocols?"
 
             show kyle happy onlayer middle
 
@@ -1834,7 +1902,8 @@ label kylemeet:
 
     plt "(I don’t feel so good.)"
 
-    pl "I should just sleep it off, I’m sure I’m just tired from all the work I have to do at the office."
+    pl "I should just sleep it off, I’m sure I’m just tired from all the work I
+        have to do at the office."
 
     call timeskip("bg bedroom afternoon")
     #DATE: JUNE 2020, 5:30 pm, week 3, bed room, GCQ
@@ -1870,16 +1939,21 @@ label kylemeet:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
     with dissolve
 
-    c "[player_name], Prince told me you’re not feeling well. I think you need to go to see a doctor. It could be COVID."
+    c "[player_name], Prince told me you’re not feeling well. I think you need
+        to go to see a doctor. It could be COVID."
 
-    pl "Mom, I have a healthy body, there is no way that I'll get affected by the virus."
+    pl "Mom, I have a healthy body, there is no way that I'll get affected by
+        the virus."
 
-    pl "I’m just tired from work, that’s all. I’ll get better once I eat and take some medicine."
+    pl "I’m just tired from work, that’s all. I’ll get better once I eat and
+        take some medicine."
 
     show carla makesure onlayer middle:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.77
 
-    c "I’ll check on you later. If your fever worsens, I’m taking you to the hospital. For now, you remain inside this room, we’ll take proper precautions inside the house."
+    c "I’ll check on you later. If your fever worsens, I’m taking you to the
+        hospital. For now, you remain inside this room, we’ll take proper
+        precautions inside the house."
 
     call timeskip("bg bedroom back evening")
 
@@ -1891,7 +1965,8 @@ label kylemeet:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
     with dissolve
 
-    c "You’re having a difficult time breathing. I’m taking you to the hospital and getting you tested for blood work."
+    c "You’re having a difficult time breathing. I’m taking you to the hospital
+        and getting you tested for blood work."
 
     jump hospital
 
@@ -1904,12 +1979,15 @@ label hospital:
 
     play music "audio/bgm/bad end.mp3"
 
-    pl "I can’t believe I got sick with COVID and got sent to the emergency room. I haven’t seen my family for days now, I miss them."
+    pl "I can’t believe I got sick with COVID and got sent to the emergency
+        room. I haven’t seen my family for days now, I miss them."
 
     play sound "audio/breathing.wav"
     $ renpy.pause(1.0)
 
-    pl "I can barely speak and I feel breathless. I feel like drowning, gasping for air. Everything is so painful. I can’t take this anymore, I feel like all hope is lost."
+    pl "I can barely speak and I feel breathless. I feel like drowning, gasping
+        for air. Everything is so painful. I can’t take this anymore, I feel
+        like all hope is lost."
 
     scene black onlayer background
     with Dissolve(3.0)
@@ -1920,9 +1998,11 @@ label hospital:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.43
     with Dissolve(3.0)
 
-    pl "*heavy breathing* What am I thinking? I can’t give up now. I still have so much to do, so much to experience."
+    pl "*heavy breathing* What am I thinking? I can’t give up now. I still have
+        so much to do, so much to experience."
 
-    pl "I need to get better so I can get back to my family, they are waiting for me to return home."
+    pl "I need to get better so I can get back to my family, they are waiting
+        for me to return home."
 
     scene black onlayer background
     with wipeleftlong
@@ -1931,14 +2011,16 @@ label hospital:
     with wiperightlong
     play music "audio/bgm/living room.mp3"
 
-    pl "It’s been a month since I was sent here at the quarantine facility and I’m feeling a lot better now. I can last a day without using oxygen"
+    pl "It’s been a month since I was sent here at the quarantine facility and
+        I’m feeling a lot better now. I can last a day without using oxygen"
 
     play sound "audio/runstep.wav"
     $ renpy.pause(0.5)
     stop sound
     play sound "audio/door close.wav"
 
-    "Doctor" "I have great news. You are now asymptomatic and ready to be discharged."
+    "Doctor" "I have great news. You are now asymptomatic and ready to be
+            discharged."
 
     pl "I can’t believe it. I can finally go home."
 
@@ -1950,11 +2032,13 @@ label jillian:
 
     menu:
         "I spend my time improving my thinking ability.":
-            pl "I like to read books and do puzzles. Basically anything that allows me to use my intellect."
+            pl "I like to read books and do puzzles. Basically anything that
+                allows me to use my intellect."
 
             call phone_call(jl, "happy", "You like to read? Me too.")
 
-            pl "I'm glad that we have common interest in books. I like to be able to fill my head with knowledge."
+            pl "I'm glad that we have common interest in books. I like to be
+                able to fill my head with knowledge."
 
             call phone_call(jl, "happy2", "I feel the same way.")
 
@@ -1963,7 +2047,8 @@ label jillian:
 
             call phone_call(jl, "discussing", "You must be really fit then.")
 
-            pl "I'm nothing like those people with big muscles, but I do try my best to keep my body healthy."
+            pl "I'm nothing like those people with big muscles, but I do try my
+                best to keep my body healthy."
 
             call phone_call(jl, "skeptical", "I heard some gyms have opened, you don't go there?")
 
@@ -1978,7 +2063,8 @@ label jillian:
 
             call phone_call(jl, "happy", "You must be a really talented person.")
 
-            pl "Most of them are just hobbies that I do to pass the time. I like learning new skills."
+            pl "Most of them are just hobbies that I do to pass the time. I
+                like learning new skills."
 
             call phone_call(jl, "happy2", "That's really cool.")
 
@@ -2012,13 +2098,16 @@ label jillian:
         xpos 0.73 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.94
     with dissolve
 
-    pr "Wow, I never thought I see the day where you finally decided to make a move on someone."
+    pr "Wow, I never thought I see the day where you finally decided to make a
+        move on someone."
 
-    pl "It's not making a move, yet. We're just getting to know each other better."
+    pl "It's not making a move, yet. We're just getting to know each other
+        better."
 
     show carla happy onlayer middle
 
-    c "I'm not stopping you if that's what you wish to do. You're already old enough to make your own decisions."
+    c "I'm not stopping you if that's what you wish to do. You're already old
+        enough to make your own decisions."
 
     show prince point1 onlayer middle:
         xpos 0.73 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.96
@@ -2040,11 +2129,14 @@ label jillian:
     #DATE June 2020 2:00 pm Week 2 Office GCQ
     call updateDate("June 2020 2:00 pm Week 2 Office GCQ")
 
-    plt "(Jillian and I’s relationship have been going smoothly. I really enjoy spending time with her, even if we’ve only known each other virtually.)"
+    plt "(Jillian and I’s relationship have been going smoothly. I really enjoy
+        spending time with her, even if we’ve only known each other virtually.)"
 
-    plt "(Fortunately, she doesn’t live too far from my area. That means I can go and actually meet up with her, in person.)"
+    plt "(Fortunately, she doesn’t live too far from my area. That means I can
+        go and actually meet up with her, in person.)"
 
-    plt "(The pandemic is still continues so asking her out on a date could be a problem.)"
+    plt "(The pandemic is still continues so asking her out on a date could be
+        a problem.)"
 
     plt "(Should I ask her out?)"
 
@@ -2073,9 +2165,11 @@ label jillian:
             jump jldate
 
         "Keep things the way they are":
-            plt "(Nah. Asking her out under these circumstances is not the best idea. I don’t want to risk her health or mine.)"
+            plt "(Nah. Asking her out under these circumstances is not the best
+                idea. I don’t want to risk her health or mine.)"
 
-            plt "(I’m sure there are ways we can keep our virtual date more fun for both of us. But what?)"
+            plt "(I’m sure there are ways we can keep our virtual date more fun
+                for both of us. But what?)"
 
             call timeskip("bg office afternoon")
 
@@ -2093,7 +2187,8 @@ label jlaskout:
 
     menu:
         "Ask her out.":
-            pl "I wonder if her behaviour online is different if I decide to meet her face to face. Should I risk it though?"
+            pl "I wonder if her behaviour online is different if I decide to
+                meet her face to face. Should I risk it though?"
 
             menu:
                 "Pursue the idea and ask her out.":
@@ -2135,9 +2230,11 @@ label jlaskout:
                     jump jlaskout
 
         "Continue with online dating.":
-            pl "I don’t want to risk putting her or myself in potential danger of the pandemic."
+            pl "I don’t want to risk putting her or myself in potential danger
+                of the pandemic."
 
-            pl "We’ll just have to make do with what we got, I’m sure she'll understand."
+            pl "We’ll just have to make do with what we got, I’m sure she'll
+                understand."
 
             show phone_tindah onlayer middle at phone_pickup
             $ renpy.pause(0.6)
@@ -2162,7 +2259,8 @@ label jlaskout:
 
             call phone_call(jl, "flattered", "I am smiling? I guess I just really enjoy spending time with you.")
 
-            pl "Same. So let’s make things a little more interesting, let’s play a game."
+            pl "Same. So let’s make things a little more interesting, let’s
+                play a game."
 
             centered "GAME HERE"
 
@@ -2179,27 +2277,33 @@ label jldate:
 
     jl "..."
 
-    pl "This is so surreal, and I don’t mean that in a good way. Maybe this wasn’t such a good idea after all."
+    pl "This is so surreal, and I don’t mean that in a good way. Maybe this
+        wasn’t such a good idea after all."
 
     show jillian anxious onlayer middle
 
     jl "I’m sorry, I'm getting a little too anxious. Don’t you feel uneasy?"
 
-    pl "I did check the restaurant’s prevention practice before telling you the location. I made sure to do a thorough research."
+    pl "I did check the restaurant’s prevention practice before telling you the
+        location. I made sure to do a thorough research."
 
-    pl "I want this date to go well and to make you as comfortable as possible. I guess dating has changed a lot since the pandemic started."
+    pl "I want this date to go well and to make you as comfortable as possible.
+        I guess dating has changed a lot since the pandemic started."
 
     show jillian confused onlayer middle
 
-    jl "Well, yeah. Since most people stay indoors nowadays, most dates happen online."
+    jl "Well, yeah. Since most people stay indoors nowadays, most dates happen
+        online."
 
-    jl "But I do appreciate the trouble you have to get through just to set up the perfect date."
+    jl "But I do appreciate the trouble you have to get through just to set up
+        the perfect date."
 
     pl "I’m glad that the government eased the quarantine rules. Now people from age 15 to 65 are allowed to go out."
 
     show jillian skeptical onlayer middle
 
-    jl "That’s true, but I can’t help but feel cautious of the surroundings. Being close to you makes me feel excited and on edge at the same time."
+    jl "That’s true, but I can’t help but feel cautious of the surroundings.
+        Being close to you makes me feel excited and on edge at the same time."
 
     pl "It’s fine, I understand. Let’s just make the most of it while we’re here."
 
@@ -2218,7 +2322,8 @@ label jldate:
 
     c "So how did your date go?"
 
-    pl "Everything went well. But we came to an agreement that we will hold our dates online instead of meeting up."
+    pl "Everything went well. But we came to an agreement that we will hold our
+        dates online instead of meeting up."
 
     pl "We wouldn't want anything bad to happen."
 
@@ -2264,14 +2369,20 @@ label jason:
     play music "audio/bgm/living room.mp3"
     call updateDate("July 2020, 5:00 pm, Week 1, Living room, GCQ")
 
-    plt "(It’s been a while since I last talked to Jason. He hasn’t been replying to any of my messages. I wonder how he’s doing. I hope he’s alright.)"
+    plt "(It’s been a while since I last talked to Jason. He hasn’t been
+        replying to any of my messages. I wonder how he’s doing. I hope he’s
+        alright.)"
 
     scene bg livingroom left tvon onlayer background
     with dissolve
 
-    "Reporter" "In today’s report, the number of COVID-19 cases in the Philippines moved past the 316,000 mark."
+    "Reporter" "In today’s report, the number of COVID-19 cases in the
+                Philippines moved past the 316,000 mark."
 
-    "Reporter" "In other related news, 86 percent of adult Filipino have been experiencing great stress due to involuntary hunger and that more Filipinos could slip into poverty and joblessness due to COVID-19 pandemic."
+    "Reporter" "In other related news, 86 percent of adult Filipino have been
+                experiencing great stress due to involuntary hunger and that
+                more Filipinos could slip into poverty and joblessness due to
+                COVID-19 pandemic."
 
     scene bg livingroom back tvon onlayer background
     with dissolve
@@ -2360,9 +2471,11 @@ label getcaught:
     # DATE: MARCH 2020, 9:00 pm, week 3, bed room, ECQ
     call updateDate("March 2020, 9:00 pm, Week 3, Bedroom, ECQ")
 
-    plt "(One week into quarantine and I’m already bored out of my mind. There literally nothing else to do.)"
+    plt "(One week into quarantine and I’m already bored out of my mind. There
+        literally nothing else to do.)"
 
-    plt "(Stores are closed you I can’t go out on a snack run. I could go out for walk, I’m sure nothing bad will happen.)"
+    plt "(Stores are closed you I can’t go out on a snack run. I could go out
+        for walk, I’m sure nothing bad will happen.)"
 
     #--SFX (door close + footsteps)
 
@@ -2417,19 +2530,97 @@ label getcaught:
             jump proceed
 
 label bros:
-    call timeskip("bg livingroom back evening tvon")
-    show prince happy onlayer middle:
-        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.91
+    call timeskip("bg bedroom back evening")
+    # DATE: August 2020, 11:00am, week 3, bedroom, GCQ
+    call updateDate("August 2020, 11:00am, Week 3, Bedroom, GCQ")
+
+    pl "Hey Prince. You seem down, is there something wrong?"
+
+    show prince sad2  onlayer middle:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0
     with dissolve
 
-    pr "That was fun. Thanks for spending time with me."
+    pr "Nothing’s wrong, just leave me alone."
+
+    pl "Don’t tell me nothing is wrong. I can see it in your face that
+        something is bothering you."
+
+    show prince sad3 onlayer middle
+
+    pr "I hate quarantine. I’ve been stuck home for months now. I miss
+        going out."
+
+    pl "I understand your trouble. Like what mom said, we are doing this for
+        you. If anything bad happens, I don’t think we’ll be able to take it
+        well."
+
+    show prince sad1 onlayer middle
+
+    pr "I know that, but I can’t help it. It gets lonely around here
+        from time to time."
+
+    pl "Tell you what. How about we play video games?  Legendary Mobile, you
+        and I."
+
+
+    show prince happy onlayer middle:
+        xpos 0.5 ypos 1.07 xanchor 0.5 yanchor 1.0
+
+    pr "Sure, I haven’t played that in a while. Sure, let’s play."
+
+    call timeskip("bg livingroom back evening tvon")
+    # DATE: August 2020, 11:00am, week 3, bedroom, GCQ
+    call updateDate("August 2020, 11:20am, Week 3, Bedroom, GCQ")
+
+    with vpunch
+    "..."
+    with hpunch
+    $ renpy.pause(0.3)
+    with vpunch
+
+    show prince shock2 onlayer middle:
+        xpos 0.22 ypos 1.05 xanchor 0.5 yanchor 1.0 xzoom -1.0 zoom 1.03
+    with dissolve
+
+    pr "Stop farming and back us up! Ugh! This guy is such a noob."
+
+    with hpunch
+    pl "Damn, we’re losing big time. And our teammate is a feeder."
+
+    show carla scold onlayer middle:
+        subpixel True xpos 0.56 ypos -0.1 xanchor None yanchor None zoom 0.89 rotate None
+        parallel:
+            xpos 1.0
+            linear 0.54 xpos 0.6
+
+    c "Can you two keep it down while you play? You’re being too loud."
+
+    show prince embarrased onlayer middle:
+        xpos 0.24 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0 zoom 0.98
+
+    pr "Sorry."
+
+    pl "Sorry."
+
+    call timeskip("bg bedroom back")
+    # DATE: August 2020, 12:00am, week 3, bedroom, GCQ
+    call updateDate("August 2020, 12:00am, Week 3, Bedroom, GCQ")
+
+    show prince happy onlayer middle at bounce:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.92
+    with dissolve
+
+    pr "Hey. Thanks for spending time with me."
 
     pl "No problem. If you ever get bored I’m here for you."
 
-    show prince embarrased onlayer middle:
-        subpixel True xpos 0.45 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.98 rotate None
 
-    pr "Thanks."
+    show prince stretch onlayer middle:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.01
+
+    pr "Thanks. Now, how about another round?"
+
+    pl "You're on!"
 
     scene black onlayer background
     with dissolve
@@ -2449,138 +2640,6 @@ label bros:
             stop sound fadeout 0.2
             jump proceed
 
-label falsealarm:
-    scene bg livingroom back evening onlayer background
-
-    show carla mad onlayer middle:
-        xpos 1.1 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
-
-    show prince angry onlayer middle:
-        xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0
-
-    pl "I’m sure nothing bad will happen. There are no reports of COVID patients in our area anyway, so why not let him go to his classmate's house? It is for a school project after all."
-
-    show carla thinking onlayer middle:
-        xpos 1.12 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
-
-    c "If it’s for a school project, maybe I can allow you to go."
-
-    show prince happy2 onlayer middle
-
-    pr "Really?"
-
-    show carla mad onlayer middle
-
-    c "But just this once. And I want you back home before dark."
-
-    show prince happy2 at bounce, left onlayer middle
-
-    pr "I will. Thank you."
-
-    call timeskip("bg bedroom back")
-
-    stop music
-
-    pl "Hey Prince. Are you ok? You haven’t left your room all day."
-
-    show prince sick onlayer middle:
-        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
-    with dissolve
-
-    play music "audio/bgm/suspense.mp3"
-
-    pr "[player_name], I don’t feel so good."
-
-    pl "You’re burning up. I’ll go get mom."
-
-    call timeskip("bg bedroom back")
-
-    play sound "audio/runstep.wav"
-    $ renpy.pause(0.5)
-    stop sound
-    play sound "audio/door close.wav"
-
-    show carla sigh onlayer middle:
-        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
-    with dissolve
-
-    c "This is what I’m afraid of. We need to get you to the clinic right away."
-
-    pl "I’ve read some articles related to the virus, having a fever is just a mild to minor symptom that can be cured at home."
-
-    pl "We have to isolate Prince in a separate room and pay special attention if he’s at risk for serious illness. We have to make sure he’s well rested and hydrated."
-
-    pl "And to reduce the virus, we have to wear a face mask if we’re in the same room as the sick person; separate eating utensils and bedding; we should also clean and disinfect the surfaces that he frequently touched."
-
-    c "If that’s the case, we need to stock up some supplies, some regular medicine, medical masks and disinfectants. We have to get out contacts ready if something bad happens."
-
-    c "Make sure to get health information like doctors, hotlines, emergency numbers, health centers or facilities. Include family or friends to the contact list."
-
-    pl "I’ll go get the supplies."
-
-    stop music
-
-    call timeskip("bg bedroom back")
-    play music "audio/bgm/living room.mp3"
-
-    show prince stretch at left onlayer middle:
-        xzoom -1
-
-    with dissolve
-
-    pr "I feel better already. Thank you for looking after me."
-
-    show carla thinking onlayer middle:
-        xpos 1.04 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
-    with dissolve
-
-    c "As it turns out, it was just a mild flu and managed to recover within a week."
-
-    pl "COVID and flu do have similar symptoms."
-
-    show carla mad onlayer middle
-
-    c "COVID or mild flu, we still need to be careful. From now on we practice good healthy habits, and that means no more staying up late, drinking plenty of fluids and eating nutritious food."
-
-    c "And it wouldn’t hurt to exercise instead of sitting all day playing video games."
-
-    "{color=#0033a9}Prince{/color} {color=#fff}&{/color} {color=#ffa500}[player_name]{/color}" "Yes mom."
-
-    call timeskip("bg front house")
-
-    play music "audio/bgm/outside.mp3"
-
-    pl "Come on Prince. We barely even started and yet you’re already sweating this much."
-
-    show prince angry onlayer middle
-    with dissolve
-
-    pr "I can’t… I haven’t been doing any physical activities… Give me a break."
-
-    pl "You have to exercise if you wanna be healthy. Besides, it’s only been 20 minutes."
-
-    show prince slouch onlayer middle
-
-    pr "The most exercise I get in a day is walking around the house… Oh jeez."
-
-    scene black onlayer background
-    with dissolve
-    play music "audio/bgm/good end.mp3"
-    centered "{color=#fff}{b} End {/b}{/color}"
-
-    menu:
-        "Choose another route":
-            centered "You will now be returned to the previous decision point..."
-            stop music fadeout 2.0
-
-            jump project
-
-        "Return to main menu":
-            stop music fadeout 0.2
-            jump proceed
-
-    jump proceed
-
 label jlend:
     call timeskip("bg livingroom back")
     play music "audio/bgm/living room.mp3"
@@ -2590,13 +2649,15 @@ label jlend:
 
     pr "So how’s your virtual date going?"
 
-    pl "Everything is going great. We’ve gotten along really well these past few months. We’ve been talking to each other more often."
+    pl "Everything is going great. We’ve gotten along really well these past
+        few months. We’ve been talking to each other more often."
 
     show prince point2 onlayer middle
 
     pr "So when are you two going to make things official with her?"
 
-    pl "Don’t you think it’s a little too soon for that? Why are you even asking in the first place?"
+    pl "Don’t you think it’s a little too soon for that? Why are you even
+        asking in the first place?"
 
     show prince embarrased onlayer middle:
         xpos 0.47 ypos 1.0 xanchor 0.5 yanchor 1.0
@@ -2612,7 +2673,8 @@ label jlend:
 
     plt "(Should I ask her out?)"
 
-    plt "(We’ve gotten close for the past months. She seems to enjoy hanging out with me. Maybe I should risk it and ask her out.)"
+    plt "(We’ve gotten close for the past months. She seems to enjoy hanging out
+        with me. Maybe I should risk it and ask her out.)"
 
     call timeskip("bg bedroom back evening")
 
@@ -2627,7 +2689,8 @@ label jlend:
 
     pl "*deep breathe*"
 
-    pl "I know we’ve only been meeting virtually, but I want to say that I really love spending time with you, it’s the highlight of my day."
+    pl "I know we’ve only been meeting virtually, but I want to say that I
+        really love spending time with you, it’s the highlight of my day."
 
     pl "So I want to ask. Will you be my girlfriend?"
 
@@ -2707,7 +2770,9 @@ label jsend:
 
     pr "Didn’t you two go on a date not too long ago?"
 
-    pl "Yeah. It’s best if we get medical help before anything worse happens. Until then, we’re under home-quarantine and be sure to care if any of us has trouble breathing."
+    pl "Yeah. It’s best if we get medical help before anything worse happens.
+        Until then, we’re under home-quarantine and be sure to care if any of
+        us has trouble breathing."
 
     show carla thinking onlayer middle
 
@@ -2766,13 +2831,16 @@ label jsexerciseend:
 
     call phone_call(js, "exercise", "1, 2, 3, 4, 5, 6, 7, 8… Let’s take a water break.", 0)
 
-    pl "Oh god, I’m so out of shape. *huff* We barely started and I’m already sweating buckets."
+    pl "Oh god, I’m so out of shape. *huff* We barely started and I’m already
+        sweating buckets."
 
-    pl "I haven’t been very active since quarantine started. The most exercise I do nowadays is walking from and to work."
+    pl "I haven’t been very active since quarantine started. The most exercise
+        I do nowadays is walking from and to work."
 
     call phone_call(js, "confused", "That’s not good. Even during pandemic we still need to maintain a healthy lifestyle and take time to do some workout. We can do this once a week if you like.")
 
-    pl "I suppose having someone to exercise with is much more fun and motivating than doing it alone."
+    pl "I suppose having someone to exercise with is much more fun and
+        motivating than doing it alone."
 
     call phone_call(js, "discuss2", "Great! This will be our own thing. Just the two of us.")
 
@@ -2803,11 +2871,13 @@ label mcend:
     call timeskip("bg bedroom back")
     play music "audio/bgm/good end.mp3"
 
-    pl "Even if I have fully recovered, I still need to isolate myself and limit my interactions with my family and friends."
+    pl "Even if I have fully recovered, I still need to isolate myself and limit
+        my interactions with my family and friends."
 
     pl "I am a COVID survivor and I am grateful to have another chance in life."
 
-    pl "To all the people I love, my family, my friends, the doctors and the frontliners who helped me recover, I am truly thankful."
+    pl "To all the people I love, my family, my friends, the doctors and the
+        frontliners who helped me recover, I am truly thankful."
 
     pl "It was a hard road to recovery..."
 
@@ -2832,17 +2902,17 @@ label mcend:
 label workprep:
     if currentRoom == ROOMS['livingroom']:
         scene bg livingroom back
-        call hideStuff('faceshield', location='livingroom')
-        call hideStuff('bedkey', location='livingroom')
+        call hideStuff('faceshield', room='livingroom')
+        call hideStuff('bedkey', room='livingroom')
     elif currentRoom == ROOMS['bedroom']:
         scene bg bedroom back
-        call hideStuff("wallet", location='bedroom')
+        call hideStuff("wallet", room='bedroom')
         call hideStuff('draweropen', 'bedroom', isState=True)
         call hideStuff('boxclosed', 'bedroom', isState=True)
 
     elif currentRoom == ROOMS['kitchen']:
         scene bg kitchen
-        call hideStuff('sanitizer', location='kitchen')
+        call hideStuff('sanitizer', room='kitchen')
 
     if not(onhand['sanitizer'] and onhand['faceshield'] and onhand['wallet'] and onhand['facemask']):
         call screen workprep
@@ -2865,11 +2935,14 @@ label findActivity:
     scene bg livingroom back onlayer background
 
     if _return == 'tv':
-        plt "(I have nothing else to do right now. Maybe I should binge watch some of my favorite TV series.)"
+        plt "(I have nothing else to do right now. Maybe I should binge watch
+            some of my favorite TV series.)"
 
     elif _return == 'phone':
         scene bg bedroom back onlayer background
-        plt "I’ve been hearing a lot of COVID related news, but so far I only know that one of the symptoms of the virus is difficulty in breathing and fever."
+        plt "I’ve been hearing a lot of COVID related news, but so far I only
+            know that one of the symptoms of the virus is difficulty in
+            breathing and fever."
 
         plt "I should look up for more Coronavirus information, just to be sure."
 
@@ -2877,11 +2950,13 @@ label findActivity:
 
         plt "Wow, I’m learning a lot today."
 
-        plt "There is so much information posted here. I need to keep myself updated."
+        plt "There is so much information posted here. I need to keep myself
+            updated."
 
     elif _return == 'bed':
         scene bg bedroom back onlayer background
-        plt "(Ugh. Everything is so boring, nothing else to do and we have to do this for who knows how long.)"
+        plt "(Ugh. Everything is so boring, nothing else to do and we have to
+            do this for who knows how long.)"
 
         plt "(I think I’ll just lay down and take a nap.)"
 
@@ -2898,25 +2973,33 @@ label findActivity:
 
         show screen phone_notif("images/phone/dad profile.png", "Dad")
 
-        plt "Oh, it’s dad. It’s been a while since we last talked. I should answer his call."
+        plt "Oh, it’s dad. It’s been a while since we last talked. I should
+            answer his call."
 
         "Dad" "Hey kiddo, glad you picked up. How are you doing?"
 
         pl "I’m doing fine dad. How’s things over your side?"
 
-        "Dad" "I’m doing good. Fortunately, I haven’t lost my job to the COVID pandemic. A heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
+        "Dad" "I’m doing good. Fortunately, I haven’t lost my job to the COVID
+                pandemic. A heard a lot of OFW lost their jobs amid pandemic
+                and are forced to go back home."
 
-        pl "Yeah, there are around 13,000 OFW returning this month. It’s quite sad."
+        pl "Yeah, there are around 13,000 OFW returning this month. It’s quite
+            sad."
 
-        pl "After their arrival they are required to undergo a 14-day facility-based quarantine."
+        pl "After their arrival they are required to undergo a 14-day facility-
+            based quarantine."
 
-        "Dad" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
+        "Dad" "By the way, how are your mom and brother holding up? I’ve been
+            getting complaints about yours and Prince’s bickering."
 
-        pl "The house has become livelier than ever now that we have to stay home 24/7."
+        pl "The house has become livelier than ever now that we have to stay
+            home 24/7."
 
         "Dad" "Don’t drive your mom too crazy with your antics."
 
-        pl "No promises. Let me tell you that one time when Prince got mad over a video game..."
+        pl "No promises. Let me tell you that one time when Prince got mad over
+            a video game..."
 
         hide screen phone_notif
 
@@ -2924,7 +3007,8 @@ label findActivity:
 
     elif _return == 'dumbells':
         scene bg bedroom back onlayer background
-        plt "(Alright, time to work hard and get my quarantine bod. Starting with simple stretches.)"
+        plt "(Alright, time to work hard and get my quarantine bod. Starting
+            with simple stretches.)"
 
         $all_moves(camera_check_points={'z': [(0, 0, None), (1000, 4.0, 'linear')]})
 
@@ -2947,7 +3031,8 @@ label findActivity:
         $all_moves(camera_check_points={'y': [(0, 0, None), (-756, 0.5, 'linear'), (-104, 1.0, 'linear')]}, y_loop=True)
         pl "One. Two. Three. Four. Five. Six. Seven. Eight."
 
-        pl "Yeah! I can feel my body changing already. Quarantine bod here I come."
+        pl "Yeah! I can feel my body changing already. Quarantine bod here I
+            come."
 
         call timeskip("bg livingroom back afternoon")
 
@@ -2971,19 +3056,23 @@ label findActivity:
     jump newnormal
 
 label intro_to_supermarket:
-    c "I'll give you a list and 200.00 worth of money."
-
-    c " You need to buy the exact number of groceries worth 200.00, including the items on the list."
-
-    call timeskip("bg supermarket")
+    scene bg supermarket onlayer background
+    # call timeskip("bg supermarket")
     call updateDate("July 2020, 3:00 pm, Week 4, grocery store, GCQ")
 
     pl "I’m here. Now let’s check the items on the list."
 
-    pl "I have to do is complete the list and spend all 200.00 worth of grocery items."
+    pl "I have to do is complete the list and spend all 200.00 worth of grocery
+        items."
+
+    $ currentScreen = "supermarket"
+    show screen instruction
+
+    jump supermarket
 
 label supermarket:
-    call screen supermarket()
+    $ showFlapButtons()
+    call screen supermarket
     jump supermarket
     label .shop_win_conditions:
         if not(hasAcquiredNeedItems()):
@@ -2995,7 +3084,7 @@ label supermarket:
         elif getCost() > 200:
             pl "I’m out of budget. I need to remove some items."
             jump supermarket
-    pl " I have everything I need. Time to check out."
+    pl "I have everything I need. Time to check out."
 
     jump project
 

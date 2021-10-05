@@ -1,26 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 2848, in script call
-    call screen workprep
-  File "game/Point and Click/PnC Utilities.rpy", line 35, in script
-    return
-Exception: Could not find return label (u'game/PointNClickScreens.rpy', 1633083314, 14).
+  File "game/script.rpy", line 3242, in script call
+    call screen supermarket
+  File "game/Point and Click/Supermarket.rpy", line 102, in script
+    if flapBtnShown:
+  File "game/Point and Click/Supermarket.rpy", line 102, in <module>
+    if flapBtnShown:
+NameError: name 'flapBtnShown' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 2848, in script call
-    call screen workprep
-  File "game/Point and Click/PnC Utilities.rpy", line 35, in script
-    return
-  File "renpy/ast.py", line 1521, in execute
-    next_node(renpy.game.context().lookup_return(pop=True))
-  File "renpy/execution.py", line 710, in lookup_return
-    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
-Exception: Could not find return label (u'game/PointNClickScreens.rpy', 1633083314, 14).
+  File "game/script.rpy", line 3242, in script call
+    call screen supermarket
+  File "game/Point and Click/Supermarket.rpy", line 102, in script
+    if flapBtnShown:
+  File "renpy/ast.py", line 1852, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2249, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2242, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/Point and Click/Supermarket.rpy", line 102, in <module>
+    if flapBtnShown:
+NameError: name 'flapBtnShown' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 Quarantine Life 1.0
-Sat Oct  2 19:47:18 2021
+Tue Oct  5 21:13:03 2021
