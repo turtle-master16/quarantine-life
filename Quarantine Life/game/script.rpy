@@ -485,12 +485,15 @@ label newnormal(fr_escape=False):
 
     plt "(The new normal… I wonder what’s in store for me.)"
 
+    call timeskip("bg bedroom back evening")
     call updateDate("June 2020, Week 2 | 06:00 PM, Bedroom | GCQ")
 
     plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
 
     $ itemselected = itemchoices["Reset"]
     scene bg livingroom back onlayer background
+    with fade
+
     jump workprep
 
 label commuting:
@@ -2705,9 +2708,6 @@ label workprep:
     if not(onhand['sanitizer'] and onhand['faceshield'] and onhand['wallet'] and onhand['facemask']):
         call screen workprep
         jump workprep
-
-    # DATE: MAY 2020, 7:00 pm, week 1, bed room, GCQ
-    call updateDate("May 2020, 7:00 pm, Week 1, Bed room, GCQ")
 
     plt "(Great. Now I have everything set, I am ready for tomorrow.)"
 
