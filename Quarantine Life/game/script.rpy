@@ -371,7 +371,7 @@ label quarantine:
 
     jump findActivity
 
-label newnormal():
+label newnormal:
     call timeskip("bg livingroom back")
     play music "audio/bgm/living room.mp3"
     call updateDate("May 2020, Week 1 | 11:00 AM, Living Room | ECQ")
@@ -829,7 +829,7 @@ label cookadobo:
 
             c "It’s delicious."
 
-            pl "Thank you. I try."
+            pl "Thank you. I did my best."
 
         jump princegoingout
 
@@ -893,6 +893,8 @@ label princegoingout:
     plt "(Is it just me or Prince seems disappointed?)"
 
     plt "(Maybe it’s best if I cheer him up.)"
+
+    jump princedisappointed
 
 label princedisappointed:
     call timeskip("bg bedroom back")
@@ -2323,171 +2325,6 @@ label getcaught:
         "Return to main menu":
             stop sound fadeout 0.2
             jump proceed
-
-label bros:
-    call timeskip("bg livingroom back evening tvon")
-    show prince happy onlayer middle:
-        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.91
-    with dissolve
-
-    pr "That was fun. Thanks for spending time with me."
-
-    pl "No problem. If you ever get bored I’m here for you."
-
-    show prince embarrased onlayer middle:
-        subpixel True xpos 0.45 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.98 rotate None
-
-    pr "Thanks."
-
-    scene black onlayer background
-    with dissolve
-    stop music fadeout 2.0
-    play music "audio/bgm/good end.mp3" fadeout 2.0 #temp
-
-    centered "{color=#0f0}{b}End{/b}{/color}"
-
-    menu:
-        "Choose another route":
-            centered "You will now be returned to a previous decision point..."
-            stop sound fadeout 2.0
-
-            jump project
-
-        "Return to main menu":
-            stop sound fadeout 0.2
-            jump proceed
-
-label falsealarm:
-    scene bg livingroom back evening onlayer background
-
-    show carla mad onlayer middle:
-        xpos 1.1 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
-
-    show prince angry onlayer middle:
-        xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0
-
-    pl "I’m sure nothing bad will happen. There are no reports of COVID patients in our area anyway, so why not let him go to his classmate's house? It is for a school project after all."
-
-    show carla thinking onlayer middle:
-        xpos 1.12 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
-
-    c "If it’s for a school project, maybe I can allow you to go."
-
-    show prince happy2 onlayer middle
-
-    pr "Really?"
-
-    show carla mad onlayer middle
-
-    c "But just this once. And I want you back home before dark."
-
-    show prince happy2 at bounce, left onlayer middle
-
-    pr "I will. Thank you."
-
-    call timeskip("bg bedroom back")
-
-    stop music
-
-    pl "Hey Prince. Are you ok? You haven’t left your room all day."
-
-    show prince sick onlayer middle:
-        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
-    with dissolve
-
-    play music "audio/bgm/suspense.mp3"
-
-    pr "[player_name], I don’t feel so good."
-
-    pl "You’re burning up. I’ll go get mom."
-
-    call timeskip("bg bedroom back")
-
-    play sound "audio/runstep.wav"
-    $ renpy.pause(0.5)
-    stop sound
-    play sound "audio/door close.wav"
-
-    show carla sigh onlayer middle:
-        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
-    with dissolve
-
-    c "This is what I’m afraid of. We need to get you to the clinic right away."
-
-    pl "I’ve read some articles related to the virus, having a fever is just a mild to minor symptom that can be cured at home."
-
-    pl "We have to isolate Prince in a separate room and pay special attention if he’s at risk for serious illness. We have to make sure he’s well rested and hydrated."
-
-    pl "And to reduce the virus, we have to wear a face mask if we’re in the same room as the sick person; separate eating utensils and bedding; we should also clean and disinfect the surfaces that he frequently touched."
-
-    c "If that’s the case, we need to stock up some supplies, some regular medicine, medical masks and disinfectants. We have to get out contacts ready if something bad happens."
-
-    c "Make sure to get health information like doctors, hotlines, emergency numbers, health centers or facilities. Include family or friends to the contact list."
-
-    pl "I’ll go get the supplies."
-
-    stop music
-
-    call timeskip("bg bedroom back")
-    play music "audio/bgm/living room.mp3"
-
-    show prince stretch at left onlayer middle:
-        xzoom -1
-
-    with dissolve
-
-    pr "I feel better already. Thank you for looking after me."
-
-    show carla thinking onlayer middle:
-        xpos 1.04 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
-    with dissolve
-
-    c "As it turns out, it was just a mild flu and managed to recover within a week."
-
-    pl "COVID and flu do have similar symptoms."
-
-    show carla mad onlayer middle
-
-    c "COVID or mild flu, we still need to be careful. From now on we practice good healthy habits, and that means no more staying up late, drinking plenty of fluids and eating nutritious food."
-
-    c "And it wouldn’t hurt to exercise instead of sitting all day playing video games."
-
-    "{color=#0033a9}Prince{/color} {color=#fff}&{/color} {color=#ffa500}[player_name]{/color}" "Yes mom."
-
-    call timeskip("bg front house")
-
-    play music "audio/bgm/outside.mp3"
-
-    pl "Come on Prince. We barely even started and yet you’re already sweating this much."
-
-    show prince angry onlayer middle
-    with dissolve
-
-    pr "I can’t… I haven’t been doing any physical activities… Give me a break."
-
-    pl "You have to exercise if you wanna be healthy. Besides, it’s only been 20 minutes."
-
-    show prince slouch onlayer middle
-
-    pr "The most exercise I get in a day is walking around the house… Oh jeez."
-
-    scene black onlayer background
-    with dissolve
-    play music "audio/bgm/good end.mp3"
-    centered "{color=#fff}{b} End {/b}{/color}"
-
-    menu:
-        "Choose another route":
-            centered "You will now be returned to the previous decision point..."
-            stop music fadeout 2.0
-
-            jump project
-
-        "Return to main menu":
-            stop music fadeout 0.2
-            jump proceed
-
-    jump proceed
 
 label jlend:
     call timeskip("bg kitchen")
