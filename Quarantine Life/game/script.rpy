@@ -50,11 +50,10 @@ label start(retmode=False):
         if not player_name:
              player_name = "Coby"
 
-
         if player_name != "xc@lu@g99":
             renpy.jump("start.mainstart")
 
-    define player_name = "Coby"
+    default player_name = "Coby"
 
     call screen testmode
 
@@ -367,7 +366,7 @@ label quarantine:
 
     jump livingroomact
 
-label newnormal(fr_escape=False):
+label newnormal():
     call timeskip("bg livingroom back")
     play music "audio/bgm/living room.mp3"
     call updateDate("May 2020, Week 1 | 11:00 AM, Living Room | ECQ")
@@ -685,7 +684,7 @@ label home:
 
             c "You need to buy the exact number of groceries worth 200.00, including the items on the list"
 
-            jump supermarket
+            jump intro_to_supermarket
 
         "Just smile and say nothing":
             show carla happy onlayer middle
@@ -718,6 +717,20 @@ label home:
             c "Very well. I’ll be in the living room if you need me."
 
             jump cookadobo
+
+label intro_to_supermarket:
+    scene bg supermarket onlayer background
+    call updateDate("July 2020, Week 4 | 03:00 PM, Grocery Store | GCQ")
+
+    pl "I’m here. Now let’s check the items on the list."
+
+    pl "I have to do is complete the list and spend all 200.00 worth of grocery
+        items."
+
+    $ currentScreen = "supermarket"
+    show screen instruction
+
+    jump supermarket
 
 label cookadobo:
     call timeskip("bg kitchen")
@@ -3067,233 +3080,23 @@ label escaperoom:
         call screen escaperoom
 
 label supermarket:
-    call timeskip("bg supermarket")
-    play music "audio/bgm/Fluffy Days.mp3" fadein 2.0
-    call updateDate("July 2020, Week 4 | 03:00 PM, Grocery Store | GCQ")
+    $ showFlapButtons()
+    call screen supermarket
+    jump supermarket
+    label .shop_win_conditions:
+        if not(hasAcquiredNeedItems()):
+            pl "I still have some missing items from the list."
+            jump supermarket
+        elif getCost() < 200:
+            pl "I still have some money to spare."
+            jump supermarket
+        elif getCost() > 200:
+            pl "I’m out of budget. I need to remove some items."
+            jump supermarket
 
-    pl "I’m here. Now let’s check the items on the list."
-
-    pl "All I have to do is complete the list and spend all 200.00 worth of grocery items."
-
-    plt "(So this is everything I need to buy.)"
-
-    $ renpy.block_rollback()
-
-    "List" "-Face Mask (1x){space=40}-Toilet Paper (3x)\n-Red Can (2x){space=53}-Green Can (2x)"
-
-    "{color=#0f0}Tap on the items you want to take. Be sure to keep track of how many of that item you have.{/color}"
-
-    "{color=#0f0}Tap on the arrow that will appear on the right when you're done shopping.{/color}"
-
-    show screen escapetimer(game="mart")
-
-    label .maingame(done=False):
-        if done:
-            plt "Is this everything I need?"
-            menu:
-                "Yes":
-                    plt "(I think I have everything I need. Time to pay for these goods and head home.)"
-
-                    jump .results
-                "No":
-                    plt "(I think I’m missing something. I should double check.)"
-
-        call screen supermarket
-
-    label .item_take(item=0):
-        if item == 1:
-            if mart_item_count["facemask"] == 0:
-                plt "(Boxes of facemasks. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["facemask"] = mart_item_count["facemask"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Boxes of facemasks. Should I take another or return one?)"
-                menu:
-                    "Take another.":
-                        $ mart_item_count["facemask"] = mart_item_count["facemask"] + 1
-                    "Return one.":
-                        $ mart_item_count["facemask"] = mart_item_count["facemask"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 2:
-            if mart_item_count["toiletpaper"] == 0:
-                plt "(Toilet Paper rolls. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["toiletpaper"] = mart_item_count["toiletpaper"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Toilet paper rolls. Should I take another or return one?)"
-                menu:
-                    "Take another.":
-                        $ mart_item_count["toiletpaper"] = mart_item_count["toiletpaper"] + 1
-                    "Return one.":
-                        $ mart_item_count["toiletpaper"] = mart_item_count["toiletpaper"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 3:
-            if mart_item_count["redcan"] == 0:
-                plt "(Red cans. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["redcan"] = mart_item_count["redcan"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Red cans. Should I take another or return one?)"
-                menu:
-                    "Take another":
-                        $ mart_item_count["redcan"] = mart_item_count["redcan"] + 1
-                    "Return one":
-                        $ mart_item_count["redcan"] = mart_item_count["redcan"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 4:
-            if mart_item_count["greencan"] == 0:
-                plt "(Green cans. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["greencan"] = mart_item_count["greencan"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Green cans. Should I take another or return one?)"
-                menu:
-                    "Take another.":
-                        $ mart_item_count["greencan"] = mart_item_count["greencan"] + 1
-                    "Return one.":
-                        $ mart_item_count["greencan"] = mart_item_count["greencan"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 5:
-            if mart_item_count["orangecan"] == 0:
-                plt "(Orange cans. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["orangecan"] = mart_item_count["orangecan"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Orange cans. Should I take another or return one?)"
-                menu:
-                    "Take another.":
-                        $ mart_item_count["orangecan"] = mart_item_count["orangecan"] + 1
-                    "Return one.":
-                        $ mart_item_count["orangecan"] = mart_item_count["orangecan"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 6:
-            if mart_item_count["browncan"] == 0:
-                plt "(Brown cans. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["browncan"] = mart_item_count["browncan"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Brown cans. Should I take another or return one?)"
-                menu:
-                    "Take another.":
-                        $ mart_item_count["browncan"] = mart_item_count["browncan"] + 1
-                    "Return one.":
-                        $ mart_item_count["browncan"] = mart_item_count["browncan"] - 1
-                    "Nevermind":
-                        pass
-        elif item == 7:
-            if mart_item_count["yellowcan"] == 0:
-                plt "(Yellow cans. Should I take one?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["yellowcan"] = mart_item_count["yellowcan"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(Yellow cans. Should I take another or return one?)"
-                menu:
-                    "Take another":
-                        $ mart_item_count["yellowcan"] = mart_item_count["yellowcan"] + 1
-                    "Return one":
-                        $ mart_item_count["yellowcan"] = mart_item_count["yellowcan"] - 1
-                    "No":
-                        pass
-        elif item == 8:
-            if mart_item_count["hygiene"] == 0:
-                plt "(There are hygiene supplies here. Should I take some?)"
-                menu:
-                    "Yes":
-                        $ mart_item_count["hygiene"] = mart_item_count["hygiene"] + 1
-                    "No":
-                        pass
-            else:
-                plt "(There are hygiene supplies here. Should I take more or return some?)"
-                menu:
-                    "Take some more":
-                        $ mart_item_count["hygiene"] = mart_item_count["hygiene"] + 1
-                    "Return some":
-                        $ mart_item_count["hygiene"] = mart_item_count["hygiene"] - 1
-                    "Nevermind":
-                        pass
-        jump .maingame
-
-    label .results():
-        call timeskip("bg livingroom back afternoon")
-        play music "audio/bgm/living room.mp3"
-        call updateDate("July 2020, Week 4 | 04:00 PM, Grocery Store | GCQ")
-
-        $ renpy.block_rollback()
-
-        $ sum = 0;
-        python:
-            for item in mart_item_count:
-                sum = sum + mart_item_count[item]
-
-        if sum > 8:
-            pl "I’m home."
-
-            show carla thinking onlayer middle:
-                subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84 rotate None
-            with dissolve
-
-            c "It seems like you bought additional items by mistake."
-
-            pl "I did?"
-
-            show carla sigh onlayer middle
-
-            c "It’s fine. I’ll go take care of these."
-        elif sum < 8:
-            pl "I’m back."
-
-            show carla happy onlayer middle:
-                xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
-            with dissolve
-
-            c "Welcome back"
-
-            show carla sigh onlayer middle
-
-            c "It looks like you missed some of the things in the list."
-
-            pl "I didn’t? Huh. I guess I forgot."
-
-            c "It’s fine, I do appreciate that you decided to help. You go ahead and rest, I’ll store these away and start cooking dinner."
-
-        elif sum == 8 and mart_item_count["facemask"] == 1 and mart_item_count["redcan"] == 2 and mart_item_count["toiletpaper"] == 3:
-            pl "I’m back. I bought everything on the list."
-
-            show carla happy onlayer middle:
-                xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
-            with dissolve
-
-            c "Thank you for helping me, you can go rest while I store these away."
-
-            pl "You’re welcome, mom. I’m glad I could help."
-
-        jump princegoingout
+    pl "I have everything I need. Time to check out."
+    $ renpy.hide_screen("flapButton")
+    jump princegoingout
 
 # Temporary Event ~ Sends player back to main menu upon jumping here
 label proceed:

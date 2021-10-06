@@ -21,9 +21,9 @@ screen escapetimer(game="escape"):
     timer 60.0 action [Call("timeout", game), Hide("escapetimer")]
 
 # Utility Labels & Screens ---------------------------
-label timeout():
-    $ renpy.block_rollback()
+# label timeout():
+#     $ renpy.block_rollback()
 
-    plt "(I should check out these now, or I'll arrive home late. I need to catch dinner)"
+#     plt "(I should check out these now, or I'll arrive home late. I need to catch dinner)"
 
-    jump supermarket.results
+#     jump supermarket.results
