@@ -1,435 +1,19 @@
-Wed Oct  6 16:28:29 2021
+Wed Oct  6 16:43:34 2021
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
 
-Bootstrap to the start of init.init took 0.16s
-Early init took 0.02s
-Loader init took 0.05s
-Loading error handling took 0.04s
-Loading script took 3.46s
-Loading save slot metadata. took 0.30s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 39: expected statement.
-    <<<<<<< HEAD
-                ^
-
-File "game/script.rpy", line 40: expected statement.
-    =======
-          ^
-
-File "game/script.rpy", line 46: expected statement.
-    >>>>>>> parent of 5958723 (removing unneeded crap)
-                              ^
-
-File "game/script.rpy", line 2746: expected menuitem
-    call timeskip("bg bedroom back")
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Interface start took 0.90s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 7.3898370266s
-Resetting cache.
-Bootstrap to the start of init.init took 34.31s
-Early init took 0.00s
-Loader init took 0.06s
-Loading error handling took 0.04s
-Loading script took 1.13s
-Loading save slot metadata. took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 39: expected statement.
-    <<<<<<< HEAD
-                ^
-
-File "game/script.rpy", line 40: expected statement.
-    =======
-          ^
-
-File "game/script.rpy", line 46: expected statement.
-    >>>>>>> parent of 5958723 (removing unneeded crap)
-                              ^
-
-File "game/script.rpy", line 2746: expected menuitem
-    call timeskip("bg bedroom back")
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Interface start took 0.16s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 35.9598810673s
-Resetting cache.
-Bootstrap to the start of init.init took 36.15s
-Early init took 0.00s
-Loader init took 0.06s
-Loading error handling took 0.03s
-Loading script took 1.18s
-Loading save slot metadata. took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 39: expected statement.
-    <<<<<<< HEAD
-                ^
-
-File "game/script.rpy", line 40: expected statement.
-    =======
-          ^
-
-File "game/script.rpy", line 46: expected statement.
-    >>>>>>> parent of 5958723 (removing unneeded crap)
-                              ^
-
-File "game/script.rpy", line 2746: expected menuitem
-    call timeskip("bg bedroom back")
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Interface start took 0.17s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 37.8438739777s
-Resetting cache.
-Bootstrap to the start of init.init took 37.99s
-Early init took 0.00s
-Loader init took 0.06s
-Loading error handling took 0.03s
-Loading script took 1.14s
-Loading save slot metadata. took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 39: expected statement.
-    <<<<<<< HEAD
-                ^
-
-File "game/script.rpy", line 40: expected statement.
-    =======
-          ^
-
-File "game/script.rpy", line 46: expected statement.
-    >>>>>>> parent of 5958723 (removing unneeded crap)
-                              ^
-
-File "game/script.rpy", line 2746: expected menuitem
-    call timeskip("bg bedroom back")
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Interface start took 0.16s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 39.6348760128s
-Resetting cache.
-Bootstrap to the start of init.init took 39.78s
-Early init took 0.00s
-Loader init took 0.06s
-Loading error handling took 0.03s
-Loading script took 1.14s
-Loading save slot metadata. took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 39: expected statement.
-    <<<<<<< HEAD
-                ^
-
-File "game/script.rpy", line 40: expected statement.
-    =======
-          ^
-
-File "game/script.rpy", line 46: expected statement.
-    >>>>>>> parent of 5958723 (removing unneeded crap)
-                              ^
-
-File "game/script.rpy", line 2746: expected menuitem
-    call timeskip("bg bedroom back")
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Interface start took 0.15s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 41.418874979s
-Resetting cache.
-Bootstrap to the start of init.init took 43.09s
-Early init took 0.00s
-Loader init took 0.06s
-Loading error handling took 0.04s
-Loading script took 1.41s
-Loading save slot metadata. took 0.05s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 39: expected statement.
-    <<<<<<< HEAD
-                ^
-
-File "game/script.rpy", line 40: expected statement.
-    =======
-          ^
-
-File "game/script.rpy", line 46: expected statement.
-    >>>>>>> parent of 5958723 (removing unneeded crap)
-                              ^
-
-File "game/script.rpy", line 2746: expected menuitem
-    call timeskip("bg bedroom back")
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Interface start took 0.37s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 45.2958769798s
-Resetting cache.
-Bootstrap to the start of init.init took 66.22s
-Early init took 0.00s
-Loader init took 0.06s
-Loading error handling took 0.04s
-Loading script took 1.92s
-Loading save slot metadata. took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 2743: expected menuitem
-    call timeskip("bg bedroom back")
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Interface start took 0.18s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 68.6818780899s
-Resetting cache.
-Bootstrap to the start of init.init took 105.71s
-Early init took 0.00s
+Bootstrap to the start of init.init took 0.18s
+Early init took 0.01s
 Loader init took 0.07s
-Loading error handling took 0.03s
-Loading script took 1.51s
-Loading save slot metadata. took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 2748: expected menuitem
-    menu:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Interface start took 0.16s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 107.758876085s
-Resetting cache.
-Bootstrap to the start of init.init took 148.67s
-Early init took 0.00s
-Loader init took 0.06s
-Loading error handling took 0.03s
-Loading script took 2.19s
+Loading error handling took 0.05s
+Loading script took 2.51s
 Loading save slot metadata. took 0.04s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.44s
-Loading analysis data took 0.00s
-Analyze and compile ATL took 0.04s
+Running init code took 0.14s
+Loading analysis data took 0.08s
+Analyze and compile ATL took 0.02s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\kylel\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
 Dump and make backups. took 0.19s
@@ -439,19 +23,19 @@ Initial gc. took 0.07s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: "Couldn't load nvlib." (can be ignored)
-Creating interface object took 0.00s
+Creating interface object took 0.01s
 Cleaning stores took 0.00s
 Init translation took 0.10s
 Build styles took 0.01s
-Load screen analysis took 0.02s
-Analyze screens took 0.10s
-Save screen analysis took 0.19s
-Prepare screens took 0.48s
+Load screen analysis took 0.00s
+Analyze screens took 0.04s
+Save screen analysis took 0.21s
+Prepare screens took 0.28s
 Save pyanalysis. took 0.34s
-Save bytecode. took 0.03s
+Save bytecode. took 0.07s
 Running _start took 0.01s
 Performance test:
-Interface start took 0.11s
+Interface start took 0.25s
 
 Initializing gl renderer:
 primary display bounds: (0, 0, 1440, 900)
@@ -478,263 +62,14 @@ Texture testing:
 Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 153.320417881s
-
-Full traceback:
-  File "game/script.rpy", line 41, in script
-    jump project
-  File "renpy/ast.py", line 1711, in execute
-    rv = renpy.game.script.lookup(target)
-  File "renpy/script.py", line 910, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'project'.
-
-While running game code:
-  File "game/script.rpy", line 41, in script
-    jump project
-ScriptError: could not find label 'project'.
-Resetting cache.
-Bootstrap to the start of init.init took 193.75s
-Early init took 0.00s
-Loader init took 0.07s
-Loading error handling took 0.03s
-Loading script took 1.18s
-Loading save slot metadata. took 0.05s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.08s
-Loading analysis data took 0.08s
-Analyze and compile ATL took 0.01s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\kylel\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
-Dump and make backups. took 0.18s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.10s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Creating interface object took 0.00s
+Total time until interface ready: 6.73292613029s
 Cleaning stores took 0.00s
-Init translation took 0.10s
+Init translation took 0.00s
 Build styles took 0.01s
-Load screen analysis took 0.00s
-Analyze screens took 0.04s
-Save screen analysis took 0.20s
-Prepare screens took 0.25s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.02s
-Running _start took 0.01s
-Performance test:
-Interface start took 0.09s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 196.47142005s
-
-Full traceback:
-  File "game/script.rpy", line 2704, in script call
-    call hideStuff('faceshield', location='livingroom')
-  File "game/Point and Click/PnC Utilities.rpy", line 30, in script
-    label hideStuff(item, room, isState=False):
-  File "renpy/ast.py", line 863, in execute
-    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
-  File "renpy/ast.py", line 159, in apply_arguments
-    return parameters.apply(args, kwargs, ignore_errors)
-  File "renpy/ast.py", line 123, in apply
-    raise Exception("Required parameter %s has no value." % name)
-Exception: Required parameter room has no value.
-
-While running game code:
-  File "game/script.rpy", line 2704, in script call
-    call hideStuff('faceshield', location='livingroom')
-  File "game/Point and Click/PnC Utilities.rpy", line 30, in script
-    label hideStuff(item, room, isState=False):
-Exception: Required parameter room has no value.
-Resetting cache.
-Bootstrap to the start of init.init took 248.17s
-Early init took 0.00s
-Loader init took 0.07s
-Loading error handling took 0.02s
-Loading script took 1.30s
-Loading save slot metadata. took 0.10s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.09s
-Loading analysis data took 0.08s
-Analyze and compile ATL took 0.01s
-Index archives took 0.00s
-Backing up script files to 'C:\\Users\\kylel\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
-Dump and make backups. took 0.17s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.11s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.10s
-Build styles took 0.01s
-Load screen analysis took 0.00s
-Analyze screens took 0.04s
-Save screen analysis took 0.22s
-Prepare screens took 0.27s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.03s
-Running _start took 0.01s
-Performance test:
-Interface start took 0.11s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 251.11241889s
-
-Full traceback:
-  File "game/script.rpy", line 2704, in script call
-    call hideStuff('faceshield', room='livingroom')
-  File "game/Point and Click/PnC Utilities.rpy", line 30, in script
-    label hideStuff(item, room, isState=False):
-  File "renpy/ast.py", line 863, in execute
-    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
-  File "renpy/ast.py", line 159, in apply_arguments
-    return parameters.apply(args, kwargs, ignore_errors)
-  File "renpy/ast.py", line 123, in apply
-    raise Exception("Required parameter %s has no value." % name)
-Exception: Required parameter room has no value.
-
-While running game code:
-  File "game/script.rpy", line 2704, in script call
-    call hideStuff('faceshield', room='livingroom')
-  File "game/Point and Click/PnC Utilities.rpy", line 30, in script
-    label hideStuff(item, room, isState=False):
-Exception: Required parameter room has no value.
-Resetting cache.
-Bootstrap to the start of init.init took 261.72s
-Early init took 0.00s
-Loader init took 0.10s
-Loading error handling took 0.05s
-Loading script took 1.08s
-Loading save slot metadata. took 0.19s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.27s
-Loading analysis data took 0.16s
-Analyze and compile ATL took 0.04s
-Index archives took 0.00s
-Dump and make backups. took 0.68s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.20s
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: "Couldn't load nvlib." (can be ignored)
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.16s
-Build styles took 0.01s
-Load screen analysis took 0.08s
+Load screen analysis took 0.06s
 Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.41s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.17s
-
-Initializing gl renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon HD 8370D'
-Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
-Display Info: None
-Number of texture units: 18
-Using shader environment.
-Using FBO RTT.
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Using gl renderer.
-Texture testing:
-- Hardware max texture size: 16384
-- 64px textures work.
-- 128px textures work.
-- 256px textures work.
-- 512px textures work.
-- 1024px textures work.
-- 2048px textures work.
-Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-Total time until interface ready: 265.593420982s
-
-Full traceback:
-  File "game/script.rpy", line 2704, in script call
-    call hideStuff('faceshield', room='livingroom')
-  File "game/Point and Click/PnC Utilities.rpy", line 30, in script
-    label hideStuff(item, room, isState=False):
-  File "renpy/ast.py", line 863, in execute
-    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
-  File "renpy/ast.py", line 159, in apply_arguments
-    return parameters.apply(args, kwargs, ignore_errors)
-  File "renpy/ast.py", line 123, in apply
-    raise Exception("Required parameter %s has no value." % name)
-Exception: Required parameter room has no value.
-
-While running game code:
-  File "game/script.rpy", line 2704, in script call
-    call hideStuff('faceshield', room='livingroom')
-  File "game/Point and Click/PnC Utilities.rpy", line 30, in script
-    label hideStuff(item, room, isState=False):
-Exception: Required parameter room has no value.
+Prepare screens took 0.00s
+Running _start took 0.01s
 Cleaning stores took 0.00s
 Init translation took 0.00s
 Build styles took 0.01s
@@ -742,3 +77,64 @@ Load screen analysis took 0.05s
 Analyze screens took 0.00s
 Prepare screens took 0.00s
 Running _start took 0.01s
+Resetting cache.
+Bootstrap to the start of init.init took 407.75s
+Early init took 0.00s
+Loader init took 0.07s
+Loading error handling took 0.08s
+Loading script took 3.77s
+Loading save slot metadata. took 0.11s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.25s
+Loading analysis data took 0.12s
+Analyze and compile ATL took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\kylel\\AppData\\Roaming/RenPy/backups\\Quarantine Life':
+Dump and make backups. took 0.21s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.13s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: "Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.12s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.04s
+Save screen analysis took 0.23s
+Prepare screens took 0.24s
+Save pyanalysis. took 0.32s
+Save bytecode. took 0.03s
+Running _start took 0.01s
+Performance test:
+Interface start took 0.10s
+
+Initializing gl renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'ATI Technologies Inc.'
+Renderer: 'AMD Radeon HD 8370D'
+Version: '4.5.13399 Compatibility Profile Context 15.201.1151.1008'
+Display Info: None
+Number of texture units: 18
+Using shader environment.
+Using FBO RTT.
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Using gl renderer.
+Texture testing:
+- Hardware max texture size: 16384
+- 64px textures work.
+- 128px textures work.
+- 256px textures work.
+- 512px textures work.
+- 1024px textures work.
+- 2048px textures work.
+Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Total time until interface ready: 413.913101196s
