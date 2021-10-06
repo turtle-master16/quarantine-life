@@ -36,14 +36,11 @@ label start(retmode=False):
     scene black
     stop music
 
-<<<<<<< HEAD
-=======
     #### Test Jumps Start
     $ renpy.hide_screen("returnbutton")
-    jump project
+    # jump project
     #### Test Jumps End
 
->>>>>>> parent of 5958723 (removing unneeded crap)
     if retmode:
         call hide_phone_messages
         call screen testmode
@@ -372,7 +369,7 @@ label quarantine:
     ins "TASK: Find something to do."
     ins "Click the arrow to switch and select object to interact with them."
 
-    jump livingroomact
+    jump findActivity
 
 label newnormal():
     call timeskip("bg livingroom back")
@@ -2704,17 +2701,17 @@ label mcend:
 label workprep:
     if currentRoom == ROOMS['livingroom']:
         scene bg livingroom back
-        call hideStuff('faceshield', location='livingroom')
-        call hideStuff('bedkey', location='livingroom')
+        call hideStuff('faceshield', room='livingroom')
+        call hideStuff('bedkey', room='livingroom')
     elif currentRoom == ROOMS['bedroom']:
         scene bg bedroom back
-        call hideStuff("wallet", location='bedroom')
+        call hideStuff("wallet", room='bedroom')
         call hideStuff('draweropen', 'bedroom', isState=True)
         call hideStuff('boxclosed', 'bedroom', isState=True)
 
     elif currentRoom == ROOMS['kitchen']:
         scene bg kitchen
-        call hideStuff('sanitizer', location='kitchen')
+        call hideStuff('sanitizer', room='kitchen')
 
     if not(onhand['sanitizer'] and onhand['faceshield'] and onhand['wallet'] and onhand['facemask']):
         call screen workprep
@@ -2724,368 +2721,183 @@ label workprep:
 
     jump commuting
 
-label livingroomact:
+label findActivity:
     # Choices: (A = Watch TV) (B = Return to Point & Click)
     if(not renpy.music.is_playing()):
         play music "audio/bgm/living room.mp3"
 
+    call screen findActivity()
+
     scene bg livingroom back onlayer background
 
-    if itemselected == itemchoices["A"]:
-        $all_moves(camera_check_points={'y': [(0, 0, None), (916, 0.5, 'linear')], 'x': [(0, 0, None), (4156, 0.5, 'linear')], 'z': [(0, 0, None), (961, 0.5, 'linear')]})
+    if _return == 'tv':
+        plt "(I have nothing else to do right now. Maybe I should binge watch some of my favorite TV series.)"
 
-        menu:
-            "Watch TV.":
-                $all_moves(camera_check_points={'y': [(916, 0, None), (0, 0.5, 'linear')], 'x': [(4156, 0, None), (0, 0.5, 'linear')], 'z': [(961, 0, None), (0, 0.5, 'linear')]})
-
-                pl " I have nothing else to do right now. Maybe I should binge watch some of my favorite TV series."
-
-            "Find other activities.":
-                plt "(Maybe I'll try something else.)"
-
-                $all_moves(camera_check_points={'y': [(916, 0, None), (0, 0.5, 'linear')], 'x': [(4156, 0, None), (0, 0.5, 'linear')], 'z': [(961, 0, None), (0, 0.5, 'linear')]})
-
-                $ itemselected = itemchoices["Reset"]
-                jump livingroomact
-
-        jump newnormal
-
-    elif itemselected == itemchoices["B"]:
-        $ itemselected = itemchoices["Reset"]
+    elif _return == 'phone':
         scene bg bedroom back onlayer background
-        with wipeleft
+        plt "I’ve been hearing a lot of COVID related news, but so far I only know that one of the symptoms of the virus is difficulty in breathing and fever."
 
-        jump bedroomact
+        plt "I should look up for more Coronavirus information, just to be sure."
 
-    call screen livingroomact
-    # Miscellaneous dialog
-    label .misc_item_dialog(item):
-        if item == 1:
-            plt "(Our floor mat.)"
+        call timeskip("bg bedroom back")
 
-            plt "(It's quite impressive that it still looks new even though we bought it a long time ago.)"
-        elif item == 2:
-            plt "(It's Prince's and my coffee mug.)"
-
-            plt "(I would go for a cup of Joe right now if it weren't so hot.)"
-        elif item == 3:
-            plt "(Our very own comfy couch.)"
-
-        elif item == 4:
-            plt "(A mirror.)"
-
-            plt "(I look a bit pale. Maybe it's the effect of being stuck at home for a long time.)"
-
-        elif item == 5:
-            plt "(A beautiful day outside...)"
-
-            plt "(It's a shame we're not allowed to go out to take a walk or something.)"
-
-        $ renpy.pop_call()
-
-        jump livingroomact
-
-label bedroomact:
-    # Choices: (A = Take a nap) (B = Use Phone) (C = Exercise) (D = Return to Point & Click)
-    scene bg bedroom back onlayer background
-
-    if(itemselected == itemchoices["A"]):
-        $all_moves(camera_check_points={'y': [(0, 0, None), (1933, 0.5, 'linear')], 'x': [(0, 0, None), (-1537, 0.5, 'linear')], 'z': [(0, 0, None), (778, 0.5, 'linear')]}, focus_check_points={'dof': [(9999999, 0, None), (624, 0.5, 'linear')]})
+        "{color=#555555}{b}QUESTION #1{/b}{/color}" "2019-nCov or novel coronavirus is caused by the virus _____?"
 
         menu:
-            "Take a nap":
+            "A. SARS-Cov-2":
+                "{color=#555555}{b}QUESTION #1{/b}{/color}" "Correct!"
+                $ correctans = correctans + 1
+            "B. MARS-Cov-2":
+                "{color=#555555}{b}QUESTION #1{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: A. SARS-Cov-2{/color}"
+            "C. SARS-Com-3":
+                "{color=#555555}{b}QUESTION #1{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: A. SARS-Cov-2{/color}"
 
-                plt "(Ugh. Everything is so boring, nothing else to do and we have to do this for who knows how long.)"
-
-                pl "I think I'll just lay down and take a nap."
-
-                scene bg bedroom left onlayer background
-                with fade
-
-                play sound "audio/phone vibrate.wav"
-
-                pl "Huh? Who could that be?"
-
-                pl "Oh, it’s dad. It’s been a while since we last talked. I should answer his call."
-
-                "Dad" "Hey kiddo, glad you picked up. How are you doing?"
-
-                pl "I’m doing fine dad. How’s things over your side?"
-
-                "Dad" " I’m doing well. Fortunately, I haven’t lost my job to the COVID pandemic."
-
-                "Dad" "I heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
-
-                pl "Yeah, there are around 13,000 OFW returning this month. It’s sad."
-
-                pl "After their arrival they are required to undergo a 14-day facility-based quarantine."
-
-                "Dad" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
-
-                pl "The house has become livelier than ever now that we have to stay home 24/7."
-
-                "Dad" "Don't drive your mom too crazy with your antics."
-
-                pl "No promises. Let me tell you that one time when Prince got mad over a video game..."
-
-                jump newnormal
-
-            "Find other activities":
-                plt "(I want to try something more productive this time. Sorry bed...)"
-
-                $all_moves(camera_check_points={'y': [(1933, 0, None), (0, 0.5, 'linear')], 'x': [(-1537, 0, None), (0, 0.5, 'linear')], 'z': [(778, 0, None), (0, 0.5, 'linear')]})
-
-                $ itemselected = itemchoices["Reset"]
-                jump bedroomact
-
-    elif itemselected == itemchoices["B"]:
-        $all_moves(camera_check_points={'y': [(0, 0, None), (49, 0.5, 'linear')], 'x': [(0, 0, None), (-3243, 0.5, 'linear')], 'z': [(0, 0, None), (1087, 0.5, 'linear')]}, focus_check_points={'dof': [(624, 0, None), (505, 0.5, 'linear')]})
+        "{color=#555555}{b}QUESTION #2{/b}{/color}" "\“CO\“ in COVID-19 stands for corona, \“VI\” for virus and \“D\” is for what?"
 
         menu:
-            "Use your phone.":
-                pl "I’ve been hearing a lot of COVID related news, but so far I only know that one of the symptoms of the virus is difficulty in breathing and fever."
+            "A. Distance":
+                "{color=#555555}{b}QUESTION #2{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Disease{/color}"
+            "B. Digest":
+                "{color=#555555}{b}QUESTION #2{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Disease{/color}"
+            "C. Disease":
+                "{color=#555555}{b}QUESTION #2{/b}{/color}" "Correct!"
+                $ correctans = correctans + 1
 
-                pl "I should look up for more Coronavirus information, just to be sure."
-
-                call timeskip("bg bedroom back")
-
-                "{color=#555555}{b}QUESTION #1{/b}{/color}" "2019-nCov or novel coronavirus is caused by the virus _____?"
-
-                menu:
-                    "A. SARS-Cov-2":
-                        "{color=#555555}{b}QUESTION #1{/b}{/color}" "Correct!"
-                        $ correctans = correctans + 1
-                    "B. MARS-Cov-2":
-                        "{color=#555555}{b}QUESTION #1{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: A. SARS-Cov-2{/color}"
-                    "C. SARS-Com-3":
-                        "{color=#555555}{b}QUESTION #1{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: A. SARS-Cov-2{/color}"
-
-                "{color=#555555}{b}QUESTION #2{/b}{/color}" "\“CO\“ in COVID-19 stands for corona, \“VI\” for virus and \“D\” is for what?"
-
-                menu:
-                    "A. Distance":
-                        "{color=#555555}{b}QUESTION #2{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Disease{/color}"
-                    "B. Digest":
-                        "{color=#555555}{b}QUESTION #2{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Disease{/color}"
-                    "C. Disease":
-                        "{color=#555555}{b}QUESTION #2{/b}{/color}" "Correct!"
-                        $ correctans = correctans + 1
-
-                "{color=#555555}{b}QUESTION #3{/b}{/color}" "COVID-19 can spread by coughs or ____ that is generated by an infected person."
-
-                menu:
-                    "A. Sweat":
-                        "{color=#555555}{b}QUESTION #3{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Sneezes{/color}"
-                    "B. Urine":
-                        "{color=#555555}{b}QUESTION #3{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Sneezes{/color}"
-                    "C. Sneezes":
-                        "{color=#555555}{b}QUESTION #3{/b}{/color}" "Correct!"
-                        $ correctans = correctans + 1
-
-                "{color=#555555}{b}QUESTION #4{/b}{/color}" "To prevent and slow the transmission of COVID-19 infection, people should practice physical or social ____. "
-
-                menu:
-                    "A. Events":
-                        "{color=#555555}{b}QUESTION #4{/b}{/color}""{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: B. Distancing{/color}"
-                    "B. Distancing":
-                        "{color=#555555}{b}QUESTION #4{/b}{/color}""Correct!"
-                        $ correctans = correctans + 1
-                    "C. Media":
-                        "{color=#555555}{b}QUESTION #4{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: B. Distancing{/color}"
-
-                "{color=#555555}{b}QUESTION #5{/b}{/color}" "What should be worn to suppress the transmission of the coronavirus?"
-
-                menu:
-                    "A. Leather Jackets":
-                        "{color=#555555}{b}QUESTION #5{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Medical Masks{/color}"
-                    "B. Gas masks":
-                        "{color=#555555}{b}QUESTION #5{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Medical Masks{/color}"
-                    "C. Medical Masks":
-                        "{color=#555555}{b}QUESTION #5{/b}{/color}" "Correct!"
-                        $ correctans = correctans + 1
-
-                "You got [correctans] correct answers."
-
-                pl "Wow, I'm learning a lot today."
-
-                "TODO FEATURE" "Insert Achievement: {b}Quiz Master{/b}, here."
-
-                pl "There is so much information posted here. I need to keep myself updated."
-
-                jump newnormal
-
-            "Find other activities.":
-                plt "(On second thought, I always spend the whole day with my phone.)"
-
-                plt "(Maybe I should try something new.)"
-
-                $all_moves(camera_check_points={'y': [(49, 0, None), (0, 0.5, 'linear')], 'x': [(-3243, 0, None), (0, 0.5, 'linear')], 'z': [(1087, 0, None), (0, 0.5, 'linear')]})
-
-                $ itemselected = itemchoices["Reset"]
-
-                jump bedroomact
-
-    elif itemselected == itemchoices["C"]:
-
-        $all_moves(camera_check_points={'y': [(0, 0, None), (549, 0.5, 'linear')], 'x': [(0, 0, None), (2287, 0.5, 'linear')], 'z': [(0, 0, None), (687, 0.5, 'linear')]}, focus_check_points={'dof': [(505, 0, None), (1538, 0.5, 'linear')]})
+        "{color=#555555}{b}QUESTION #3{/b}{/color}" "COVID-19 can spread by coughs or ____ that is generated by an infected person."
 
         menu:
-            "Exercise":
-                scene bg bedroom back onlayer background
+            "A. Sweat":
+                "{color=#555555}{b}QUESTION #3{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Sneezes{/color}"
+            "B. Urine":
+                "{color=#555555}{b}QUESTION #3{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Sneezes{/color}"
+            "C. Sneezes":
+                "{color=#555555}{b}QUESTION #3{/b}{/color}" "Correct!"
+                $ correctans = correctans + 1
 
-                $all_moves(camera_check_points={'y': [(549, 0, None), (0, 0.5, 'linear')], 'x': [(2287, 0, None), (0, 0.5, 'linear')], 'z': [(687, 0, None), (0, 0.5, 'linear')]})
-                plt "(Alright, time to work hard and get my quarantine bod. Starting with simple stretches.)"
+        "{color=#555555}{b}QUESTION #4{/b}{/color}" "To prevent and slow the transmission of COVID-19 infection, people should practice physical or social ____. "
 
-                $all_moves(camera_check_points={'z': [(0, 0, None), (1000, 4.0, 'linear')]})
+        menu:
+            "A. Events":
+                "{color=#555555}{b}QUESTION #4{/b}{/color}""{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: B. Distancing{/color}"
+            "B. Distancing":
+                "{color=#555555}{b}QUESTION #4{/b}{/color}""Correct!"
+                $ correctans = correctans + 1
+            "C. Media":
+                "{color=#555555}{b}QUESTION #4{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: B. Distancing{/color}"
 
-                pl "One. Two. Three. Four. Five. Six. Seven. Eight. Next."
+        "{color=#555555}{b}QUESTION #5{/b}{/color}" "What should be worn to suppress the transmission of the coronavirus?"
 
-                $camera_move(0, 0, 0, 0, duration=0)
-                $focus_set(1000, duration=0)
-                $dof_set(9999999, duration=0)
+        menu:
+            "A. Leather Jackets":
+                "{color=#555555}{b}QUESTION #5{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Medical Masks{/color}"
+            "B. Gas masks":
+                "{color=#555555}{b}QUESTION #5{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Medical Masks{/color}"
+            "C. Medical Masks":
+                "{color=#555555}{b}QUESTION #5{/b}{/color}" "Correct!"
+                $ correctans = correctans + 1
 
-                $all_moves(camera_check_points={'z': [(1000, 0.0, 'linear'), (0, 4.0, 'linear')]})
+        "You got [correctans] correct answers."
 
-                pl "One. Two. Three. Four. Five. Six. Seven. Eight."
+        pl "Wow, I'm learning a lot today."
 
-                $camera_move(0, 0, 0, 0, duration=0)
-                $focus_set(1000, duration=0)
-                $dof_set(9999999, duration=0)
+        "TODO FEATURE" "Insert Achievement: {b}Quiz Master{/b}, here."
 
-                pl "Now for some jumping jacks."
+        pl "There is so much information posted here. I need to keep myself updated."
 
-                $all_moves(camera_check_points={'y': [(0, 0, None), (-756, 0.5, 'linear'), (-104, 1.0, 'linear')]}, y_loop=True)
-                pl "One. Two. Three. Four. Five. Six. Seven. Eight."
+        plt "Wow, I’m learning a lot today."
 
-                pl "Yeah! I can feel my body changing already. Quarantine bod here I come."
+        plt "There is so much information posted here. I need to keep myself updated."
 
-                call timeskip("bg livingroom back")
-                call updateDate("April 2020, Week 1 | 10:00 AM, Living Room | ECQ")
+    elif _return == 'bed':
+        scene bg bedroom back onlayer background
+        plt "(Ugh. Everything is so boring, nothing else to do and we have to do this for who knows how long.)"
 
-                play sound "audio/eating.mp3"
-                pl "*munch munch*"
+        plt "(I think I’ll just lay down and take a nap.)"
 
-                show prince talking1 onlayer middle
-                with dissolve
+        play sound "audio/phone ring.mp3"
 
-                pr "Weren’t you exercising not too long ago?"
+        "..."
 
-                pl "I got lazy. I’ll continue tomorrow."
+        stop sound
 
-                show prince confident onlayer middle
+        plt "Huh? Who could that be?"
 
-                pr "Sure. Whatever you say."
+        show phone onlayer middle at phone_pickup
+        $ renpy.pause(0.6)
 
-                jump newnormal
+        show screen phone_notif("images/phone/dad profile.png", "Dad")
 
-            "Find other activities":
-                plt "(Nah, not really feeling it today. I'll try something else)"
+        plt "Oh, it’s dad. It’s been a while since we last talked. I should answer his call."
 
-                $ itemselected = itemchoices["Reset"]
+        "Dad" "Hey kiddo, glad you picked up. How are you doing?"
 
-                $all_moves(camera_check_points={'y': [(549, 0, None), (0, 0.5, 'linear')], 'x': [(2287, 0, None), (0, 0.5, 'linear')], 'z': [(687, 0, None), (0, 0.5, 'linear')]})
+        pl "I’m doing fine dad. How’s things over your side?"
 
-                jump bedroomact
+        "Dad" "I’m doing good. Fortunately, I haven’t lost my job to the COVID pandemic. A heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
 
-    elif itemselected == itemchoices["D"]:
-        $ itemselected = itemchoices["Reset"]
+        pl "Yeah, there are around 13,000 OFW returning this month. It’s quite sad."
 
-        scene bg livingroom back onlayer background
-        with wiperight
+        pl "After their arrival they are required to undergo a 14-day facility-based quarantine."
 
-        jump livingroomact
+        "Dad" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
 
-    call screen bedroomact
-    # Miscellaneous dialog
-    label .misc_item_dialog(item):
-        if item == 1:
-            plt "(My old books. We have here psychology books, programming books, comic books, and a couple more.)"
+        pl "The house has become livelier than ever now that we have to stay home 24/7."
 
-            plt "(I used to read them a lot that I know them like the back of my hand.)"
+        "Dad" "Don’t drive your mom too crazy with your antics."
 
-        elif item == 2:
-            plt "(My bedroom mirror. )"
+        pl "No promises. Let me tell you that one time when Prince got mad over a video game..."
 
-            plt "(My hair is a bit of a mess. I'll comb it later.)"
-        elif item == 3:
-            plt "(My personal drawer. Nothing here except my clothes.)"
-        $ renpy.pop_call()
+        hide screen phone_notif
 
-        jump bedroomact
+        $ Hide("phone_call", transition=Dissolve(2.0))()
 
-label escaperoom:
-    if itemselected == itemchoices["A"] and not haskey:
-        hide screen escaperoom
+    elif _return == 'dumbells':
+        scene bg bedroom back onlayer background
+        plt "(Alright, time to work hard and get my quarantine bod. Starting with simple stretches.)"
 
-        if screenon == False:
-            menu:
-                "Read a book":
-                    "Code" "_ _ _ 9"
+        $all_moves(camera_check_points={'z': [(0, 0, None), (1000, 4.0, 'linear')]})
 
-                    $ itemselected = itemchoices["Reset"]
+        pl "One. Two. Three. Four. Five. Six. Seven. Eight. Next."
 
-                    jump escaperoom
+        $camera_move(0, 0, 0, 0, duration=0)
+        $focus_set(1000, duration=0)
+        $dof_set(9999999, duration=0)
 
-                "Check box":
-                    plt "(Looks like it needs a 4-digit code for it to open.)"
+        $all_moves(camera_check_points={'z': [(1000, 0.0, 'linear'), (0, 4.0, 'linear')]})
 
-                    $ screenon = True
+        pl "One. Two. Three. Four. Five. Six. Seven. Eight."
 
-                    call screen crypticbox
-        else:
-            call screen crypticbox
+        $camera_move(0, 0, 0, 0, duration=0)
+        $focus_set(1000, duration=0)
+        $dof_set(9999999, duration=0)
 
-        plt "(Looks like it needs a 4-digit code for it to open...)"
+        pl "Now for some jumping jacks."
 
-        $ itemselected = itemchoices["Reset"]
+        $all_moves(camera_check_points={'y': [(0, 0, None), (-756, 0.5, 'linear'), (-104, 1.0, 'linear')]}, y_loop=True)
+        pl "One. Two. Three. Four. Five. Six. Seven. Eight."
 
-    elif itemselected == itemchoices["B"]:
-        if haskey==True:
-            $ renpy.block_rollback()
-            play music "audio/bgm/living room.mp3"
-            hide screen escapetimer
-            hide screen escaperoom
+        pl "Yeah! I can feel my body changing already. Quarantine bod here I come."
 
-            scene black onlayer background
-            with Dissolve(2.0)
-            $ renpy.pause(2, hard=True)
-            scene bg bedroom left onlayer background
-            with Dissolve(2.0)
+        call timeskip("bg livingroom back afternoon")
 
-            plt "(That was a weird dream.)"
+        play sound "audio/eating.mp3"
+        pl "*munch munch*"
 
-            $ stk = renpy.call_stack_depth()
-            python:
-                while stk > 0:
-                    stk = stk - 1
-                    renpy.pop_call()
+        show prince talking1 onlayer middle
+        with dissolve
 
-            jump newnormal
+        pr "Weren’t you exercising not too long ago?"
 
-        else:
-            plt "(It's locked. What's going on?)"
+        pl "I got lazy. I’ll continue tomorrow."
 
-            window hide
+        show prince confident onlayer middle
 
-        $ itemselected =  itemchoices["Reset"]
+        pr "Suuure. Whatever you say."
+    else:
+        jump findActivity
 
-    call screen escaperoom
-    label .misc_item_dialog(itemno=0):
-        if(itemno == 1):
-            "Code" "_ _ _ 1"
-        elif(itemno == 2):
-            plt "(Now is not the time to exercise.)"
-        elif(itemno == 3):
-            "Code" "_ _ 2 _"
-        elif(itemno == 4):
-            "Code" "_ 0 _ _"
-        elif(itemno == 5):
-            plt "(It’s pitch black outside. I can’t see anything.)"
-        elif(itemno == 6):
-            "Code" "7 _ _ _"
-        elif(itemno == 7):
-            plt "(I just woke up. I don’t need to get back to bed.)"
-        call screen escaperoom
+    $ currentRoom = ROOMS['livingroom']
+    jump newnormal
 
 label supermarket:
     $ showFlapButtons()
