@@ -36,6 +36,14 @@ label start(retmode=False):
     scene black
     stop music
 
+<<<<<<< HEAD
+=======
+    #### Test Jumps Start
+    $ renpy.hide_screen("returnbutton")
+    jump project
+    #### Test Jumps End
+
+>>>>>>> parent of 5958723 (removing unneeded crap)
     if retmode:
         call hide_phone_messages
         call screen testmode
