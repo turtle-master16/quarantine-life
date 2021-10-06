@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 Wed Oct  6 15:04:08 2021
+=======
+Wed Oct  6 00:19:00 2021
+>>>>>>> parent of 5958723 (removing unneeded crap)
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
  
 
+<<<<<<< HEAD
 Bootstrap to the start of init.init took 0.15s
 Early init took 0.01s
 Loader init took 0.98s
@@ -20,11 +25,30 @@ Dump and make backups. took 0.53s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc. took 0.05s
+=======
+Bootstrap to the start of init.init took 0.17s
+Early init took 0.01s
+Loader init took 0.05s
+Loading error handling took 0.20s
+Loading script took 0.37s
+Loading save slot metadata. took 0.03s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.13s
+Loading analysis data took 1.40s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.15s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.29s
+>>>>>>> parent of 5958723 (removing unneeded crap)
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: "Couldn't load nvlib." (can be ignored)
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
+<<<<<<< HEAD
 Init translation took 0.09s
 Build styles took 0.01s
 Load screen analysis took 0.00s
@@ -36,6 +60,19 @@ Save bytecode. took 0.05s
 Running _start took 0.01s
 Performance test:
 Interface start took 0.41s
+=======
+Init translation took 0.30s
+Build styles took 0.01s
+Load screen analysis took 0.57s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.20s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.43s
+>>>>>>> parent of 5958723 (removing unneeded crap)
 
 Initializing gl renderer:
 primary display bounds: (0, 0, 1440, 900)
@@ -62,6 +99,7 @@ Texture testing:
 Screen sizes: virtual=(1280, 720) physical=(1330, 748) drawable=(1330, 748)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
+<<<<<<< HEAD
 Total time until interface ready: 9.24242186546s
 
 Full traceback:
@@ -89,3 +127,6 @@ While running game code:
     store._return = renpy.call_screen(name, *args, **kwargs)
 Exception: Screen livingroomact is not known.
 
+=======
+Total time until interface ready: 5.05599999428s
+>>>>>>> parent of 5958723 (removing unneeded crap)

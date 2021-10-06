@@ -67,6 +67,10 @@ label start(retmode=False):
 
     label .mainstart:
 
+        #### Test Jumps Start
+        jump newnormal
+        #### Test Jumps End
+
         nar "It all changed so fast."
 
         nar "You would never expect that everything would change in just a blink of an eye."
