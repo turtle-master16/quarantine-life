@@ -685,17 +685,7 @@ label home:
 
             c "You need to buy the exact number of groceries worth 200.00, including the items on the list"
 
-            call timeskip("bg supermarket")
-            play music "audio/bgm/Fluffy Days.mp3" fadein 2.0
-            call updateDate("July 2020, Week 4 | 03:00 PM, Grocery Store | GCQ")
-
-            pl "I’m here. Now let’s check the items on the list."
-
-            pl "I have to do is complete the list and spend all 200.00 worth of grocery items."
-
-            "TODO FEATURE" "Insert Minigame: {b}Complete grocery shopping{/b}, here."
-
-            jump princegoingout
+            jump supermarket
 
         "Just smile and say nothing":
             show carla happy onlayer middle
@@ -3077,16 +3067,19 @@ label escaperoom:
         call screen escaperoom
 
 label supermarket:
-    play music "audio/bgm/Fluffy Days.mp3" fadein 2.0 # temp
     call timeskip("bg supermarket")
+    play music "audio/bgm/Fluffy Days.mp3" fadein 2.0
+    call updateDate("July 2020, Week 4 | 03:00 PM, Grocery Store | GCQ")
 
-    plt "(Alright. All I have to do is complete the list while maintaining proper safety protocol.)"
+    pl "I’m here. Now let’s check the items on the list."
+
+    pl "All I have to do is complete the list and spend all 200.00 worth of grocery items."
 
     plt "(So this is everything I need to buy.)"
 
     $ renpy.block_rollback()
 
-    "List" "-Face Mask (1x)\n-Toilet Paper (3x)\n-Red Can (2x)\n-Green Can (2x)"
+    "List" "-Face Mask (1x){space=40}-Toilet Paper (3x)\n-Red Can (2x){space=53}-Green Can (2x)"
 
     "{color=#0f0}Tap on the items you want to take. Be sure to keep track of how many of that item you have.{/color}"
 
@@ -3247,10 +3240,12 @@ label supermarket:
         jump .maingame
 
     label .results():
+        call timeskip("bg livingroom back afternoon")
         play music "audio/bgm/living room.mp3"
+        call updateDate("July 2020, Week 4 | 04:00 PM, Grocery Store | GCQ")
+
         $ renpy.block_rollback()
 
-        call timeskip("bg livingroom back afternoon")
         $ sum = 0;
         python:
             for item in mart_item_count:
@@ -3298,7 +3293,7 @@ label supermarket:
 
             pl "You’re welcome, mom. I’m glad I could help."
 
-        jump project
+        jump princegoingout
 
 # Temporary Event ~ Sends player back to main menu upon jumping here
 label proceed:
