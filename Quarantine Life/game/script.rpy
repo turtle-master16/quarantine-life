@@ -25,6 +25,19 @@ define ky = Character("Kyle", color=charcolor['Kyle'])
 define nar = Character(None, what_color=charcolor['Narration'])
 define ins = Character(None, what_color=charcolor['Instruction'])
 
+style textbutton:
+    activate_sound "audio/click.mp3"
+
+style imagebutton:
+    activate_sound "audio/click.mp3"
+
+style image_button:
+    activate_sound "audio/click.mp3"
+
+style hotspot:
+    activate_sound "audio/click.mp3"
+
+
 # The game starts here.
 label start(retmode=False):
     # Resets the camera and layers positions
@@ -42,7 +55,6 @@ label start(retmode=False):
 
     if retmode:
         call hide_phone_messages
-        call screen testmode
 
     # Ask name
     centered "What is your name?"
@@ -62,6 +74,12 @@ label start(retmode=False):
     call screen testmode
 
     label .mainstart:
+        $ is_route_unlocked["start.mainstart"] = True
+
+        scene black
+        stop music
+
+        $ renpy.hide_screen("displayDate")
 
         nar "It all changed so fast."
 
@@ -80,7 +98,7 @@ label start(retmode=False):
         scene bg livingroom back onlayer background
         with fade
 
-        play music "audio/bgm/living room.mp3"
+        play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
 
         call updateDate("January 2020, Week 4 | 08:00 AM, Living Room")
 
@@ -119,6 +137,8 @@ label start(retmode=False):
 
         pl "Better finish sweeping before I get in trouble."
 
+        play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
+
         ins "TASK: Find the Broom."
 
         ins "Click to interact with objects around the room."
@@ -131,12 +151,9 @@ label start(retmode=False):
         jump news
 
 label news:
-    $ is_route_unlocked["news"] = True
-
     call timeskip("bg livingroom back tvon")
 
-    if(renpy.music.get_playing() != "audio/bgm/living room.mp3"):
-        play music "audio/bgm/living room.mp3"
+    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
 
     call updateDate("February 2020, Week 1 | 11:00 AM, Living Room")
 
@@ -205,8 +222,7 @@ label lockdown:
 
     call timeskip("bg livingroom back evening")
 
-    if(renpy.music.get_playing() != "audio/bgm/living room.mp3"):
-        play music "audio/bgm/living room.mp3"
+    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
 
     call updateDate("March 2020, Week 1 | 07:00 PM, Living Room")
 
@@ -319,7 +335,7 @@ label quarantine:
 
     call timeskip("bg livingroom back")
 
-    play music "audio/bgm/living room.mp3"
+    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
 
     call updateDate("April 2020, Week 1 | 09:00 AM, Living Room | ECQ")
 
@@ -367,6 +383,8 @@ label quarantine:
 
     plt "(Now that’s out of the way. What should I do now?)"
 
+    play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
+
     ins "TASK: Find something to do."
     ins "Click the arrow to switch and select object to interact with them."
 
@@ -376,7 +394,7 @@ label newnormal:
     $ is_route_unlocked["newnormal"] = True
 
     call timeskip("bg livingroom back")
-    play music "audio/bgm/living room.mp3"
+    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
     call updateDate("May 2020, Week 1 | 11:00 AM, Living Room | ECQ")
 
     pl "How long do we have to keep this up?"
@@ -468,7 +486,7 @@ label newnormal:
     with dissolve
 
     call timeskip("bg bedroom back evening")
-    play music "audio/bgm/living room.mp3"
+    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
     call updateDate("June 2020, Week 1 | 08:00 PM, Bedroom | GCQ")
 
     plt "(Everything is becoming repetitive.)"
@@ -496,6 +514,7 @@ label newnormal:
         $ is_route_unlocked["newnormal.collectandprogress"] = True
 
         call timeskip("bg bedroom back evening")
+        play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
         call updateDate("June 2020, Week 2 | 06:00 PM, Bedroom | GCQ")
 
         plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
@@ -510,7 +529,7 @@ label commuting:
     $ is_route_unlocked["commuting"] = True
 
     call timeskip("bg shuttle")
-    play music "audio/bgm/outside.mp3"
+    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
     call updateDate("June 2020, Week 3 | 06:00 AM, Shuttle Vehicle | GCQ")
 
     #--SFX (yawn)
@@ -543,7 +562,7 @@ label commuting:
 
 label office:
     call timeskip("bg office")
-    play music "audio/bgm/office.mp3"
+    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
     call updateDate("June 2020, Week 3 | 07:30 AM, Office | GCQ")
 
     pl "First day back on the job and I am loaded with paper work. My back hurts from sitting all day, I need to stretch."
@@ -637,7 +656,7 @@ label home:
     $ is_route_unlocked["home"] = True
 
     call timeskip("bg livingroom back")
-    play music "audio/bgm/living room.mp3" fadein 1.0 fadeout 1.0
+    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
     call updateDate("July 2020, Week 4 | 02:00 PM, Living Room | GCQ")
 
     plt "Day offs are such a blessing. Work can be too much to handle sometimes."
@@ -695,9 +714,11 @@ label home:
 
             c "That's very thoughtful of you."
 
+            play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
+
             c "I’ll give you a list and 200.00 worth of money."
 
-            c "You need to buy the exact number of groceries worth 200.00, including the items on the list"
+            c "You need to buy the exact number of groceries worth 200.00, including the items on the list."
 
             jump intro_to_supermarket
 
@@ -749,7 +770,7 @@ label intro_to_supermarket:
 
 label cookadobo:
     call timeskip("bg kitchen")
-    play music "audio/bgm/kitchen.mp3"
+    play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
     call updateDate("July 2020, Week 4 | 04:00 PM, Kitchen | GCQ")
 
     pl "Since I’m in charge of dinner tonight I think I’ll just keep things simple."
@@ -797,6 +818,7 @@ label cookadobo:
         call updateDate("July 2020, Week 4 | 06:00 PM, Kitchen | GCQ")
 
         if sauce == 1 or sauce == 2:
+            play music "audio/bgm/suspense.mp3" fadein 2 fadeout 2
             show prince disgust2 at left onlayer middle
             with dissolve
 
@@ -847,7 +869,7 @@ label princegoingout:
     $ is_route_unlocked["princegoingout"] = True
 
     call timeskip("bg livingroom back")
-    play music "audio/bgm/living room.mp3" fadein 1.0 fadeout 1.0
+    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
     call updateDate("August 2020, Week 3 | 10:00 AM, Living Room | GCQ")
 
     pr "Mom, I’m going out."
@@ -910,7 +932,7 @@ label princegoingout:
 
 label princedisappointed:
     call timeskip("bg bedroom back")
-    play music "audio/bgm/living room.mp3" fadein 1.0 fadeout 1.0
+    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
     call updateDate("August 2020, Week 3 | 11:00 AM, Bedroom | GCQ")
 
     pr "Nothing's wrong, just leave me alone."
@@ -947,6 +969,7 @@ label princedisappointed:
 
     pl "You’re on!"
 
+    play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
     scene black onlayer background
     with dissolve
     centered "{color=#fff}{b} End {/b}{/color}"
@@ -993,8 +1016,8 @@ label friend:
 
 label restaurant:
     call timeskip("bg restaurant evening")
+    play music "audio/Fratto kibun.wav" fadein 2 fadeout 2
     call updateDate("June 2020, Week 3 | 06:30 PM, Restaurant | GCQ")
-    play music "audio/bgm/restaurant.mp3"
 
     show ian happy onlayer middle:
         xpos 0.25 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1
@@ -1108,7 +1131,7 @@ label restaurant:
 
 label datesearch:
     call timeskip("bg bedroom back evening")
-    play music "audio/bgm/living room.mp3"
+    play music "audio/Waiting music.mp3" fadein 2 fadeout 2
     call updateDate("June 2020, Week 3 | 09:00 PM, Bedroom | GCQ")
 
     plt " (I never thought about being in a romantic relationship since I was in high school.)"
@@ -1215,8 +1238,6 @@ label phone(male=True):
 
         pl "I prefer girls. Thank you very much."
 
-        play sound "audio/fratto kibun.wav" fadeout 3.0
-
         pl "..."
 
         stop sound fadeout 3.0
@@ -1228,7 +1249,7 @@ label phone(male=True):
 label postdatesearch(male=True):
     if male:
         call timeskip("bg office")
-        play music "audio/bgm/office.mp3"
+        play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
         call updateDate("July 2020, Week 2 | 10:00 AM, Office | GCQ")
 
         show ian discuss onlayer middle
@@ -1267,8 +1288,7 @@ label postdatesearch(male=True):
 
         call timeskip("bg bedroom back afternoon")
         call updateDate("July 2020, Week 2 | 05:00 PM, Bedroom | GCQ")
-
-        play music "audio/bgm/living room.mp3"
+        play music "audio/bgm/suspense.mp3" fadein 2 fadeout 2
 
         plt "(Hair. Check. Clothes. Check. [player_name]? Oh yeah, I’m looking good and ready.)"
 
@@ -1292,8 +1312,6 @@ label postdatesearch(male=True):
                     parallel:
                         xpos 0.43
                         linear 0.3 xpos -0.32
-
-                play sound("audio/runstep.wav")
 
                 pl "That little twerp! He's so gonna get it later."
 
@@ -1332,7 +1350,7 @@ label firstdate(male=True):
 
         call timeskip("bg bedroom back afternoon")
         call updateDate("July 2020, Week 2 | 05:10 PM, Bedroom | GCQ")
-        play music "audio/bgm/crickets.mp3"
+        play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
 
         show phone_tindah onlayer middle:
             subpixel True xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0 rotate None
@@ -1383,7 +1401,7 @@ label firstdate(male=True):
 
         call timeskip("bg bedroom back")
         call updateDate("May 2020, 6:20 pm, Week 4, Bedroom, GCQ")
-        play music "audio/bgm/living room.mp3"
+        play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
 
         play sound "audio/phone tapping.wav"
         show phone_tindah onlayer middle at phone_pickup
@@ -1491,7 +1509,7 @@ label kyle:
     $ is_route_unlocked["kyle"] = True
 
     call timeskip("bg office")
-    play music "audio/bgm/office.mp3"
+    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
     call updateDate("July 2020, Week 4 | 01:00 PM, Office | GCQ")
 
     #--SFX (sigh)
@@ -1530,8 +1548,6 @@ label kyle:
         parallel:
             xpos 0.2
             linear 0.5 xpos -0.55
-
-    play sound "audio/footstep.wav"
 
     pl "Maybe it's for the best, this way I could focus more on myself and my goals."
 
@@ -1583,7 +1599,7 @@ label kyle:
 
 label kylehome:
     call timeskip("bg livingroom back evening")
-    play music "audio/bgm/living room.mp3"
+    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
     call updateDate("July 2020, Week 4 | 07:00 PM, Living Room | ECQ")
 
     pl "I'm home."
@@ -1658,7 +1674,7 @@ label kylehome:
             $ is_route_unlocked["kylehome.findhobby"] = True
 
             call timeskip("bg office")
-            play music "audio/bgm/office.mp3"
+            play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
             call updateDate("August 2020, Week 1 | 09:00 AM, Office | GCQ")
 
             show ian discuss onlayer middle
@@ -1690,7 +1706,7 @@ label kylehome:
             plt "({b}Find a new hobby{/b}… What should I try?)"
 
             call timeskip("bg bedroom back")
-            play music "audio/bgm/living room.mp3"
+            play music "audio/bgm/suspense.mp3" fadein 2 fadeout 2
             call updateDate("August 2020, Week 2 | 01:00 PM, Bedroom | GCQ")
 
             show prince embarrased onlayer middle:
@@ -1725,6 +1741,7 @@ label kylehome:
 
             pr "Fine."
 
+            play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
             scene black onlayer background
             with dissolve
             centered "{color=#fff}{b} End {/b}{/color}"
@@ -1744,7 +1761,7 @@ label kylemeet:
     $ is_route_unlocked["kylemeet"] = True
 
     call timeskip("bg outside")
-    play music "audio/bgm/outside.mp3"
+    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
     call updateDate("August 2020, Week 2 | 11:00 AM, Streets | GCQ")
 
     pl "It’s nice to be able to reunite with an old pal again."
@@ -1855,7 +1872,7 @@ label hospital:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.43
     with wiperight
 
-    play music "audio/bgm/bad end.mp3"
+    play music "audio/bgm/moody.mp3"
 
     plt "(I feel restless. I wonder how my family is doing. I hope they’re doing well.)"
 
@@ -1867,11 +1884,23 @@ label hospital:
 
     plt "(For my family.)"
 
-    jump kylehome
+    play music "audio/bgm/bad end.mp3" fadein 2.0 fadeout 2.0
+    scene black onlayer background
+    with dissolve
+    centered "{color=#f00}{b}Bad End{/b}{/color}"
+
+    menu:
+        "Choose another route":
+            centered "You will now be returned to a previous decision point..."
+            jump kylehome
+
+        "Return to main menu":
+            stop sound fadeout 0.2
+            jump proceed
 
 # Jillian Route
 label jillian:
-    call phone_call(jl, "interested", "So [player_name], tell me about yourself.")
+    call phone_call(jl, "interested", "So, tell me about yourself.")
 
     menu:
         "Anything that boosts my intellect.":
@@ -1899,14 +1928,14 @@ label jillian:
 
     pl "If you need someone to talk to, you know where to find me."
 
-    call phone_call(jl, "farewell", "Alright. Have a good night [player_name].")
+    call phone_call(jl, "farewell", "Alright. Have a good night.")
 
     pl "You too."
 
     $ Hide("phone_call", transition=Dissolve(0.3))()
 
     call timeskip("bg livingroom back evening")
-    play music "audio/bgm/living room.mp3"
+    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
     call updateDate("July 2020, Week 2 | 08:00 PM, Living Room | GCQ")
 
     show carla happy onlayer middle:
@@ -1944,7 +1973,7 @@ label jillian:
     pr "Bummer. I was hoping for a different response."
 
     call timeskip("bg office afternoon")
-    play music "audio/bgm/office.mp3"
+    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
     call updateDate("June 2020, Week 4 | 02:00 PM, Office | GCQ")
 
     plt "(Jillian and I’s relationship have been going smoothly. I really enjoy spending time with her, even if we’ve only known each other virtually.)"
@@ -1963,7 +1992,7 @@ label jillian:
                 $ is_route_unlocked["jillian.restaurantdate"] = True
 
                 call timeskip("bg bedroom back evening")
-                play music "audio/bgm/living room.mp3"
+                play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
                 call updateDate("July 2020, Week 4 | 07:30 PM, Bedroom | GCQ")
 
                 show phone_tindah onlayer middle at phone_pickup
@@ -1989,7 +2018,7 @@ label jillian:
                 $ is_route_unlocked["jillian.artsncraft"] = True
 
                 call timeskip("bg bedroom back")
-                play music "audio/bgm/living room.mp3"
+                play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
                 call updateDate("August 2020, Week 2 | 10:00 AM, Bedroom | GCQ")
 
                 show phone onlayer middle at phone_pickup
@@ -2003,7 +2032,7 @@ label jillian:
 
                 pl "Since I can’t take you out on a date personally, I just I’d keep things lively between us by doing some activities together."
 
-                call phone_call(jl, "flattered", "I’m loving this idea. We should do this more often")
+                call phone_call(jl, "flattered", "I’m loving this idea. We should do this more often.")
 
                 call phone_call(jl, "happy2", "It’s more fun and exciting than just talking. Maybe next time I get to choose what activity we do? That way we can share each other’s hobbies. Wouldn’t that be interesting?")
 
@@ -2011,6 +2040,7 @@ label jillian:
 
                 call phone_call(jl, "flattered", "Can’t wait.")
 
+                play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
                 scene black onlayer background
                 with dissolve
                 centered "{color=#fff}{b} End {/b}{/color}"
@@ -2109,7 +2139,7 @@ label jlaskout:
 
 label jldate:
     call timeskip("bg restaurant")
-    play music "audio/bgm/restaurant.mp3"
+    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
     call updateDate("August 2020, Week 1 | 11:30 AM, Restaurant | GCQ")
 
     pl "Well, this isn’t what I was expecting."
@@ -2142,7 +2172,7 @@ label jldate:
     jl "Sure."
 
     call timeskip("bg bedroom back")
-    play music "audio/bgm/living room.mp3"
+    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
     call updateDate("August 2020, Week 1 | 03:00 PM, Bedroom | GCQ")
 
     show phone onlayer middle at phone_pickup
@@ -2167,7 +2197,7 @@ label jldate:
 # Jason Route
 label jason:
     call timeskip("bg livingroom back afternoon")
-    play music "audio/bgm/living room.mp3"
+    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
     call updateDate("August 2020, Week 1 | 05:00 PM, Living Room | GCQ")
 
     plt "(It’s been a while since I last talked to Jason. He hasn’t been replying to any of my messages. I wonder how he’s doing. I hope he’s alright.)"
@@ -2263,6 +2293,7 @@ label jason:
 
             call hide_phone_messages
 
+            play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
             scene black onlayer background
             with dissolve
             centered "{color=#fff}{b} End {/b}{/color}"
@@ -2302,6 +2333,9 @@ label getcaught:
 
     call timeskip("bg livingroom back evening")
 
+    if(renpy.music.get_playing() != "audio/bgm/moody.mp3"):
+        play music "audio/bgm/moody.mp3" fadein 2.0
+
     call updateDate("March 2020, Week 2 | 06:00 PM, Bedroom | ECQ")
 
     plt "(One week into quarantine and I’m already bored out of my mind. There is literally nothing else to do.)"
@@ -2312,17 +2346,16 @@ label getcaught:
 
     scene bg outside evening onlayer background
     with dissolve
-    play music "audio/bgm/crickets.mp3"
 
     plt "(Wow. I’ve never seen the neighborhood so quiet before.)"
+
+    play music "audio/bgm/suspense.mp3" fadein 2
 
     show tanod point onlayer middle:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
     with dissolve
 
     "Police" "Hey you! Stop right there."
-
-    play music "audio/bgm/suspense.mp3"
 
     plt "(Oh shoot! What should I do?)"
 
@@ -2353,10 +2386,9 @@ label getcaught:
 
                 "Police" "You are under arrest for quarantine protocol violation."
 
+    play music "audio/bgm/bad end.mp3" fadein 2.0 fadeout 2.0
     scene black onlayer background
     with dissolve
-    play music "audio/bgm/bad end.mp3" fadeout 1.0 fadein 1.0
-
     centered "{color=#f00}{b}Bad End{/b}{/color}"
 
     menu:
@@ -2370,7 +2402,7 @@ label getcaught:
 
 label jlend:
     call timeskip("bg kitchen")
-    play music "audio/bgm/living room.mp3"
+    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
     call updateDate("August 2020, Week 3 | 12:00 PM, Kitchen | GCQ")
 
     show jillian dump onlayer middle
@@ -2390,6 +2422,7 @@ label jlend:
 
     jl "I don’t blame you. But I’m hoping that this could be a regular thing."
 
+    play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
     scene black onlayer background
     with dissolve
     centered "{color=#fff}{b} End {/b}{/color}"
@@ -2399,7 +2432,7 @@ label jlend:
             centered "You will now be returned to the previous decision point..."
             stop music fadeout 2.0
 
-            jump jillian
+            call firstdate(male=False)
 
         "Return to main menu":
             stop music fadeout 0.2
@@ -2490,10 +2523,9 @@ label jsend:
 
     call hide_phone_messages
 
+    play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
     scene black onlayer background
     with dissolve
-    play music "audio/bgm/good end.mp3"
-
     centered "{color=#fff}{b}End{/b}{/color}"
 
     menu:
@@ -2534,6 +2566,7 @@ label jsexerciseend:
 
     pl "Ugh!"
 
+    play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
     scene black onlayer background
     with dissolve
     centered "{color=#fff}{b} End {/b}{/color}"
@@ -2563,6 +2596,7 @@ label mcend:
 
     pl "But it's not over yet..."
 
+    play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
     scene black onlayer background
     with dissolve
     centered "{color=#fff}{b} End {/b}{/color}"
@@ -2605,7 +2639,7 @@ label workprep:
 label findActivity:
     # Choices: (A = Watch TV) (B = Return to Point & Click)
     if(not renpy.music.is_playing()):
-        play music "audio/bgm/living room.mp3"
+        play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
 
     call screen findActivity()
 
@@ -2734,6 +2768,7 @@ label findActivity:
 
     elif _return == 'dumbells':
         scene bg bedroom back onlayer background
+
         plt "(Alright, time to work hard and get my quarantine bod. Starting with simple stretches.)"
 
         $all_moves(camera_check_points={'z': [(0, 0, None), (1000, 4.0, 'linear')]})
@@ -2760,6 +2795,7 @@ label findActivity:
         pl "Yeah! I can feel my body changing already. Quarantine bod here I come."
 
         call timeskip("bg livingroom back afternoon")
+        call updateDate("April 2020, Week 1 | 05:00 PM, Living Room | ECQ")
 
         play sound "audio/eating.mp3"
         pl "*munch munch*"

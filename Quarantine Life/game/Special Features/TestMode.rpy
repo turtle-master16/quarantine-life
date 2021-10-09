@@ -165,4 +165,5 @@ screen returnbutton:
         idle "images/misc/return.png"
         xalign 1.0
         yalign 1.0
-        action Call("start", retmode=True)
+        # action Call("start", retmode=True)
+        action If(renpy.get_screen("storyroute"), true=Hide("storyroute"), false=Show("storyroute", _zorder=1))

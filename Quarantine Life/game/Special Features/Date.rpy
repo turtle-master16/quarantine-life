@@ -18,7 +18,7 @@ transform datetext:
 
 screen displayDate(date=""):
     tag Date
-    zorder 2
+    zorder 1
     add Image("/xtras/DateBg.png"):
         at datebg
         xanchor 0.5
