@@ -10,11 +10,12 @@ define charcolor = {
     "Thoughts":"#add8e6",
     "Narration":"#1e81b0",
     "Instruction":"#0f0",
-}
+    }
 
 # The Characters
 define pl = Character("[player_name]", color=charcolor['Player'])
-define plt = Character("[player_name]", color=charcolor['Player'], what_color=charcolor['Thoughts'], what_italic=True)
+define plt = Character("[player_name]", color=charcolor['Player'],
+             what_color=charcolor['Thoughts']) # For player thoughts
 define pr = Character("Prince", color=charcolor['Prince'])
 define c = Character("Carla (Mom)", color=charcolor['Carla'])
 define i = Character("Ian", color=charcolor['Ian'])
@@ -36,10 +37,6 @@ label start(retmode=False):
     scene black
     stop music
 
-    #### Test Jumps Start
-    $ renpy.hide_screen("returnbutton")
-    #### Test Jumps End
-
     if retmode:
         call hide_phone_messages
         call screen testmode
@@ -54,35 +51,41 @@ label start(retmode=False):
         if not player_name:
              player_name = "Coby"
 
+
         if player_name != "xc@lu@g99":
             renpy.jump("start.mainstart")
 
-    default player_name = "Coby"
+    define player_name = "Coby"
 
     call screen testmode
 
     label .mainstart:
 
+        #### Test Jumps Start
+        $ renpy.hide_screen("returnbutton")
+        jump quarantine
+        #### Test Jumps End
+
         nar "It all changed so fast."
 
         nar "You would never expect that everything would change in just a blink of an eye."
 
-        nar "One day you were just having fun, laughing with family and friends, going places wherever and whenever."
+        nar "One day you were just having fun, laughing with family and friends, going places wherever and whenever..."
 
-        nar "Simply enjoying spending time outside your home, but the next thing you know, you’re stuck at home."
+        nar "simply enjoying spending time outside your home, but the next thing you know, you’re stuck at home..."
 
-        nar "Being unable to go out and do the things you normally enjoy."
+        nar "Not being able to go out and do the things you normally enjoy, no more parties..."
 
-        nar "No more parties, going to the mall and eating out, or even visit friends or family."
+        nar "going to the mall and eating out, or even visit friends or family."
 
         nar "How could something so small ruin an economy? To cause social disruption? To turn people’s lives upside down?"
 
+        #DATE: FEBRUARY 2020, 8:00 am, Week 1, Living Room
+        call updateDate("February 2020, 8:00 am, Week 1, Living room")
+
         scene bg livingroom back onlayer background
         with fade
-
         play music "audio/bgm/living room.mp3"
-
-        call updateDate("January 2020, Week 4 | 08:00 AM, Living Room")
 
         plt "AH! What a peaceful morning."
 
@@ -92,7 +95,7 @@ label start(retmode=False):
 
         with vpunch
         #--SFX (Whack!)
-        pl "ACK!"
+        pl "Ack!"
 
         show prince confident onlayer middle:
             xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.0
@@ -103,7 +106,7 @@ label start(retmode=False):
         show prince point1 onlayer middle:
             xpos 0.53 ypos 1.0 xanchor 0.5 yanchor 1.0
 
-        pr "Mom said to sweep the floor. Just because it’s your day off doesn’t mean you can laze around and ignore your chores."
+        pr "Mom said to sweep the floor. Just best because it’s your day off doesn’t mean you can laze ignore your chores."
 
         pr "Mom’s words not mine."
 
@@ -119,7 +122,7 @@ label start(retmode=False):
 
         pl "Better finish sweeping before I get in trouble."
 
-        ins "TASK: Find the Broom."
+        ins "TASK: Find the Broom"
 
         ins "Click to interact with objects around the room."
 
@@ -131,39 +134,38 @@ label start(retmode=False):
         jump news
 
 label news:
-    $ is_route_unlocked["news"] = True
-
-    call timeskip("bg livingroom back tvon")
+    # DATE: FEBRUARY 2020, 10:00 am, week 1, living room
+    call timeskip("bg livingroom back afternoon")
 
     if(renpy.music.get_playing() != "audio/bgm/living room.mp3"):
         play music "audio/bgm/living room.mp3"
 
-    call updateDate("February 2020, Week 1 | 11:00 AM, Living Room")
+    # call updateDate("February 2020, 10:00 am, Week 1, Living room")
+    call updateDate("February 2020, 10:00 am, Week 1, Living room")
+
 
     #--SFX (News sfx)
     plt "(Finally done with my chores, now I can go back to relaxing and enjoying my day off.)"
 
     plt "(Oh! It’s mom watching some TV. Maybe I should go join her.)"
 
-    scene bg livingroom left tvon onlayer background
+    scene bg livingroom left afternoon tvon onlayer background
     with dissolve
 
-    "Reporter" "This just in, the Philippines has been suspending flights from Wuhan City, China due to the spread of the {b}COVID virus{/b}."
+    "Reporter" "This just in, the Philippines has been suspending flights from Wuhan City, China due to the spread of the COVID virus."
 
     "Reporter" "Flights from other parts of China will also be strictly monitored to prevent the virus from entering the country..."
 
-    show bg livingroom back onlayer background
+    show bg livingroom back afternoon onlayer background
     with dissolve
 
-    pl "Man, what’s with this new Coronavirus? I’ve been hearing about them a lot lately."
+    pl "Man, what’s with this new coronavirus? I’ve been hearing about them a lot lately."
 
     show carla sad onlayer middle:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
     with dissolve
 
     c "The news said it’s a {b}respiratory illness that is caused by the SARS-Cov-2 virus.{/b}"
-
-    "TODO FEATURE" "Insert Achievement: {b}What is Coronavirus Disease 19{/b}?, here."
 
     c "Oh dear. I hope your father is doing well abroad. I’m worried for your father’s health."
 
@@ -198,32 +200,32 @@ label news:
 
     pl "Alright. Let’s just hope that everything is under control so nothing bad will happen."
 
+    hide prince
     with dissolve
 
 label lockdown:
-    $ is_route_unlocked["lockdown"] = True
-
-    call timeskip("bg livingroom back evening")
+    call timeskip("bg livingroom back")
 
     if(renpy.music.get_playing() != "audio/bgm/living room.mp3"):
         play music "audio/bgm/living room.mp3"
 
-    call updateDate("March 2020, Week 1 | 07:00 PM, Living Room")
+    # DATE: MARCH 2020, 7:00 pm, week 2, living room
+    call updateDate("March 2020, 7:00 pm, Week 2, Living room")
 
-    plt "(It’s been a couple of months since the COVID-19 virus was first announced.)"
+    plt "(It’s been a couple of months since the COVID-19 virus was first announced. I’ve been seeing a lot of reports regarding the virus."
 
-    plt "(I’ve been seeing a lot of reports regarding the virus. This is so scary it’s making me worry for the safety of myself and my family.)"
+    plt "(This is so scary it’s making me worry for the safety of myself and my family.)"
 
     show prince sad1 onlayer middle
     with dissolve
 
     pr "What do you think is going to happen now that there have been reported COVID cases in our country?"
 
-    pl "I don’t know. Let’s just watch the news and find out more."
+    pl "I don’t know. Let’s just watch the new and find out more."
 
     hide prince
 
-    show bg livingroom left evening tvon onlayer background
+    show bg livingroom left tvon onlayer background
     with dissolve
 
     "Reporter" "The President has declared a state of public health emergency. Classes have been suspended and work-from-home is sought amid the local Coronavirus cases."
@@ -232,15 +234,12 @@ label lockdown:
 
     "Reporter" "Citizens must remain at home until further notice."
 
-    call updateDate("March 2020, Week 1 | 07:10 PM, Living room | ECQ")
-
-    "TODO FEATURE" "Insert Achievement: {b}Community Quarantine{/b}, here."
+    #DATE: MARCH 2020, 7:10 pm, week 2, living room, ECQ
+    call updateDate("March 2020, 7:10 pm, Week 2, Living room, ECQ")
 
     "Reporter" "Residents who refuse to follow the mandatory quarantine may be arrested under the state of public health emergency."
 
-    "TODO FEATURE" "Insert Achievement: {b}Refusal to mandatory quarantine{/b}, here."
-
-    show bg livingroom back evening tvon onlayer background
+    show bg livingroom back tvon onlayer background
     with dissolve
 
     show prince happy2 at bounce, left onlayer middle:
@@ -253,7 +252,7 @@ label lockdown:
         xpos 1.0 ypos 1.03 xanchor 1.0 yanchor 1.0 zoom 0.84
     with dissolve
 
-    c "It seems like we’ll be staying home until then. We can’t really do much other than isolate ourselves for our own health and safety."
+    c "It seems like we’ll be staying home until then. We can’t really do much other than isolate ourselves to for our own health and safety."
 
     menu:
         "I'm not staying home":
@@ -276,7 +275,7 @@ label lockdown:
 
             menu:
                 "You're right.":
-                    pl "I’m sorry, I wasn’t thinking clearly. You’re right. If I want to remain safe I must follow what the government says. I can always message them online. "
+                    pl "I’m sorry, I wasn’t thinking clearly. You’re right, if I want to remain safe I must follow what the government says. I can always message them online. "
 
                     pl "Besides, I’m sure there are a lot of things I can do to keep myself entertained."
 
@@ -285,7 +284,7 @@ label lockdown:
                 "No, I do what I want.":
                     pl "Like I said, I’m a grown up, I can make decisions I know are best for me. I’m going to die of boredom if I stay home for that long."
 
-                    jump getcaught
+                    jump getcaught #BADEND
         "No work!":
             pl "Alright! I can sleep whenever I want now that I don’t have to wake up early to go to work."
 
@@ -297,7 +296,7 @@ label lockdown:
             show carla sigh onlayer middle:
                 subpixel True xpos 1.15 ypos 1.03 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
 
-            c "*Sigh* Why are two being so childish?"
+            c "*sigh* Why are two being so childish?"
 
             jump quarantine
         "We should remain positive":
@@ -310,18 +309,11 @@ label lockdown:
 
             pr "I know what I’m going to do for an entire month."
 
-            c "Are video games the only thing in your mind right now?"
-
-            pr "Yes..."
-
 label quarantine:
-    $ is_route_unlocked["quarantine"] = True
-
     call timeskip("bg livingroom back")
-
     play music "audio/bgm/living room.mp3"
-
-    call updateDate("April 2020, Week 1 | 09:00 AM, Living Room | ECQ")
+    #DATE April 2020, 9:00 am, Week 1, Living room, ECQ
+    call updateDate("April 2020, 9:00 am, Week 1, Living room, ECQ")
 
     plt "(Ever since the lockdown started I have been able to have some time to myself and just relax, not worrying about anything else for the most part.)"
 
@@ -343,9 +335,7 @@ label quarantine:
 
     pr "Why does mom have to make me do chores?"
 
-    pl "Just because you don’t have any school work to do doesn’t mean you have to neglect your responsibilities at home."
-
-    pl "Now finish your chores before mom scolds you again, it will be a lot worse for you."
+    pl "Just because you don’t have any school work to do doesn’t mean you have to neglect your responsibilities at home. Now finish your chores before mom scolds you again, it will be a lot worse for you."
 
     show prince point2 at bounce, center onlayer middle
 
@@ -368,22 +358,18 @@ label quarantine:
     plt "(Now that’s out of the way. What should I do now?)"
 
     ins "TASK: Find something to do."
-    ins "Click the arrow to switch and select object to interact with them."
+
+    ins "Click the arrow to switch rooms and tap an object to interact with them."
 
     jump findActivity
 
 label newnormal:
-    $ is_route_unlocked["newnormal"] = True
-
     call timeskip("bg livingroom back")
     play music "audio/bgm/living room.mp3"
-    call updateDate("May 2020, Week 1 | 11:00 AM, Living Room | ECQ")
+    # DATE: APRIL 2020, 1:00 pm, week 4, living room, ECQ
+    call updateDate("April 2020, 1:00 pm, Week 4, Living room, ECQ")
 
-    pl "How long do we have to keep this up?"
-
-    pl "It’s been months since quarantine started and I’m starting to feel restless."
-
-    pl "I have nothing else to do and I’m getting bored."
+    pl "How long do we have to keep this up? It’s been months since quarantine started and I’m starting to feel restless. I have nothing else to do and I’m getting bored."
 
     show carla mad onlayer middle:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
@@ -416,109 +402,74 @@ label newnormal:
         xpos 0.75 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
     with dissolve
 
-    c "{b}ECQ, or Enhanced Community Quarantine{/b} means there are no activities except for utility services, food, services, water, and other essential sectors."
+    c "{b}ECQ, or Enhanced Community Quarantine{/b} means there are no activities except for utility services, food, services, water, and other essential sectors. Public transportation and physical classes are suspended for the time being."
 
-    c "There is no public transportation or physical classes."
+    c "{b}MECQ or Modified ECQ{/b} still requires people to stay home, however some can go out as long as they follow safety protocols such as wearing a face mask and maintaining 2 meter distance from other people."
 
-    "TODO FEATURE" "Insert Achievement: {b}Enhanced Community Quarantine{/b}, here."
+    c "Government workers can return to work while others remain at home."
 
-    c "{b}MECQ or Modified ECQ{/b} still requires people to stay home."
+    c "{b}General Community Quarantine{/b}, however allows people to travel for work while following the safety protocols. Mass gathering remains prohibited."
 
-    c "However, some can go out as long as they follow safety protocols like wearing a face mask and maintain 2 meter social distance from others."
-
-    c "Government workers can return to work while others remains at home."
-
-    "TODO FEATURE" "Insert Achievement: {b}Modified Enhanced Community Quarantine{/b}, here."
-
-    c "{b}General Community Quarantine{/b}, however, allows people to travel for work while following the safety protocols. Mass gathering remains prohibited."
-
-    "TODO FEATURE" "Insert Achievement: {b}General Community Quarantine{/b}, here."
-
-    pl "From what I heard, people are allowed to go out."
-
-    pl "But {b}children and elderly people are most vulnerable to the virus{/b} so they must stay home unless it's an important matter like going to the hospital."
+    pl "From what I heard, people are allowed to go out but {b}children and elderly people are most vulnerable to the virus{/b} so they must stay home unless it's an important matter like going to the hospital."
 
     show prince slouch onlayer middle
 
-    pr "Since we’re under GCQ now that means [player_name] can go back to work, right? "
+    pr "Since we’re under GCQ now that means [player_name] can go back to work right? "
 
-    pr "Either way, I’m still stuck inside the house. If this goes on I might die of boredom."
+    pr "Either way I’m still stuck inside the house. If this goes on I might die of boredom."
 
     show carla mad onlayer middle
 
-    c "I don’t think so young man."
-
-    c "If I remember correctly your school is having {b}flexible learning{/b}."
-
-    c "Be sure to study hard, you know what will happen if you get a bad grade."
-
-    "TODO FEATURE" "Insert Achievement: {b}Flexible Learning{/b}, here."
+    c "I don’t think so young man. If I remember correctly your school is having {b}flexible learning{/b}. Be sure to study hard, you know what will happen if you get a bad grade."
 
     show prince embarrased onlayer middle
 
     #--SFX (gulp)
     pr "*gulp* Yes mom."
 
-    c "So when will you be returning to work?"
-
-    pl "Probably next month. I’ll just have to ask my manager just to be sure."
-
     hide carla
     hide prince
     with dissolve
 
-    call timeskip("bg bedroom back evening")
-    play music "audio/bgm/living room.mp3"
-    call updateDate("June 2020, Week 1 | 08:00 PM, Bedroom | GCQ")
+    # DATE: APRIL 2020, 8:00 pm, week 4, bed room, GCQ
+    call updateDate("April 2020, 1:00 pm, Week 4, Living room, ECQ")
+    plt "(Return to work, huh? I should contact the company for more information about this.)"
 
-    plt "(Everything is becoming repetitive.)"
-
-    plt "(My routine is the same every day.)"
-
-    plt "(Nothing too exciting.)"
-
-    plt "(I wonder when will I be able to return to work?)"
-
-    plt "(Since the company is still wary of the current event. It would be better than being stuck at home.)"
+    "..."
 
     play sound "audio/phone vibrate.wav"
     with hpunch
     $ renpy.pause()
     stop sound
 
-    plt "(An announcement?)"
+    plt "(That was fast.)"
 
-    pl "Oh sweet. They’ll be providing a company shuttle for safety measures. It looks like I’ll be resuming work in the next two weeks."
+    plt "(Oh sweet. They’ll be providing a company shuttle for safety measures. It looks like I’ll be resuming work by next week.)"
 
     plt "(The new normal… I wonder what’s in store for me.)"
 
-    label .collectandprogress:
-        $ is_route_unlocked["newnormal.collectandprogress"] = True
+    # DATE: MAY 2020, 6:00 pm, week 1, bed room, GCQ
+    call updateDate("May 2020, 6:00 pm, Week 1, Living room, GCQ")
 
-        call timeskip("bg bedroom back evening")
-        call updateDate("June 2020, Week 2 | 06:00 PM, Bedroom | GCQ")
+    plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
 
-        plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
+    # Minigame
+    pl "I have a list of items I should find, I’m sure they’re around here somewhere."
 
-        $ itemselected = itemchoices["Reset"]
-        scene bg livingroom back onlayer background
-        with fade
-
-        jump workprep
+    $ itemselected = itemchoices["Reset"]
+    scene bg livingroom back onlayer background
+    jump workprep
 
 label commuting:
-    $ is_route_unlocked["commuting"] = True
-
     call timeskip("bg shuttle")
     play music "audio/bgm/outside.mp3"
-    call updateDate("June 2020, Week 3 | 06:00 AM, Shuttle Vehicle | GCQ")
+    #DATE: MAY 2020, 6:00 am, week 2, shuttle vehicle, GCQ
+    call updateDate("May 2020, 6:00 am, Week 2, Shuttle vehicle, GCQ")
 
     #--SFX (yawn)
-    plt "I’m so sleepy. Staying up all night on social media was not the best idea."
+    plt "I’m so sleepy. Staying up all night on social media was not a good idea."
 
     plt "(I can see that people are sitting {b}one-seat apart in public transportation{/b}, limiting the vehicle’s capacity. That’s good I suppose.)"
-
-    "TODO FEATURE" "Insert Achievement: {b}Road Transport{/b}, here."
 
     "Worker 1" "These past few months have been rough."
 
@@ -536,15 +487,16 @@ label commuting:
 
             plt "(Right. It’s best to {b}avoid crowded places too{/b}.)"
 
+            jump office
+
         "Ignore them.":
             plt "(I shouldn’t eavesdrop on other people’s conversation, that's rude.)"
-
-    jump office
 
 label office:
     call timeskip("bg office")
     play music "audio/bgm/office.mp3"
-    call updateDate("June 2020, Week 3 | 07:30 AM, Office | GCQ")
+    #DATE: MAY 2020, 7:30 am, week 2, office, GCQ
+    call updateDate("May 2020, 7:30 am, Week 2, Office, GCQ")
 
     pl "First day back on the job and I am loaded with paper work. My back hurts from sitting all day, I need to stretch."
 
@@ -562,16 +514,12 @@ label office:
 
             i "Nothing much other than the whole pandemic thing. It’s nice being able to go out after being stuck home for months."
 
-            pl "I hear you. Though it was a nice change of pace, being able to relax and all, I can’t stay indoors for that long."
-
-            pl "I need to at least roam around every once in a while."
+            pl "I hear you. Though it was a nice change of pace, being able to relax and all, I can’t stay indoors for that long. I need to at least roam around every once in a while."
 
             show ian discuss onlayer middle:
                 subpixel True xpos 0.47 ypos 1.02 xanchor 0.5 yanchor 1.0 rotate None zoom 1
 
-            i "That’s true. Speaking of going out, some of our co-workers and I are eating out tonight after work since the {b}restaurants have reopened{/b}."
-
-            i "You’re welcome to join us if you want."
+            i "That’s true. Speaking of going out, some of our co-workers and I are eating out tonight after work since the {b}restaurants have reopened{/b}. You’re welcome to join us if you want."
 
             menu:
                 "Sure. I'll join.":
@@ -590,7 +538,7 @@ label office:
 
                     jump home
         "I’m busy.":
-            pl "I’m kind of busy at the moment so can we talk later?"
+            pl "I’m kinda busy at the moment so can we talk later?"
 
             show ian happy onlayer middle
 
@@ -634,28 +582,29 @@ label office:
 
 # ROUTE HOME
 label home:
-    $ is_route_unlocked["home"] = True
-
     call timeskip("bg livingroom back")
     play music "audio/bgm/living room.mp3" fadein 1.0 fadeout 1.0
-    call updateDate("July 2020, Week 4 | 02:00 PM, Living Room | GCQ")
 
     plt "Day offs are such a blessing. Work can be too much to handle sometimes."
 
     #--SFX (stomping)
+    plt "What's up with you?"
+
     show prince sad2 at bounce, center onlayer middle
     with dissolve
     with vpunch
 
     pl "What’s up with you?"
 
-    pr "I ended up sleeping late last night trying to level up my video game character."
+    pr "Online classes are so different from face-to-face. There is so much stuff to keep me distracted from my studies, I ended up procrastinating."
+
+    pr "Now I’m paying the price of rushing my homework."
 
     pl "You need to manage your time better."
 
     show prince angry onlayer middle
 
-    pr "I know, but I can’t help it. Especially when there a lot of prizes during game events."
+    pr "I know, but I can’t help it. Anyways, I better go and finish my assignments."
 
     pl "Good luck with that."
 
@@ -667,8 +616,6 @@ label home:
     $ renpy.pause(0.7)
     hide prince
 
-    call updateDate("July 2020, Week 4 | 02:10 PM, Living Room | GCQ")
-
     pl "Hey mom, what are you writing?"
 
     show carla thinking onlayer middle:
@@ -679,25 +626,23 @@ label home:
 
     pl "Why? You don't usually make a list."
 
-    c "I’m making a {b}list to keep my shopping time shorter{/b} instead of wandering around the market."
+    c "I’m making a list {b}to keep my shopping time shorter{/b} instead of wandering around the market aimlessly..."
 
     c "Reducing my time shopping for groceries {b}means less interaction with others.{/b}"
-
-    "TODO FEATURE" "Insert Achievement: {b}Shopping for Groceries{/b}, here."
 
     plt "(What should I say?)"
 
     menu:
         "Volunteer to do the grocery shopping":
-            pl "I can do the grocery shopping for you. That way you wouldn’t have to carry all the heavy bags when you return."
+            pl "I can do the grocery shopping for you, that way you wouldn’t have to carry all the heavy bags when you return."
 
             show carla happy onlayer middle
 
-            c "That's very thoughtful of you."
+            c "That is very thoughtful of you."
 
-            c "I’ll give you a list and 200.00 worth of money."
+            c "I'll give you a list and 200.00 worth of money."
 
-            c "You need to buy the exact number of groceries worth 200.00, including the items on the list"
+            c "You need to buy the exact number of groceries worth 200.00, including the items on the list."
 
             jump intro_to_supermarket
 
@@ -718,256 +663,330 @@ label home:
             $ renpy.pause(0.7)
             hide carla
 
-            jump cookadobo
+            jump kitchen
 
         "Suggest doing online shopping":
-            pl "Why not do {b}online shopping{/b}? It allows you to {b}buy goods and services over the internet using a browser or a mobile app{/b}."
+            pl "Why not do online shopping? It allows you to buy goods and services over the internet using a browser or a mobile app."
 
             pl "That way, you can complete your shopping without ever needing to go outside. It’s easy, convenient and a much safer option."
 
-            pl "Then all you have to do is wait for the goods to be delivered right to your doorstep."
+            jump project
 
-            pl "Now that’s taken care of, why don’t you go take a break? I’ll be in charge of making dinner tonight, mom."
-
-            c "Very well. I’ll be in the living room if you need me."
-
-            jump cookadobo
-
-label intro_to_supermarket:
-    scene bg supermarket onlayer background
-    call updateDate("July 2020, Week 4 | 03:00 PM, Grocery Store | GCQ")
-
-    pl "I’m here. Now let’s check the items on the list."
-
-    pl "I have to do is complete the list and spend all 200.00 worth of grocery
-        items."
-
-    $ currentScreen = "supermarket"
-    show screen instruction
-
-    jump supermarket
-
-label cookadobo:
+label kitchen:
     call timeskip("bg kitchen")
+
     play music "audio/bgm/kitchen.mp3"
-    call updateDate("July 2020, Week 4 | 04:00 PM, Kitchen | GCQ")
 
-    pl "Since I’m in charge of dinner tonight I think I’ll just keep things simple."
-
-    "TODO FEATURE" "Insert Image: {b}Cook Adobo Ingredients{/b}, here."
-
-    pl "These are all the ingredients that I need."
-
-    pl "Alright. Time to get cooking!"
+    plt "(Tonight I’ll be cooking chicken adobo. I have onions, garlic, chicken and vinegar. Is there something else I should add?)"
 
     scene bg kitchen pot
     with dissolve
 
-    pl "First I put the cooking oil in the pan. Add the garlic and sear the chicken on until browned."
-
-    pl "Next, add soy sauce and…"
-
-    pl "What should I add next?"
-
     menu:
         "Oyster sauce":
-            pl "The oyster sauce."
+            plt "(Aha! Some oyster sauce would do the trick.)"
 
-            call .continuecookingadobo(1)
+            call timeskip("bg livingroom back afternoon")
 
-        "Fish sauce":
-            pl "Right. The fish sauce."
+            play music "audio/bgm/living room.mp3"
 
-            call .continuecookingadobo(2)
-
-        "White vinegar":
-            pl "I almost forget the white vinegar."
-
-            call .continuecookingadobo(3)
-
-    label .continuecookingadobo(sauce=1):
-        pl "Add a cup of water and mix them all together to coat the chicken."
-
-        pl "Then I add the bay leaves, brown sugar, salt and pepper to taste. Mix it and simmer."
-
-        pl "Now I just have to wait for it to cook before serving it. Good job me."
-
-        scene bg kitchen
-        with dissolve
-        call updateDate("July 2020, Week 4 | 06:00 PM, Kitchen | GCQ")
-
-        if sauce == 1 or sauce == 2:
             show prince disgust2 at left onlayer middle
             with dissolve
 
-            pr "*face of disgust*"
+            pr "What is this?! It looks disgusting."
 
-            pl "Something wrong?"
+            pl "It’s not that bad."
 
-            show prince sad3  onlayer middle:
-                subpixel True xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0 rotate None
+            show carla sigh onlayer middle:
+                xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
             with dissolve
 
-            pr "This doesn’t taste like chicken adobo."
+            c "I thought you would be cooking chicken adobo."
 
-            pl "Of course it is."
+            pl "I did."
 
-            play sound "audio/eating.mp3"
+            jump project
 
-            pl "You're right, it's not."
+        "Soy sauce":
+            plt "(Soy sauce. Duh!)"
 
-            show carla happy onlayer middle:
-                subpixel True xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
+            plt "(This is easy.)"
+
+            call timeskip("bg livingroom back afternoon")
+
+            play music "audio/bgm/living room.mp3"
+
+
+            show carla clap onlayer middle:
+                xpos 0.33 ypos 1.0 yanchor 1.0 zoom 0.76
             with dissolve
 
-            c "Next time, please remember to use the right ingredients before cooking."
+            c "Nice job on cooking dinner."
 
-            pl "Yes mom."
-
-        elif sauce == 3:
-            pl "So? How does it taste?"
-
-            show prince confident onlayer middle:
-                subpixel True xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0 rotate None
+            show prince confident at left onlayer middle
             with dissolve
 
             pr "It's alright."
 
-            show carla sigh onlayer middle:
-                subpixel True xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
+            pl "Thank you."
+
+            jump project
+
+        "Fish sauce":
+            plt "(I’m sure I need to add fish sauce.)"
+
+            call timeskip("bg livingroom back afternoon")
+
+            play music "audio/bgm/living room.mp3"
+
+            show prince sad2 at left onlayer middle
             with dissolve
 
-            c "It’s delicious."
+            pr "This is terrible. What did you even cook?"
 
-            pl "Thank you. I did my best."
+            pl "It’s chicken adobo."
 
-        jump princegoingout
+            show carla scold onlayer middle:
+                xpos 0.9 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
+            with dissolve
 
-label princegoingout:
-    $ is_route_unlocked["princegoingout"] = True
+            c "I’m so disappointed in you. You need to learn how to cook."
 
-    call timeskip("bg livingroom back")
-    play music "audio/bgm/living room.mp3" fadein 1.0 fadeout 1.0
-    call updateDate("August 2020, Week 3 | 10:00 AM, Living Room | GCQ")
+            pl "It couldn't be that bad can it?"
 
-    pr "Mom, I’m going out."
+            play sound "audio/eating.mp3"
+            pl "*munch munch*"
 
-    c "And where do you think you’re going mister?"
+            pl "...!"
 
-    pr "To my friend’s house. It’s only a few blocks down anyway."
+            with vpunch
 
-    c "Just because you’re friend’s house is nearby doesn’t mean I approve of you going out."
+            pl "I... see your point."
 
-    pr "According to the law, {b}any person below ten years old{/b}..."
+            jump project
 
-    pr "...{b}and those who are over sixty-five years of age shall be required to remain in their residence at all times{/b}."
+        "I don’t think I have to add anything else.":
 
-    "TODO FEATURE" "Insert Achievement: {b}UNNAMED{/b}, here."
+            plt "(I don’t think I have any more ingredients to add into the dish. This should be enough.)"
 
-    pr "And I’m a teenager, so those rules don’t apply to me."
+            call timeskip("bg livingroom back afternoon")
 
-    c "You have nothing important to do. So why do you have to go?"
+            play music "audio/bgm/living room.mp3"
 
-    pr "To hang out. I’m getting bored inside the house."
+            show prince disgust2 at left onlayer middle
+            with dissolve
 
-    pr "And besides, it’s not like we’re going anywhere crowded. We’ll just stay there and play some video games."
+            pr "It tastes bland."
 
-    plt "(Should I say something?)"
+
+            show carla mad onlayer middle:
+                xpos 1.03 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
+            with dissolve
+
+            c "Where’s the soy sauce?"
+
+            pl "You need soy sauce in making adobo?"
+
+            show carla sigh onlayer middle
+
+            c "I can’t believe you don’t know how to cook adobo."
+
+label project:
+    call timeskip("bg livingroom back evening")
+
+    if(renpy.music.get_playing() != "audio/bgm/crickets.mp3"):
+        play music "audio/bgm/crickets.mp3"
+
+    plt "(Man, I’m stuffed. Nothing beats home cooked meals.)"
+
+    show prince explain1  onlayer middle:
+        subpixel True xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0 rotate None
+    with dissolve
+
+    pr "Hey mom, can I ask you something?"
+
+    show carla happy onlayer middle:
+        subpixel True xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
+    with dissolve
+
+    c "Sure, what is it?"
+
+    pr "I just wanted to ask if I could go to a classmate’s house. You see, we have this school group project and…"
+
+    show carla thinking onlayer middle
+
+    c "I’m not sure if that is a good idea."
+
+    show prince angry at bounce onlayer middle:
+        subpixel True xpos -0.01 ypos 1.0 xanchor None yanchor 1.0 xzoom -1.0 rotate None
+
+    pr "But mom, it’s for a school project. A lot of people have been going out now that it’s Modified GCQ. People are allowed to go out as long as people follow the health protocols of wearing masks and proper social distancing."
+
+    show carla scold at bounce onlayer middle:
+        xpos 0.98 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
+
+    c "Just because people are roaming around the streets doesn’t mean you should too. Even if everything has returned to normal people can still get COVID."
 
     menu:
-        "Tell Prince to stay.":
-            pl "Mom’s got a point. Just because you’re wearing a medical mask and a face shield doesn’t mean you’re immune to the virus."
+        "Agree with mom.":
+            pl "Mom’s got a point. The virus is still out there, who knows what would happen if you go out. You might encounter someone with the virus along the way."
 
-            pl "You can still get sick even with all the precautions you take when you go outside."
+            show carla sad  onlayer middle:
+                xpos 0.98 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
 
             c "Prince, please understand that we are doing this to keep you safe."
 
+            show prince sad1  onlayer middle:
+                subpixel True xpos -0.01 ypos 1.0 xanchor None yanchor 1.0 xzoom -1.0 rotate None
+
             pr "I understand."
 
-        "Keep quiet.":
-            pl "..."
+            pr "I’ll go tell them that I won’t be able to come."
 
-            c "That’s it. I’m not having this conversation. Go to your room."
+            show prince sad1 onlayer middle:
+                subpixel True xpos -0.01 ypos 1.0 xanchor None yanchor 1.0 xzoom 1.0 rotate None
+                parallel:
+                    xpos -0.01
+                    linear 0.7 xpos -0.49
+            $ renpy.pause(0.7)
+            hide prince
 
-            pr "Fine."
+            plt "(Is it just me or Prince seems disappointed? I’ll go see what’s wrong.)"
 
-        "Convince mom to allow him to go.":
-            pl "Can’t he? I mean, it’s just for a few hours. So why not allows him to visit a friend?"
+            call timeskip("bg bedroom back evening")
 
-            pl "He’s been stuck in this house for months, a change of scenery could do him good."
+            pl "Hey Prince. You seem down, is there something wrong?"
 
-            c "Even if you try to convince me [player_name] my answer is still no. I care for you and I don’t want you getting sick"
+            show prince sad2  onlayer middle:
+                xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0
+            with dissolve
 
-            c "Please understand from my point of view as a mother that I just want to keep you safe."
+            pr "Nothing’s wrong, just leave me alone."
 
-    pr "I’ll go tell them that I won’t be able to come."
+            pl "Don’t tell me nothing is wrong. I can see it in your face that something is bothering you."
 
-    plt "(Is it just me or Prince seems disappointed?)"
+            show prince sad3 onlayer middle
 
-    plt "(Maybe it’s best if I cheer him up.)"
+            pr "I hate quarantine. I’ve been stuck home for months now. I miss going out."
 
-    jump princedisappointed
+            pl "I thought you were going out for a school project?"
 
-label princedisappointed:
-    call timeskip("bg bedroom back")
-    play music "audio/bgm/living room.mp3" fadein 1.0 fadeout 1.0
-    call updateDate("August 2020, Week 3 | 11:00 AM, Bedroom | GCQ")
+            show prince angry at bounce, center onlayer middle
 
-    pr "Nothing's wrong, just leave me alone."
+            pr "I am. Of course meeting up with my friends is also a plus in my part. I haven’t seen them for a while now, I kind of miss them."
 
-    pl "Don’t tell me nothing is wrong. I can see it in your face that something is bothering you."
+            pl "I understand your trouble. But just like what mom said, we are doing this for you, if anything bad happens I don’t think we’ll be able to take it well."
 
-    pr "I hate quarantine. I’ve been stuck home for months now. I miss going out."
+            show prince sad1 onlayer middle
 
-    pl "I understand your trouble. Like what mom said, we are doing this for you."
+            pr "I know that, but I can’t help it. It gets lonely around here from time to time."
 
-    pl "If anything bad happens, I don’t think we’ll be able to take it well."
+            plt "(Maybe I should spend some quality time with him to lift his mood. But what can we do?)"
 
-    pr "I know that, but I can’t help it. It gets lonely around here from time to time."
+            menu:
+                "Have a karaoke session.":
+                    pl "I have a Bluetooth microphone. Do you want to have a karaoke session with me?"
 
-    pl "Tell you what. How about we play video games? Legendary Mobile, you and I."
+                    pl "We can flex to the neighbors our amazing singing skills."
 
-    pr "Sure, I haven’t played that in a while. Sure, let’s play."
+                    show prince happy at bounce onlayer middle:
+                        xpos 0.5 ypos 1.07 xanchor 0.5 yanchor 1.0
 
-    "..."
+                    pr "Sure, sounds fun."
 
-    pr "Stop farming and back us up! Ugh! This guy is such a noob."
+                    call timeskip("bg livingroom back evening tvon")
 
-    pl "Damn, we’re losing big time. And our teammate is a feeder."
+                    show prince happy2 at bounce, left onlayer middle:
+                        xzoom -1.0
+                    with dissolve
 
-    c "Can you two keep down while you play? You’re being too loud."
+                    pr "*singing*"
 
-    pr "Sorry."
+                    show carla clap onlayer middle:
+                        xpos 1.0 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.76
+                    with dissolve
 
-    pr "Hey. Thanks for spending time with me."
+                    c "Bravo, son!"
 
-    pl "No problem. If you ever get bored I’m here for you."
+                    pl "I am so posting this on my social media accounts."
 
-    pr "Thanks. Now, how about another round?"
+                    show prince point2 onlayer middle
 
-    pl "You’re on!"
+                    pr "Your turn to sing."
 
-    scene black onlayer background
-    with dissolve
-    centered "{color=#fff}{b} End {/b}{/color}"
+                    pl "Alright."
 
-    menu:
-        "Choose another route":
-            centered "You will now be returned to the previous decision point..."
-            stop music fadeout 2.0
+                    jump bros
 
-            jump office
+                "Watch a movie together.":
+                    pl "Let’s go watch a movie together. You get to pick what we’re going to watch."
 
-        "Return to main menu":
-            stop music fadeout 0.2
-            jump proceed
+                    show prince happy at bounce onlayer middle:
+                        xpos 0.5 ypos 1.07 xanchor 0.5 yanchor 1.0
+
+                    pr "That doesn’t seem like a bad idea. Let’s do it."
+
+                    call timeskip("bg livingroom back evening tvon")
+
+                    "Actor" "How could you?! After everything I’ve done for you, you would just come and betray me like that?!"
+
+                    "Actress" "I don’t have a choice!"
+
+                    pl "Romance movies are so cliche."
+
+                    show prince disgust2 onlayer middle
+                    with dissolve
+
+                    pr "Why did we even pick this movie?"
+
+                    pl "I have no idea. It was the first movie I saw in my movie list that I haven’t watched yet. I don’t even know why I have this in my laptop."
+
+                    "Actress" "I loved you and yet you had the guts to stab me in the back."
+
+                    pl "Just kiss already!"
+
+                    jump bros
+
+                "Play video games.":
+                    pl "How about we play some video games, Legendary Mobile?"
+
+                    show prince point1 at bounce onlayer middle:
+                        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0
+
+                    pr "Sure, I haven’t played that in a while. Sure, let’s play."
+
+                    call timeskip("bg livingroom back evening tvon")
+
+                    with hpunch
+                    pl "Stop farming and back us up! Ugh! This guy is such a noob."
+
+
+                    show prince shock2 at bounce onlayer middle:
+                        xpos -0.11 ypos 1.0 yanchor 1.0 xzoom -1.0
+                    with dissolve
+                    with vpunch
+
+                    pr "Damn, we’re losing big time. And our teammate is a feeder."
+
+                    show carla mad onlayer middle:
+                        subpixel True xpos 1.0 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
+                        parallel:
+                            xpos 1.76
+                            linear 0.7 xpos 1.15
+                    $ renpy.pause(0.5)
+
+                    c "Can you two keep it down while you play? You’re being too loud."
+
+                    jump bros
+
+        "Convince mom to let Prince go.":
+            jump falsealarm
 
 # ROUTE FRIEND
 label friend:
-    $ is_route_unlocked["friend"] = True
-
     call timeskip("bg office afternoon")
-    call updateDate("June 2020, Week 3 | 05:00 PM, Office | GCQ")
+    #DATE May 2020, 6:00 pm, Week 2, Office, GCQ
+    call updateDate("May 2020, 6:00 pm, Week 2, Office, GCQ")
 
     show mark greet onlayer middle:
         xpos -0.04 ypos 0.04 xzoom -1.0
@@ -977,7 +996,7 @@ label friend:
 
     pl "Glad to be here."
 
-    m "It’s been a while since we all hung out together."
+    m "Yeah. It’s been a while since we all hung out together."
 
     show ian greet onlayer middle:
         subpixel True xpos 0.47 ypos 1.0 xanchor 0.5 yanchor 1.0 rotate None
@@ -985,15 +1004,17 @@ label friend:
             xpos 1.28
             linear 0.7 xpos 0.65
 
-    i "Now that we’re all here, are you guys ready to go?"
+    i " Now that we’re all here, are you guys ready to go?"
 
-    pl "Yeah, let’s go."
+    show mark agree onlayer middle
+
+    m "Yeah, let’s go."
 
     jump restaurant
 
 label restaurant:
-    call timeskip("bg restaurant evening")
-    call updateDate("June 2020, Week 3 | 06:30 PM, Restaurant | GCQ")
+    call timeskip("bg restaurant")
+    call updateDate("May 2020, 6:30 pm, Week 2, Restaurant, GCQ")
     play music "audio/bgm/restaurant.mp3"
 
     show ian happy onlayer middle:
@@ -1014,7 +1035,7 @@ label restaurant:
     show mark discuss onlayer middle:
         xpos 0.69 ypos 1.0 xanchor 0.5 yanchor 1.0
 
-    m "I agree. The seating arrangements are one chair apart to {b}maintain proper social distance{/b}."
+    m "I agree. The seating arrangements are one chair apart to {b}maintain proper social distance.{/b}"
 
     m "Everything is {b}sanitized, staff are wearing masks{/b}. They make sure to follow precautionary measures to reassure customers."
 
@@ -1035,9 +1056,9 @@ label restaurant:
     show ian sigh onlayer middle:
         subpixel True xpos 0.27 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0 rotate None
 
-    play sound "audio/eating.mp3"
-
+    #--SFX (eating)
     i "You know, ever since this whole pandemic thing started. I’ve been feeling rather lonely these days."
+
 
     show mark ask onlayer middle:
         subpixel True xpos 0.67 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom 1.0 yzoom 1.0 rotate None
@@ -1075,7 +1096,7 @@ label restaurant:
 
     show ian discuss2 onlayer middle
 
-    i "What about you [player_name]? What do you think?"
+    i "What about you, [player_name]? What do you think?"
 
     menu:
         "Romance is not for me.":
@@ -1088,6 +1109,8 @@ label restaurant:
             m "And besides, going out for work is already scary enough as it is during the pandemic."
 
             m "Plus, I don't need to add another reason that would only cause more headaches."
+
+            jump kylehome
 
         "Having a romantic partner sounds good.":
             pl "Being in a relationship with someone sounds nice. Maybe I should try some online dating and meet new people for a change."
@@ -1104,12 +1127,10 @@ label restaurant:
 
             i "Fine, fine. I'll stop."
 
-    jump datesearch
-
 label datesearch:
-    call timeskip("bg bedroom back evening")
+    call timeskip("bg bedroom back")
     play music "audio/bgm/living room.mp3"
-    call updateDate("June 2020, Week 3 | 09:00 PM, Bedroom | GCQ")
+    call updateDate("May 2020, 9:00 pm, Week 2, Bedroom, GCQ")
 
     plt " (I never thought about being in a romantic relationship since I was in high school.)"
 
@@ -1118,7 +1139,7 @@ label datesearch:
     plt "(I suppose there’s no harm in trying to meet new people.)"
 
     call timeskip("bg livingroom back")
-    call updateDate("July 2020, Week 1 | 01:00 PM, Living Room | GCQ")
+    call updateDate("May 2020, 7:00 pm, Week 3, Living room, GCQ")
 
     plt "(I just came home from work and ended up downloading a dating app either way.)"
 
@@ -1137,13 +1158,15 @@ label datesearch:
     hide prince
     with dissolve
 
+    pl "..."
+
     pl "(That brat. I swear that kid exist to annoy me.)"
 
     plt "(Whatever. All I have to do now is setup my account and select my gender preference.)"
 
     plt "(And hopefully, Prince doesn’t come back to make fun of me.)"
-
     #--SFX (typing)
+
     plt "(Now, what am I into?)"
 
     menu:
@@ -1153,12 +1176,8 @@ label datesearch:
             call phone(male=False)
 
 label phone(male=True):
-    call updateDate("July 2020, Week 1 | 01:10 PM, Living Room | GCQ")
     scene bg livingroom back onlayer background
-
     if male:
-        $ is_route_unlocked["phonemale"] = True
-
         pl "I am definitely into guys."
 
         show phone_tindah onlayer middle at phone_pickup:
@@ -1171,12 +1190,12 @@ label phone(male=True):
         call message(js, "Hi.")
         $ renpy.pause()
 
-        call screen phone_reply("Hi!", "I like your hair", "I should do a pickup line.")
+        call screen phone_reply("Hi!", "I like your hair", "Hit him with a pickup line.")
 
         if itemselected == itemchoices['A']:
             call reply_message("Hi, it's very nice to meet you.")
 
-            call message(js, "It’s very nice to meet you too")
+            call message(js, "Hi, nice to meet you as well.")
             $ renpy.pause()
 
         elif itemselected == itemchoices['B']:
@@ -1191,10 +1210,9 @@ label phone(male=True):
             $ renpy.pause()
 
         elif itemselected == itemchoices['C']:
-            call reply_message("What's cookin', good looking?")
+            call reply_message("What's cookin'? Good looking?")
 
-            call message(js, "Oh, very forward, aren't we?")
-            $ renpy.pause()
+            call message(js, "Ooh, very forward aren't we?")
 
             call reply_message("I'm just a natural when it comes to charming people.")
 
@@ -1207,12 +1225,7 @@ label phone(male=True):
         pl "Maybe this isn’t such a bad idea after all."
 
         $ Hide("phone_call", transition=Dissolve(0.3))()
-
-        call postdatesearch()
-
     else:
-        $ is_route_unlocked["phonefemale"] = True
-
         pl "I prefer girls. Thank you very much."
 
         play sound "audio/fratto kibun.wav" fadeout 3.0
@@ -1229,12 +1242,11 @@ label postdatesearch(male=True):
     if male:
         call timeskip("bg office")
         play music "audio/bgm/office.mp3"
-        call updateDate("July 2020, Week 2 | 10:00 AM, Office | GCQ")
+        call updateDate("June 2020, 10:00 am, Week 2, Office, GCQ")
 
         show ian discuss onlayer middle
         with dissolve
 
-        #--SFX (typing)
         i "Hey! Can you put down your phone for a moment and do your work."
 
         pl "Oh hey, Ian. How long have you been standing there?"
@@ -1265,8 +1277,8 @@ label postdatesearch(male=True):
 
         i "Yeah."
 
-        call timeskip("bg bedroom back afternoon")
-        call updateDate("July 2020, Week 2 | 05:00 PM, Bedroom | GCQ")
+        call timeskip("bg livingroom back")
+        call updateDate("June 2020, 5:00 pm, Week 3, Bedroom, GCQ")
 
         play music "audio/bgm/living room.mp3"
 
@@ -1292,14 +1304,10 @@ label postdatesearch(male=True):
                     parallel:
                         xpos 0.43
                         linear 0.3 xpos -0.32
-
                 play sound("audio/runstep.wav")
+                #--SFX (phone ring)
 
                 pl "That little twerp! He's so gonna get it later."
-
-                play sound "audio/phone vibrate.wav"
-
-                pl "He's so gonna get it later."
 
                 jump firstdate
 
@@ -1318,20 +1326,17 @@ label postdatesearch(male=True):
                 show prince point2 onlayer middle:
                     xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0
 
-                play sound "audio/phone vibrate.wav"
-
+                #--SFX (phone ring)
                 pr "Alright, I'll leave you to it. I’m going tell Ma."
-
     else:
         $ camera_reset()
         call firstdate(male=False)
 
 label firstdate(male=True):
     if male:
-        $ is_route_unlocked["firstdatemale"] = True
-
-        call timeskip("bg bedroom back afternoon")
-        call updateDate("July 2020, Week 2 | 05:10 PM, Bedroom | GCQ")
+        call timeskip("bg livingroom back evening")
+        #DATE: JUNE 2020, 5:00 pm, week 3, bedroom, GCQ
+        call updateDate("June 2020, 5:00 pm, Week 3, Bedroom, GCQ")
         play music "audio/bgm/crickets.mp3"
 
         show phone_tindah onlayer middle:
@@ -1350,7 +1355,7 @@ label firstdate(male=True):
 
         pl "So, Jason. Tell me about yourself."
 
-        call phone_call(js, "discuss", "I love sports, basketball to be more specific. I like to make sure that I keep my body fit.")
+        call phone_call(js, "discuss", "I love sports, basketball to be more specific. I like to make sure that I stay in shape.")
 
         pl "Do you go to the gym?"
 
@@ -1364,7 +1369,7 @@ label firstdate(male=True):
 
         call phone_call(js, "discuss", "...other than {b}proximity{/b}, like {b}exertion level, ventilation, duration, frequently touched surfaces, and mask use.{/b}")
 
-        pl "Wait, don’t people wear masks during exercise? Isn't that enough?"
+        pl "Wait, don’t people wear masks during exercise?"
 
         call phone_call(js, "discuss2", "It’s difficult to breathe with a mask on, so some gyms permits the removal of masks during exercise.")
 
@@ -1377,11 +1382,9 @@ label firstdate(male=True):
         call phone_call(js, "discuss2", "Anything you want to share is fine by me. Family, hobbies, work, anything at all. I just want to get to know you more.")
 
         jump jason
-
     else:
-        $ is_route_unlocked["firstdatefemale"] = True
-
         call timeskip("bg bedroom back")
+        #DATE: MAY 2020, 6:20 pm, week 4, bed room, GCQ
         call updateDate("May 2020, 6:20 pm, Week 4, Bedroom, GCQ")
         play music "audio/bgm/living room.mp3"
 
@@ -1396,10 +1399,11 @@ label firstdate(male=True):
 
         play sound("audio/phone vibrate.wav")
         with hpunch
+        "..."
 
         stop sound
 
-        pl "A match!"
+        plt "(A match!)"
 
         plt "(Alright [player_name], calm down or else you’ll freak her out.)"
 
@@ -1422,7 +1426,7 @@ label firstdate(male=True):
             call message(jl, "Uh… Thanks?")
             $ renpy.pause()
 
-            call reply_message("You're welcome.")
+            call reply_message("My pleasure!")
             $ renpy.pause()
 
             call hide_phone_messages
@@ -1435,17 +1439,15 @@ label firstdate(male=True):
             call message(jl, "It’s nice to meet you too. You’re rather polite, I like that.")
             $ renpy.pause()
 
-            call reply_message("I try. I want to make you feel comfortable talking to me.")
+            call reply_message("Well, I just don't want to make you feel uncomfortable talking to me.")
 
-            call message(jl, "Thank you for taking my feelings into account. If it’s alright with you, I would like to talk to you through video chat. ")
+            call message(jl, "Thank you for taking my feelings into account. If it’s okay with you, I would like to talk to you through video chat.")
             $ renpy.pause()
 
             call reply_message("I would love to.")
             $ renpy.pause()
 
         call hide_phone_messages
-
-        play sound("audio/phone vibrate.wav")
 
         call phone_notif("images/phone/jillian profile.png", "Jillian")
 
@@ -1459,9 +1461,10 @@ label firstdate(male=True):
 
                 call phone_call(jl, "happy2", "Sorry. I’m just glad you’re not another catfish.")
 
-                pl "I can understand that. There are a lot of people on online dating that use a false persona."
+                pl "I get where you're coming from. There are a lot of people on online dating that use a false persona."
 
                 call phone_call(jl, "skeptical", "Right? It’s so annoying when people do that.")
+
 
                 jump jillian
 
@@ -1478,7 +1481,7 @@ label firstdate(male=True):
                 $ renpy.pause(0.5)
 
                 #--SFX  (Hang up phone)
-                plt "(She cut me off. Damn it.)"
+                plt "(She cut me off. Damn it!)"
 
                 $ Hide("phone_call", transition=Dissolve(0.3))()
 
@@ -1488,11 +1491,10 @@ label firstdate(male=True):
 
 # Kyle Route
 label kyle:
-    $ is_route_unlocked["kyle"] = True
-
     call timeskip("bg office")
     play music "audio/bgm/office.mp3"
-    call updateDate("July 2020, Week 4 | 01:00 PM, Office | GCQ")
+    #DATE: JUNE 2020, 1:00 pm, week 1, office, GCQ
+    call updateDate("June 2020, 1:00 pm, Week 1, Office, GCQ")
 
     #--SFX (sigh)
     pl "*sigh*"
@@ -1540,13 +1542,14 @@ label kyle:
     $ renpy.pause(0.5)
     stop sound
 
+    pl "A text message?"
+
     show phone onlayer middle at phone_pickup
     $ renpy.pause(0.6)
 
     call message(ky, "Hey [player_name], remember me?")
-    $ renpy.pause()
 
-    call screen phone_reply("Who?", "I remember you.", "Not really.")
+    call screen phone_reply("Who?", "I remember you...", "Not really.")
 
     if itemselected == itemchoices["A"]:
         call reply_message("Remind me, who are you again?")
@@ -1554,7 +1557,7 @@ label kyle:
         call message(ky, "Seriously? It's me, your old buddy from high school.")
         $ renpy.pause()
 
-        call reply_message("Oh yeah. Now I remember.")
+        call reply_message("Oh yeah! Now I remember.")
 
     elif itemselected == itemchoices["B"]:
         call reply_message("Kyle, my old friend. It's been years!")
@@ -1562,29 +1565,62 @@ label kyle:
     elif itemselected == itemchoices["C"]:
         call reply_message("Which Kyle?")
 
-        call message(ky , "How could you forget your old buddy from high school?!")
+        call message(ky , "How could you forget your old buddy from high school!?")
         $ renpy.pause()
 
-        call reply_message("You should've been more specific. I know a lot of Kyles.")
+        call reply_message("You should've been more specific. I know a lot of \"Kyles\".")
 
     $ itemselected = ""
 
-    call message(ky , "It's been so long since we talked. How are things? Are you busy right now?")
+    call message(ky , "It's been so long since we talked. How are things?")
     $ renpy.pause()
 
-    pl "Yeah, I'm actually at the office right now."
+    plt "(I'm still at work, should I continue conversing with him?)"
 
-    call message(ky , "Oh. Sorry to disturb you, I’ll talk to you later. I don’t want you getting in trouble because of me.")
-    $ renpy.pause()
+    call screen phone_reply("Everything is good.", "Terrible.", "I should return to work.")
+
+    if itemselected == itemchoices["A"]:
+        call reply_message("Things are going well for me so far under these circumstances.")
+
+        call message(ky , "Good for ya.")
+        $ renpy.pause()
+
+        "Boss" "What are you doing, slacking off?!"
+
+        pl "Boss!"
+
+        "Boss" "Get back to work."
+    elif itemselected == itemchoices["B"]:
+        call reply_message("Oh god, everything has been awful since the epidemic started.")
+        $ renpy.pause()
+
+        call reply_message("I could go on ranting forever but I gotta get back to work before the boss sees.")
+
+        call message(ky , "Ah, I see. I hope you didn't get in trouble. Anyways, take care. I'll text you later.")
+
+        $ renpy.pause()
+
+    elif itemselected == itemchoices["C"]:
+        call reply_message("Everything is going well.")
+        $ renpy.pause()
+
+        call reply_message("I'll chat with you later ok? I have to return to work before I get in trouble.")
+
+        call message(ky, "That's cool. We'll talk later.")
+
+        $ renpy.pause()
+
+    $ itemselected = ""
 
     call hide_phone_messages
 
     jump kylehome
 
 label kylehome:
-    call timeskip("bg livingroom back evening")
+    call timeskip("bg livingroom back")
     play music "audio/bgm/living room.mp3"
-    call updateDate("July 2020, Week 4 | 07:00 PM, Living Room | ECQ")
+    #DATE: JUNE 2020, 7:00 pm, week 1, living room, GCQ
+    call updateDate("June 2020, 7:00 pm, Week 1, Living room, GCQ")
 
     pl "I'm home."
 
@@ -1607,8 +1643,9 @@ label kylehome:
     pl "Alright."
     #--SFX (Footsteps -> Shower)
 
-    call timeskip("bg livingroom back evening")
-    call updateDate("August 2020, Week 4 | 07:30 pm, Living Room | GCQ")
+    call timeskip("bg livingroom back")
+    #DATE: JUNE 2020, 7:30 pm, week 1, living room, GCQ
+    call updateDate("June 2020, 7:30 pm, Week 1, Living room, GCQ")
 
     pl "That's better."
 
@@ -1626,10 +1663,8 @@ label kylehome:
     $ renpy.pause(0.6, hard=True)
 
     call message(ky, "Hey. I know we haven’t talked in a long time. So I thought why not use this time to reconnect with an old friend.")
-    $ renpy.pause()
 
     call message(ky, "How about we hang out just like old times?")
-    $ renpy.pause()
 
     call screen phone_reply2("Let's hang out.", "It's safer to stay home.")
 
@@ -1640,6 +1675,7 @@ label kylehome:
         $ renpy.pause()
 
         call reply_message("Sure.")
+
         $ renpy.pause()
 
         call hide_phone_messages
@@ -1654,12 +1690,12 @@ label kylehome:
 
         call hide_phone_messages
 
-        label .findhobby:
-            $ is_route_unlocked["kylehome.findhobby"] = True
+        label .mcend2:
 
             call timeskip("bg office")
             play music "audio/bgm/office.mp3"
-            call updateDate("August 2020, Week 1 | 09:00 AM, Office | GCQ")
+            #DATE: JUNE 2020, 9:30 pm, week 2, office, GCQ
+            call updateDate("June 2020, 9:30 pm, Week 2, Office, GCQ")
 
             show ian discuss onlayer middle
             with dissolve
@@ -1690,20 +1726,20 @@ label kylehome:
             plt "({b}Find a new hobby{/b}… What should I try?)"
 
             call timeskip("bg bedroom back")
-            play music "audio/bgm/living room.mp3"
-            call updateDate("August 2020, Week 2 | 01:00 PM, Bedroom | GCQ")
+            #DATE: AUGUST 2020, 1:00 pm, week 2, bed room, GCQ
+            call updateDate("August 2020, 1:00 pm, Week 2, Bedroom, GCQ")
 
             show prince embarrased onlayer middle:
                 subpixel True xpos 0.22 ypos 1.0 xanchor 0.5 yanchor 1.0 rotate None
             with dissolve
 
-            pr "You’re such a terrible singer."
+            pr "Wow. You’re such a terrible singer."
 
             pl "What are you doing inside my room?"
 
             show prince disgust2 onlayer middle
 
-            pr "I was just passing. Well, c’mon. Don’t be shy and sing."
+            pr "I was just passing by. Well, c’mon. Don’t be shy and sing."
 
             show prince confident onlayer middle
 
@@ -1725,27 +1761,21 @@ label kylehome:
 
             pr "Fine."
 
-            scene black onlayer background
-            with dissolve
-            centered "{color=#fff}{b} End {/b}{/color}"
+            call timeskip(mes="Currently unavailable! :(")
 
             menu:
                 "Choose another route":
-                    centered "You will now be returned to the previous decision point..."
-                    stop music fadeout 2.0
+                    centered "You will now be returned to a previous decision point..."
 
-                    jump office
+                    jump kylehome
 
                 "Return to main menu":
-                    stop music fadeout 0.2
                     jump proceed
 
 label kylemeet:
-    $ is_route_unlocked["kylemeet"] = True
-
     call timeskip("bg outside")
-    play music "audio/bgm/outside.mp3"
-    call updateDate("August 2020, Week 2 | 11:00 AM, Streets | GCQ")
+    #DATE: JUNE 2020, 11:45 am, week 2, streets, GCQ
+    call updateDate("June 2020, 11:45 am, Week 2, Streets, GCQ")
 
     pl "It’s nice to be able to reunite with an old pal again."
 
@@ -1760,13 +1790,13 @@ label kylemeet:
 
     show kyle confused onlayer middle
 
-    ky "Like what?"
+    ky "Like what"
 
     pl "You only wear your face mask on your chin."
 
     show kyle explains onlayer middle
 
-    ky "It's fine. I’ve been going around like this and nothing has happened. So it’s cool."
+    ky "I’ve been going around like this and nothing has happened. So it’s cool."
 
     plt "(What should I say to him?)"
 
@@ -1790,23 +1820,25 @@ label kylemeet:
 
             ky "Everything will be fine. You worry too much."
 
-        "Leave it be.":
+        "I should leave it be.":
             show kyle worried onlayer middle
 
             ky "What? Is there something wrong?"
 
             pl "Nothing."
 
-    call timeskip("bg bedroom back")
+    call timeskip("bg bedroom afternoon")
     play music "audio/bgm/suspense.mp3" fadein 2.0
-    call updateDate("August 2020, Week 3 | 09:00 AM, Bedroom | GCQ")
+    #DATE: JUNE 2020, 4:00 pm, week 3, bed room, GCQ
+    call updateDate("June 2020, 4:00 pm, Week 3, Bedroom, GCQ")
 
     plt "(I don’t feel so good.)"
 
     pl "I should just sleep it off, I’m sure I’m just tired from all the work I have to do at the office."
 
-    call timeskip("bg bedroom back")
-    call updateDate("August 2020, Week 4 | 01:30 PM, Bedroom | GCQ")
+    call timeskip("bg bedroom afternoon")
+    #DATE: JUNE 2020, 5:30 pm, week 3, bed room, GCQ
+    call updateDate("June 2020, 5:30 pm, Week 3, Bedroom, GCQ")
 
     pl "I feel worse."
 
@@ -1840,11 +1872,26 @@ label kylemeet:
 
     c "[player_name], Prince told me you’re not feeling well. I think you need to go to see a doctor. It could be COVID."
 
-    c "[player_name]?"
+    pl "Mom, I have a healthy body, there is no way that I'll get affected by the virus."
 
-    plt "(I can’t breathe properly.)"
+    pl "I’m just tired from work, that’s all. I’ll get better once I eat and take some medicine."
 
-    c "You’re having a {b}difficult time breathing{/b}. Prince, {b}call the local health authorities{/b}."
+    show carla makesure onlayer middle:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.77
+
+    c "I’ll check on you later. If your fever worsens, I’m taking you to the hospital. For now, you remain inside this room, we’ll take proper precautions inside the house."
+
+    call timeskip("bg bedroom back evening")
+
+    play sound "audio/breathing.wav"
+    $ renpy.pause(2.0)
+    stop sound
+
+    show carla sigh onlayer middle:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
+    with dissolve
+
+    c "You’re having a difficult time breathing. I’m taking you to the hospital and getting you tested for blood work."
 
     jump hospital
 
@@ -1857,57 +1904,101 @@ label hospital:
 
     play music "audio/bgm/bad end.mp3"
 
-    plt "(I feel restless. I wonder how my family is doing. I hope they’re doing well.)"
+    pl "I can’t believe I got sick with COVID and got sent to the emergency room. I haven’t seen my family for days now, I miss them."
 
-    plt "(If it wasn’t for my carelessness I wouldn’t be caught up in this mess.)"
+    play sound "audio/breathing.wav"
+    $ renpy.pause(1.0)
 
-    plt "(I don’t know how I’ll be able to face them after this.)"
+    pl "I can barely speak and I feel breathless. I feel like drowning, gasping for air. Everything is so painful. I can’t take this anymore, I feel like all hope is lost."
 
-    plt "(No. I can’t have these negative thought right now. I need to focus on getting better.)"
+    scene black onlayer background
+    with Dissolve(3.0)
 
-    plt "(For my family.)"
+    centered "Flashback Here"
 
-    jump kylehome
+    show bg hospital onlayer background:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.43
+    with Dissolve(3.0)
+
+    pl "*heavy breathing* What am I thinking? I can’t give up now. I still have so much to do, so much to experience."
+
+    pl "I need to get better so I can get back to my family, they are waiting for me to return home."
+
+    scene black onlayer background
+    with wipeleftlong
+    show bg hospital onlayer background:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.43
+    with wiperightlong
+    play music "audio/bgm/living room.mp3"
+
+    pl "It’s been a month since I was sent here at the quarantine facility and I’m feeling a lot better now. I can last a day without using oxygen"
+
+    play sound "audio/runstep.wav"
+    $ renpy.pause(0.5)
+    stop sound
+    play sound "audio/door close.wav"
+
+    "Doctor" "I have great news. You are now asymptomatic and ready to be discharged."
+
+    pl "I can’t believe it. I can finally go home."
+
+    jump mcend
 
 # Jillian Route
 label jillian:
-    call phone_call(jl, "interested", "So [player_name], tell me about yourself.")
+    call phone_call(jl, "interested", "So... tell me about yourself.")
 
     menu:
-        "Anything that boosts my intellect.":
+        "I spend my time improving my thinking ability.":
             pl "I like to read books and do puzzles. Basically anything that allows me to use my intellect."
 
             call phone_call(jl, "happy", "You like to read? Me too.")
 
-        "I love exercising.":
+            pl "I'm glad that we have common interest in books. I like to be able to fill my head with knowledge."
+
+            call phone_call(jl, "happy2", "I feel the same way.")
+
+        "I love to exercise.":
             pl "I usually spend my time exercising."
 
             call phone_call(jl, "discussing", "You must be really fit then.")
 
             pl "I'm nothing like those people with big muscles, but I do try my best to keep my body healthy."
 
-        "Something creative.":
-            pl "I like doing things where I can freely express myself like arts and music."
+            call phone_call(jl, "skeptical", "I heard some gyms have opened, you don't go there?")
+
+            pl "I used to. But I prefer to keep things safe and stay at home."
+
+            call phone_call(jl, "confused", "It's good that you are still motivated to do some workout at home. I just sit all day binge watching movies.")
+
+            pl "You can spend your time in any way you want to."
+
+        "I enjoy doing something creative.":
+            pl "I like doing things where I can freely express myself."
+
+            call phone_call(jl, "happy", "You must be a really talented person.")
+
+            pl "Most of them are just hobbies that I do to pass the time. I like learning new skills."
 
             call phone_call(jl, "happy2", "That's really cool.")
 
     pl "What about you? What do you like to do?"
 
-    call phone_call(jl, "skeptical", "Hmm… Let's see, I like to read and cook. I take interest in many things but most I do is to read and cook, mainly because I like to eat.")
+    call phone_call(jl, "skeptical", "Hmm… Let's see, I like to read and cook. I take interest in many things but most I do is to read and cook mainly because I like to eat.")
 
     call phone_call(jl, "happy", " I really enjoy spending time with you. You seem like a nice guy. I would love to get to know you more.")
 
     pl "If you need someone to talk to, you know where to find me."
 
-    call phone_call(jl, "farewell", "Alright. Have a good night [player_name].")
+    call phone_call(jl, "farewell", "Alright. Have a good night!")
 
     pl "You too."
 
     $ Hide("phone_call", transition=Dissolve(0.3))()
 
     call timeskip("bg livingroom back evening")
-    play music "audio/bgm/living room.mp3"
-    call updateDate("July 2020, Week 2 | 08:00 PM, Living Room | GCQ")
+    #DATE MAY 2020, 8:00 pm, week 4, living room, GCQ
+    call updateDate("May 2020, 8:00 pm, Week 4, Living room, GCQ")
 
     show carla happy onlayer middle:
         xpos 0.19 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0 zoom 0.84
@@ -1943,9 +2034,11 @@ label jillian:
 
     pr "Bummer. I was hoping for a different response."
 
-    call timeskip("bg office afternoon")
-    play music "audio/bgm/office.mp3"
-    call updateDate("June 2020, Week 4 | 02:00 PM, Office | GCQ")
+    call timeskip("bg office")
+    play music "audio/bgm/living room.mp3"
+
+    #DATE June 2020 2:00 pm Week 2 Office GCQ
+    call updateDate("June 2020 2:00 pm Week 2 Office GCQ")
 
     plt "(Jillian and I’s relationship have been going smoothly. I really enjoy spending time with her, even if we’ve only known each other virtually.)"
 
@@ -1959,72 +2052,41 @@ label jillian:
         "Ask her out":
             plt "(I’ll just ask her when I get home.)"
 
-            label .restaurantdate:
-                $ is_route_unlocked["jillian.restaurantdate"] = True
+            call timeskip("bg bedroom back evening")
 
-                call timeskip("bg bedroom back evening")
-                play music "audio/bgm/living room.mp3"
-                call updateDate("July 2020, Week 4 | 07:30 PM, Bedroom | GCQ")
+            #DATE: JUNE 2020, 7:30 pm, week 2, bed room, GCQ
+            call updateDate("June 2020, 7:30 pm, Week 2, Bedroom, GCQ")
 
-                show phone_tindah onlayer middle at phone_pickup
-                $ renpy.pause(0.5)
 
-                call reply_message("Hey. Do you want to meet up?")
+            show phone_tindah onlayer middle at phone_pickup
+            $ renpy.pause(0.5)
 
-                call message(jl, "Sure. Text me the details so I can see if my schedule is free.")
-                $ renpy.pause()
+            call reply_message("Hey. Do you want to meet up?")
 
-                plt "(Score. I can’t wait to meet up with her.)"
+            call message(jl, "Sure. Text me the details so I can see if my schedule is free.")
+            $ renpy.pause()
 
-                call hide_phone_messages
+            plt "(Score. I can’t wait to meet up with her.)"
 
-                jump jldate
+            call hide_phone_messages
 
-        "Don't ask her out.":
+            jump jldate
+
+        "Keep things the way they are":
             plt "(Nah. Asking her out under these circumstances is not the best idea. I don’t want to risk her health or mine.)"
 
             plt "(I’m sure there are ways we can keep our virtual date more fun for both of us. But what?)"
 
-            label .artsncraft:
-                $ is_route_unlocked["jillian.artsncraft"] = True
+            call timeskip("bg office afternoon")
 
-                call timeskip("bg bedroom back")
-                play music "audio/bgm/living room.mp3"
-                call updateDate("August 2020, Week 2 | 10:00 AM, Bedroom | GCQ")
+            #JUNE 2020, 2:00 pm, week 4, office, GCQ
+            call updateDate("June 2020, 2:00 pm, Week 4, Office, GCQ")
 
-                show phone onlayer middle at phone_pickup
-                $ renpy.pause(0.6)
+            #--Unsure (video call ith jill maybe?)
 
-                call phone_call(jl, "interested", "I have to say, I love that you came up with an idea of doing art together for today’s activity.")
+            "Temporary close"
 
-                pl "Well, I’m glad that you’re having a good time."
-
-                call phone_call(jl, "discussing", "What gave you the idea of making art today?")
-
-                pl "Since I can’t take you out on a date personally, I just I’d keep things lively between us by doing some activities together."
-
-                call phone_call(jl, "flattered", "I’m loving this idea. We should do this more often")
-
-                call phone_call(jl, "happy2", "It’s more fun and exciting than just talking. Maybe next time I get to choose what activity we do? That way we can share each other’s hobbies. Wouldn’t that be interesting?")
-
-                pl "Sure. You get to plan our next activity."
-
-                call phone_call(jl, "flattered", "Can’t wait.")
-
-                scene black onlayer background
-                with dissolve
-                centered "{color=#fff}{b} End {/b}{/color}"
-
-                menu:
-                    "Choose another route":
-                        centered "You will now be returned to the previous decision point..."
-                        stop music fadeout 2.0
-
-                        jump office
-
-                    "Return to main menu":
-                        stop music fadeout 0.2
-                        jump proceed
+            jump proceed
 
 label jlaskout:
     scene bg livingroom back onlayer background
@@ -2059,7 +2121,6 @@ label jlaskout:
                     call reply_message("Great. I’ll message you the details later.")
 
                     call message(jl, "Okay then.")
-                    $ renpy.pause()
 
                     $ renpy.pause()
                     call hide_phone_messages
@@ -2110,7 +2171,6 @@ label jlaskout:
 label jldate:
     call timeskip("bg restaurant")
     play music "audio/bgm/restaurant.mp3"
-    call updateDate("August 2020, Week 1 | 11:30 AM, Restaurant | GCQ")
 
     pl "Well, this isn’t what I was expecting."
 
@@ -2135,53 +2195,85 @@ label jldate:
 
     jl "But I do appreciate the trouble you have to get through just to set up the perfect date."
 
+    pl "I’m glad that the government eased the quarantine rules. Now people from age 15 to 65 are allowed to go out."
+
+    show jillian skeptical onlayer middle
+
+    jl "That’s true, but I can’t help but feel cautious of the surroundings. Being close to you makes me feel excited and on edge at the same time."
+
     pl "It’s fine, I understand. Let’s just make the most of it while we’re here."
 
     show jillian flattered onlayer middle
 
-    jl "Sure."
+    jl "Agreed."
 
-    call timeskip("bg bedroom back")
-    play music "audio/bgm/living room.mp3"
-    call updateDate("August 2020, Week 1 | 03:00 PM, Bedroom | GCQ")
+    call timeskip("bg livingroom back evening")
+    play music "audio/bgm/crickets.mp3"
+
+    pl "Hi mom."
+
+    show carla happy onlayer middle:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
+    with dissolve
+
+    c "So how did your date go?"
+
+    pl "Everything went well. But we came to an agreement that we will hold our dates online instead of meeting up."
+
+    pl "We wouldn't want anything bad to happen."
+
+    show carla thinking onlayer middle
+
+    c "It’s better that way, or both your safety."
+
+    pl "Yeah. I’ll be heading to my room, call me if you need anything, mom."
+
+    show carla happy onlayer middle
+
+    c "Alright."
+
+    call timeskip("bg bedroom back evening")
+
+    plt "(I should message her just to make sure she arrives home safe.)"
 
     show phone onlayer middle at phone_pickup
     $ renpy.pause(0.6)
 
-    call reply_message("Sorry things got award during our date at the restaurant")
+    call reply_message("Hey. Did you arrive home?")
 
-    call message(jl, "It’s fine. It’s not like I got sick or anything. And I hope you’re not either.")
+    call message(jl, "Yeah. I just got home.")
     $ renpy.pause()
 
-    call reply_message("I’m feeling well.")
+    call reply_message("That’s good, I just wanted to make sure you're alright and got home safe.")
 
-    call message(jl, "That’s good.")
+    call message(jl, "I appreciate your concern. Our date was short but I really enjoyed it.")
+    $ renpy.pause()
+
+    call reply_message("I’m pleased I made things enjoyable for you. I’ll text you tomorrow, alright? Have a good night.")
+
+    call message(jl, "Thanks. You too.")
     $ renpy.pause()
 
     call hide_phone_messages
-
-    plt "(How can I make it up to her?)"
 
     jump jlend
 
 # Jason Route
 label jason:
-    call timeskip("bg livingroom back afternoon")
+    call timeskip("bg livingroom back")
     play music "audio/bgm/living room.mp3"
-    call updateDate("August 2020, Week 1 | 05:00 PM, Living Room | GCQ")
+    call updateDate("July 2020, 5:00 pm, Week 1, Living room, GCQ")
 
     plt "(It’s been a while since I last talked to Jason. He hasn’t been replying to any of my messages. I wonder how he’s doing. I hope he’s alright.)"
 
-    scene bg livingroom left afternoon tvon onlayer background
+    scene bg livingroom left tvon onlayer background
     with dissolve
 
     "Reporter" "In today’s report, the number of COVID-19 cases in the Philippines moved past the 316,000 mark."
 
-    "Reporter" "In other related news, 86 percent of adult Filipino have been experiencing great stress..."
+    "Reporter" "In other related news, 86 percent of adult Filipino have been experiencing great stress due to involuntary hunger and that more Filipinos could slip into poverty and joblessness due to COVID-19 pandemic."
 
-    "Reporter" "...due to involuntary hunger and that more Filipinos could slip into poverty and joblessness due to COVID-19 pandemic."
-
-    scene bg livingroom back afternoon onlayer background
+    scene bg livingroom back tvon onlayer background
     with dissolve
 
     plt "(When will this pandemic ever end?)"
@@ -2199,9 +2291,9 @@ label jason:
     call message(js, "I want to make it up to you. Since we live in the same area, how about we meet up?")
     $ renpy.pause()
 
-    call screen phone_reply2("I’m not sure about that.", "Sounds good.")
+    call screen phone_reply2("Sounds good.", "I’m not sure about that.")
 
-    if itemselected == itemchoices["B"]:
+    if itemselected == itemchoices["A"]:
         call reply_message("Sounds like a plan.")
 
         call message(js, "Great. I’ll text you the details later. See you then.")
@@ -2211,74 +2303,17 @@ label jason:
 
         call hide_phone_messages
 
-        label .meetupjason:
-            $ is_route_unlocked["jason.meetupjason"] = True
+        call timeskip("bg bedroom back")
+        call updateDate("August 2020, 5:00 pm, Week 2, Bed room, GCQ")
 
-            call timeskip("bg bedroom back evening")
-            call updateDate("August 2020, Week 4 | 10:00 PM, Bedroom | GCQ")
+        pl "Everything is going smoothly between me and Jason."
 
-            plt "(Everything is going smoothly between me and Jason.)"
+        #--Incomplete
+        "To be continued"
 
-            plt "(We’ve been talking to each other a lot nowadays. But I feel like something is off.)"
+        jump proceed
 
-            plt "(He hasn’t replied to any of my messages for a week now, usually he would reply by the end of the day. I hope he’s doing alright.)"
-
-            play sound "audio/phone vibrate.wav"
-            $ renpy.pause()
-
-            plt "(Speak of the devil. Here he is. Perfect timing.)"
-
-            show phone onlayer middle at phone_pickup
-
-            call message(js, "Hey, sorry I haven’t been replying to your messages. Things are pretty hectic here at home")
-            $ renpy.pause()
-
-            call reply_message("Why? Is there something wrong?")
-
-            call message(js, "A family member of mine got sick. They weren’t feeling well these past few days. We’re under {b}home quarantine to prevent any disease from spreading{/b} until we get them tested. So I’m taking care of them for the time being.")
-            $ renpy.pause()
-
-            call reply_message("But what about you? There’s high chance you get sick too since you’re the one who {b}monitor their symptoms regularly{/b}.")
-
-            call message(js, "Oh. We {b}prepared a separate room for them, and keep the room well ventilated{/b}.")
-            $ renpy.pause()
-
-            call reply_message("Do you {b}wear a medical mask if you’re in the same room as the sick person?{/b}")
-
-            call message(js, "Yes. Using {b}separate dishes, cups, eating utensils and bedding{/b} can also reduce contact. I even went overboard when {b}cleaning and disinfecting the surfaces I frequently touched{/b}.")
-            $ renpy.pause()
-
-            call message(js, "Nothing is too much when it comes to health.")
-            $ renpy.pause()
-
-            call reply_message("Send my regards to them.")
-
-            call message(js, "Will do. I’ll talk to you later.")
-            $ renpy.pause()
-
-            call reply_message("Sure. Take care.")
-
-            call message(js, "You too.")
-            $ renpy.pause()
-
-            call hide_phone_messages
-
-            scene black onlayer background
-            with dissolve
-            centered "{color=#fff}{b} End {/b}{/color}"
-
-            menu:
-                "Choose another route":
-                    centered "You will now be returned to the previous decision point..."
-                    stop music fadeout 2.0
-
-                    jump office
-
-                "Return to main menu":
-                    stop music fadeout 0.2
-                    jump proceed
-
-    elif itemselected == itemchoices["A"]:
+    elif itemselected == itemchoices["B"]:
         call reply_message("I don’t think it’s a good idea to go out.")
 
         $ itemselected = ""
@@ -2290,6 +2325,28 @@ label jason:
         $ renpy.pause()
 
         call reply_message("I’m intrigued. So what do you have in mind?")
+
+        call hide_phone_messages
+
+        call timeskip("bg bedroom back evening")
+
+        show phone onlayer middle at phone_pickup
+        $ renpy.pause(0.6)
+
+        call message(js, "You know what? How about we try something different next time we meet?")
+        $ renpy.pause()
+
+        call reply_message("What do you mean by ‘try something new’?")
+
+        call message(js, "There are plenty of virtual dating activities we can do together other than talking, like virtual exercising.")
+        $ renpy.pause()
+
+        call reply_message("Sounds like fun, we should definitely do that.")
+
+        call message(js, "Haha. I’m glad you approve.")
+        $ renpy.pause()
+
+        call reply_message("I’ll look forward to our virtual date exercise.")
         $ renpy.pause()
 
         call hide_phone_messages
@@ -2298,13 +2355,12 @@ label jason:
 
 # Endings
 label getcaught:
-    $ is_route_unlocked["getcaught"] = True
-
     call timeskip("bg livingroom back evening")
 
-    call updateDate("March 2020, Week 2 | 06:00 PM, Bedroom | ECQ")
+    # DATE: MARCH 2020, 9:00 pm, week 3, bed room, ECQ
+    call updateDate("March 2020, 9:00 pm, Week 3, Bedroom, ECQ")
 
-    plt "(One week into quarantine and I’m already bored out of my mind. There is literally nothing else to do.)"
+    plt "(One week into quarantine and I’m already bored out of my mind. There literally nothing else to do.)"
 
     plt "(Stores are closed you I can’t go out on a snack run. I could go out for walk, I’m sure nothing bad will happen.)"
 
@@ -2320,20 +2376,14 @@ label getcaught:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
     with dissolve
 
-    "Police" "Hey you! Stop right there."
+    "Tanod" "Hey you! Stop right there."
 
     play music "audio/bgm/suspense.mp3"
 
     plt "(Oh shoot! What should I do?)"
 
-    $ time = 3
-    $ timer_range = 3
-    $ timer_jump = "getcaught.failescape"
-    show screen countdown
-
     menu:
         "Run away.":
-            hide screen countdown
             with vpunch
             with vpunch
             #--SFX (Running/Panting then Crash)
@@ -2342,16 +2392,15 @@ label getcaught:
             "Police" "You are under arrest for quarantine violation."
 
         "Stay in place.":
-            label .failescape:
-                hide screen countdown
-                with hpunch
-                pl "What are you doing?! Let go of me!"
-                with hpunch
+            with hpunch
+            pl "What are you doing?! Let go of me!"
+            with hpunch
 
-                show tanod arrest onlayer middle:
-                    xpos 0.45 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
+            show tanod arrest onlayer middle:
+                xpos 0.45 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
 
-                "Police" "You are under arrest for quarantine protocol violation."
+            "Police" "You are under arrest for quarantine protocol violation."
+
 
     scene black onlayer background
     with dissolve
@@ -2363,35 +2412,160 @@ label getcaught:
         "Choose another route":
             centered "You will now be returned to a previous decision point..."
             jump lockdown
+        "Return to main menu":
+            stop sound fadeout 0.2
+            jump proceed
+
+label bros:
+    call timeskip("bg livingroom back evening tvon")
+    show prince happy onlayer middle:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.91
+    with dissolve
+
+    pr "That was fun. Thanks for spending time with me."
+
+    pl "No problem. If you ever get bored I’m here for you."
+
+    show prince embarrased onlayer middle:
+        subpixel True xpos 0.45 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.98 rotate None
+
+    pr "Thanks."
+
+    scene black onlayer background
+    with dissolve
+    stop music fadeout 2.0
+    play music "audio/bgm/good end.mp3" fadeout 2.0 #temp
+
+    centered "{color=#0f0}{b}End{/b}{/color}"
+
+    menu:
+        "Choose another route":
+            centered "You will now be returned to a previous decision point..."
+            stop sound fadeout 2.0
+
+            jump project
 
         "Return to main menu":
             stop sound fadeout 0.2
             jump proceed
 
-label jlend:
-    call timeskip("bg kitchen")
-    play music "audio/bgm/living room.mp3"
-    call updateDate("August 2020, Week 3 | 12:00 PM, Kitchen | GCQ")
+label falsealarm:
+    scene bg livingroom back evening onlayer background
 
-    show jillian dump onlayer middle
+    show carla mad onlayer middle:
+        xpos 1.1 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
+
+    show prince angry onlayer middle:
+        xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0
+
+    pl "I’m sure nothing bad will happen. There are no reports of COVID patients in our area anyway, so why not let him go to his classmate's house? It is for a school project after all."
+
+    show carla thinking onlayer middle:
+        xpos 1.12 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
+
+    c "If it’s for a school project, maybe I can allow you to go."
+
+    show prince happy2 onlayer middle
+
+    pr "Really?"
+
+    show carla mad onlayer middle
+
+    c "But just this once. And I want you back home before dark."
+
+    show prince happy2 at bounce, left onlayer middle
+
+    pr "I will. Thank you."
+
+    call timeskip("bg bedroom back")
+
+    stop music
+
+    pl "Hey Prince. Are you ok? You haven’t left your room all day."
+
+    show prince sick onlayer middle:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
     with dissolve
 
-    jl "It’s not really a fine-dining experience, but kudos to you for suggesting it."
+    play music "audio/bgm/suspense.mp3"
 
-    pl "Do you not like it?"
+    pr "[player_name], I don’t feel so good."
 
-    show jillian greet onlayer middle
+    pl "You’re burning up. I’ll go get mom."
 
-    jl "It’s new to me, but I think this is going to be fun."
+    call timeskip("bg bedroom back")
 
-    pl "Good. I wanted to make up for last time we went out."
+    play sound "audio/runstep.wav"
+    $ renpy.pause(0.5)
+    stop sound
+    play sound "audio/door close.wav"
 
-    show jillian happy2 onlayer middle
+    show carla sigh onlayer middle:
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
+    with dissolve
 
-    jl "I don’t blame you. But I’m hoping that this could be a regular thing."
+    c "This is what I’m afraid of. We need to get you to the clinic right away."
+
+    pl "I’ve read some articles related to the virus, having a fever is just a mild to minor symptom that can be cured at home."
+
+    pl "We have to isolate Prince in a separate room and pay special attention if he’s at risk for serious illness. We have to make sure he’s well rested and hydrated."
+
+    pl "And to reduce the virus, we have to wear a face mask if we’re in the same room as the sick person; separate eating utensils and bedding; we should also clean and disinfect the surfaces that he frequently touched."
+
+    c "If that’s the case, we need to stock up some supplies, some regular medicine, medical masks and disinfectants. We have to get out contacts ready if something bad happens."
+
+    c "Make sure to get health information like doctors, hotlines, emergency numbers, health centers or facilities. Include family or friends to the contact list."
+
+    pl "I’ll go get the supplies."
+
+    stop music
+
+    call timeskip("bg bedroom back")
+    play music "audio/bgm/living room.mp3"
+
+    show prince stretch at left onlayer middle:
+        xzoom -1
+
+    with dissolve
+
+    pr "I feel better already. Thank you for looking after me."
+
+    show carla thinking onlayer middle:
+        xpos 1.04 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84
+    with dissolve
+
+    c "As it turns out, it was just a mild flu and managed to recover within a week."
+
+    pl "COVID and flu do have similar symptoms."
+
+    show carla mad onlayer middle
+
+    c "COVID or mild flu, we still need to be careful. From now on we practice good healthy habits, and that means no more staying up late, drinking plenty of fluids and eating nutritious food."
+
+    c "And it wouldn’t hurt to exercise instead of sitting all day playing video games."
+
+    "{color=#0033a9}Prince{/color} {color=#fff}&{/color} {color=#ffa500}[player_name]{/color}" "Yes mom."
+
+    call timeskip("bg front house")
+
+    play music "audio/bgm/outside.mp3"
+
+    pl "Come on Prince. We barely even started and yet you’re already sweating this much."
+
+    show prince angry onlayer middle
+    with dissolve
+
+    pr "I can’t… I haven’t been doing any physical activities… Give me a break."
+
+    pl "You have to exercise if you wanna be healthy. Besides, it’s only been 20 minutes."
+
+    show prince slouch onlayer middle
+
+    pr "The most exercise I get in a day is walking around the house… Oh jeez."
 
     scene black onlayer background
     with dissolve
+    play music "audio/bgm/good end.mp3"
     centered "{color=#fff}{b} End {/b}{/color}"
 
     menu:
@@ -2399,10 +2573,89 @@ label jlend:
             centered "You will now be returned to the previous decision point..."
             stop music fadeout 2.0
 
-            jump jillian
+            jump project
 
         "Return to main menu":
             stop music fadeout 0.2
+            jump proceed
+
+    jump proceed
+
+label jlend:
+    call timeskip("bg livingroom back")
+    play music "audio/bgm/living room.mp3"
+
+    show prince talking1 onlayer middle
+    with dissolve
+
+    pr "So how’s your virtual date going?"
+
+    pl "Everything is going great. We’ve gotten along really well these past few months. We’ve been talking to each other more often."
+
+    show prince point2 onlayer middle
+
+    pr "So when are you two going to make things official with her?"
+
+    pl "Don’t you think it’s a little too soon for that? Why are you even asking in the first place?"
+
+    show prince embarrased onlayer middle:
+        xpos 0.47 ypos 1.0 xanchor 0.5 yanchor 1.0
+
+    pr "I’m just curious."
+
+    pl "Do you think I should do it?"
+
+    show prince stretch onlayer middle:
+        xpos 0.57 ypos 1.0 xanchor 0.5 yanchor 1.0
+
+    pr "You’re the one talking to her. Why are you asking me?"
+
+    plt "(Should I ask her out?)"
+
+    plt "(We’ve gotten close for the past months. She seems to enjoy hanging out with me. Maybe I should risk it and ask her out.)"
+
+    call timeskip("bg bedroom back evening")
+
+    show phone_tindah onlayer middle at phone_pickup
+    $ renpy.pause(0.6)
+
+    call phone_call(jl, "worried", "Hey, are you alright? You seem out of it.", 0)
+
+    pl "Yeah. I’m just a bit nervous."
+
+    call phone_call(jl, "skeptical", "Nervous? Why would you feel nervous?")
+
+    pl "*deep breathe*"
+
+    pl "I know we’ve only been meeting virtually, but I want to say that I really love spending time with you, it’s the highlight of my day."
+
+    pl "So I want to ask. Will you be my girlfriend?"
+
+    play music "audio/bgm/good end.mp3" fadein 1.0
+
+    call phone_call(jl, "happy", "I’d love to be your girlfriend.")
+
+    pl "Wait. For real?"
+
+    call phone_call(jl, "happy2", "Of course for real, silly. I’ve been feeling lonely, but then I get to meet you. Ever since then I always look forward to talking with you.")
+
+    pl "So we’re officially together."
+
+    call phone_call(jl, "flattered", "Haha. Yes we are now in a romantic relationship.")
+
+    scene black onlayer background
+    with dissolve
+    centered "{color=#0f0}{b} End {/b}{/color}"
+
+    menu:
+        "Choose another route":
+            centered "You will now be returned to the previous decision point..."
+            stop music fadeout 2.0
+
+            call firstdate(False)
+
+        "Return to main menu":
+            stop sound fadeout 0.2
             jump proceed
 
 label jsend:
@@ -2423,12 +2676,10 @@ label jsend:
     call reply_message("Why? What’s wrong?")
 
     call message(js, "I have been diagnosed for COVID infection and the results came out positive. I fear that you might have it too since we went out a week ago.")
-    $ renpy.pause()
 
     play music "audio/bgm/suspense.mp3"
 
     call message(js, "I’m sorry, I shouldn’t have asked you to go have lunch with me.")
-    $ renpy.pause()
 
     call message(js, "For now, I'm on self-quarantine. You should get checked up too before anything worse happens.")
     $ renpy.pause()
@@ -2508,10 +2759,7 @@ label jsend:
             jump proceed
 
 label jsexerciseend:
-    $ is_route_unlocked["jsexerciseend"] = True
-
     call timeskip("bg livingroom back")
-    call updateDate("August 2020, Week 2 | 09:00 AM, Living Room | GCQ")
 
     show phone_tindah onlayer middle at phone_pickup
     $ renpy.pause(0.6)
@@ -2532,21 +2780,23 @@ label jsexerciseend:
 
     call phone_call(js, "exercise", "Alright! Water break’s over. Let’s go back to exercise.")
 
-    pl "Ugh!"
+    pl "Already?!"
 
     scene black onlayer background
     with dissolve
-    centered "{color=#fff}{b} End {/b}{/color}"
+    play music "audio/bgm/good end.mp3"
+
+    centered "{color=#0f0}{b}End{/b}{/color}"
 
     menu:
         "Choose another route":
-            centered "You will now be returned to the previous decision point..."
+            centered "You will now be returned to a previous decision point..."
             stop music fadeout 2.0
 
             jump jason
 
         "Return to main menu":
-            stop music fadeout 0.2
+            stop music fadeout 0.5
             jump proceed
 
 label mcend:
@@ -2582,21 +2832,24 @@ label mcend:
 label workprep:
     if currentRoom == ROOMS['livingroom']:
         scene bg livingroom back
-        call hideStuff('faceshield', room='livingroom')
-        call hideStuff('bedkey', room='livingroom')
+        call hideStuff('faceshield', location='livingroom')
+        call hideStuff('bedkey', location='livingroom')
     elif currentRoom == ROOMS['bedroom']:
         scene bg bedroom back
-        call hideStuff("wallet", room='bedroom')
+        call hideStuff("wallet", location='bedroom')
         call hideStuff('draweropen', 'bedroom', isState=True)
         call hideStuff('boxclosed', 'bedroom', isState=True)
 
     elif currentRoom == ROOMS['kitchen']:
         scene bg kitchen
-        call hideStuff('sanitizer', room='kitchen')
+        call hideStuff('sanitizer', location='kitchen')
 
     if not(onhand['sanitizer'] and onhand['faceshield'] and onhand['wallet'] and onhand['facemask']):
         call screen workprep
         jump workprep
+
+    # DATE: MAY 2020, 7:00 pm, week 1, bed room, GCQ
+    call updateDate("May 2020, 7:00 pm, Week 1, Bed room, GCQ")
 
     plt "(Great. Now I have everything set, I am ready for tomorrow.)"
 
@@ -2620,74 +2873,19 @@ label findActivity:
 
         plt "I should look up for more Coronavirus information, just to be sure."
 
-        call timeskip("bg bedroom back")
+        show phoneless at phone_pickup onlayer background
+        $ renpy.pause(0.5)
+        show screen quiz
+        $ renpy.pause(hard=True)
 
-        "{color=#555555}{b}QUESTION #1{/b}{/color}" "2019-nCov or novel coronavirus is caused by the virus _____?"
+        label .postquiz:
+            "You got [correctans] correct answers!"
 
-        menu:
-            "A. SARS-Cov-2":
-                "{color=#555555}{b}QUESTION #1{/b}{/color}" "Correct!"
-                $ correctans = correctans + 1
-            "B. MARS-Cov-2":
-                "{color=#555555}{b}QUESTION #1{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: A. SARS-Cov-2{/color}"
-            "C. SARS-Com-3":
-                "{color=#555555}{b}QUESTION #1{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: A. SARS-Cov-2{/color}"
+            hide phoneless at phone_hide onlayer background
 
-        "{color=#555555}{b}QUESTION #2{/b}{/color}" "\“CO\“ in COVID-19 stands for corona, \“VI\” for virus and \“D\” is for what?"
+            plt "Wow, I’m learning a lot today."
 
-        menu:
-            "A. Distance":
-                "{color=#555555}{b}QUESTION #2{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Disease{/color}"
-            "B. Digest":
-                "{color=#555555}{b}QUESTION #2{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Disease{/color}"
-            "C. Disease":
-                "{color=#555555}{b}QUESTION #2{/b}{/color}" "Correct!"
-                $ correctans = correctans + 1
-
-        "{color=#555555}{b}QUESTION #3{/b}{/color}" "COVID-19 can spread by coughs or ____ that is generated by an infected person."
-
-        menu:
-            "A. Sweat":
-                "{color=#555555}{b}QUESTION #3{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Sneezes{/color}"
-            "B. Urine":
-                "{color=#555555}{b}QUESTION #3{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Sneezes{/color}"
-            "C. Sneezes":
-                "{color=#555555}{b}QUESTION #3{/b}{/color}" "Correct!"
-                $ correctans = correctans + 1
-
-        "{color=#555555}{b}QUESTION #4{/b}{/color}" "To prevent and slow the transmission of COVID-19 infection, people should practice physical or social ____. "
-
-        menu:
-            "A. Events":
-                "{color=#555555}{b}QUESTION #4{/b}{/color}""{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: B. Distancing{/color}"
-            "B. Distancing":
-                "{color=#555555}{b}QUESTION #4{/b}{/color}""Correct!"
-                $ correctans = correctans + 1
-            "C. Media":
-                "{color=#555555}{b}QUESTION #4{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: B. Distancing{/color}"
-
-        "{color=#555555}{b}QUESTION #5{/b}{/color}" "What should be worn to suppress the transmission of the coronavirus?"
-
-        menu:
-            "A. Leather Jackets":
-                "{color=#555555}{b}QUESTION #5{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Medical Masks{/color}"
-            "B. Gas masks":
-                "{color=#555555}{b}QUESTION #5{/b}{/color}" "{color=#f00}Incorrect!{/color}\n{color=#0f0}Correct answer: C. Medical Masks{/color}"
-            "C. Medical Masks":
-                "{color=#555555}{b}QUESTION #5{/b}{/color}" "Correct!"
-                $ correctans = correctans + 1
-
-        "You got [correctans] correct answers."
-
-        pl "Wow, I'm learning a lot today."
-
-        "TODO FEATURE" "Insert Achievement: {b}Quiz Master{/b}, here."
-
-        pl "There is so much information posted here. I need to keep myself updated."
-
-        plt "Wow, I’m learning a lot today."
-
-        plt "There is so much information posted here. I need to keep myself updated."
+            plt "There is so much information posted here. I need to keep myself updated."
 
     elif _return == 'bed':
         scene bg bedroom back onlayer background
@@ -2780,9 +2978,20 @@ label findActivity:
     $ currentRoom = ROOMS['livingroom']
     jump newnormal
 
+label intro_to_supermarket:
+    c "I'll give you a list and 200.00 worth of money."
+
+    c " You need to buy the exact number of groceries worth 200.00, including the items on the list."
+
+    call timeskip("bg supermarket")
+    call updateDate("July 2020, 3:00 pm, Week 4, grocery store, GCQ")
+
+    pl "I’m here. Now let’s check the items on the list."
+
+    pl "I have to do is complete the list and spend all 200.00 worth of grocery items."
+
 label supermarket:
-    $ showFlapButtons()
-    call screen supermarket
+    call screen supermarket()
     jump supermarket
     label .shop_win_conditions:
         if not(hasAcquiredNeedItems()):
@@ -2794,10 +3003,9 @@ label supermarket:
         elif getCost() > 200:
             pl "I’m out of budget. I need to remove some items."
             jump supermarket
+    pl " I have everything I need. Time to check out."
 
-    pl "I have everything I need. Time to check out."
-    $ renpy.hide_screen("flapButton")
-    jump princegoingout
+    jump project
 
 # Temporary Event ~ Sends player back to main menu upon jumping here
 label proceed:
