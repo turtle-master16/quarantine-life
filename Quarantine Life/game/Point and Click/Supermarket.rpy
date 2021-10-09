@@ -1,27 +1,61 @@
+default currentItemCost = 0
+default shopItemMap = {
+    'redcan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
+    'yellowcan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
+    'orangecan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
+    'greencan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
+    'browncan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
+    'toiletroll': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
+    'facemask': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
+    'hygiene': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
+}
+
+default shopItems = {
+    'redcan': MartItem("redcan", shopItemMap['redcan'], 28, 0, alt_name="Red can"),
+    'yellowcan': MartItem("yellowcan", shopItemMap['yellowcan'], 22, 0, alt_name="Yellow can"),
+    'orangecan': MartItem("orangecan", shopItemMap['greencan'], 34, 0, alt_name="Orange can"),
+    'greencan': MartItem("greencan", shopItemMap['browncan'], 23, 0, alt_name="Green can"),
+    'browncan': MartItem("browncan", shopItemMap['toiletroll'], 27, 0, alt_name="Brown can"),
+    'toiletroll': MartItem("toiletroll", shopItemMap['redcan'], 15, 0, alt_name="Toilet Roll"),
+    'facemask': MartItem("facemask", shopItemMap['facemask'], 25, 0, alt_name="Facemask"),
+    'hygiene': MartItem("hygiene", shopItemMap['hygiene'], 36, 0, alt_name="Hygiene Products"),
+}
+
+transform t_flapButton:
+    yanchor 1.0
+    on show:
+        ypos 1.0
+        yoffset 75
+        linear 0.3 yoffset 0
+    on hide:
+        linear 0.3 yoffset 75
+
+transform t_price_list:
+    on show:
+        yoffset 700
+        linear 0.8 yoffset 0
+    on hide:
+        yoffset 0
+        linear 0.8 yoffset 700
+
+transform t_instructions:
+    on show:
+        yoffset 700
+        linear 0.6 yoffset 0
+    on hide:
+        linear 0.6 yoffset 700
+
 # Supermart ------------------
-screen supermarket():
-    zorder -1
-    $ mart_items = {
-        "redcan": (0, 343, 195, 25),
-        "redcan2": (241, 361, 654, 21),
-        "yellowcan": (240, 285, 655, 28),
-        "orangecan": (462, 486, 217, 26),
-        "greencan": (1, 414, 198, 60),
-        "greencan2": (234, 421, 455, 28),
-        "browncan": (1, 218, 199, 70),
-        "toiletroll": (824, 180, 137, 36),
-        "toiletroll2": (990, 280, 216, 73),
-        "facemask": (709, 404, 502, 314),
-        "hygiene": (212, 495, 231, 221),
-        "hygiene2": (88, 522, 97, 196),
-        "hygiene3": (10, 579, 67, 139),
-    }
+screen supermarket:
+    layer "background"
     imagemap:
         ground "images/bg/bg supermarket.png"
         hotspot mart_items["redcan"] action Call("shopItemTake", "redcan")
         hotspot mart_items["redcan2"] action Call("shopItemTake", "redcan")
         hotspot mart_items["yellowcan"] action Call("shopItemTake", "yellowcan")
         hotspot mart_items["orangecan"] action Call("shopItemTake", "orangecan")
+        hotspot mart_items["orangecan2"] action Call("shopItemTake", "orangecan")
+        hotspot mart_items["orangecan3"] action Call("shopItemTake", "orangecan")
         hotspot mart_items["greencan"] action Call("shopItemTake", "greencan")
         hotspot mart_items["greencan2"] action Call("shopItemTake", "greencan")
         hotspot mart_items["browncan"] action Call("shopItemTake", "browncan")
@@ -30,14 +64,13 @@ screen supermarket():
         hotspot mart_items["facemask"] action Call("shopItemTake", "facemask")
         hotspot mart_items["hygiene"] action Call("shopItemTake", "hygiene")
         hotspot mart_items["hygiene2"] action Call("shopItemTake", "hygiene")
-        hotspot mart_items["hygiene3"] action Call("shopItemTake", "hygiene")
     imagebutton:
         idle im.Flip("images/misc/arrow.png", horizontal=True)
         xalign 1.0
         yalign 0.5
         action Call("supermarket.shop_win_conditions")
 
-screen price_list():
+screen price_list:
     modal True
     zorder 1
     frame:
@@ -142,48 +175,3 @@ init python:
         enufToiletPaper = shopItems['toiletroll'].onhand >= 3
         enufGreencan = shopItems['greencan'].onhand >= 1
         return enufHygiene and enufToiletPaper and enufGreencan
-default currentItemCost = 0
-default shopItemMap = {
-    'redcan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'yellowcan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'orangecan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'greencan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'browncan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'toiletroll': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'facemask': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'hygiene': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-}
-default shopItems = {
-    'redcan': MartItem("redcan", shopItemMap['redcan'], 28, 0, alt_name="Red can"),
-    'yellowcan': MartItem("yellowcan", shopItemMap['yellowcan'], 22, 0, alt_name="Yellow can"),
-    'orangecan': MartItem("orangecan", shopItemMap['greencan'], 34, 0, alt_name="Orange can"),
-    'greencan': MartItem("greencan", shopItemMap['browncan'], 23, 0, alt_name="Green can"),
-    'browncan': MartItem("browncan", shopItemMap['toiletroll'], 27, 0, alt_name="Brown can"),
-    'toiletroll': MartItem("toiletroll", shopItemMap['redcan'], 15, 0, alt_name="Toilet Roll"),
-    'facemask': MartItem("facemask", shopItemMap['facemask'], 25, 0, alt_name="Facemask"),
-    'hygiene': MartItem("hygiene", shopItemMap['hygiene'], 36, 0, alt_name="Hygiene Products"),
-}
-
-transform t_flapButton:
-    yanchor 1.0
-    on show:
-        ypos 1.0
-        yoffset 75
-        linear 0.3 yoffset 0
-    on hide:
-        linear 0.3 yoffset 75
-
-transform t_price_list:
-    on show:
-        yoffset 700
-        linear 0.8 yoffset 0
-    on hide:
-        yoffset 0
-        linear 0.8 yoffset 700
-
-transform t_instructions:
-    on show:
-        yoffset 700
-        linear 0.6 yoffset 0
-    on hide:
-        linear 0.6 yoffset 700

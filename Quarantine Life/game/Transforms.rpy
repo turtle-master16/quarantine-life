@@ -16,6 +16,10 @@ transform phone_pickup:
     parallel:
         ypos 2.0
         linear 0.6 ypos 1.0
+
+transform phone_hide:
+    ypos 1.03
+    linear 1.0 ypos 2.0
 transform phone_message_bubble_tip:
     xoffset 10
     yoffset 1

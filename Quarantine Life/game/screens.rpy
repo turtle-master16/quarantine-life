@@ -4,9 +4,6 @@
 
 init offset = -1
 
-$ timer_range = 0
-$ timer_jump = 0
-
 ################################################################################
 ## Styles
 ################################################################################
@@ -1529,10 +1526,10 @@ style slider_slider:
 screen countdown:
     timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Call(timer_jump)])
     if time >= 3:
-        text str(time) xpos .1 ypos .1 size 100 at alpha_dissolve
+        text str(time) xpos .45 ypos .45  outlines [ (absolute(1), "#FFF", absolute(0), absolute(0)) ] size 150 at alpha_dissolve
     elif time == 2:
-        text str(time) xpos .1 ypos .1 color "#FF9B9B" size 100 at alpha_dissolve
+        text str(time) xpos .45 ypos .45 color "#FF9B9B" outlines [(absolute(1), "#FFF", absolute(0), absolute(0))] size 150 at alpha_dissolve
     elif time == 1:
-        text str(time) xpos .1 ypos .1 color "#FF6262" size 100 at alpha_dissolve
+        text str(time) xpos .45 ypos .45 color "#FF6262" outlines [(absolute(1), "#FFF", absolute(0), absolute(0))] size 150 at alpha_dissolve
     else:
-        text str(time) xpos .1 ypos .1 color "#F72424" size 100 at alpha_dissolve
+        text str(time) xpos .45 ypos .45 color "#F72424" outlines [(absolute(1), "#FFF", absolute(0), absolute(0))] size 150 at alpha_dissolve

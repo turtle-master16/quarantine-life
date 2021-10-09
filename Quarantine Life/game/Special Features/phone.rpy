@@ -66,9 +66,9 @@ label message(who, what, prepause=True):
     $ renpy.pause(0.1)
     # if you want to change the players name to be something else than "me" you can change it here
     if who.name.lower() == "me":
-        show screen phone_message2(who.name, what)
+        show screen phone_message2(who.name, what, _transient=True)
     else:
-        show screen phone_message(who.name, what)
+        show screen phone_message(who.name, what, _transient=True)
     return
 
 label reply_message(what, skip=False):

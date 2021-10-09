@@ -15,7 +15,6 @@ culpa qui officia deserunt mollit anim id est laborum.
 # Conditional Variables
 default itemselected = ""
 default itemchoices = {"Reset":0, "A": 1, "B": 2, "C":3, "D":4, "E":5, "F":6}
-default correctans = 0 # Quiz game
 #--------------------
 
 # For room switching
@@ -103,9 +102,9 @@ screen flapButton(screen_to_show, args={}):
             xanchor 0.5
             action [Hide("flapButton"), ShowTransient(screen_to_show)]
 
-screen instruction():
+screen instruction:
     modal True
-    zorder 2
+    zorder 1
     frame:
         at t_instructions
         background Solid("#fff")
@@ -130,4 +129,4 @@ screen instruction():
 init python:
     def showFlapButtons():
         if currentScreen == "supermarket":
-            renpy.show_screen("flapButton", screen_to_show=["instruction", "price_list"])
+            renpy.show_screen("flapButton", screen_to_show=["instruction", "price_list"], _transient=True)

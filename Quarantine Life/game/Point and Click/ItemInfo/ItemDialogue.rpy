@@ -1,0 +1,30 @@
+define object_dialogue = {
+    # Living Room
+    "faceshield": "Got it.",
+    "tv":"Not in the mood to watch TV.",
+    "pictureLvrm": "There’s something written at the corner of the frame. \n{b}7 _ _ _{/b}",
+    "correctPlant": "There’s a piece of paper. 1",
+    "wrongPlant": "A healthy looking plant.",
+    "mugs": "Empty.",
+    "sofa": "No time to relax now.",
+    "window": "Nothing to see here.",
+    "drawerLvrm": "There’s a key!",
+    # Bedroom
+    "bed": "I can sleep later",
+    "plant": "The house plants are growing quite nicely",
+    "books": "No time to read",
+    "studyTable": "Pens, papers and box that looks like it needs a 4-digit code to unlock.",
+    "studyTable2": "I got my Face mask.",
+    "phone": "I have 0 new messages.",
+    "dumbell": "Just some dumbells.",
+    "drawerBdrm": "It’s locked.",
+    "drawerhaskey": ["It's locked. I'll try using the key from the living room...",
+                    "It's now open."],
+    "pictureBdrm": "{b}_ _ 2 _{/b}",
+    "wallet": "Here's my wallet.",
+    # Kitchen
+    "cans": "Nope",
+    "cabinet": "It’s filled with canned goods",
+    "stove": "I’m not hungry.",
+    "sanitizer": "Here’s my hand sanitizer.",
+}
