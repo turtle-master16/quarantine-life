@@ -98,7 +98,7 @@ label start(retmode=False):
         scene bg livingroom back onlayer background
         with fade
 
-        play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+        $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         call updateDate("January 2020, Week 4 | 08:00 AM, Living Room")
 
@@ -137,7 +137,7 @@ label start(retmode=False):
 
         pl "Better finish sweeping before I get in trouble."
 
-        play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
+        $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         ins "TASK: Find the Broom."
 
@@ -153,7 +153,7 @@ label start(retmode=False):
 label news:
     call timeskip("bg livingroom back tvon")
 
-    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
     call updateDate("February 2020, Week 1 | 11:00 AM, Living Room")
 
@@ -223,7 +223,7 @@ label lockdown:
 
     call timeskip("bg livingroom back evening")
 
-    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
     call updateDate("March 2020, Week 1 | 07:00 PM, Living Room")
 
@@ -243,7 +243,7 @@ label lockdown:
     show bg livingroom left evening tvon onlayer background
     with dissolve
 
-    "Reporter" "The President has declared a state of public health emergency. Classes have been suspended and work-from-home is sought amid the local Coronavirus cases."
+    "Reporter" "The President has declared a state of public health emergency. {b}Classes have been suspended and work-from-home is sought{/b} amid the local Coronavirus cases."
 
     "Reporter" "Strict {b}home quarantine{/b} is implemented in all households."
 
@@ -253,7 +253,11 @@ label lockdown:
 
     "TODO FEATURE" "Insert Achievement: {b}Community Quarantine{/b}, here."
 
-    "Reporter" "Residents who refuse to follow the mandatory quarantine may be arrested under the state of public health emergency."
+    "Reporter" "All government agencies and LGUs are hereby enjoined to render full assistance and cooperation and mobilize necessary resource..."
+
+    "Reporter" "...to undertake critical, urgent, and appropriate response and measures in a timely manner to curtail and eliminate the Covid-19 threat."
+
+    "Reporter" "{b}Residents who refuse to follow the mandatory quarantine may be arrested{/b} under the state of public health emergency."
 
     "TODO FEATURE" "Insert Achievement: {b}Refusal to mandatory quarantine{/b}, here."
 
@@ -336,7 +340,7 @@ label quarantine:
 
     call timeskip("bg livingroom back")
 
-    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
     call updateDate("April 2020, Week 1 | 09:00 AM, Living Room | ECQ")
 
@@ -384,7 +388,7 @@ label quarantine:
 
     plt "(Now that’s out of the way. What should I do now?)"
 
-    play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
     ins "TASK: Find something to do."
     ins "Click the arrow to switch rooms and tap an object to interact with them."
@@ -395,7 +399,7 @@ label newnormal:
     $ is_route_unlocked["newnormal"] = True
 
     call timeskip("bg livingroom back")
-    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("May 2020, Week 1 | 11:00 AM, Living Room | ECQ")
 
     pl "How long do we have to keep this up?"
@@ -418,7 +422,7 @@ label newnormal:
 
     "Reporter" "Good afternoon and welcome to ABC News Network…"
 
-    "Reporter" "Areas under MECQ and GCQ may allow business activities to resume - requiring strict compliance with minimum safety standards and protocols."
+    "Reporter" "Areas under MECQ and GCQ may allow business activities to resume, requiring strict compliance with {b}minimum public health standards{/b}."
 
     "Reporter" "Public transportations is limited and crossing over to other regions remains banned…"
 
@@ -487,7 +491,7 @@ label newnormal:
     with dissolve
 
     call timeskip("bg bedroom back evening")
-    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("June 2020, Week 1 | 08:00 PM, Bedroom | GCQ")
 
     plt "(Everything is becoming repetitive.)"
@@ -496,7 +500,7 @@ label newnormal:
 
     plt "(Nothing too exciting.)"
 
-    plt "(I wonder when will I be able to return to work?)"
+    plt "(I wonder when I will be able to return to work?)"
 
     plt "(Since the company is still wary of the current event. It would be better than being stuck at home.)"
 
@@ -507,15 +511,15 @@ label newnormal:
 
     plt "(An announcement?)"
 
-    pl "Oh sweet. They’ll be providing a company shuttle for safety measures. It looks like I’ll be resuming work in the next two weeks."
+    pl "Oh sweet. They’ll be providing a {b}company shuttle{/b} for safety measures. It looks like I’ll be resuming work in the next two weeks."
 
-    plt "(The new normal… I wonder what’s in store for me.)"
+    plt "(The {b}new normal{/b}… I wonder what’s in store for me.)"
 
     label .collectandprogress:
         $ is_route_unlocked["newnormal.collectandprogress"] = True
 
         call timeskip("bg bedroom back evening")
-        play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
+        $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
         call updateDate("June 2020, Week 2 | 06:00 PM, Bedroom | GCQ")
 
         plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
@@ -524,13 +528,15 @@ label newnormal:
         scene bg livingroom back onlayer background
         with fade
 
+        call updateDate("June 2020, Week 2 | 06:00 PM, Living Room | GCQ")
+
         jump workprep
 
 label commuting:
     $ is_route_unlocked["commuting"] = True
 
     call timeskip("bg shuttle")
-    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("June 2020, Week 3 | 06:00 AM, Shuttle Vehicle | GCQ")
 
     #--SFX (yawn)
@@ -556,6 +562,10 @@ label commuting:
 
             plt "(Right. It’s best to {b}avoid crowded places too{/b}.)"
 
+            "Worker 1": "How can we protect ourselves from COVID?"
+
+            "Worker 2": "Other the {b}social distancing{/b}, you should also {b}practice proper cough etiquette and proper hand washing using soap and water{/b}."
+
         "Ignore them.":
             plt "(I shouldn’t eavesdrop on other people’s conversation, that's rude.)"
 
@@ -563,7 +573,7 @@ label commuting:
 
 label office:
     call timeskip("bg office")
-    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("June 2020, Week 3 | 07:30 AM, Office | GCQ")
 
     pl "First day back on the job and I am loaded with paper work. My back hurts from sitting all day, I need to stretch."
@@ -657,7 +667,7 @@ label home:
     $ is_route_unlocked["home"] = True
 
     call timeskip("bg livingroom back")
-    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("July 2020, Week 4 | 02:00 PM, Living Room | GCQ")
 
     plt "Day offs are such a blessing. Work can be too much to handle sometimes."
@@ -715,7 +725,7 @@ label home:
 
             c "That's very thoughtful of you."
 
-            play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
+            $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
             c "I’ll give you a list and 200.00 worth of money."
 
@@ -761,7 +771,7 @@ label intro_to_supermarket:
 
     pl "I’m here. Now let’s check the items on the list."
 
-    pl "I have to do is complete the list and spend all 200.00 worth of grocery
+    pl "I have to do is {b}complete the list{/b} and spend all 200.00 worth of grocery
         items."
 
     $ currentScreen = "supermarket"
@@ -772,7 +782,7 @@ label intro_to_supermarket:
 
 label cookadobo:
     call timeskip("bg kitchen")
-    play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("July 2020, Week 4 | 04:00 PM, Kitchen | GCQ")
 
     pl "Since I’m in charge of dinner tonight I think I’ll just keep things simple."
@@ -820,7 +830,7 @@ label cookadobo:
         call updateDate("July 2020, Week 4 | 06:00 PM, Kitchen | GCQ")
 
         if sauce == 1 or sauce == 2:
-            play music "audio/bgm/suspense.mp3" fadein 2 fadeout 2
+            $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
             show prince disgust2 at left onlayer middle
             with dissolve
 
@@ -830,7 +840,6 @@ label cookadobo:
 
             show prince sad3  onlayer middle:
                 subpixel True xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0 rotate None
-            with dissolve
 
             pr "This doesn’t taste like chicken adobo."
 
@@ -871,10 +880,18 @@ label princegoingout:
     $ is_route_unlocked["princegoingout"] = True
 
     call timeskip("bg livingroom back")
-    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("August 2020, Week 3 | 10:00 AM, Living Room | GCQ")
 
+    show prince explain1 at left onlayer middle:
+        subpixel True xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0 rotate None
+    with dissolve
+
     pr "Mom, I’m going out."
+
+    show carla happy at right onlayer middle:
+        subpixel True xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
+    with dissolve
 
     c "And where do you think you’re going mister?"
 
@@ -882,19 +899,14 @@ label princegoingout:
 
     c "Just because you’re friend’s house is nearby doesn’t mean I approve of you going out."
 
-    pr "According to the law, {b}any person below ten years old{/b}..."
+    show carla makesure at right onlayer middle:
+        subpixel True xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.77 rotate None
 
-    pr "...{b}and those who are over sixty-five years of age shall be required to remain in their residence at all times{/b}."
+    c "The government stated that {b}all residents are required to remain in their residences at all times{/b}."
 
-    "TODO FEATURE" "Insert Achievement: {b}UNNAMED{/b}, here."
+    show prince angry at left onlayer middle
 
-    pr "And I’m a teenager, so those rules don’t apply to me."
-
-    c "You have nothing important to do. So why do you have to go?"
-
-    pr "To hang out. I’m getting bored inside the house."
-
-    pr "And besides, it’s not like we’re going anywhere crowded. We’ll just stay there and play some video games."
+    pr "It’s not like we’ll be going anywhere other than stay at their house. We’ll just stay there and play some video games."
 
     plt "(Should I say something?)"
 
@@ -911,6 +923,9 @@ label princegoingout:
         "Keep quiet.":
             pl "..."
 
+            show carla happy at right onlayer middle:
+                subpixel True xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
+
             c "That’s it. I’m not having this conversation. Go to your room."
 
             pr "Fine."
@@ -920,9 +935,15 @@ label princegoingout:
 
             pl "He’s been stuck in this house for months, a change of scenery could do him good."
 
+            show carla happy at right onlayer middle:
+                subpixel True xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
+
             c "Even if you try to convince me [player_name] my answer is still no. I care for you and I don’t want you getting sick"
 
             c "Please understand from my point of view as a mother that I just want to keep you safe."
+
+    show prince sick at left onlayer middle:
+        subpixel True xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0 zoom 0.79 rotate None
 
     pr "I’ll go tell them that I won’t be able to come."
 
@@ -933,13 +954,18 @@ label princegoingout:
     jump princedisappointed
 
 label princedisappointed:
-    call timeskip("bg bedroom back")
-    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
-    call updateDate("August 2020, Week 3 | 11:00 AM, Bedroom | GCQ")
+    call timeskip("bg prince bedroom")
+    $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+    call updateDate("August 2020, Week 3 | 11:00 AM, Prince's Bedroom | GCQ")
+
+    show prince disgust2 onlayer middle
+    with dissolve
 
     pr "Nothing's wrong, just leave me alone."
 
     pl "Don’t tell me nothing is wrong. I can see it in your face that something is bothering you."
+
+    show prince sad1 onlayer middle
 
     pr "I hate quarantine. I’ve been stuck home for months now. I miss going out."
 
@@ -947,31 +973,59 @@ label princedisappointed:
 
     pl "If anything bad happens, I don’t think we’ll be able to take it well."
 
+    show prince point2 onlayer middle
+
     pr "I know that, but I can’t help it. It gets lonely around here from time to time."
 
     pl "Tell you what. How about we play video games? Legendary Mobile, you and I."
 
+    show prince stretch onlayer middle
+
     pr "Sure, I haven’t played that in a while. Sure, let’s play."
+
+    hide prince
+    with dissolve
 
     "..."
 
+    show prince shock2 onlayer middle
+    with dissolve
+
     pr "Stop farming and back us up! Ugh! This guy is such a noob."
+
+    hide prince
+    with dissolve
 
     pl "Damn, we’re losing big time. And our teammate is a feeder."
 
-    c "Can you two keep down while you play? You’re being too loud."
+    show carla makesure onlayer middle:
+        xpos 0.5 ypos 0.5 xanchor 0.5 yanchor 0.5 zoom 0.77
+    with dissolve
+
+    c "Can you two keep it down while you play? You’re being too loud."
+
+    hide carla
+    with dissolve
+
+    show prince stretch onlayer middle
+    with dissolve
 
     pr "Sorry."
+
+    show prince slouch onlayer middle
 
     pr "Hey. Thanks for spending time with me."
 
     pl "No problem. If you ever get bored I’m here for you."
 
+    show prince disgust2 onlayer middle
+
     pr "Thanks. Now, how about another round?"
 
     pl "You’re on!"
 
-    play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
+    $ renpy.hide_screen("displayDate")
+    $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     scene black onlayer background
     with dissolve
     centered "{color=#fff}{b} End {/b}{/color}"
@@ -1018,7 +1072,7 @@ label friend:
 
 label restaurant:
     call timeskip("bg restaurant evening")
-    play music "audio/Fratto kibun.wav" fadein 2 fadeout 2
+    $ renpy.music.play("audio/Fratto kibun.wav", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("June 2020, Week 3 | 06:30 PM, Restaurant | GCQ")
 
     show ian happy onlayer middle:
@@ -1133,7 +1187,7 @@ label restaurant:
 
 label datesearch:
     call timeskip("bg bedroom back evening")
-    play music "audio/Waiting music.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/Waiting music.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("June 2020, Week 3 | 09:00 PM, Bedroom | GCQ")
 
     plt " (I never thought about being in a romantic relationship since I was in high school.)"
@@ -1154,7 +1208,8 @@ label datesearch:
 
     pl "!!!"
 
-    show prince happy onlayer middle
+    show prince happy onlayer middle:
+            xpos 0.5 ypos 1.07 xanchor 0.5 yanchor 1.0 zoom 1.0
 
     pr "Oh! It’s a dating app! Alright, I’ll leave you to it then."
 
@@ -1251,7 +1306,7 @@ label phone(male=True):
 label postdatesearch(male=True):
     if male:
         call timeskip("bg office")
-        play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+        $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
         call updateDate("July 2020, Week 2 | 10:00 AM, Office | GCQ")
 
         show ian discuss onlayer middle
@@ -1290,7 +1345,7 @@ label postdatesearch(male=True):
 
         call timeskip("bg bedroom back afternoon")
         call updateDate("July 2020, Week 2 | 05:00 PM, Bedroom | GCQ")
-        play music "audio/bgm/suspense.mp3" fadein 2 fadeout 2
+        $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         plt "(Hair. Check. Clothes. Check. [player_name]? Oh yeah, I’m looking good and ready.)"
 
@@ -1352,7 +1407,7 @@ label firstdate(male=True):
 
         call timeskip("bg bedroom back afternoon")
         call updateDate("July 2020, Week 2 | 05:10 PM, Bedroom | GCQ")
-        play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
+        $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         show phone_tindah onlayer middle:
             subpixel True xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0 rotate None
@@ -1374,19 +1429,13 @@ label firstdate(male=True):
 
         pl "Do you go to the gym?"
 
-        call phone_call(js, "agree", "I haven’t been able to visit the gym since the COVID outbreak and just continue exercising at home.")
+        call phone_call(js, "agree", "I haven’t been able to visit the gym since the COVID outbreak and just continue {b}exercising at home{/b}.")
 
-        call phone_call(js, "discuss", "There have been reports that people attending fitness classes have been tested positive for COVID, even if mitigation measures were taken place.")
-
-        pl "Don’t gyms decrease class size and require physical distancing?"
-
-        call phone_call(js, "discuss2", "They do, but there are multiple factors that increase the risk of {b}COVID infection in gyms{/b}...")
+        call phone_call(js, "discuss2", "Gyms haven’t opened yet, since there are multiple factors that increase the risk of {b}COVID infection in gyms{/b}...")
 
         call phone_call(js, "discuss", "...other than {b}proximity{/b}, like {b}exertion level, ventilation, duration, frequently touched surfaces, and mask use.{/b}")
 
-        pl "Wait, don’t people wear masks during exercise? Isn't that enough?"
-
-        call phone_call(js, "discuss2", "It’s difficult to breathe with a mask on, so some gyms permits the removal of masks during exercise.")
+        call phone_call(js, "discuss2", "Even if gyms open, exercising at home is a much better and safer option. ")
 
         pl "Wow, even during quarantine you try to stay fit, unlike me. I am way out of shape."
 
@@ -1402,8 +1451,8 @@ label firstdate(male=True):
         $ is_route_unlocked["firstdatefemale"] = True
 
         call timeskip("bg bedroom back")
-        call updateDate("May 2020, 6:20 pm, Week 4, Bedroom, GCQ")
-        play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
+        call updateDate("July 2020, Week 2 | 06:00 PM, Bedroom | GCQ")
+        $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         play sound "audio/phone tapping.wav"
         show phone_tindah onlayer middle at phone_pickup
@@ -1511,7 +1560,7 @@ label kyle:
     $ is_route_unlocked["kyle"] = True
 
     call timeskip("bg office")
-    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("July 2020, Week 4 | 01:00 PM, Office | GCQ")
 
     #--SFX (sigh)
@@ -1601,8 +1650,8 @@ label kyle:
 
 label kylehome:
     call timeskip("bg livingroom back evening")
-    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
-    call updateDate("July 2020, Week 4 | 07:00 PM, Living Room | ECQ")
+    $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+    call updateDate("July 2020, Week 4 | 07:00 PM, Living Room | GCQ")
 
     pl "I'm home."
 
@@ -1626,7 +1675,7 @@ label kylehome:
     #--SFX (Footsteps -> Shower)
 
     call timeskip("bg livingroom back evening")
-    call updateDate("August 2020, Week 4 | 07:30 pm, Living Room | GCQ")
+    call updateDate("July 2020, Week 4 | 07:30 PM, Living Room | GCQ")
 
     pl "That's better."
 
@@ -1676,7 +1725,7 @@ label kylehome:
             $ is_route_unlocked["kylehome.findhobby"] = True
 
             call timeskip("bg office")
-            play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+            $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
             call updateDate("August 2020, Week 1 | 09:00 AM, Office | GCQ")
 
             show ian discuss onlayer middle
@@ -1708,7 +1757,7 @@ label kylehome:
             plt "({b}Find a new hobby{/b}… What should I try?)"
 
             call timeskip("bg bedroom back")
-            play music "audio/bgm/suspense.mp3" fadein 2 fadeout 2
+            $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
             call updateDate("August 2020, Week 2 | 01:00 PM, Bedroom | GCQ")
 
             show prince embarrased onlayer middle:
@@ -1733,7 +1782,7 @@ label kylehome:
                 subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.82 rotate None
                 parallel:
                     xpos 1.26
-                    linear 0.52 xpos 0.83
+                    linear 0.52 xpos 0.75
 
             c "Stop screaming both of you. You’re disturbing the neighbours. "
 
@@ -1743,7 +1792,8 @@ label kylehome:
 
             pr "Fine."
 
-            play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
+            $ renpy.hide_screen("displayDate")
+            $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
             scene black onlayer background
             with dissolve
             centered "{color=#fff}{b} End {/b}{/color}"
@@ -1763,7 +1813,7 @@ label kylemeet:
     $ is_route_unlocked["kylemeet"] = True
 
     call timeskip("bg outside")
-    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("August 2020, Week 2 | 11:00 AM, Streets | GCQ")
 
     pl "It’s nice to be able to reunite with an old pal again."
@@ -1799,6 +1849,8 @@ label kylemeet:
 
             pl "Yeah. But you’re not wearing it properly."
 
+            pl "{b}Wear your mask properly{/b} to keep yourself and everyone around you safe. "
+
             show kyle worried onlayer middle
 
             ky "Fine, I’ll fix it. There, happy?"
@@ -1817,7 +1869,7 @@ label kylemeet:
             pl "Nothing."
 
     call timeskip("bg bedroom back")
-    play music "audio/bgm/suspense.mp3" fadein 2.0
+    $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("August 2020, Week 3 | 09:00 AM, Bedroom | GCQ")
 
     plt "(I don’t feel so good.)"
@@ -1870,11 +1922,12 @@ label kylemeet:
 label hospital:
     scene black onlayer background
     with wipeleft
-    show bg hospital onlayer background:
-        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.43
+    show bg hospital onlayer background
     with wiperight
 
-    play music "audio/bgm/moody.mp3"
+    $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+
+    call updateDate("September 2020, Week 1 | --:-- PM, Hospital | GCQ")
 
     plt "(I feel restless. I wonder how my family is doing. I hope they’re doing well.)"
 
@@ -1886,7 +1939,8 @@ label hospital:
 
     plt "(For my family.)"
 
-    play music "audio/bgm/bad end.mp3" fadein 2.0 fadeout 2.0
+    $ renpy.hide_screen("displayDate")
+    $ renpy.music.play("audio/bgm/bad end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     scene black onlayer background
     with dissolve
     centered "{color=#f00}{b}Bad End{/b}{/color}"
@@ -1937,7 +1991,7 @@ label jillian:
     $ Hide("phone_call", transition=Dissolve(0.3))()
 
     call timeskip("bg livingroom back evening")
-    play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("July 2020, Week 2 | 08:00 PM, Living Room | GCQ")
 
     show carla happy onlayer middle:
@@ -1961,7 +2015,7 @@ label jillian:
     c "I'm not stopping you if that's what you wish to do. You're already old enough to make your own decisions."
 
     show prince point1 onlayer middle:
-        xpos 0.73 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.96
+        xpos 0.73 ypos 1.07 xanchor 0.5 yanchor 1.0 zoom 1.04
 
     pr "What about me mom, can I get a girlfriend too?"
 
@@ -1970,12 +2024,12 @@ label jillian:
     c "No. You focus on your studies."
 
     show prince embarrased onlayer middle:
-        xpos 0.65 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.94
+        xpos 0.65 ypos 1.07 xanchor 0.5 yanchor 1.0 zoom 1.04
 
     pr "Bummer. I was hoping for a different response."
 
     call timeskip("bg office afternoon")
-    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("June 2020, Week 4 | 02:00 PM, Office | GCQ")
 
     plt "(Jillian and I’s relationship have been going smoothly. I really enjoy spending time with her, even if we’ve only known each other virtually.)"
@@ -1994,7 +2048,7 @@ label jillian:
                 $ is_route_unlocked["jillian.restaurantdate"] = True
 
                 call timeskip("bg bedroom back evening")
-                play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+                $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
                 call updateDate("July 2020, Week 4 | 07:30 PM, Bedroom | GCQ")
 
                 show phone_tindah onlayer middle at phone_pickup
@@ -2020,7 +2074,7 @@ label jillian:
                 $ is_route_unlocked["jillian.artsncraft"] = True
 
                 call timeskip("bg bedroom back")
-                play music "audio/bgm/sunny.mp3" fadein 2 fadeout 2
+                $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
                 call updateDate("August 2020, Week 2 | 10:00 AM, Bedroom | GCQ")
 
                 show phone onlayer middle at phone_pickup
@@ -2042,7 +2096,8 @@ label jillian:
 
                 call phone_call(jl, "flattered", "Can’t wait.")
 
-                play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
+                $ renpy.hide_screen("displayDate")
+                $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
                 scene black onlayer background
                 with dissolve
                 centered "{color=#fff}{b} End {/b}{/color}"
@@ -2058,90 +2113,10 @@ label jillian:
                         stop music fadeout 0.2
                         jump proceed
 
-label jlaskout:
-    scene bg livingroom back onlayer background
-
-    menu:
-        "Ask her out.":
-            pl "I wonder if her behaviour online is different if I decide to meet her face to face. Should I risk it though?"
-
-            menu:
-                "Pursue the idea and ask her out.":
-
-                    pl "I should ask her about it."
-
-                    show phone onlayer middle at phone_pickup
-                    $ renpy.pause(0.6)
-
-                    call reply_message("Hey Jillian, you live in XXX right?")
-
-                    call message(jl, "Yes, why?")
-                    $ renpy.pause()
-
-                    call reply_message("It’s not too far from where I live. Do you want to meet up?")
-
-                    call message(jl, "I’d love to, but I don’t think that’s a good idea.")
-                    $ renpy.pause()
-
-                    call reply_message("There’s no need to worry, we can still maintain proper social distancing. We’re not going anywhere too crowded, I can assure you.")
-
-                    call message(jl, "Alright. I agree.")
-                    $ renpy.pause()
-
-                    call reply_message("Great. I’ll message you the details later.")
-
-                    call message(jl, "Okay then.")
-                    $ renpy.pause()
-
-                    $ renpy.pause()
-                    call hide_phone_messages
-
-                    plt "(Score. I can’t wait to meet up with her.)"
-
-                    $ Hide("phone_call", transition=Dissolve(0.3))()
-
-                    jump jldate
-
-                "Rethink decision":
-                    jump jlaskout
-
-        "Continue with online dating.":
-            pl "I don’t want to risk putting her or myself in potential danger of the pandemic."
-
-            pl "We’ll just have to make do with what we got, I’m sure she'll understand."
-
-            show phone_tindah onlayer middle at phone_pickup
-            $ renpy.pause(0.6)
-
-            call phone_call(jl, "greet", "Hey, it’s great to see you again.", 0)
-
-            pl "Yeah. Online dating is very convenient, don’t you agree?"
-
-            call phone_call(jl, "happy", "I was thinking the same thing, actually. We are able to meet up during the pandemic, also it is much safer this way.")
-
-            pl "I'm glad that we're on the same page."
-
-            pl "I see that you prepared a meal of your own."
-
-            call phone_call(jl, "happy2", "Yep. It gives off the vibe that we’re actually eating at a restaurant rather than at home. I love how you came up with that idea.")
-
-            pl "It may be an online date but I want to make this as enjoyable as possible you see."
-
-            call phone_call(jl, "happy2", "I am enjoying it.")
-
-            pl "I can tell with that wide smile on your face."
-
-            call phone_call(jl, "flattered", "I am smiling? I guess I just really enjoy spending time with you.")
-
-            pl "Same. So let’s make things a little more interesting, let’s play a game."
-
-            centered "GAME HERE"
-
-            jump jlend
 
 label jldate:
     call timeskip("bg restaurant")
-    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("August 2020, Week 1 | 11:30 AM, Restaurant | GCQ")
 
     pl "Well, this isn’t what I was expecting."
@@ -2174,7 +2149,7 @@ label jldate:
     jl "Sure."
 
     call timeskip("bg bedroom back")
-    play music "audio/bgm/dreamy.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("August 2020, Week 1 | 03:00 PM, Bedroom | GCQ")
 
     show phone onlayer middle at phone_pickup
@@ -2199,7 +2174,7 @@ label jldate:
 # Jason Route
 label jason:
     call timeskip("bg livingroom back afternoon")
-    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("August 2020, Week 1 | 05:00 PM, Living Room | GCQ")
 
     plt "(It’s been a while since I last talked to Jason. He hasn’t been replying to any of my messages. I wonder how he’s doing. I hope he’s alright.)"
@@ -2295,7 +2270,8 @@ label jason:
 
             call hide_phone_messages
 
-            play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
+            $ renpy.hide_screen("displayDate")
+            $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
             scene black onlayer background
             with dissolve
             centered "{color=#fff}{b} End {/b}{/color}"
@@ -2335,8 +2311,7 @@ label getcaught:
 
     call timeskip("bg livingroom back evening")
 
-    if(renpy.music.get_playing() != "audio/bgm/moody.mp3"):
-        play music "audio/bgm/moody.mp3" fadein 2.0
+    $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
     call updateDate("March 2020, Week 2 | 06:00 PM, Bedroom | ECQ")
 
@@ -2349,9 +2324,11 @@ label getcaught:
     scene bg outside evening onlayer background
     with dissolve
 
+    call updateDate("March 2020, Week 2 | 06:05 PM, Streets | ECQ")
+
     plt "(Wow. I’ve never seen the neighborhood so quiet before.)"
 
-    play music "audio/bgm/suspense.mp3" fadein 2
+    $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
     show tanod point onlayer middle:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
@@ -2388,7 +2365,8 @@ label getcaught:
 
                 "Police" "You are under arrest for quarantine protocol violation."
 
-    play music "audio/bgm/bad end.mp3" fadein 2.0 fadeout 2.0
+    $ renpy.hide_screen("displayDate")
+    $ renpy.music.play("audio/bgm/bad end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     scene black onlayer background
     with dissolve
     centered "{color=#f00}{b}Bad End{/b}{/color}"
@@ -2404,7 +2382,7 @@ label getcaught:
 
 label jlend:
     call timeskip("bg kitchen")
-    play music "audio/bgm/moody.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("August 2020, Week 3 | 12:00 PM, Kitchen | GCQ")
 
     show jillian dump onlayer middle
@@ -2424,7 +2402,8 @@ label jlend:
 
     jl "I don’t blame you. But I’m hoping that this could be a regular thing."
 
-    play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
+    $ renpy.hide_screen("displayDate")
+    $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     scene black onlayer background
     with dissolve
     centered "{color=#fff}{b} End {/b}{/color}"
@@ -2435,107 +2414,6 @@ label jlend:
             stop music fadeout 2.0
 
             call firstdate(male=False)
-
-        "Return to main menu":
-            stop music fadeout 0.2
-            jump proceed
-
-label jsend:
-    call timeskip("bg bedroom back")
-    play music "audio/bgm/living room.mp3"
-
-    play sound "audio/phone vibrate.wav"
-    $ renpy.pause()
-
-    pl "A message from Jason? He never texts me at this hour, it must be urgent."
-
-    show phone onlayer middle at phone_pickup
-    $ renpy.pause(0.6)
-
-    call message(js, "[player_name], I have some bad news.")
-    $ renpy.pause()
-
-    call reply_message("Why? What’s wrong?")
-
-    call message(js, "I have been diagnosed for COVID infection and the results came out positive. I fear that you might have it too since we went out a week ago.")
-    $ renpy.pause()
-
-    play music "audio/bgm/suspense.mp3"
-
-    call message(js, "I’m sorry, I shouldn’t have asked you to go have lunch with me.")
-    $ renpy.pause()
-
-    call message(js, "For now, I'm on self-quarantine. You should get checked up too before anything worse happens.")
-    $ renpy.pause()
-
-    call reply_message("Thanks for telling me. I hope you get better soon.")
-    $ renpy.pause()
-
-    call hide_phone_messages
-
-    call timeskip("bg livingroom back")
-
-    show prince talking1 onlayer middle:
-        xpos 0.25 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0
-    show carla thinking onlayer middle:
-        xpos 0.75 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
-    with dissolve
-
-    pl "Mom. Apparently, Jason got diagnosed with COVID-19."
-
-    show carla sad onlayer middle
-
-    c "Oh dear. That’s not good."
-
-    show prince point2 onlayer middle
-
-    pr "Didn’t you two go on a date not too long ago?"
-
-    pl "Yeah. It’s best if we get medical help before anything worse happens. Until then, we’re under home-quarantine and be sure to care if any of us has trouble breathing."
-
-    show carla thinking onlayer middle
-
-    c "I’ll contact medical care."
-
-    call timeskip("bg bedroom back afternoon")
-    play music "audio/bgm/living room.mp3"
-
-    window hide
-
-    show phone onlayer middle at phone_pickup
-    $ renpy.pause(0.6)
-
-    call reply_message("So, how are you feeling?")
-
-    call message(js, "I’m feeling better, I’ve been quarantined for more than a month and I’m slowly regaining my strength. Soon I’ll be able to get back to work.")
-    $ renpy.pause()
-
-    call reply_message("Don’t push yourself too hard.")
-
-    call message(js, "I’m glad you nor your family are doing alright, I didn’t think I’d be able to forgive myself if you got sick because of me.")
-    $ renpy.pause()
-
-    call reply_message("I keep telling you it’s fine. Just focus on getting better you don’t have to keep blaming yourself for it.")
-
-    call message(js, "Yeah, once this is all over I would like to take you on a date. A real date.")
-    $ renpy.pause()
-
-    call reply_message("I’ll look forward to it.")
-    $ renpy.pause()
-
-    call hide_phone_messages
-
-    play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
-    scene black onlayer background
-    with dissolve
-    centered "{color=#fff}{b}End{/b}{/color}"
-
-    menu:
-        "Choose another route":
-            centered "You will now be returned to a previous decision point..."
-            stop music fadeout 2.0
-
-            jump jason
 
         "Return to main menu":
             stop music fadeout 0.2
@@ -2568,7 +2446,8 @@ label jsexerciseend:
 
     pl "Ugh!"
 
-    play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
+    $ renpy.hide_screen("displayDate")
+    $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     scene black onlayer background
     with dissolve
     centered "{color=#fff}{b} End {/b}{/color}"
@@ -2586,7 +2465,7 @@ label jsexerciseend:
 
 label mcend:
     call timeskip("bg bedroom back")
-    play music "audio/bgm/good end.mp3"
+    $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
     pl "Even if I have fully recovered, I still need to isolate myself and limit my interactions with my family and friends."
 
@@ -2598,7 +2477,8 @@ label mcend:
 
     pl "But it's not over yet..."
 
-    play music "audio/bgm/good end.mp3" fadein 2 fadeout 2
+    $ renpy.hide_screen("displayDate")
+    $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     scene black onlayer background
     with dissolve
     centered "{color=#fff}{b} End {/b}{/color}"
@@ -2640,8 +2520,7 @@ label workprep:
 
 label findActivity:
     # Choices: (A = Watch TV) (B = Return to Point & Click)
-    if(not renpy.music.is_playing()):
-        play music "audio/bgm/Fluffy Days.mp3" fadein 2 fadeout 2
+    $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
     call screen findActivity()
 

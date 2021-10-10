@@ -122,13 +122,13 @@ screen workprep():
             idle "images/misc/arrow.png"
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["bedroom"]),
-                    Call("updateDate", "May 2020, 6:00 pm, Week 1, Bedroom room, GCQ")]
+                    Call("updateDate", "June 2020, Week 2 | 06:00 PM, Bedroom | GCQ")]
         imagebutton:
             idle im.Flip("images/misc/arrow.png", horizontal=True)
             xalign 1.0
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["kitchen"]),
-                    Call("updateDate", "May 2020, 6:00 pm, Week 1, Kitchen, GCQ")]
+                    Call("updateDate", "June 2020, Week 2 | 06:00 PM, Kitchen | GCQ")]
     elif currentRoom == ROOMS['bedroom']:
         imagemap:
             ground "images/bg/bg bedroom back.png"
@@ -176,7 +176,7 @@ screen workprep():
             xalign 1.0
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
-                    Call("updateDate", "May 2020, 6:00 pm, Week 1, Living room, GCQ")]
+                    Call("updateDate", "June 2020, Week 2 | 06:00 PM, Living Room | GCQ")]
     elif currentRoom == ROOMS['kitchen']:
         imagemap:
             ground "images/bg/bg kitchen.png"
@@ -192,4 +192,4 @@ screen workprep():
             idle "images/misc/arrow.png"
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
-                    Call("updateDate", "May 2020, 6:00 pm, Week 1, Living room, GCQ")]
+                    Call("updateDate", "June 2020, Week 2 | 06:00 PM, Living Room | GCQ")]
