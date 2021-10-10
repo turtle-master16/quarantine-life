@@ -2,13 +2,7 @@
 define workprep_item_placement = {
     "faceshield":Transform(xpos=0.79, ypos=0.76, xanchor=0.5, yanchor=1.0, zoom=0.15),
     "bedkey":Transform(xpos=0.11, ypos=0.82, xanchor=0.5, yanchor=1.0, zoom=0.05),
-    "wallet":Transform(xpos=0.6, ypos=0.46, yoffset=5, xanchor=0.5, yanchor=1.0, zoom=0.11),
     "sanitizer":Transform(xpos=0.68, ypos=0.34, xanchor=0.5, yanchor=1.0, zoom=0.08),
-    "draweropen": Transform(xpos=0.54, ypos=0.54, yoffset=5, xanchor=0.5, yanchor=1.0, zoom=0.48),
-    "drawerclosed":Transform(xpos=0.54, ypos=0.54, yoffset=5,xanchor=0.5, yanchor=1.0, zoom=0.48),
-    "boxclosed": Transform(xpos=0.18, ypos=0.49, xanchor=0.5, yanchor=1.0, zoom=0.26),
-    "boxwithmask": Transform(xpos=0.18, ypos=0.49, xanchor=0.5, yanchor=1.0, zoom=0.26),
-    "boxnomask": Transform(xpos=0.18, xoffset=2, ypos=0.49, xanchor=0.5, yanchor=1.0, zoom=0.26)
 }
 
 define lvroom_items = {

@@ -43,3 +43,16 @@ transform dissolve2:
     parallel:
         alpha -0.01
         linear 0.8 alpha 1.3
+
+# Cropped images positioning convenience
+transform left_corner:
+    xanchor 0.0
+    yanchor 1.0
+    xpos 0.0
+    ypos 1.0
+
+transform right_corner:
+    xanchor 1.0
+    yanchor 1.0
+    xpos 1.0
+    ypos 1.0
