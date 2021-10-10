@@ -18,19 +18,16 @@ screen supermarket():
         hotspot mart_items["hygiene"] action Call("shopItemTake", "hygiene")
         hotspot mart_items["hygiene2"] action Call("shopItemTake", "hygiene")
     imagebutton:
-        idle im.Flip("images/misc/arrow.png", horizontal=True)
-        xalign 1.0
-        yalign 0.5
+        idle "images/misc/cashreg.png"
+        at transform:
+            xanchor 1.0
+            yanchor 1.0
+            xpos 1.0
+            ypos 1.0
+            xoffset -10
+            yoffset -10
+            zoom 0.8
         action Call("supermarket.shop_win_conditions")
-
-screen flyingImage(**kwargs):
-    modal True
-    zorder 2
-    # Pass a dictionary with 'img' key with the value of the image to show
-    imagebutton:
-        idle kwargs.get('img')
-        at t_flyingimage
-        action [Hide("flyingImage"), Function(showFlapButtons)]
 
 screen price_list():
     modal True
@@ -135,15 +132,6 @@ label shopItemTake(item):
             pl "I don't need any more of these."
     return
 
-transform t_flapButton:
-    yanchor 1.0
-    on show:
-        ypos 1.0
-        yoffset 75
-        linear 0.3 yoffset 0
-    on hide:
-        linear 0.3 yoffset 75
-
 transform t_price_list:
     on show:
         yoffset 700
@@ -151,22 +139,3 @@ transform t_price_list:
     on hide:
         yoffset 0
         linear 0.8 yoffset 700
-
-transform t_instructions:
-    on show:
-        yoffset 700
-        linear 0.6 yoffset 0
-    on hide:
-        linear 0.6 yoffset 700
-
-transform t_flyingimage:
-    xanchor 0.5
-    yanchor 0.5
-    xpos 0.5
-    ypos 0.5
-    on show:
-        yoffset 700
-        linear 0.5 yoffset 0
-    on hide:
-        yoffset 0
-        linear 0.5 yoffset 700

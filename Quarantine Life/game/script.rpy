@@ -548,7 +548,7 @@ label newnormal:
 
         $ itemselected = itemchoices["Reset"]
         $ currentScreen = "workprep"
-        show screen instruction
+        $ renpy.show_screen("instruction", _transient=True)
         jump workprep
 
 label commuting:
@@ -811,12 +811,12 @@ label home:
             jump cookadobo
 
 label intro_to_supermarket:
-    scene bg supermarket onlayer background
+    call timeskip("bg supermarket")
     call updateDate("July 2020, Week 4 | 03:00 PM, Grocery Store | GCQ")
 
     pl "I’m here. Now let’s check the items on the list."
 
-    pl "I have to do is {b}complete the list{/b} and spend all 200.00 worth of grocery items."
+    pl "I have to do is complete the list and spend all 200.00 worth of grocery items."
 
     $ currentScreen = "supermarket"
 
