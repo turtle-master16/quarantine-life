@@ -63,7 +63,6 @@ label start(retmode=False):
 
         #### Test Jumps Start
         $ renpy.hide_screen("returnbutton")
-        # jump newnormal
         #### Test Jumps End
 
         nar "It all changed so fast."
@@ -2982,10 +2981,6 @@ label findActivity:
     jump newnormal
 
 label intro_to_supermarket:
-    c "I'll give you a list and 200.00 worth of money."
-
-    c " You need to buy the exact number of groceries worth 200.00, including the items on the list."
-
     call timeskip("bg supermarket")
     call updateDate("July 2020, 3:00 pm, Week 4, grocery store, GCQ")
 

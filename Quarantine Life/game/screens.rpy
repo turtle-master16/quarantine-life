@@ -114,9 +114,11 @@ screen say(who, what):
                 style "namebox"
                 text who:
                     id "who"
-
-        text what id "what":
-            xmaximum 1050
+        if renpy.variant("touch"):
+            text what id "what":
+                xmaximum 1050
+        else:
+            text what id "what"
 
 
     ## If there's a side image, display it above the text. Do not display on the

@@ -28,6 +28,15 @@ define ROOMS = {
 default currentRoom = ROOMS['livingroom']
 default currentScreen = "" # Tells which minigame is on screen at the moment
 
+screen flyingImage(**kwargs):
+    modal True
+    zorder 2
+    # Pass a dictionary with 'img' key with the value of the image to show
+    imagebutton:
+        idle kwargs.get('img')
+        at t_flyingimage
+        action [Hide("flyingImage"), Function(showFlapButtons)]
+
 label hideStuff():
     # Hide the takeable/roomstate item when switching rooms
     # to prevent it from showing in the new room.
@@ -81,33 +90,31 @@ label objDialogue(dia, from_inputbox=False):
     return
 
 # A button that shows instructions/guides when clicked
-# Pass a string/list of strings for the screen/s to use
-screen flapButton(screens_to_show):
+# Pass a string/list of strings for the screen/s to use and a list of
+# corresponding images for each screen
+screen flapButton(screens_to_show, img_to_use):
     zorder 1
     if isinstance(screens_to_show, list):
         $ xoff = 0
         for scrn in screens_to_show:
+            $ screen_index = screens_to_show.index(scrn)
             if isinstance(scrn, tuple):
                 imagebutton:
-                    idle Solid("#fff")
+                    idle img_to_use[screen_index]
                     at t_flapButton
-                    xsize 75
-                    ysize 75
-                    xalign 0.8
+                    xalign 0.6
                     xoffset xoff
                     xanchor 0.5
                     action [Hide("flapButton"), ShowTransient(scrn[0], **scrn[1])]
             else:
                 imagebutton:
-                    idle Solid("#fff")
+                    idle img_to_use[screen_index]
                     at t_flapButton
-                    xsize 75
-                    ysize 75
-                    xalign 0.8
+                    xalign 0.6
                     xoffset xoff
                     xanchor 0.5
                     action [Hide("flapButton"), ShowTransient(scrn)]
-            $ xoff += 85
+            $ xoff += 110
     else:
         imagebutton:
             idle Solid("#fff")
@@ -200,14 +207,67 @@ screen workitem_list:
             action [Hide("workitem_list"), Function(showFlapButtons)]
 
 init python:
+    img_dict = {"img":"images/misc/grocerylist.png"}
+
+    img_set = {
+        "supermarket": (
+            "images/misc/flapinstruction.png",
+            "images/misc/flapgrocery.png",
+            "images/misc/flapgrocerylist.png"
+        ),
+        "workprep": (
+            "images/misc/flapinstruction.png",
+            "images/misc/flapcheck.png"
+        )
+    }
+    screen_set = {
+        "supermarket": [
+            "instruction",
+            "price_list",
+            ("flyingImage", img_dict)
+        ],
+        "workprep":[
+            "instruction",
+            "workitem_list",
+        ]
+    }
     def showFlapButtons():
         if currentScreen == "supermarket":
             img_dict = {"img":"images/misc/grocerylist.png"}
-            renpy.show_screen("flapButton", screens_to_show=["instruction",
-                                                            "price_list",
-                                                            ("flyingImage", img_dict)
-                                                            ], _transient=True)
+
+            renpy.show_screen("flapButton", screens_to_show=screen_set["supermarket"],
+                                            img_to_use=img_set["supermarket"],
+                                            _transient=True)
         elif currentScreen == "workprep":
-            renpy.show_screen("flapButton", screens_to_show=["instruction",
-                                                             "workitem_list"
-                                                            ], _transient=True)
+            renpy.show_screen("flapButton", screens_to_show=screen_set["workprep"],
+                                            img_to_use=img_set["workprep"],
+                                            _transient=True)
+
+transform t_flapButton:
+    yanchor 1.0
+    zoom 0.3
+    on show:
+        ypos 1.0
+        yoffset 130
+        linear 0.3 yoffset 0
+    on hide:
+        linear 0.3 yoffset 130
+
+transform t_instructions:
+    on show:
+        yoffset 700
+        linear 0.6 yoffset 0
+    on hide:
+        linear 0.6 yoffset 700
+
+transform t_flyingimage:
+    xanchor 0.5
+    yanchor 0.5
+    xpos 0.5
+    ypos 0.5
+    on show:
+        yoffset 700
+        linear 0.5 yoffset 0
+    on hide:
+        yoffset 0
+        linear 0.5 yoffset 700
