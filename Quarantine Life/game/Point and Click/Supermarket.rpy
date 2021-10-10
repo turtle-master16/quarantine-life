@@ -1,52 +1,5 @@
-default currentItemCost = 0
-default shopItemMap = {
-    'redcan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'yellowcan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'orangecan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'greencan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'browncan': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'toiletroll': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'facemask': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-    'hygiene': ["bedkey", Transform(xalign=0.5, yalign=0.5)],
-}
-
-default shopItems = {
-    'redcan': MartItem("redcan", shopItemMap['redcan'], 28, 0, alt_name="Red can"),
-    'yellowcan': MartItem("yellowcan", shopItemMap['yellowcan'], 22, 0, alt_name="Yellow can"),
-    'orangecan': MartItem("orangecan", shopItemMap['greencan'], 34, 0, alt_name="Orange can"),
-    'greencan': MartItem("greencan", shopItemMap['browncan'], 23, 0, alt_name="Green can"),
-    'browncan': MartItem("browncan", shopItemMap['toiletroll'], 27, 0, alt_name="Brown can"),
-    'toiletroll': MartItem("toiletroll", shopItemMap['redcan'], 15, 0, alt_name="Toilet Roll"),
-    'facemask': MartItem("facemask", shopItemMap['facemask'], 25, 0, alt_name="Facemask"),
-    'hygiene': MartItem("hygiene", shopItemMap['hygiene'], 36, 0, alt_name="Hygiene Products"),
-}
-
-transform t_flapButton:
-    yanchor 1.0
-    on show:
-        ypos 1.0
-        yoffset 75
-        linear 0.3 yoffset 0
-    on hide:
-        linear 0.3 yoffset 75
-
-transform t_price_list:
-    on show:
-        yoffset 700
-        linear 0.8 yoffset 0
-    on hide:
-        yoffset 0
-        linear 0.8 yoffset 700
-
-transform t_instructions:
-    on show:
-        yoffset 700
-        linear 0.6 yoffset 0
-    on hide:
-        linear 0.6 yoffset 700
-
 # Supermart ------------------
-screen supermarket:
+screen supermarket():
     layer "background"
     imagemap:
         ground "images/bg/bg supermarket.png"
@@ -70,7 +23,16 @@ screen supermarket:
         yalign 0.5
         action Call("supermarket.shop_win_conditions")
 
-screen price_list:
+screen flyingImage(**kwargs):
+    modal True
+    zorder 2
+    # Pass a dictionary with 'img' key with the value of the image to show
+    imagebutton:
+        idle kwargs.get('img')
+        at t_flyingimage
+        action [Hide("flyingImage"), Function(showFlapButtons)]
+
+screen price_list():
     modal True
     zorder 1
     frame:
@@ -120,14 +82,46 @@ screen price_list:
                     color "#000"
                     xpos 0.4
 
+init python:
+    class MartItem():
+        def __init__(self, name, price, onhand, alt_name):
+            self.name = name
+            self.price = price
+            self.onhand = onhand
+            self.alt_name = alt_name
+        def totalAmount(self):
+            return self.onhand * self.price
+        def takeItem(self, qnty):
+            self.onhand += qnty
+            self.updateOverallCost()
+        def updateOverallCost(self):
+            cost = 0
+            for item in shopItems:
+                cost += shopItems[item].totalAmount()
+            globals()['currentItemCost'] = cost
+    def getCost():
+        return currentItemCost
+    def hasAcquiredNeedItems():
+        enufHygiene = shopItems['hygiene'].onhand >= 2
+        enufToiletPaper = shopItems['toiletroll'].onhand >= 3
+        enufGreencan = shopItems['greencan'].onhand >= 1
+        return enufHygiene and enufToiletPaper and enufGreencan
+
+default currentItemCost = 0
+
+default shopItems = {
+    'redcan':MartItem("redcan", 28, 0, alt_name="Red can"),
+    'yellowcan':MartItem("yellowcan", 22, 0, alt_name="Yellow can"),
+    'orangecan':MartItem("orangecan", 34, 0, alt_name="Orange can"),
+    'greencan':MartItem("greencan", 23, 0, alt_name="Green can"),
+    'browncan':MartItem("browncan", 27, 0, alt_name="Brown can"),
+    'toiletroll':MartItem("toiletroll", 15, 0, alt_name="Toilet Roll"),
+    'facemask':MartItem("facemask", 25, 0, alt_name="Face mask"),
+    'hygiene':MartItem("hygiene", 36, 0, alt_name="Hygiene Product"),
+}
 label shopItemTake(item):
-    $ renpy.hide_screen("flapButton")
-    show bg supermarket onlayer background
-    if not(item == 'hygiene'):
-        $ item_name = shopItems[item].alt_name
-        pl "How many [item_name]s should I take?"
-    else:
-        pl "How many hygiene products should I take?"
+    $ item_name = shopItems[item].alt_name
+    pl "How many [item_name]s should I take?"
     menu:
         "One":
             $ shopItems[item].takeItem(1)
@@ -135,43 +129,44 @@ label shopItemTake(item):
             $ shopItems[item].takeItem(2)
         "Three":
             $ shopItems[item].takeItem(3)
-        "Return One" if shopItems[item].onhand > 0:
-            pl "I'll just put one back."
+        "Return one" if shopItems[item].onhand > 0:
             $ shopItems[item].takeItem(-1)
         "Nevermind":
             pl "I don't need any more of these."
     return
 
-init python:
-    class MartItem():
-        def __init__(self, name, img, price, onhand, alt_name=None):
-            self.name = name
-            self.img = img
-            self.price = price
-            self.onhand = onhand
-            self.alt_name = alt_name
+transform t_flapButton:
+    yanchor 1.0
+    on show:
+        ypos 1.0
+        yoffset 75
+        linear 0.3 yoffset 0
+    on hide:
+        linear 0.3 yoffset 75
 
-        def totalAmount(self):
-            return self.onhand * self.price
+transform t_price_list:
+    on show:
+        yoffset 700
+        linear 0.8 yoffset 0
+    on hide:
+        yoffset 0
+        linear 0.8 yoffset 700
 
-        def showItem(self):
-            renpy.show(self.img[0], at_list=[self.img[1]], layer='background')
+transform t_instructions:
+    on show:
+        yoffset 700
+        linear 0.6 yoffset 0
+    on hide:
+        linear 0.6 yoffset 700
 
-        def takeItem(self, qnty):
-            self.onhand += qnty
-            self.updateOverallCost()
-
-        def updateOverallCost(self):
-            cost = 0
-            for item in shopItems:
-                cost += shopItems[item].totalAmount()
-            globals()['currentItemCost'] = cost
-
-    def getCost():
-        return currentItemCost
-
-    def hasAcquiredNeedItems():
-        enufHygiene = shopItems['hygiene'].onhand >= 2
-        enufToiletPaper = shopItems['toiletroll'].onhand >= 3
-        enufGreencan = shopItems['greencan'].onhand >= 1
-        return enufHygiene and enufToiletPaper and enufGreencan
+transform t_flyingimage:
+    xanchor 0.5
+    yanchor 0.5
+    xpos 0.5
+    ypos 0.5
+    on show:
+        yoffset 700
+        linear 0.5 yoffset 0
+    on hide:
+        yoffset 0
+        linear 0.5 yoffset 700

@@ -95,7 +95,7 @@ label start(retmode=False):
 
         nar "How could something so small ruin an economy? To cause social disruption? To turn people’s lives upside down?"
 
-        scene bg livingroom back onlayer background
+        scene bg livingroom broom onlayer background
         with fade
 
         $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -524,12 +524,16 @@ label newnormal:
 
         plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
 
+        pl "I have a list of items I should find, I’m sure they’re around here somewhere."
+
         $ itemselected = itemchoices["Reset"]
         scene bg livingroom back onlayer background
         with fade
 
         call updateDate("June 2020, Week 2 | 06:00 PM, Living Room | GCQ")
 
+        $ currentScreen = "workprep"
+        show screen instruction
         jump workprep
 
 label commuting:
@@ -771,8 +775,7 @@ label intro_to_supermarket:
 
     pl "I’m here. Now let’s check the items on the list."
 
-    pl "I have to do is {b}complete the list{/b} and spend all 200.00 worth of grocery
-        items."
+    pl "I have to do is {b}complete the list{/b} and spend all 200.00 worth of grocery items."
 
     $ currentScreen = "supermarket"
 
@@ -2496,23 +2499,25 @@ label mcend:
 
 # Point and Click Scenarios
 label workprep:
+    $ showFlapButtons()
+    $ end_room = ""
     if currentRoom == ROOMS['livingroom']:
         scene bg livingroom back
-        call hideStuff('faceshield', room='livingroom')
-        call hideStuff('bedkey', room='livingroom')
+        $ end_room = "Living room"
     elif currentRoom == ROOMS['bedroom']:
         scene bg bedroom back
-        call hideStuff("wallet", room='bedroom')
-        call hideStuff('draweropen', 'bedroom', isState=True)
-        call hideStuff('boxclosed', 'bedroom', isState=True)
-
+        $ end_room = "Bedroom"
     elif currentRoom == ROOMS['kitchen']:
         scene bg kitchen
-        call hideStuff('sanitizer', room='kitchen')
+        $ end_room = "Kitchen"
 
-    if not(onhand['sanitizer'] and onhand['faceshield'] and onhand['wallet'] and onhand['facemask']):
+    call hideStuff()
+
+    if not(readyForWork()):
         call screen workprep
         jump workprep
+
+    call updateDate("June 2020, Week 2 | 06:00 PM, [end_room] | GCQ")
 
     plt "(Great. Now I have everything set, I am ready for tomorrow.)"
 

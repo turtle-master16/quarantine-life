@@ -10,7 +10,9 @@ nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
 fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum.
-"""
+""",
+    "workprep":
+"Hello world"
 }
 # Conditional Variables
 default itemselected = ""
@@ -26,43 +28,47 @@ define ROOMS = {
 default currentRoom = ROOMS['livingroom']
 default currentScreen = "" # Tells which minigame is on screen at the moment
 
-label hideStuff(item, room, isState=False):
+label hideStuff():
     # Hide the takeable/roomstate item when switching rooms
     # to prevent it from showing in the new room.
-    if isState:
-        if not(roomstatus["drawerclosed"]) and (currentRoom == ROOMS[room]):
-            $ renpy.show("draweropen", at_list=[workprep_item_placement['drawerclosed']], layer="master")
-        else:
-            $ renpy.hide("draweropen", layer="master")
-        if (roomstatus["boxclosed"]) and (currentRoom == ROOMS[room]):
-            $ renpy.show("boxclosed", at_list=[workprep_item_placement['boxclosed']], layer="master")
-        elif not(roomstatus["boxclosed"]) and (currentRoom == ROOMS[room]):
-            if not(onhand['facemask']):
-                $ renpy.show("boxwithmask", at_list=[workprep_item_placement['boxclosed']], layer="master")
-                $ renpy.hide("boxclosed", layer="master")
-            else:
-                $ renpy.show("boxnomask", at_list=[workprep_item_placement['boxnomask']], layer="master")
-                $ renpy.hide("boxwithmask", layer="master")
-        return
-    else:
-        if currentRoom == ROOMS[room]:
-            if not(onhand[item]):
-                if (item=="wallet") and (roomstatus['drawerclosed']):
-                    return
-                $ renpy.show(item, at_list=[workprep_item_placement[item]])
-            else:
-                $ renpy.hide(item, layer="master")
-        return
+    python:
+        location = {
+            ROOMS['livingroom']: ["faceshield", "bedkey"],
+            ROOMS['bedroom']: ["wallet", "facemask"],
+            ROOMS['kitchen']: ["sanitizer"],
+        }
+        left_side = {
+            "facemask":"bedleft",
+            "bedkey":"livingleft"
+        }
+        right_side = {
+            "faceshield":"livingright",
+            "wallet":"bedright",
+            "sanitizer":"kitchenright"
+        }
+
+        for item in location[currentRoom]:
+            if item == "facemask":
+                if not(roomstatus['boxclosed']):
+                    renpy.show("bedleft", at_list=[left_corner])
+                continue
+            elif item == "wallet":
+                if not(roomstatus['drawerclosed']):
+                    renpy.show("bedright", at_list=[right_corner])
+                continue
+            if item in left_side:
+                if not(onhand[item]):
+                    renpy.show(left_side[item], at_list=[left_corner])
+                continue
+            elif item in right_side:
+                if not(onhand[item]):
+                    renpy.show(right_side[item], at_list=[right_corner])
+    return
 # ------------------
 
 label objDialogue(dia, from_inputbox=False):
-    # Keeps the items visible/not visible during the say screen
-    call hideStuff('faceshield', 'livingroom')
-    call hideStuff('bedkey', 'livingroom')
-    call hideStuff('sanitizer', 'kitchen')
-    call hideStuff("wallet", 'bedroom')
-    call hideStuff('draweropen', 'bedroom', isState=True)
-    call hideStuff('boxclosed', 'bedroom', isState=True)
+    # Keeps the items visible/not visible while in this label
+    call hideStuff()
 
     $ islist = isinstance(dia, list)
     if islist:
@@ -76,21 +82,31 @@ label objDialogue(dia, from_inputbox=False):
 
 # A button that shows instructions/guides when clicked
 # Pass a string/list of strings for the screen/s to use
-screen flapButton(screen_to_show, args={}):
+screen flapButton(screens_to_show):
     zorder 1
-    $ islist = isinstance(screen_to_show, list)
-    if islist:
+    if isinstance(screens_to_show, list):
         $ xoff = 0
-        for scrn in screen_to_show:
-            imagebutton:
-                idle Solid("#fff")
-                at t_flapButton
-                xsize 75
-                ysize 75
-                xalign 0.8
-                xoffset xoff
-                xanchor 0.5
-                action [Hide("flapButton"), ShowTransient(scrn)]
+        for scrn in screens_to_show:
+            if isinstance(scrn, tuple):
+                imagebutton:
+                    idle Solid("#fff")
+                    at t_flapButton
+                    xsize 75
+                    ysize 75
+                    xalign 0.8
+                    xoffset xoff
+                    xanchor 0.5
+                    action [Hide("flapButton"), ShowTransient(scrn[0], **scrn[1])]
+            else:
+                imagebutton:
+                    idle Solid("#fff")
+                    at t_flapButton
+                    xsize 75
+                    ysize 75
+                    xalign 0.8
+                    xoffset xoff
+                    xanchor 0.5
+                    action [Hide("flapButton"), ShowTransient(scrn)]
             $ xoff += 85
     else:
         imagebutton:
@@ -100,11 +116,11 @@ screen flapButton(screen_to_show, args={}):
             ysize 75
             xpos 0.8
             xanchor 0.5
-            action [Hide("flapButton"), ShowTransient(screen_to_show)]
+            action [Hide("flapButton"), ShowTransient(screens_to_show)]
 
-screen instruction:
+screen instruction():
     modal True
-    zorder 1
+    zorder 2
     frame:
         at t_instructions
         background Solid("#fff")
@@ -126,7 +142,72 @@ screen instruction:
                 xalign 0.5
                 action [Hide("instruction"), Function(showFlapButtons)]
 
+screen workitem_list:
+    modal True
+    zorder 2
+    add Image("images/misc/paper.png"):
+        at transform:
+            xanchor 0.5
+            yanchor 0.5
+            xpos 0.5
+            ypos 0.5
+            zoom 3.4
+            on show:
+                yoffset 700
+                linear 0.5 yoffset 0
+            on hide:
+                yoffset 0
+                linear 0.5 yoffset 700
+    vbox:
+        xanchor 0.5
+        yanchor 0.5
+        xoffset 12
+        xpos 0.5
+        ypos 0.4
+        at transform:
+            on show:
+                yoffset 700
+                linear 0.5 yoffset 0
+            on hide:
+                yoffset 0
+                linear 0.5 yoffset 700
+        text "ITEM CHECKLIST":
+            xpos 0.5
+            xanchor 0.5
+            color "#000"
+        null height 20
+        $ items_needed = [item for item in onhand if not(item == 'bedkey')]
+        for item in items_needed:
+            $ it_cap = item.capitalize()
+            showif onhand[item]:
+                text "{s}[it_cap]{/s}":
+                    xpos 0.5
+                    xanchor 0.5
+                    color "#000"
+            else:
+                text "[it_cap]":
+                    xpos 0.5
+                    xanchor 0.5
+                    color "#000"
+            null height 15
+
+        null height 20
+
+        textbutton "Tap to close":
+            xpos 0.5
+            xanchor 0.5
+            text_color "#000"
+            action [Hide("workitem_list"), Function(showFlapButtons)]
+
 init python:
     def showFlapButtons():
         if currentScreen == "supermarket":
-            renpy.show_screen("flapButton", screen_to_show=["instruction", "price_list"], _transient=True)
+            img_dict = {"img":"images/misc/grocerylist.png"}
+            renpy.show_screen("flapButton", screens_to_show=["instruction",
+                                                            "price_list",
+                                                            ("flyingImage", img_dict)
+                                                            ], _transient=True)
+        elif currentScreen == "workprep":
+            renpy.show_screen("flapButton", screens_to_show=["instruction",
+                                                             "workitem_list"
+                                                            ], _transient=True)

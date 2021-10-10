@@ -92,21 +92,31 @@ style frame:
 ## and id "window" to apply style properties.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
+transform t_say:
+    on show:
+        alpha 0.0
+        linear 0.2 alpha 1.0
+    on hide:
+        alpha 1.0
+        linear 0.2 alpha 0.0
 
 screen say(who, what):
     style_prefix "say"
 
     window:
+        at t_say
         id "window"
 
         if who is not None:
 
-            window:
+            window :
                 id "namebox"
                 style "namebox"
-                text who id "who"
+                text who:
+                    id "who"
 
-        text what id "what"
+        text what id "what":
+            xmaximum 1050
 
 
     ## If there's a side image, display it above the text. Do not display on the

@@ -50,3 +50,16 @@ transform alpha_dissolve:
     linear 0.5 alpha 1.0
     on hide:
         linear 0.5 alpha 0
+
+# Cropped images positioning convenience
+transform left_corner:
+    xanchor 0.0
+    yanchor 1.0
+    xpos 0.0
+    ypos 1.0
+
+transform right_corner:
+    xanchor 1.0
+    yanchor 1.0
+    xpos 1.0
+    ypos 1.0
