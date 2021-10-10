@@ -2,7 +2,7 @@ default correctans = 0 # Quiz game
 default currentQuestion = 1
 screen quiz:
     modal True
-    zorder 2
+    zorder 1
     imagemap:
         at t_quiz
         ground "images/misc/q{}.png".format(currentQuestion)

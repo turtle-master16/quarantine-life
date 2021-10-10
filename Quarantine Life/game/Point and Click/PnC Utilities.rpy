@@ -120,7 +120,7 @@ screen flapButton(screens_to_show):
 
 screen instruction():
     modal True
-    zorder 2
+    zorder 1
     frame:
         at t_instructions
         background Solid("#fff")

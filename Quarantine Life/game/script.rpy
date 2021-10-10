@@ -25,6 +25,9 @@ define ky = Character("Kyle", color=charcolor['Kyle'])
 define nar = Character(None, what_color=charcolor['Narration'])
 define ins = Character(None, what_color=charcolor['Instruction'])
 
+style choice_button is default:
+    activate_sound "audio/select.mp3"
+
 style textbutton:
     activate_sound "audio/click.mp3"
 
@@ -186,13 +189,16 @@ label news:
 
     menu:
         "Dad will be fine":
+            $ renpy.pause(0.3)
+
             pl "I’m sure dad will be fine. People are already aware of this new virus, people will start taking precautions on whatever this is."
 
             c "But still, I can’t help but worry for your father. I hope he’s doing ok. I’ll call him later after his work."
 
         "The government will handle it":
-            pl "I’m sure the government will do something about it."
+            $ renpy.pause(0.3)
 
+            pl "I’m sure the government will do something about it."
 
             show carla scold onlayer middle:
                 xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0 zoom 0.84
@@ -200,6 +206,8 @@ label news:
             c "We can’t always depend on the government to do everything for us. We still have to do our part."
 
         "We should be careful":
+            $ renpy.pause(0.3)
+
             pl "If that’s the case, the best thing we could do right now is to remain cautious and wait for further reports on this coronavirus."
 
             show carla thinking onlayer middle
@@ -278,6 +286,8 @@ label lockdown:
 
     menu:
         "I'm not staying home":
+            $ renpy.pause(0.3)
+
             pl "There is no way I’m staying home for that long."
 
             show prince stretch onlayer middle
@@ -297,6 +307,8 @@ label lockdown:
 
             menu:
                 "You're right.":
+                    $ renpy.pause(0.3)
+
                     pl "I’m sorry, I wasn’t thinking clearly. You’re right. If I want to remain safe I must follow what the government says. I can always message them online. "
 
                     pl "Besides, I’m sure there are a lot of things I can do to keep myself entertained."
@@ -304,10 +316,15 @@ label lockdown:
                     jump quarantine
 
                 "No, I do what I want.":
+                    $ renpy.pause(0.3)
+
                     pl "Like I said, I’m a grown up, I can make decisions I know are best for me. I’m going to die of boredom if I stay home for that long."
 
                     jump getcaught
+
         "No work!":
+            $ renpy.pause(0.3)
+
             pl "Alright! I can sleep whenever I want now that I don’t have to wake up early to go to work."
 
             show prince happy onlayer middle:
@@ -321,7 +338,10 @@ label lockdown:
             c "*Sigh* Why are two being so childish?"
 
             jump quarantine
+
         "We should remain positive":
+            $ renpy.pause(0.3)
+
             pl "We just have to keep calm and stay positive. Everything will pass."
 
             c "If we’ll be staying here for more than a month, we need to find ways to save money."
@@ -527,11 +547,6 @@ label newnormal:
         pl "I have a list of items I should find, I’m sure they’re around here somewhere."
 
         $ itemselected = itemchoices["Reset"]
-        scene bg livingroom back onlayer background
-        with fade
-
-        call updateDate("June 2020, Week 2 | 06:00 PM, Living Room | GCQ")
-
         $ currentScreen = "workprep"
         show screen instruction
         jump workprep
@@ -556,6 +571,8 @@ label commuting:
 
     menu:
         "Eavesdrop":
+            $ renpy.pause(0.3)
+
             "Worker 2" "Yeah, I’m still getting used to wearing a facemask. I can’t exactly breathe properly with this covering the bottom half of my face."
 
             "Worker 2" "Better safe than sorry since {b}facemasks suppress the transmission of the virus{/b}."
@@ -566,11 +583,13 @@ label commuting:
 
             plt "(Right. It’s best to {b}avoid crowded places too{/b}.)"
 
-            "Worker 1": "How can we protect ourselves from COVID?"
+            "Worker 1" "How can we protect ourselves from COVID?"
 
-            "Worker 2": "Other the {b}social distancing{/b}, you should also {b}practice proper cough etiquette and proper hand washing using soap and water{/b}."
+            "Worker 2" "Other the {b}social distancing{/b}, you should also {b}practice proper cough etiquette and proper hand washing using soap and water{/b}."
 
         "Ignore them.":
+            $ renpy.pause(0.3)
+
             plt "(I shouldn’t eavesdrop on other people’s conversation, that's rude.)"
 
     jump office
@@ -590,6 +609,8 @@ label office:
 
     menu:
         "Hey Ian.":
+            $ renpy.pause(0.3)
+
             pl "Oh, hey Ian. It’s great to see you too. What’s up?"
 
             show ian farewell onlayer middle
@@ -609,6 +630,8 @@ label office:
 
             menu:
                 "Sure. I'll join.":
+                    $ renpy.pause(0.3)
+
                     pl "I could do some outside activity for a change. Count me in."
 
                     i "Nice! We’ll see you after work."
@@ -616,6 +639,8 @@ label office:
                     jump friend
 
                 "Sorry. Maybe next time.":
+                    $ renpy.pause(0.3)
+
                     pl "Sorry Ian, I have somewhere else to be after work. Maybe we can hang out together some other time."
 
                     show ian farewell onlayer middle
@@ -623,7 +648,10 @@ label office:
                     i "It’s cool, next time then."
 
                     jump home
+
         "I’m busy.":
+            $ renpy.pause(0.3)
+
             pl "I’m kind of busy at the moment so can we talk later?"
 
             show ian happy onlayer middle
@@ -632,6 +660,8 @@ label office:
 
             menu:
                 "Dinner sounds good.":
+                    $ renpy.pause(0.3)
+
                     pl "Sure, I’ll be seeing you guys after work."
 
                     show ian farewell onlayer middle
@@ -641,6 +671,8 @@ label office:
                     jump friend
 
                 "I can't tonight.":
+                    $ renpy.pause(0.3)
+
                     pl "Not tonight. Maybe some other time."
 
                     show ian farewell onlayer middle
@@ -648,7 +680,10 @@ label office:
                     i "Oh, some other time then. Talk to you later."
 
                     jump home
+
         "Stay away!":
+            $ renpy.pause(0.3)
+
             pl "Woah! Keep your distance please. At least five meters away, I don’t want to get infected by COVID."
 
             show ian whoa onlayer middle:
@@ -723,6 +758,8 @@ label home:
 
     menu:
         "Volunteer to do the grocery shopping":
+            $ renpy.pause(0.3)
+
             pl "I can do the grocery shopping for you. That way you wouldn’t have to carry all the heavy bags when you return."
 
             show carla happy onlayer middle
@@ -738,6 +775,8 @@ label home:
             jump intro_to_supermarket
 
         "Just smile and say nothing":
+            $ renpy.pause(0.3)
+
             show carla happy onlayer middle
 
             c "While I’m away, I need you to cook dinner."
@@ -757,6 +796,8 @@ label home:
             jump cookadobo
 
         "Suggest doing online shopping":
+            $ renpy.pause(0.3)
+
             pl "Why not do {b}online shopping{/b}? It allows you to {b}buy goods and services over the internet using a browser or a mobile app{/b}."
 
             pl "That way, you can complete your shopping without ever needing to go outside. It’s easy, convenient and a much safer option."
@@ -807,16 +848,22 @@ label cookadobo:
 
     menu:
         "Oyster sauce":
+            $ renpy.pause(0.3)
+
             pl "The oyster sauce."
 
             call .continuecookingadobo(1)
 
         "Fish sauce":
+            $ renpy.pause(0.3)
+
             pl "Right. The fish sauce."
 
             call .continuecookingadobo(2)
 
         "White vinegar":
+            $ renpy.pause(0.3)
+
             pl "I almost forget the white vinegar."
 
             call .continuecookingadobo(3)
@@ -915,6 +962,8 @@ label princegoingout:
 
     menu:
         "Tell Prince to stay.":
+            $ renpy.pause(0.3)
+
             pl "Mom’s got a point. Just because you’re wearing a medical mask and a face shield doesn’t mean you’re immune to the virus."
 
             pl "You can still get sick even with all the precautions you take when you go outside."
@@ -924,6 +973,8 @@ label princegoingout:
             pr "I understand."
 
         "Keep quiet.":
+            $ renpy.pause(0.3)
+
             pl "..."
 
             show carla happy at right onlayer middle:
@@ -934,6 +985,8 @@ label princegoingout:
             pr "Fine."
 
         "Convince mom to allow him to go.":
+            $ renpy.pause(0.3)
+
             pl "Can’t he? I mean, it’s just for a few hours. So why not allows him to visit a friend?"
 
             pl "He’s been stuck in this house for months, a change of scenery could do him good."
@@ -1035,12 +1088,16 @@ label princedisappointed:
 
     menu:
         "Choose another route":
+            $ renpy.pause(0.3)
+
             centered "You will now be returned to the previous decision point..."
             stop music fadeout 2.0
 
             jump office
 
         "Return to main menu":
+            $ renpy.pause(0.3)
+
             stop music fadeout 0.2
             jump proceed
 
@@ -1161,6 +1218,8 @@ label restaurant:
 
     menu:
         "Romance is not for me.":
+            $ renpy.pause(0.3)
+
             pl "Like what Mark said, I would like to focus on my own before I pursue anything romantic."
 
             show mark confident onlayer middle
@@ -1172,6 +1231,8 @@ label restaurant:
             m "Plus, I don't need to add another reason that would only cause more headaches."
 
         "Having a romantic partner sounds good.":
+            $ renpy.pause(0.3)
+
             pl "Being in a relationship with someone sounds nice. Maybe I should try some online dating and meet new people for a change."
 
             show ian at bounce onlayer middle
@@ -1231,8 +1292,12 @@ label datesearch:
 
     menu:
         "Men":
+            $ renpy.pause(0.3)
+
             jump phone
         "Women":
+            $ renpy.pause(0.3)
+
             call phone(male=False)
 
 label phone(male=True):
@@ -1360,6 +1425,8 @@ label postdatesearch(male=True):
 
         menu:
             "It's none of your business.":
+                $ renpy.pause(0.3)
+
                 pl "It doesn't have anything to do with you. Now run along and leave me alone."
 
                 show prince embarrased onlayer middle:
@@ -1382,6 +1449,8 @@ label postdatesearch(male=True):
                 jump firstdate
 
             "I'm meeting someone.":
+                $ renpy.pause(0.3)
+
                 pl " I have a date and I want to look my best."
 
                 show prince shocked1  onlayer middle:
@@ -1527,6 +1596,8 @@ label firstdate(male=True):
 
         menu:
             "Ask her what's wrong":
+                $ renpy.pause(0.3)
+
                 pl "Is there something wrong?"
 
                 call phone_call(jl, "happy2", "Sorry. I’m just glad you’re not another catfish.")
@@ -1538,6 +1609,8 @@ label firstdate(male=True):
                 jump jillian
 
             "Hit her with a pick-up line":
+                $ renpy.pause(0.3)
+
                 pl "I’m no photographer, but I can picture us together."
 
                 call phone_call(jl, "speechless", "Umm...")
@@ -1803,12 +1876,16 @@ label kylehome:
 
             menu:
                 "Choose another route":
+                    $ renpy.pause(0.3)
+
                     centered "You will now be returned to the previous decision point..."
                     stop music fadeout 2.0
 
                     jump office
 
                 "Return to main menu":
+                    $ renpy.pause(0.3)
+
                     stop music fadeout 0.2
                     jump proceed
 
@@ -1844,6 +1921,8 @@ label kylemeet:
 
     menu:
         "Tell him it’s not fine.":
+            $ renpy.pause(0.3)
+
             pl "That is not okay. It’s not safe walking around in public without wearing a face mask."
 
             show kyle confused onlayer middle
@@ -1865,6 +1944,8 @@ label kylemeet:
             ky "Everything will be fine. You worry too much."
 
         "Leave it be.":
+            $ renpy.pause(0.3)
+
             show kyle worried onlayer middle
 
             ky "What? Is there something wrong?"
@@ -1950,10 +2031,14 @@ label hospital:
 
     menu:
         "Choose another route":
+            $ renpy.pause(0.3)
+
             centered "You will now be returned to a previous decision point..."
             jump kylehome
 
         "Return to main menu":
+            $ renpy.pause(0.3)
+
             stop sound fadeout 0.2
             jump proceed
 
@@ -1963,11 +2048,15 @@ label jillian:
 
     menu:
         "Anything that boosts my intellect.":
+            $ renpy.pause(0.3)
+
             pl "I like to read books and do puzzles. Basically anything that allows me to use my intellect."
 
             call phone_call(jl, "happy", "You like to read? Me too.")
 
         "I love exercising.":
+            $ renpy.pause(0.3)
+
             pl "I usually spend my time exercising."
 
             call phone_call(jl, "discussing", "You must be really fit then.")
@@ -1975,6 +2064,8 @@ label jillian:
             pl "I'm nothing like those people with big muscles, but I do try my best to keep my body healthy."
 
         "Something creative.":
+            $ renpy.pause(0.3)
+
             pl "I like doing things where I can freely express myself like arts and music."
 
             call phone_call(jl, "happy2", "That's really cool.")
@@ -2045,6 +2136,8 @@ label jillian:
 
     menu:
         "Ask her out":
+            $ renpy.pause(0.3)
+
             plt "(I’ll just ask her when I get home.)"
 
             label .restaurantdate:
@@ -2069,6 +2162,8 @@ label jillian:
                 jump jldate
 
         "Don't ask her out.":
+            $ renpy.pause(0.3)
+
             plt "(Nah. Asking her out under these circumstances is not the best idea. I don’t want to risk her health or mine.)"
 
             plt "(I’m sure there are ways we can keep our virtual date more fun for both of us. But what?)"
@@ -2107,12 +2202,16 @@ label jillian:
 
                 menu:
                     "Choose another route":
+                        $ renpy.pause(0.3)
+
                         centered "You will now be returned to the previous decision point..."
                         stop music fadeout 2.0
 
                         jump office
 
                     "Return to main menu":
+                        $ renpy.pause(0.3)
+
                         stop music fadeout 0.2
                         jump proceed
 
@@ -2281,12 +2380,16 @@ label jason:
 
             menu:
                 "Choose another route":
+                    $ renpy.pause(0.3)
+
                     centered "You will now be returned to the previous decision point..."
                     stop music fadeout 2.0
 
                     jump office
 
                 "Return to main menu":
+                    $ renpy.pause(0.3)
+
                     stop music fadeout 0.2
                     jump proceed
 
@@ -2348,6 +2451,8 @@ label getcaught:
 
     menu:
         "Run away.":
+            $ renpy.pause(0.3)
+
             hide screen countdown
             with vpunch
             with vpunch
@@ -2357,6 +2462,8 @@ label getcaught:
             "Police" "You are under arrest for quarantine violation."
 
         "Stay in place.":
+            $ renpy.pause(0.3)
+
             label .failescape:
                 hide screen countdown
                 with hpunch
@@ -2376,10 +2483,14 @@ label getcaught:
 
     menu:
         "Choose another route":
+            $ renpy.pause(0.3)
+
             centered "You will now be returned to a previous decision point..."
             jump lockdown
 
         "Return to main menu":
+            $ renpy.pause(0.3)
+
             stop sound fadeout 0.2
             jump proceed
 
@@ -2413,12 +2524,16 @@ label jlend:
 
     menu:
         "Choose another route":
+            $ renpy.pause(0.3)
+
             centered "You will now be returned to the previous decision point..."
             stop music fadeout 2.0
 
             call firstdate(male=False)
 
         "Return to main menu":
+            $ renpy.pause(0.3)
+
             stop music fadeout 0.2
             jump proceed
 
@@ -2457,12 +2572,16 @@ label jsexerciseend:
 
     menu:
         "Choose another route":
+            $ renpy.pause(0.3)
+
             centered "You will now be returned to the previous decision point..."
             stop music fadeout 2.0
 
             jump jason
 
         "Return to main menu":
+            $ renpy.pause(0.3)
+
             stop music fadeout 0.2
             jump proceed
 
@@ -2488,18 +2607,24 @@ label mcend:
 
     menu:
         "Choose another route":
+            $ renpy.pause(0.3)
+
             centered "You will now be returned to the previous decision point..."
             stop music fadeout 2.0
 
             jump kylehome
 
         "Return to main menu":
+            $ renpy.pause(0.3)
+
             stop music fadeout 0.2
             jump proceed
 
 # Point and Click Scenarios
 label workprep:
-    $ showFlapButtons()
+    if not(renpy.get_screen("instruction")):
+        $ showFlapButtons()
+
     $ end_room = ""
     if currentRoom == ROOMS['livingroom']:
         scene bg livingroom back
@@ -2542,7 +2667,7 @@ label findActivity:
 
         show phoneless at phone_pickup onlayer background
         $ renpy.pause(0.5)
-        show screen quiz
+        $ renpy.show_screen("quiz", _transient=True)
         $ renpy.pause(hard=True)
 
         label .postquiz:
