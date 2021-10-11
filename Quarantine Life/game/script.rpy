@@ -286,6 +286,7 @@ label lockdown:
 
     menu:
         "I'm not staying home":
+            $ is_dialog_unchecked["mandatoryhomequarantine.notstayinghome"] = True
             $ renpy.pause(0.3)
 
             pl "There is no way I’m staying home for that long."
@@ -323,6 +324,7 @@ label lockdown:
                     jump getcaught
 
         "No work!":
+            $ is_dialog_unchecked["mandatoryhomequarantine.nowork"] = True
             $ renpy.pause(0.3)
 
             pl "Alright! I can sleep whenever I want now that I don’t have to wake up early to go to work."
@@ -340,6 +342,7 @@ label lockdown:
             jump quarantine
 
         "We should remain positive":
+            $ is_dialog_unchecked["mandatoryhomequarantine.remainpositive"] = True
             $ renpy.pause(0.3)
 
             pl "We just have to keep calm and stay positive. Everything will pass."
@@ -609,6 +612,7 @@ label office:
 
     menu:
         "Hey Ian.":
+            $ is_dialog_unchecked["convowithcoworker.heyian"] = True
             $ renpy.pause(0.3)
 
             pl "Oh, hey Ian. It’s great to see you too. What’s up?"
@@ -630,6 +634,7 @@ label office:
 
             menu:
                 "Sure. I'll join.":
+                    $ is_dialog_unchecked["greetingyourcoworker.illjoin"] = True
                     $ renpy.pause(0.3)
 
                     pl "I could do some outside activity for a change. Count me in."
@@ -639,6 +644,7 @@ label office:
                     jump friend
 
                 "Sorry. Maybe next time.":
+                    $ is_dialog_unchecked["greetingyourcoworker.nexttime"] = True
                     $ renpy.pause(0.3)
 
                     pl "Sorry Ian, I have somewhere else to be after work. Maybe we can hang out together some other time."
@@ -650,6 +656,7 @@ label office:
                     jump home
 
         "I’m busy.":
+            $ is_dialog_unchecked["convowithcoworker.imbusy"] = True
             $ renpy.pause(0.3)
 
             pl "I’m kind of busy at the moment so can we talk later?"
@@ -660,6 +667,7 @@ label office:
 
             menu:
                 "Dinner sounds good.":
+                    $ is_dialog_unchecked["invitationfromcoworker.soundsgood"] = True
                     $ renpy.pause(0.3)
 
                     pl "Sure, I’ll be seeing you guys after work."
@@ -671,6 +679,7 @@ label office:
                     jump friend
 
                 "I can't tonight.":
+                    $ is_dialog_unchecked["invitationfromcoworker.icant"] = True
                     $ renpy.pause(0.3)
 
                     pl "Not tonight. Maybe some other time."
@@ -682,6 +691,7 @@ label office:
                     jump home
 
         "Stay away!":
+            $ is_dialog_unchecked["convowithcoworker.stayaway"] = True
             $ renpy.pause(0.3)
 
             pl "Woah! Keep your distance please. At least five meters away, I don’t want to get infected by COVID."
@@ -1292,10 +1302,12 @@ label datesearch:
 
     menu:
         "Men":
+            $ is_dialog_unchecked["genderpreference.men"] = True
             $ renpy.pause(0.3)
 
             jump phone
         "Women":
+            $ is_dialog_unchecked["genderpreference.women"] = True
             $ renpy.pause(0.3)
 
             call phone(male=False)
@@ -1596,6 +1608,7 @@ label firstdate(male=True):
 
         menu:
             "Ask her what's wrong":
+                $ is_dialog_unchecked["talkingtojillian.whatswrong"] = True
                 $ renpy.pause(0.3)
 
                 pl "Is there something wrong?"
@@ -1609,6 +1622,7 @@ label firstdate(male=True):
                 jump jillian
 
             "Hit her with a pick-up line":
+                $ is_dialog_unchecked["talkingtojillian.pickupline"] = True
                 $ renpy.pause(0.3)
 
                 pl "I’m no photographer, but I can picture us together."
@@ -1777,6 +1791,8 @@ label kylehome:
     call screen phone_reply2("Let's hang out.", "It's safer to stay home.")
 
     if itemselected == itemchoices['A']:
+        $ is_dialog_unchecked["reconnectingfriend.hangout"] = True
+
         call reply_message("Yeah, being able to catch up with an old friend sounds good.")
 
         call message(ky, "Awesome. Let’s meet up tomorrow at that same restaurant we used to go to during college for lunch.")
@@ -1790,6 +1806,8 @@ label kylehome:
         jump kylemeet
 
     elif itemselected == itemchoices['B']:
+        $ is_dialog_unchecked["reconnectingfriend.stayhome"] = True
+
         call reply_message("I would prefer not to go out so much unless it’s necessary.")
 
         call message(ky, "It’s not like I can do anything to stop you. Though you could text from time to time.")
@@ -2136,6 +2154,7 @@ label jillian:
 
     menu:
         "Ask her out":
+            $ is_dialog_unchecked["hangoutwithjillian.askherout"] = True
             $ renpy.pause(0.3)
 
             plt "(I’ll just ask her when I get home.)"
@@ -2162,6 +2181,7 @@ label jillian:
                 jump jldate
 
         "Don't ask her out.":
+            $ is_dialog_unchecked["hangoutwithjillian.dontaskherout"] = True
             $ renpy.pause(0.3)
 
             plt "(Nah. Asking her out under these circumstances is not the best idea. I don’t want to risk her health or mine.)"
@@ -2311,6 +2331,8 @@ label jason:
     call screen phone_reply2("I’m not sure about that.", "Sounds good.")
 
     if itemselected == itemchoices["B"]:
+        $ is_dialog_unchecked["meetupwithjason.soundsgood"] = True
+
         call reply_message("Sounds like a plan.")
 
         call message(js, "Great. I’ll text you the details later. See you then.")
@@ -2394,6 +2416,8 @@ label jason:
                     jump proceed
 
     elif itemselected == itemchoices["A"]:
+        $ is_dialog_unchecked["meetupwithjason.notsure"] = True
+
         call reply_message("I don’t think it’s a good idea to go out.")
 
         $ itemselected = ""

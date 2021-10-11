@@ -52,11 +52,11 @@ screen storyroute:
         draggable True
 
         imagemap:
-            ground "images/clickables/storyroute.png"
+            ground "images/menu/storyroutes/bg storyroute.png"
 
             showif not(is_route_unlocked["start.mainstart"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.0165
                     yalign 0.445
                     action 0
@@ -65,7 +65,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["lockdown"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.114
                     yalign 0.445
                     action 0
@@ -74,7 +74,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["getcaught"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.2305
                     yalign 0.4
                     action 0
@@ -83,7 +83,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["quarantine"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.2305
                     yalign 0.53
                     action 0
@@ -92,7 +92,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["newnormal"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.335
                     yalign 0.583
                     action 0
@@ -101,7 +101,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["newnormal.collectandprogress"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.4311
                     yalign 0.456
                     action 0
@@ -110,7 +110,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["commuting"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.5275
                     yalign 0.499
                     action 0
@@ -119,7 +119,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["friend"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.6243
                     yalign 0.41
                     action 0
@@ -128,7 +128,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["home"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.6243
                     yalign 0.665
                     action 0
@@ -137,7 +137,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["phonemale"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.7255
                     yalign 0.339
                     action 0
@@ -146,7 +146,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["phonefemale"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.74
                     yalign 0.568
                     action 0
@@ -155,7 +155,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["princegoingout"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.7178
                     yalign 0.769
                     action 0
@@ -164,7 +164,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["firstdatemale"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.829
                     yalign 0.248
                     action 0
@@ -173,7 +173,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["firstdatefemale"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.8396
                     yalign 0.508
                     action 0
@@ -182,7 +182,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["kyle"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.8552
                     yalign 0.767
                     action 0
@@ -191,7 +191,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["jason.meetupjason"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.9575
                     yalign 0.117
                     action 0
@@ -200,7 +200,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["jsexerciseend"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.9456
                     yalign 0.303
                     action 0
@@ -209,7 +209,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["jillian.restaurantdate"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.9571
                     yalign 0.425
                     action 0
@@ -218,7 +218,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["jillian.artsncraft"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.9817
                     yalign 0.625
                     action 0
@@ -227,7 +227,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["kylemeet"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.9755
                     yalign 0.721
                     action 0
@@ -236,7 +236,7 @@ screen storyroute:
 
             showif not(is_route_unlocked["kylehome.findhobby"]):
                 imagebutton:
-                    idle "images/clickables/lockroute.png"
+                    idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.96
                     yalign 0.904
                     action 0
