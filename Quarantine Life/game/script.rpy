@@ -143,11 +143,11 @@ label start(retmode=False):
 
         ins "Click to interact with objects around the room."
 
-        $ renpy.show_screen("notify", img="images/misc/taskpopups/task_broom.png")
+        $ renpy.show_screen("notify", img="images/misc/taskpopups/taskbroom.png")
 
         call screen broomfind
 
-        $ renpy.show_screen("notify", img="images/misc/taskpopups/task_complete.png")
+        $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
 
         pl "Here it is. Now let’s start cleaning!"
         #--SFX (Sweeping)
@@ -408,7 +408,7 @@ label quarantine:
 
     $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/task_work.png")
+    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskwork.png")
 
     ins "Click the arrow to switch rooms and tap an object to interact with them."
 
@@ -555,7 +555,7 @@ label newnormal:
         $ itemselected = itemchoices["Reset"]
         $ currentScreen = "workprep"
         $ renpy.show_screen("instruction")
-        $ renpy.show_screen("notify", img="images/misc/taskpopups/task_work.png")
+        $ renpy.show_screen("notify", img="images/misc/taskpopups/taskwork.png")
         $ showFlapButtons()
         jump workprep
 
@@ -844,7 +844,7 @@ label intro_to_supermarket:
 
     $ renpy.show_screen("instruction")
     $ showFlapButtons()
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/task_shop.png")
+    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskshop.png")
 
     jump supermarket
 
@@ -2695,7 +2695,7 @@ label workprep:
 
     show screen patientOverlay(date="June 2020, Week 2|06:00 PM, GCQ", status="happy")
 
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/task_complete.png")
+    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
 
     plt "(Great. Now I have everything set, I am ready for tomorrow.)"
 
@@ -2824,7 +2824,7 @@ label findActivity:
     else:
         jump findActivity
 
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/task_complete.png")
+    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
     $ currentRoom = ROOMS['livingroom']
     jump newnormal
 
@@ -2846,7 +2846,7 @@ label supermarket:
 
     pl "I have everything I need. Time to check out."
 
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/task_complete.png")
+    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
 
     jump princegoingout
 

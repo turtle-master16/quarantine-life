@@ -19,4 +19,4 @@ screen notify(img):
     layer "screens"
     zorder 50
     add img at t_notify
-    timer 2.0 action Hide("notify")
+    timer 1.5 action Hide("notify")

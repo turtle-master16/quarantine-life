@@ -4,15 +4,27 @@
 
 define instructions = {
     "supermarket":
-"""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-culpa qui officia deserunt mollit anim id est laborum.
+"""Get all the required items from the list (which can be viewed with the list
+button on the lower left corner of the screen) and use your remaining budget for
+buying extra items of your choice. The total cost of the required items and the
+extra items should be EXACTLY ₱200.
+
+Get items by tapping the item you want. After tapping, you will be asked to
+choose how many of that item you would want to take or return one piece of that
+item if you have any. You can use the ₱ button on the lower left part of
+the screen to see the price of each item, how many items you have on hand, and
+total cost of your items on hand.
+
+Click on the cash register button on the lower right corner if you are done shopping.
 """,
     "workprep":
-"Hello world"
+"""Get all the items on the item checklist on the lower left corner of the screen.
+Tap on objects to interact with them. Tap the arrows on the left or right side
+of the screen to go to the other rooms. The item checklist will indicate which
+items you already have and items still missing.
+
+Click on the "i" button on the top right corner to review this instruction.
+"""
 }
 # Conditional Variables
 default itemselected = ""
