@@ -77,6 +77,13 @@ label hideStuff():
 
 label objDialogue(dia, from_inputbox=False):
     # Keeps the items visible/not visible while in this label
+    if currentRoom == ROOMS['livingroom']:
+        scene bg livingroom back
+    elif currentRoom == ROOMS['bedroom']:
+        scene bg bedroom back
+    elif currentRoom == ROOMS['kitchen']:
+        scene bg kitchen
+
     $ print currentRoom
     call hideStuff()
     $ print currentRoom
