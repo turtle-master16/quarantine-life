@@ -77,7 +77,9 @@ label hideStuff():
 
 label objDialogue(dia, from_inputbox=False):
     # Keeps the items visible/not visible while in this label
+    $ print currentRoom
     call hideStuff()
+    $ print currentRoom
 
     $ islist = isinstance(dia, list)
     if islist:
@@ -85,6 +87,9 @@ label objDialogue(dia, from_inputbox=False):
             $ renpy.say(pl, dia.pop(0))
         return
     $ renpy.say(pl, dia)
+
+    call hideStuff()
+
     if from_inputbox:
         call inputbox()
     return
@@ -101,18 +106,35 @@ screen flapButton(screens_to_show, img_to_use):
                 imagebutton:
                     idle img_to_use[screen_index]
                     at t_flapButton
-                    xalign 0.6
+                    xalign 0.04
                     xoffset xoff
                     xanchor 0.5
-                    action [Hide("flapButton"), ShowTransient(scrn[0], **scrn[1])]
+                    action [Hide("flapButton"), Show(scrn[0], **scrn[1])]
             else:
-                imagebutton:
-                    idle img_to_use[screen_index]
-                    at t_flapButton
-                    xalign 0.6
-                    xoffset xoff
-                    xanchor 0.5
-                    action [Hide("flapButton"), ShowTransient(scrn)]
+                if scrn == "instruction":
+                    imagebutton:
+                        idle img_to_use[screen_index]
+                        xalign 0.96
+                        yalign 0.06
+                        xanchor 0.5
+                        yanchor 0.5
+                        at transform:
+                            zoom 0.2
+                            on show:
+                                yoffset -100
+                                linear 0.3 yoffset 0
+                            on hide:
+                                linear 0.3 yoffset -100
+                        action [Hide("flapButton"), Show(scrn)]
+                    $ xoff -= 110
+                else:
+                    imagebutton:
+                        idle img_to_use[screen_index]
+                        at t_flapButton
+                        xalign 0.05
+                        xoffset xoff
+                        xanchor 0.5
+                        action [Hide("flapButton"), Show(scrn)]
             $ xoff += 110
     else:
         imagebutton:
@@ -122,11 +144,11 @@ screen flapButton(screens_to_show, img_to_use):
             ysize 75
             xpos 0.8
             xanchor 0.5
-            action [Hide("flapButton"), ShowTransient(screens_to_show)]
+            action [Hide("flapButton"), Show(screens_to_show)]
 
 screen instruction():
     modal True
-    zorder 1
+    zorder 2
     frame:
         at t_instructions
         background Solid("#fff")
@@ -147,63 +169,6 @@ screen instruction():
                 text_color "#000"
                 xalign 0.5
                 action [Hide("instruction"), Function(showFlapButtons)]
-
-screen workitem_list:
-    modal True
-    zorder 1
-    add Image("images/misc/paper.png"):
-        at transform:
-            xanchor 0.5
-            yanchor 0.5
-            xpos 0.5
-            ypos 0.5
-            zoom 3.4
-            on show:
-                yoffset 700
-                linear 0.5 yoffset 0
-            on hide:
-                yoffset 0
-                linear 0.5 yoffset 700
-    vbox:
-        xanchor 0.5
-        yanchor 0.5
-        xoffset 12
-        xpos 0.5
-        ypos 0.4
-        at transform:
-            on show:
-                yoffset 700
-                linear 0.5 yoffset 0
-            on hide:
-                yoffset 0
-                linear 0.5 yoffset 700
-        text "ITEM CHECKLIST":
-            xpos 0.5
-            xanchor 0.5
-            color "#000"
-        null height 20
-        $ items_needed = [item for item in onhand if not(item == 'bedkey')]
-        for item in items_needed:
-            $ it_cap = item.capitalize()
-            showif onhand[item]:
-                text "{s}[it_cap]{/s}":
-                    xpos 0.5
-                    xanchor 0.5
-                    color "#000"
-            else:
-                text "[it_cap]":
-                    xpos 0.5
-                    xanchor 0.5
-                    color "#000"
-            null height 15
-
-        null height 20
-
-        textbutton "Tap to close":
-            xpos 0.5
-            xanchor 0.5
-            text_color "#000"
-            action [Hide("workitem_list"), Function(showFlapButtons)]
 
 init python:
     img_dict = {"img":"images/misc/grocerylist.png"}
@@ -242,6 +207,7 @@ init python:
             renpy.show_screen("flapButton", screens_to_show=screen_set["workprep"],
                                             img_to_use=img_set["workprep"],
                                             _transient=True)
+
 
 transform t_flapButton:
     yanchor 1.0

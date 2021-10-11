@@ -24,6 +24,8 @@ init:
     }
 
 screen storyroute:
+    zorder 50
+    use returnbutton
     $ route_coordinates = {
         "start.mainstart": (66, 377, 306, 51),
         "lockdown": (459, 378, 306, 47),

@@ -27,7 +27,7 @@ screen findActivity():
             idle "images/misc/arrow.png"
             yalign 0.5
             action [SetVariable("currentRoom" ,ROOMS['bedroom']),
-                    Call("updateDate", "April 2020, Week 1 | 09:00 AM, Bedroom | ECQ")]
+                    Show("patientOverlay", date="April 2020, Week 1|09:00 AM, ECQ", status="happy")]
     elif currentRoom == ROOMS['bedroom']:
         imagemap:
             ground "images/bg/bg bedroom back.png"
@@ -39,4 +39,4 @@ screen findActivity():
             xalign 1.0
             yalign 0.5
             action [SetVariable("currentRoom" ,ROOMS['livingroom']),
-                    Call("updateDate", "April 2020, Week 1 | 09:00 AM, Living Room | ECQ")]
+                    Show("patientOverlay", date="April 2020, Week 1|09:00 AM, ECQ", status="happy")]
