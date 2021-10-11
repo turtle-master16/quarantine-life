@@ -25,7 +25,7 @@ init:
 
 screen storyroute:
     zorder 50
-    use returnbutton
+
     $ route_coordinates = {
         "start.mainstart": (66, 377, 306, 51),
         "lockdown": (459, 378, 306, 47),
@@ -245,8 +245,8 @@ screen storyroute:
             else:
                 hotspot route_coordinates["kylehome.findhobby"] action [Hide("storyroute"), Jump("kylehome.findhobby")]
 
-        imagebutton:
-            idle "images/misc/black close.png"
-            xalign 0.99
-            yalign 0.02
-            action Hide("storyroute")
+    imagebutton:
+        idle "images/misc/black close.png"
+        xalign 0.99
+        yalign 0.02
+        action Hide("storyroute")
