@@ -161,21 +161,21 @@ screen testmode():
 
 screen returnbutton:
     zorder 3
-    imagebutton:
-        idle "images/misc/return.png"
-        xalign 1.0
-        yalign 1.0
-        # action Call("start", retmode=True)
-        action If(renpy.get_screen("dialogevents"), true=Hide("dialogevents"), false=Show("dialogevents", _zorder=1))
-    imagebutton:
-        idle "images/misc/return.png"
-        xalign 0
-        yalign 0
-        # action Call("start", retmode=True)
-        action If(renpy.get_screen("storyroute"), true=Hide("storyroute"), false=Show("storyroute", _zorder=1))
-    imagebutton:
-        idle "images/misc/return.png"
-        xalign 0
-        yalign 1.0
-        # action Call("start", retmode=True)
-        action If(renpy.get_screen("achievements"), true=Hide("achievements"), false=Show("achievements", _zorder=1))
+    # imagebutton:
+    #     idle "images/misc/return.png"
+    #     xalign 1.0
+    #     yalign 1.0
+    #     # action Call("start", retmode=True)
+    #     action If(renpy.get_screen("dialogevents"), true=Hide("dialogevents"), false=Show("dialogevents", _zorder=1))
+    # imagebutton:
+    #     idle "images/misc/return.png"
+    #     xalign 0
+    #     yalign 0
+    #     # action Call("start", retmode=True)
+    #     action If(renpy.get_screen("storyroute"), true=Hide("storyroute"), false=Show("storyroute", _zorder=1))
+    # imagebutton:
+    #     idle "images/misc/return.png"
+    #     xalign 0
+    #     yalign 1.0
+    #     # action Call("start", retmode=True)
+    #     action If(renpy.get_screen("achievements"), true=Hide("achievements"), false=Show("achievements", _zorder=1))

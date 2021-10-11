@@ -26,6 +26,15 @@ init:
 
 screen dialogevents:
     modal True
+    add Solid("#595171dd")
+    zorder 50
+
+    imagebutton:
+            idle "images/misc/close.png"
+            xalign 0.99
+            yalign 0.02
+            action Hide("dialogevents")
+
     frame:
         at t_dialogevents_notebook
         background "images/menu/dialogevents/notebook bg.png"

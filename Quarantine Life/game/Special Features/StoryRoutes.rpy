@@ -244,3 +244,9 @@ screen storyroute:
                     action 0
             else:
                 hotspot route_coordinates["kylehome.findhobby"] action [Hide("storyroute"), Jump("kylehome.findhobby")]
+
+        imagebutton:
+            idle "images/misc/black close.png"
+            xalign 0.99
+            yalign 0.02
+            action Hide("storyroute")

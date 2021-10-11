@@ -30,8 +30,10 @@ init python:
         is_achievement_unlocked[achievement] = True
         renpy.show_screen("achievementoverlay", achievement=achievement)
         renpy.with_statement(Dissolve(1.0))
-        renpy.pause(2)
+        renpy.pause(0.5)
         renpy.hide_screen("achievementoverlay")
+        renpy.with_statement(Dissolve(1.0))
+        renpy.pause(0.25)
 
 screen achievementoverlay(achievement):
     if achievement == "minimum public health standard":
@@ -155,7 +157,14 @@ screen achievementoverlay(achievement):
 
 screen achievements:
     modal True
-    add Solid("#43403e88")
+    add Solid("#43403edd")
+    zorder 50
+
+    imagebutton:
+        idle "images/misc/close.png"
+        xalign 0.99
+        yalign 0.02
+        action Hide("achievements")
 
     imagebutton:
         idle "images/menu/achievements/achievement title.png"

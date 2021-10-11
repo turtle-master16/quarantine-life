@@ -24,13 +24,13 @@ screen quickMenu:
                 idle "gui/quick/notebook.png"
                 at transform:
                     yoffset 30
-                # action achievements
+                action Show("achievements")
             imagebutton:
                 idle "gui/quick/dialogevents.png"
                 at transform:
                     xoffset -10
                     yoffset 60
-                # action dialogueevent
+                action Show("dialogevents")
             imagebutton:
                 idle "gui/quick/storyroute.png"
                 at transform:
