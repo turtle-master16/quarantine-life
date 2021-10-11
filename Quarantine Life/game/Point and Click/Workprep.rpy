@@ -65,13 +65,13 @@ screen workprep():
             idle "images/misc/arrow.png"
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["bedroom"]),
-                    Call("updateDate", "June 2020, Week 2 | 06:00 PM, Bedroom | GCQ")]
+                    Show("patientOverlay", date="June 2020, Week 2|06:00 PM, GCQ", status="happy")]
         imagebutton:
             idle im.Flip("images/misc/arrow.png", horizontal=True)
             xalign 1.0
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["kitchen"]),
-                    Call("updateDate", "June 2020, Week 2 | 06:00 PM, Kitchen | GCQ")]
+                    Show("patientOverlay", date="June 2020, Week 2|06:00 PM, GCQ", status="happy")]
 
     elif currentRoom == ROOMS['bedroom']:
         imagemap:
@@ -127,7 +127,7 @@ screen workprep():
             xalign 1.0
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
-                    Call("updateDate", "June 2020, Week 2 | 06:00 PM, Living Room | GCQ")]
+                    Show("patientOverlay", date="June 2020, Week 2|06:00 PM, GCQ", status="happy")]
 
     elif currentRoom == ROOMS['kitchen']:
         imagemap:
@@ -147,4 +147,61 @@ screen workprep():
             idle "images/misc/arrow.png"
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
-                    Call("updateDate", "June 2020, Week 2 | 06:00 PM, Living Room | GCQ")]
+                    Show("patientOverlay", date="June 2020, Week 2|06:00 PM, GCQ", status="happy")]
+
+screen workitem_list():
+    modal True
+    zorder 1
+    add Image("images/misc/paper.png"):
+        at transform:
+            xanchor 0.5
+            yanchor 0.5
+            xpos 0.5
+            ypos 0.5
+            zoom 3.4
+            on show:
+                yoffset 700
+                linear 0.5 yoffset 0
+            on hide:
+                yoffset 0
+                linear 0.5 yoffset 700
+    vbox:
+        xanchor 0.5
+        yanchor 0.5
+        xoffset 12
+        xpos 0.5
+        ypos 0.4
+        at transform:
+            on show:
+                yoffset 700
+                linear 0.5 yoffset 0
+            on hide:
+                yoffset 0
+                linear 0.5 yoffset 700
+        text "ITEM CHECKLIST":
+            xpos 0.5
+            xanchor 0.5
+            color "#000"
+        null height 20
+        $ items_needed = [item for item in onhand if not(item == 'bedkey')]
+        for item in items_needed:
+            $ it_cap = item.capitalize()
+            showif onhand[item]:
+                text "{s}[it_cap]{/s}":
+                    xpos 0.5
+                    xanchor 0.5
+                    color "#000"
+            else:
+                text "[it_cap]":
+                    xpos 0.5
+                    xanchor 0.5
+                    color "#000"
+            null height 15
+
+        null height 20
+
+        textbutton "Tap to close":
+            xpos 0.5
+            xanchor 0.5
+            text_color "#000"
+            action [Hide("workitem_list"), Function(showFlapButtons)]

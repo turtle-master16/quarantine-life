@@ -97,14 +97,14 @@ transform t_say:
         alpha 0.0
         linear 0.2 alpha 1.0
     on hide:
-        alpha 1.0
+        alpha 0.5
         linear 0.2 alpha 0.0
 
 screen say(who, what):
     style_prefix "say"
 
     window:
-        at t_say
+        # at t_say
         id "window"
 
         if who is not None:
@@ -1426,6 +1426,12 @@ style pref_vbox:
 
 ## Since a mouse may not be present, we replace the quick menu with a version
 ## that uses fewer and bigger buttons that are easier to touch.
+
+transform blinker:
+    alpha 1.0
+    linear 0.5 alpha 0.0
+    repeat
+
 screen quick_menu():
     variant "touch"
 
@@ -1436,13 +1442,35 @@ screen quick_menu():
         hbox:
             style_prefix "quick"
 
-            xalign 0.5
-            yalign 1.0
+            xalign 0.95
+            yalign 0.98
 
-            textbutton _("Back") text_size 20 action Rollback()
-            textbutton _("Skip") text_size 20 action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")
-            textbutton _("Menu") text_size 20 action ShowMenu()
+            # textbutton _("Back") text_size 20 action Rollback()
+            # textbutton _("Skip") text_size 20 action Skip() alternate Skip(fast=True, confirm=True)
+            # textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")
+            # textbutton _("Menu") text_size 20 action ShowMenu()
+
+            imagebutton:
+                idle "gui/quick/back.png"
+                action Rollback()
+            null width 30
+            if not(preferences.afm_enable):
+                imagebutton:
+                    idle "gui/quick/auto.png"
+                    action Preference("auto-forward", "enable")
+            elif preferences.afm_enable:
+                $ print preferences.afm_enable
+                imagebutton:
+                    idle "gui/quick/auto.png"
+                    at blinker
+                    action Preference("auto-forward", "disable")
+            null width 30
+            imagebutton:
+                idle "gui/quick/skip.png"
+                action Skip() alternate Skip(fast=True, confirm=True)
+
+            # textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")
+            # textbutton _("Menu") text_size 20 action ShowMenu()
 
 
 style window:

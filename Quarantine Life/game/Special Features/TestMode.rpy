@@ -160,7 +160,7 @@ screen testmode():
                             textbutton "(Jillian End)" action Jump('jlend') xalign 0.5 text_layout "nobreak"
 
 screen returnbutton:
-    zorder 2
+    zorder 3
     imagebutton:
         idle "images/misc/return.png"
         xalign 1.0

@@ -1,10 +1,4 @@
 # WORKPREP -------------------------------------------------------
-define workprep_item_placement = {
-    "faceshield":Transform(xpos=0.79, ypos=0.76, xanchor=0.5, yanchor=1.0, zoom=0.15),
-    "bedkey":Transform(xpos=0.11, ypos=0.82, xanchor=0.5, yanchor=1.0, zoom=0.05),
-    "sanitizer":Transform(xpos=0.68, ypos=0.34, xanchor=0.5, yanchor=1.0, zoom=0.08),
-}
-
 define lvroom_items = {
     "drawerLvrm": (35, 573, 199, 141),
     "correctPlant":(854, 419, 54, 84),
@@ -34,6 +28,10 @@ define kitchen_items = {
     "cabinet":(557, 288, 317, 207),
     "stove": (388, 189, 121, 121),
     "sanitizer": (845, 181, 45, 60),
+}
+
+default sparkle_location = {
+    "drawerLvrm": {"location":Transform(xpos=0.5, ypos=0.5), "interacted":False}
 }
 
 # SUPERMARKET --------------------

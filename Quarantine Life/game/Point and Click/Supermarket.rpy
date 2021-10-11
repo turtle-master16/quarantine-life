@@ -24,9 +24,15 @@ screen supermarket():
             yanchor 1.0
             xpos 1.0
             ypos 1.0
-            xoffset -10
-            yoffset -10
-            zoom 0.8
+            xoffset -70
+            yoffset -70
+            zoom 0.4
+            on show:
+                xoffset 125
+                linear 0.4 xoffset -70
+            on hide:
+                xoffset -70
+                linear 0.4 xoffset 125
         action Call("supermarket.shop_win_conditions")
 
 screen price_list():
