@@ -183,8 +183,6 @@ label news:
 
     c "The news said it’s a {b}respiratory illness that is caused by the SARS-Cov-2 virus.{/b}"
 
-    "TODO FEATURE" "Insert Achievement: {b}What is Coronavirus Disease 19{/b}?, here."
-
     c "Oh dear. I hope your father is doing well abroad. I’m worried for your father’s health."
 
     menu:
@@ -259,15 +257,11 @@ label lockdown:
 
     call updateDate("March 2020, Week 1 | 07:10 PM, Living room | ECQ")
 
-    "TODO FEATURE" "Insert Achievement: {b}Community Quarantine{/b}, here."
-
     "Reporter" "All government agencies and LGUs are hereby enjoined to render full assistance and cooperation and mobilize necessary resource..."
 
     "Reporter" "...to undertake critical, urgent, and appropriate response and measures in a timely manner to curtail and eliminate the Covid-19 threat."
 
     "Reporter" "{b}Residents who refuse to follow the mandatory quarantine may be arrested{/b} under the state of public health emergency."
-
-    "TODO FEATURE" "Insert Achievement: {b}Refusal to mandatory quarantine{/b}, here."
 
     show bg livingroom back evening tvon onlayer background
     with dissolve
@@ -447,6 +441,8 @@ label newnormal:
 
     "Reporter" "Areas under MECQ and GCQ may allow business activities to resume, requiring strict compliance with {b}minimum public health standards{/b}."
 
+    $ showAchievementOverlay("minimum public health standard")
+
     "Reporter" "Public transportations is limited and crossing over to other regions remains banned…"
 
     show bg livingroom back tvon onlayer background
@@ -466,7 +462,7 @@ label newnormal:
 
     c "There is no public transportation or physical classes."
 
-    "TODO FEATURE" "Insert Achievement: {b}Enhanced Community Quarantine{/b}, here."
+    $ showAchievementOverlay("ecq")
 
     c "{b}MECQ or Modified ECQ{/b} still requires people to stay home."
 
@@ -474,11 +470,11 @@ label newnormal:
 
     c "Government workers can return to work while others remains at home."
 
-    "TODO FEATURE" "Insert Achievement: {b}Modified Enhanced Community Quarantine{/b}, here."
+    $ showAchievementOverlay("mecq")
 
     c "{b}General Community Quarantine{/b}, however, allows people to travel for work while following the safety protocols. Mass gathering remains prohibited."
 
-    "TODO FEATURE" "Insert Achievement: {b}General Community Quarantine{/b}, here."
+    $ showAchievementOverlay("gcq")
 
     pl "From what I heard, people are allowed to go out."
 
@@ -498,7 +494,7 @@ label newnormal:
 
     c "Be sure to study hard, you know what will happen if you get a bad grade."
 
-    "TODO FEATURE" "Insert Achievement: {b}Flexible Learning{/b}, here."
+    $ showAchievementOverlay("flexible learning")
 
     show prince embarrased onlayer middle
 
@@ -536,6 +532,8 @@ label newnormal:
 
     pl "Oh sweet. They’ll be providing a {b}company shuttle{/b} for safety measures. It looks like I’ll be resuming work in the next two weeks."
 
+    $ showAchievementOverlay("company shuttle")
+
     plt "(The {b}new normal{/b}… I wonder what’s in store for me.)"
 
     label .collectandprogress:
@@ -566,7 +564,7 @@ label commuting:
 
     plt "(I can see that people are sitting {b}one-seat apart in public transportation{/b}, limiting the vehicle’s capacity. That’s good I suppose.)"
 
-    "TODO FEATURE" "Insert Achievement: {b}Road Transport{/b}, here."
+    $ showAchievementOverlay("public transportation")
 
     "Worker 1" "These past few months have been rough."
 
@@ -589,6 +587,8 @@ label commuting:
             "Worker 1" "How can we protect ourselves from COVID?"
 
             "Worker 2" "Other the {b}social distancing{/b}, you should also {b}practice proper cough etiquette and proper hand washing using soap and water{/b}."
+
+            $ showAchievementOverlay("prevent the spread of covid19")
 
         "Ignore them.":
             $ renpy.pause(0.3)
@@ -631,6 +631,8 @@ label office:
             i "That’s true. Speaking of going out, some of our co-workers and I are eating out tonight after work since the {b}restaurants have reopened{/b}."
 
             i "You’re welcome to join us if you want."
+
+            $ showAchievementOverlay("food establishment operation")
 
             menu:
                 "Sure. I'll join.":
@@ -762,7 +764,7 @@ label home:
 
     c "Reducing my time shopping for groceries {b}means less interaction with others.{/b}"
 
-    "TODO FEATURE" "Insert Achievement: {b}Shopping for Groceries{/b}, here."
+    $ showAchievementOverlay("grocery shopping")
 
     plt "(What should I say?)"
 
@@ -810,6 +812,8 @@ label home:
 
             pl "Why not do {b}online shopping{/b}? It allows you to {b}buy goods and services over the internet using a browser or a mobile app{/b}."
 
+            $ showAchievementOverlay("online shopping")
+
             pl "That way, you can complete your shopping without ever needing to go outside. It’s easy, convenient and a much safer option."
 
             pl "Then all you have to do is wait for the goods to be delivered right to your doorstep."
@@ -822,6 +826,7 @@ label home:
 
 label intro_to_supermarket:
     call timeskip("bg supermarket")
+    $ renpy.music.play("audio/bgm/grocery.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     call updateDate("July 2020, Week 4 | 03:00 PM, Grocery Store | GCQ")
 
     pl "I’m here. Now let’s check the items on the list."
@@ -840,8 +845,6 @@ label cookadobo:
     call updateDate("July 2020, Week 4 | 04:00 PM, Kitchen | GCQ")
 
     pl "Since I’m in charge of dinner tonight I think I’ll just keep things simple."
-
-    "TODO FEATURE" "Insert Image: {b}Cook Adobo Ingredients{/b}, here."
 
     pl "These are all the ingredients that I need."
 
@@ -967,6 +970,8 @@ label princegoingout:
     show prince angry at left onlayer middle
 
     pr "It’s not like we’ll be going anywhere other than stay at their house. We’ll just stay there and play some video games."
+
+    $ showAchievementOverlay("quarantine age restriction")
 
     plt "(Should I say something?)"
 
@@ -1166,6 +1171,8 @@ label restaurant:
     m "I agree. The seating arrangements are one chair apart to {b}maintain proper social distance{/b}."
 
     m "Everything is {b}sanitized, staff are wearing masks{/b}. They make sure to follow precautionary measures to reassure customers."
+
+    $ showAchievementOverlay("restaurant operation")
 
     show ian discuss1 onlayer middle:
         xpos 0.3 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0
@@ -1518,6 +1525,8 @@ label firstdate(male=True):
         call phone_call(js, "discuss2", "Gyms haven’t opened yet, since there are multiple factors that increase the risk of {b}COVID infection in gyms{/b}...")
 
         call phone_call(js, "discuss", "...other than {b}proximity{/b}, like {b}exertion level, ventilation, duration, frequently touched surfaces, and mask use.{/b}")
+
+        $ showAchievementOverlay("home work out")
 
         call phone_call(js, "discuss2", "Even if gyms open, exercising at home is a much better and safer option. ")
 
@@ -1949,7 +1958,9 @@ label kylemeet:
 
             pl "Yeah. But you’re not wearing it properly."
 
-            pl "{b}Wear your mask properly{/b} to keep yourself and everyone around you safe. "
+            pl "{b}Wear your mask properly{/b} to keep yourself and everyone around you safe."
+
+            $ showAchievementOverlay("how to properly wear a mask")
 
             show kyle worried onlayer middle
 
@@ -2018,6 +2029,8 @@ label kylemeet:
     plt "(I can’t breathe properly.)"
 
     c "You’re having a {b}difficult time breathing{/b}. Prince, {b}call the local health authorities{/b}."
+
+    $ showAchievementOverlay("covid symptoms")
 
     jump hospital
 
@@ -2378,6 +2391,8 @@ label jason:
 
             call message(js, "Yes. Using {b}separate dishes, cups, eating utensils and bedding{/b} can also reduce contact. I even went overboard when {b}cleaning and disinfecting the surfaces I frequently touched{/b}.")
             $ renpy.pause()
+
+            $ showAchievementOverlay("what to do if someone is sick")
 
             call message(js, "Nothing is too much when it comes to health.")
             $ renpy.pause()
