@@ -251,18 +251,18 @@ screen _warper_graph(warper):
     $ length=300
     $ xpos=config.screen_width-400
     $ ypos=100
-    # add Solid("#000", xsize=3, ysize=1.236*length, xpos=xpos+length/2, ypos=length/2+xpos, rotate=45, anchor=(.5, .5)) 
-    add Solid("#CCC", xsize=length, ysize=length, xpos=xpos, ypos=ypos ) 
-    add Solid("#000", xsize=length, ysize=3, xpos=xpos, ypos=length+ypos ) 
-    add Solid("#000", xsize=length, ysize=3, xpos=xpos, ypos=ypos ) 
+    # add Solid("#000", xsize=3, ysize=1.236*length, xpos=xpos+length/2, ypos=length/2+xpos, rotate=45, anchor=(.5, .5))
+    add Solid("#CCC", xsize=length, ysize=length, xpos=xpos, ypos=ypos )
+    add Solid("#000", xsize=length, ysize=3, xpos=xpos, ypos=length+ypos )
+    add Solid("#000", xsize=length, ysize=3, xpos=xpos, ypos=ypos )
     add Solid("#000", xsize=3, ysize=length, xpos=xpos+length, ypos=ypos)
     add Solid("#000", xsize=3, ysize=length, xpos=xpos, ypos=ypos)
     for i in range(1, t):
         $ysize=int(length*renpy.atl.warpers[warper](i/float(t)))
         if ysize >= 0:
-            add Solid("#000", xsize=length//t, ysize=ysize, xpos=xpos+i*length//t, ypos=length+ypos, yanchor=1.) 
+            add Solid("#000", xsize=length//t, ysize=ysize, xpos=xpos+i*length//t, ypos=length+ypos, yanchor=1.)
         else:
-            add Solid("#000", xsize=length//t, ysize=-ysize, xpos=xpos+i*length//t, ypos=length+ypos-ysize, yanchor=1.) 
+            add Solid("#000", xsize=length//t, ysize=-ysize, xpos=xpos+i*length//t, ypos=length+ypos-ysize, yanchor=1.)
 
 screen _move_keyframes:
     modal True
@@ -323,18 +323,18 @@ init -1598 python in _viewers:
             self.state = {}
             # ((property, default)...), default is used when property can't be got.
             self.props = (
-            ("xpos", 0.), 
-            ("ypos", 0.), 
-            ("xanchor", 0.), 
-            ("yanchor", 0.), 
-            # ("xoffset", 0.), 
-            # ("yoffset", 0.), 
-            ("xzoom", 1.), 
-            ("yzoom", 1.), 
-            ("zoom", 1.), 
+            ("xpos", 0.),
+            ("ypos", 0.),
+            ("xanchor", 0.),
+            ("yanchor", 0.),
+            ("xoffset", 0.), 
+            ("yoffset", 0.),
+            ("xzoom", 1.),
+            ("yzoom", 1.),
+            ("zoom", 1.),
             ("rotate", 0,),
-            ("alpha", 1.), 
-            ("additive", 0.), 
+            ("alpha", 1.),
+            ("additive", 0.),
             )
             self.force_float = ["zoom", "xzoom", "yzoom", "alpha", "additive"]
 

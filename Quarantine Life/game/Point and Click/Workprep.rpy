@@ -7,6 +7,7 @@ init python:
             if not(onhand[item]):
                 return False
         return True
+
 default onhand = {
     "bedkey":False,
     "faceshield":False,
@@ -31,58 +32,49 @@ label inputbox():
             pl "Seems like the code is wrong..."
 
 screen workprep():
-    layer "screens"
+    layer "background"
     if currentRoom == ROOMS["livingroom"]:
         imagemap:
             ground "images/bg/bg livingroom back.png"
-            hotspot lvroom_items["tv"] action Call("objDialogue", object_dialogue["tv"])
-            hotspot lvroom_items["pictureLvrm"] action Call("objDialogue", object_dialogue["pictureLvrm"])
-            hotspot lvroom_items["correctPlant"] action Call("objDialogue", object_dialogue["correctPlant"])
-            hotspot lvroom_items["wrongPlantA"] action Call("objDialogue", object_dialogue["wrongPlant"])
-            hotspot lvroom_items["wrongPlantB"] action Call("objDialogue", object_dialogue["wrongPlant"])
-            hotspot lvroom_items["wrongPlantC"] action Call("objDialogue", object_dialogue["wrongPlant"])
-            hotspot lvroom_items["mugs"] action Call("objDialogue", object_dialogue["mugs"])
-            hotspot lvroom_items["sofaPartA"] action Call("objDialogue", object_dialogue["sofa"])
-            hotspot lvroom_items["sofaPartB"] action Call("objDialogue", object_dialogue["sofa"])
-            hotspot lvroom_items["window"] action Call("objDialogue", object_dialogue["window"])
+            for item in lvroom_itemsC:
+                if lvroom_itemsC[item].is_grouped:
+                    for hspot in lvroom_itemsC[item].hspot:
+                        hotspot hspot action Function(lvroom_itemsC[item].sayDialogue)
+                else:
+                    hotspot lvroom_itemsC[item].hspot action Function(lvroom_itemsC[item].sayDialogue)
+
 
         if not(onhand['faceshield']):
             imagemap:
                 at right_corner
                 ground "images/clickables/livingright.png"
-                hotspot (110, 183, 78, 196) action Call("objDialogue", object_dialogue["pictureLvrm"])
-                hotspot (20, 488, 77, 73) action [SetDict(onhand, "faceshield", True),
-                                                  Call("objDialogue", object_dialogue["faceshield"])]
+                hotspot lvroom_right["tv"].hspot           action [SetField(lvroom_itemsC["tv"], "interacted", True), Function(lvroom_right["tv"].sayDialogue)]
+                hotspot lvroom_right["faceshield"].hspot   action [SetDict(onhand, "faceshield", True), Function(lvroom_right["faceshield"].sayDialogue)]
+
         if not(onhand['bedkey']):
             imagemap:
                 at left_corner
                 ground "images/clickables/livingleft.png"
-                hotspot (82, 269, 148, 203) action Call("objDialogue", object_dialogue["tv"])
-                hotspot (97, 553, 84, 49) action [SetDict(onhand, "bedkey", True),
-                                                  Call("objDialogue", object_dialogue["drawerLvrm"])]
+                hotspot lvroom_left["drawerLvrm"].hspot    action [SetDict(onhand, "bedkey", True),
+                                                                  Call("objDialogue", object_dialogue["drawerLvrm"])]
 
         imagebutton:
             idle "images/misc/arrow.png"
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["bedroom"]),
-                    Show("patientOverlay", date="June 2020, Week 2|06:00 PM, GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM, GCQ", status="happy")]
         imagebutton:
             idle im.Flip("images/misc/arrow.png", horizontal=True)
             xalign 1.0
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["kitchen"]),
-                    Show("patientOverlay", date="June 2020, Week 2|06:00 PM, GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM, GCQ", status="happy")]
 
     elif currentRoom == ROOMS['bedroom']:
         imagemap:
             ground "images/bg/bg bedroom back.png"
-            hotspot bdroom_items["bed"] action Call("objDialogue", object_dialogue["bed"])
-            hotspot bdroom_items["pictureBdrm"] action Call("objDialogue", object_dialogue["pictureBdrm"])
-            hotspot bdroom_items["dumbell"] action Call("objDialogue", object_dialogue["dumbell"])
-            hotspot bdroom_items["phone"] action Call("objDialogue", object_dialogue["phone"])
-            hotspot bdroom_items["window"] action Call("objDialogue", object_dialogue["window"])
-            hotspot bdroom_items["plant"] action Call("objDialogue", object_dialogue["plant"])
-            hotspot bdroom_items["books"] action Call("objDialogue", object_dialogue["books"])
+            for item in bdroom_items:
+                hotspot bdroom_items[item].hspot action Function(bdroom_items[item].sayDialogue)
 
             if roomstatus['boxclosed']:
                 if onhand['wallet']:
@@ -94,32 +86,33 @@ screen workprep():
             if roomstatus['drawerclosed']:
                 if onhand['bedkey']:
                     if onhand['facemask']:
-                        hotspot bdroom_items["drawerBdrm"] action Call("objDialogue", object_dialogue["facemask2"])
+                        hotspot bdroom_items["drawerBdrm"].hspot action Call("objDialogue", object_dialogue["facemask2"])
                     elif not(onhand['facemask']):
-                        hotspot bdroom_items["drawerBdrm"] action [SetDict(roomstatus, "drawerclosed", False),
+                        hotspot bdroom_items["drawerBdrm"].hspot action [SetDict(roomstatus, "drawerclosed", False),
                                                                    Call("objDialogue", object_dialogue["drawerhaskey"])]
                 elif not(onhand['bedkey']):
-                    hotspot bdroom_items["drawerBdrm"] action Call("objDialogue", object_dialogue["drawerBdrm"])
+                    hotspot bdroom_items["drawerBdrm"].hspot     action Call("objDialogue", object_dialogue["drawerBdrm"])
 
         if not(roomstatus['drawerclosed']) and not(onhand['facemask']):
             imagemap:
                 at right_corner
                 ground "images/clickables/bedright.png"
                 hotspot (478,372,155,106) action Call("objDialogue", object_dialogue["dumbell"])
-                hotspot (646,0,77,344) action Call("objDialogue", object_dialogue["window"])
+                hotspot (646,0,77,344)    action Call("objDialogue", object_dialogue["window"])
                 hotspot (119,287,246,119) action [SetDict(onhand, "facemask", True),
                                                   SetDict(roomstatus, "drawerclosed", True),
                                                   Call("objDialogue", object_dialogue["facemask"])]
+
         if not(roomstatus['boxclosed']) and not(onhand['wallet']):
             imagemap:
                 at left_corner
                 ground "images/clickables/bedleft.png"
-                hotspot (56,56,68,122) action Call("objDialogue", object_dialogue["pictureBdrm"])
-                hotspot (201,47,173,115) action Call("objDialogue", object_dialogue["books"])
+                hotspot (56,56,68,122)    action Call("objDialogue", object_dialogue["pictureBdrm"])
+                hotspot (201,47,173,115)  action Call("objDialogue", object_dialogue["books"])
                 hotspot (182,222,140,116) action [SetDict(onhand, "wallet", True),
                                                   SetDict(roomstatus, "boxclosed", True),
                                                   Call("objDialogue", object_dialogue["studyTable2"])]
-                hotspot (203,358,63,29) action Call("objDialogue", object_dialogue["phone"])
+                hotspot (203,358,63,29)   action Call("objDialogue", object_dialogue["phone"])
                 hotspot (105,419,332,131) action Call("objDialogue", object_dialogue["bed"])
 
         imagebutton:
@@ -127,14 +120,18 @@ screen workprep():
             xalign 1.0
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
-                    Show("patientOverlay", date="June 2020, Week 2|06:00 PM, GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM, GCQ", status="happy")]
 
     elif currentRoom == ROOMS['kitchen']:
         imagemap:
             ground "images/bg/bg kitchen.png"
-            hotspot kitchen_items["cans"] action Call("objDialogue", object_dialogue["cans"])
-            hotspot kitchen_items["cabinet"] action Call("objDialogue", object_dialogue["cabinet"])
-            hotspot kitchen_items["stove"] action Call("objDialogue", object_dialogue["stove"])
+            for item in kitchen_items:
+                if kitchen_items[item].is_grouped:
+                    for hspot in kitchen_items[item].hspot:
+                        hotspot hspot action Function(kitchen_items[item].sayDialogue)
+                else:
+                    if not(item == "sanitizer") or not(onhand["sanitizer"]):
+                        hotspot kitchen_items[item].hspot action Function(kitchen_items[item].sayDialogue)
 
         if not(onhand['sanitizer']):
             imagemap:
@@ -147,17 +144,20 @@ screen workprep():
             idle "images/misc/arrow.png"
             yalign 0.5
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
-                    Show("patientOverlay", date="June 2020, Week 2|06:00 PM, GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM, GCQ", status="happy")]
+
+    textbutton "Click me":
+        xalign 0.9
+        yalign 0.2
+        action ToggleScreen("spk")
 
 screen workitem_list():
     modal True
     zorder 1
     add Image("images/misc/paper.png"):
         at transform:
-            xanchor 0.5
-            yanchor 0.5
-            xpos 0.5
-            ypos 0.5
+            xalign 0.5
+            yalign 0.5
             zoom 3.4
             on show:
                 yoffset 700
@@ -166,11 +166,10 @@ screen workitem_list():
                 yoffset 0
                 linear 0.5 yoffset 700
     vbox:
-        xanchor 0.5
-        yanchor 0.5
+        xalign 0.5
         xoffset 12
-        xpos 0.5
         ypos 0.4
+        yanchor 0.5
         at transform:
             on show:
                 yoffset 700
@@ -179,29 +178,27 @@ screen workitem_list():
                 yoffset 0
                 linear 0.5 yoffset 700
         text "ITEM CHECKLIST":
-            xpos 0.5
-            xanchor 0.5
+            xalign 0.5
             color "#000"
+
         null height 20
+
         $ items_needed = [item for item in onhand if not(item == 'bedkey')]
         for item in items_needed:
             $ it_cap = item.capitalize()
             showif onhand[item]:
                 text "{s}[it_cap]{/s}":
-                    xpos 0.5
-                    xanchor 0.5
+                    xalign 0.5
                     color "#000"
             else:
                 text "[it_cap]":
-                    xpos 0.5
-                    xanchor 0.5
+                    xalign 0.5
                     color "#000"
             null height 15
 
         null height 20
 
         textbutton "Tap to close":
-            xpos 0.5
-            xanchor 0.5
+            xalign 0.5
             text_color "#000"
             action [Hide("workitem_list"), Function(showFlapButtons)]

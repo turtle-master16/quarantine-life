@@ -1428,6 +1428,7 @@ style pref_vbox:
 ## that uses fewer and bigger buttons that are easier to touch.
 
 transform blinker:
+    zoom 1.2
     alpha 1.0
     linear 0.5 alpha 0.0
     repeat
@@ -1452,11 +1453,15 @@ screen quick_menu():
 
             imagebutton:
                 idle "gui/quick/back.png"
+                at transform:
+                    zoom 1.2
                 action Rollback()
-            null width 30
+            null width 45
             if not(preferences.afm_enable):
                 imagebutton:
                     idle "gui/quick/auto.png"
+                    at transform:
+                        zoom 1.2
                     action Preference("auto-forward", "enable")
             elif preferences.afm_enable:
                 $ print preferences.afm_enable
@@ -1464,9 +1469,11 @@ screen quick_menu():
                     idle "gui/quick/auto.png"
                     at blinker
                     action Preference("auto-forward", "disable")
-            null width 30
+            null width 45
             imagebutton:
                 idle "gui/quick/skip.png"
+                at transform:
+                    zoom 1.2
                 action Skip() alternate Skip(fast=True, confirm=True)
 
             # textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")

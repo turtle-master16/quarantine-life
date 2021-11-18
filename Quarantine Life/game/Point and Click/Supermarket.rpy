@@ -1,30 +1,43 @@
 # Supermart ------------------
+init python:
+    def getCost():
+        return currentItemCost
+    def hasAcquiredNeedItems():
+        enufHygiene =     shopItems['hygiene'].onhand >= 2
+        enufToiletPaper = shopItems['toiletroll'].onhand >= 3
+        enufGreencan =    shopItems['greencan'].onhand >= 1
+        return enufHygiene and enufToiletPaper and enufGreencan
+
+default currentItemCost = 0
+
+default shopItems = {
+#   KEY                    NAME         PRC   ONHD  IN-GAME-NAME
+    'redcan':     MartItem("redcan",    28,   0,    alt_name="Red can"),
+    'yellowcan':  MartItem("yellowcan", 22,   0,    alt_name="Yellow can"),
+    'orangecan':  MartItem("orangecan", 34,   0,    alt_name="Orange can"),
+    'greencan':   MartItem("greencan",  23,   0,    alt_name="Green can"),
+    'browncan':   MartItem("browncan",  27,   0,    alt_name="Brown can"),
+    'toiletroll': MartItem("toiletroll",15,   0,    alt_name="Toilet Roll"),
+    'facemask':   MartItem("facemask",  25,   0,    alt_name="Face mask"),
+    'hygiene':    MartItem("hygiene",   36,   0,    alt_name="Hygiene Product"),
+}
+
 screen supermarket():
     layer "background"
     imagemap:
         ground "images/bg/bg supermarket.png"
-        hotspot mart_items["redcan"] action Call("shopItemTake", "redcan")
-        hotspot mart_items["redcan2"] action Call("shopItemTake", "redcan")
-        hotspot mart_items["yellowcan"] action Call("shopItemTake", "yellowcan")
-        hotspot mart_items["orangecan"] action Call("shopItemTake", "orangecan")
-        hotspot mart_items["orangecan2"] action Call("shopItemTake", "orangecan")
-        hotspot mart_items["orangecan3"] action Call("shopItemTake", "orangecan")
-        hotspot mart_items["greencan"] action Call("shopItemTake", "greencan")
-        hotspot mart_items["greencan2"] action Call("shopItemTake", "greencan")
-        hotspot mart_items["browncan"] action Call("shopItemTake", "browncan")
-        hotspot mart_items["toiletroll"] action Call("shopItemTake", "toiletroll")
-        hotspot mart_items["toiletroll2"] action Call("shopItemTake", "toiletroll")
-        hotspot mart_items["facemask"] action Call("shopItemTake", "facemask")
-        hotspot mart_items["hygiene"] action Call("shopItemTake", "hygiene")
-        hotspot mart_items["hygiene2"] action Call("shopItemTake", "hygiene")
+        for item in mart_items:
+            $ item_dialogue = item
+            if item[-1] == "2":
+                $ item_dialogue = item_dialogue.replace("2", "")
+            hotspot mart_items[item] action Call("shopItemTake", item_dialogue)
     imagebutton:
         idle "images/misc/cashreg.png"
         at transform:
             xanchor 1.0
-            yanchor 1.0
-            xpos 1.0
-            ypos 1.0
-            xoffset -70
+            xpos 1.02
+            yalign 1.0
+            xoffset -90
             yoffset -70
             zoom 0.4
             on show:
@@ -34,6 +47,9 @@ screen supermarket():
                 xoffset -70
                 linear 0.4 xoffset 125
         action Call("supermarket.shop_win_conditions")
+    for item in mart_items:
+        add "spark":
+            pos getRectCenter(mart_items[item])
 
 screen price_list():
     modal True
@@ -55,7 +71,9 @@ screen price_list():
                         text "{}".format(shopItems[item].alt_name):
                             color "#000"
                         null height 5
+
                 null width 10
+
                 vbox:
                     text "PRICE":
                         color "#000"
@@ -65,7 +83,9 @@ screen price_list():
                         text "₱{}.0".format(shopItems[item].price):
                             color "#000"
                         null height 5
+
                 null width 15
+
                 vbox:
                     text "ON HAND":
                         color "#000"
@@ -76,7 +96,9 @@ screen price_list():
                             color "#000"
                             xalign 0.5
                         null height 5
+
             null height 5
+
             hbox:
                 textbutton "Close[[X]":
                     text_color "#000"
@@ -85,43 +107,7 @@ screen price_list():
                     color "#000"
                     xpos 0.4
 
-init python:
-    class MartItem():
-        def __init__(self, name, price, onhand, alt_name):
-            self.name = name
-            self.price = price
-            self.onhand = onhand
-            self.alt_name = alt_name
-        def totalAmount(self):
-            return self.onhand * self.price
-        def takeItem(self, qnty):
-            self.onhand += qnty
-            self.updateOverallCost()
-        def updateOverallCost(self):
-            cost = 0
-            for item in shopItems:
-                cost += shopItems[item].totalAmount()
-            globals()['currentItemCost'] = cost
-    def getCost():
-        return currentItemCost
-    def hasAcquiredNeedItems():
-        enufHygiene = shopItems['hygiene'].onhand >= 2
-        enufToiletPaper = shopItems['toiletroll'].onhand >= 3
-        enufGreencan = shopItems['greencan'].onhand >= 1
-        return enufHygiene and enufToiletPaper and enufGreencan
 
-default currentItemCost = 0
-
-default shopItems = {
-    'redcan':MartItem("redcan", 28, 0, alt_name="Red can"),
-    'yellowcan':MartItem("yellowcan", 22, 0, alt_name="Yellow can"),
-    'orangecan':MartItem("orangecan", 34, 0, alt_name="Orange can"),
-    'greencan':MartItem("greencan", 23, 0, alt_name="Green can"),
-    'browncan':MartItem("browncan", 27, 0, alt_name="Brown can"),
-    'toiletroll':MartItem("toiletroll", 15, 0, alt_name="Toilet Roll"),
-    'facemask':MartItem("facemask", 25, 0, alt_name="Face mask"),
-    'hygiene':MartItem("hygiene", 36, 0, alt_name="Hygiene Product"),
-}
 label shopItemTake(item):
     $ item_name = shopItems[item].alt_name
     pl "How many [item_name]s should I take?"
@@ -137,11 +123,3 @@ label shopItemTake(item):
         "Nevermind":
             pl "I don't need any more of these."
     return
-
-transform t_price_list:
-    on show:
-        yoffset 700
-        linear 0.8 yoffset 0
-    on hide:
-        yoffset 0
-        linear 0.8 yoffset 700

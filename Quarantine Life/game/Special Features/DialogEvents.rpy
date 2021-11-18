@@ -1,7 +1,7 @@
 init:
     $ current_dialogevent_page = 1
 
-    $ is_dialog_unchecked = {
+    define persistent.is_dialog_unchecked = {
         "mandatoryhomequarantine.notstayinghome": False,
         "mandatoryhomequarantine.nowork": False,
         "mandatoryhomequarantine.remainpositive": False,
@@ -49,42 +49,42 @@ screen dialogevents:
                         at t_dialogevents_nextpage
                         action SetVariable("current_dialogevent_page", 2)
 
-                showif not(is_dialog_unchecked["mandatoryhomequarantine.notstayinghome"]):
+                showif not(persistent.is_dialog_unchecked["mandatoryhomequarantine.notstayinghome"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.165
                         action 0
 
-                showif not(is_dialog_unchecked["mandatoryhomequarantine.nowork"]):
+                showif not(persistent.is_dialog_unchecked["mandatoryhomequarantine.nowork"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.27
                         action 0
 
-                showif not(is_dialog_unchecked["mandatoryhomequarantine.remainpositive"]):
+                showif not(persistent.is_dialog_unchecked["mandatoryhomequarantine.remainpositive"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.385
                         action 0
 
-                showif not(is_dialog_unchecked["convowithcoworker.heyian"]):
+                showif not(persistent.is_dialog_unchecked["convowithcoworker.heyian"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.6
                         action 0
 
-                showif not(is_dialog_unchecked["convowithcoworker.imbusy"]):
+                showif not(persistent.is_dialog_unchecked["convowithcoworker.imbusy"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.71
                         action 0
 
-                showif not(is_dialog_unchecked["convowithcoworker.stayaway"]):
+                showif not(persistent.is_dialog_unchecked["convowithcoworker.stayaway"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
@@ -106,28 +106,28 @@ screen dialogevents:
                     at t_dialogevents_nextpage
                     action SetVariable("current_dialogevent_page", 3)
 
-                showif not(is_dialog_unchecked["greetingyourcoworker.illjoin"]):
+                showif not(persistent.is_dialog_unchecked["greetingyourcoworker.illjoin"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.165
                         action 0
 
-                showif not(is_dialog_unchecked["greetingyourcoworker.nexttime"]):
+                showif not(persistent.is_dialog_unchecked["greetingyourcoworker.nexttime"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.27
                         action 0
 
-                showif not(is_dialog_unchecked["invitationfromcoworker.soundsgood"]):
+                showif not(persistent.is_dialog_unchecked["invitationfromcoworker.soundsgood"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.47
                         action 0
 
-                showif not(is_dialog_unchecked["invitationfromcoworker.icant"]):
+                showif not(persistent.is_dialog_unchecked["invitationfromcoworker.icant"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
@@ -149,28 +149,28 @@ screen dialogevents:
                     at t_dialogevents_nextpage
                     action SetVariable("current_dialogevent_page", 4)
 
-                showif not(is_dialog_unchecked["genderpreference.men"]):
+                showif not(persistent.is_dialog_unchecked["genderpreference.men"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.165
                         action 0
 
-                showif not(is_dialog_unchecked["genderpreference.women"]):
+                showif not(persistent.is_dialog_unchecked["genderpreference.women"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.27
                         action 0
 
-                showif not(is_dialog_unchecked["meetupwithjason.notsure"]):
+                showif not(persistent.is_dialog_unchecked["meetupwithjason.notsure"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.47
                         action 0
 
-                showif not(is_dialog_unchecked["meetupwithjason.soundsgood"]):
+                showif not(persistent.is_dialog_unchecked["meetupwithjason.soundsgood"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
@@ -192,28 +192,28 @@ screen dialogevents:
                     at t_dialogevents_nextpage
                     action SetVariable("current_dialogevent_page", 5)
 
-                showif not(is_dialog_unchecked["talkingtojillian.whatswrong"]):
+                showif not(persistent.is_dialog_unchecked["talkingtojillian.whatswrong"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.165
                         action 0
 
-                showif not(is_dialog_unchecked["talkingtojillian.pickupline"]):
+                showif not(persistent.is_dialog_unchecked["talkingtojillian.pickupline"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.27
                         action 0
 
-                showif not(is_dialog_unchecked["hangoutwithjillian.askherout"]):
+                showif not(persistent.is_dialog_unchecked["hangoutwithjillian.askherout"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.47
                         action 0
 
-                showif not(is_dialog_unchecked["hangoutwithjillian.dontaskherout"]):
+                showif not(persistent.is_dialog_unchecked["hangoutwithjillian.dontaskherout"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
@@ -230,14 +230,14 @@ screen dialogevents:
                     at t_dialogevents_previouspage
                     action SetVariable("current_dialogevent_page", 4)
 
-                showif not(is_dialog_unchecked["reconnectingfriend.hangout"]):
+                showif not(persistent.is_dialog_unchecked["reconnectingfriend.hangout"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24
                         yalign 0.165
                         action 0
 
-                showif not(is_dialog_unchecked["reconnectingfriend.stayhome"]):
+                showif not(persistent.is_dialog_unchecked["reconnectingfriend.stayhome"]):
                     imagebutton:
                         idle "images/menu/dialogevents/uncheckedbox.png"
                         xalign 0.24

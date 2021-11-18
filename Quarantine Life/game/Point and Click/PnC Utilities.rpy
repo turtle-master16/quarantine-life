@@ -2,30 +2,6 @@
     Stuff in this file are stuff shared by all the Point N' Click Screens
 """
 
-define instructions = {
-    "supermarket":
-"""Get all the required items from the list (which can be viewed with the list
-button on the lower left corner of the screen) and use your remaining budget for
-buying extra items of your choice. The total cost of the required items and the
-extra items should be EXACTLY ₱200.
-
-Get items by tapping the item you want. After tapping, you will be asked to
-choose how many of that item you would want to take or return one piece of that
-item if you have any. You can use the ₱ button on the lower left part of
-the screen to see the price of each item, how many items you have on hand, and
-total cost of your items on hand.
-
-Click on the cash register button on the lower right corner if you are done shopping.
-""",
-    "workprep":
-"""Get all the items on the item checklist on the lower left corner of the screen.
-Tap on objects to interact with them. Tap the arrows on the left or right side
-of the screen to go to the other rooms. The item checklist will indicate which
-items you already have and items still missing.
-
-Click on the "i" button on the top right corner to review this instruction.
-"""
-}
 # Conditional Variables
 default itemselected = ""
 default itemchoices = {"Reset":0, "A": 1, "B": 2, "C":3, "D":4, "E":5, "F":6}
@@ -40,16 +16,8 @@ define ROOMS = {
 default currentRoom = ROOMS['livingroom']
 default currentScreen = "" # Tells which minigame is on screen at the moment
 
-screen flyingImage(**kwargs):
-    modal True
-    zorder 1
-    # Pass a dictionary with 'img' key with the value of the image to show
-    imagebutton:
-        idle kwargs.get('img')
-        at t_flyingimage
-        action [Hide("flyingImage"), Function(showFlapButtons)]
-
 label hideStuff():
+    # (Mainly for workprep minigame)
     # Hide the takeable/roomstate item when switching rooms
     # to prevent it from showing in the new room.
     python:
@@ -67,7 +35,6 @@ label hideStuff():
             "wallet":"bedright",
             "sanitizer":"kitchenright"
         }
-
         for item in location[currentRoom]:
             if item == "facemask":
                 if not(roomstatus['boxclosed']):
@@ -85,8 +52,8 @@ label hideStuff():
                 if not(onhand[item]):
                     renpy.show(right_side[item], at_list=[right_corner])
     return
-# ------------------
 
+# Calls the say screen when an hotspot/imgbtn is clicked
 label objDialogue(dia, from_inputbox=False):
     # Keeps the items visible/not visible while in this label
     if currentRoom == ROOMS['livingroom']:
@@ -96,9 +63,7 @@ label objDialogue(dia, from_inputbox=False):
     elif currentRoom == ROOMS['kitchen']:
         scene bg kitchen
 
-    $ print currentRoom
     call hideStuff()
-    $ print currentRoom
 
     $ islist = isinstance(dia, list)
     if islist:
@@ -113,146 +78,33 @@ label objDialogue(dia, from_inputbox=False):
         call inputbox()
     return
 
-# A button that shows instructions/guides when clicked
-# Pass a string/list of strings for the screen/s to use
-screen flapButton(screens_to_show, img_to_use):
-    zorder 1
-    if isinstance(screens_to_show, list):
-        $ xoff = 0
-        for scrn in screens_to_show:
-            $ screen_index = screens_to_show.index(scrn)
-            if isinstance(scrn, tuple):
-                imagebutton:
-                    idle img_to_use[screen_index]
-                    at t_flapButton
-                    xalign 0.04
-                    xoffset xoff
-                    xanchor 0.5
-                    action [Hide("flapButton"), Show(scrn[0], **scrn[1])]
-            else:
-                if scrn == "instruction":
-                    imagebutton:
-                        idle img_to_use[screen_index]
-                        xalign 0.96
-                        yalign 0.06
-                        xanchor 0.5
-                        yanchor 0.5
-                        at transform:
-                            zoom 0.2
-                            on show:
-                                yoffset -100
-                                linear 0.3 yoffset 0
-                            on hide:
-                                linear 0.3 yoffset -100
-                        action [Hide("flapButton"), Show(scrn)]
-                    $ xoff -= 110
-                else:
-                    imagebutton:
-                        idle img_to_use[screen_index]
-                        at t_flapButton
-                        xalign 0.05
-                        xoffset xoff
-                        xanchor 0.5
-                        action [Hide("flapButton"), Show(scrn)]
-            $ xoff += 110
-    else:
-        imagebutton:
-            idle Solid("#fff")
-            at t_flapButton
-            xsize 75
-            ysize 75
-            xpos 0.8
-            xanchor 0.5
-            action [Hide("flapButton"), Show(screens_to_show)]
+label initMinigame(name):
+    $ renpy.call("resetItems") # Start game from scratch
 
-screen instruction():
-    modal True
-    zorder 2
-    frame:
-        at t_instructions
-        background Solid("#fff")
-        xpos 0.5
-        ypos 0.5
-        xanchor 0.5
-        yanchor 0.5
-        vbox:
-            text "INSTRUCTIONS":
-                size 30
-                xalign 0.5
-                color "#000"
-            null height 20
-            text "{}".format(instructions[currentScreen]):
-                color "#000"
-            null height 20
-            textbutton "Tap here to close":
-                text_color "#000"
-                xalign 0.5
-                action [Hide("instruction"), Function(showFlapButtons)]
+    $ currentScreen = name
+    show screen instruction # Show instructions before start
 
-init python:
-    img_dict = {"img":"images/misc/grocerylist.png"}
+    $ taskpopout = "images/misc/taskpopups/{}.png".format(name)
+    show screen notify(img=taskpopout) # Pop out Notif
 
-    img_set = {
-        "supermarket": (
-            "images/misc/flapinstruction.png",
-            "images/misc/flapgrocery.png",
-            "images/misc/flapgrocerylist.png"
-        ),
-        "workprep": (
-            "images/misc/flapinstruction.png",
-            "images/misc/flapcheck.png"
-        )
-    }
+    $ renpy.jump(name) # Start minigame
+    return
 
-    screen_set = {
-        "supermarket": [
-            "instruction",
-            "price_list",
-            ("flyingImage", img_dict)
-        ],
-        "workprep":[
-            "instruction",
-            "workitem_list",
-        ]
-    }
+# Reset the state of minigames in order to prevent the Minigames from
+# breaking after loading a save state or use of story routes
+label resetItems():
+    python:
+        # For workprep
+        currentRoom = ROOMS["livingroom"]
+        for item in onhand:
+            onhand[item] = False
+        for item in lvroom_itemsC:
+            lvroom_itemsC[item].interacted = False
+        for item in lvroom_right:
+            lvroom_right[item].interacted = False
 
-    def showFlapButtons():
-        if currentScreen == "supermarket":
-            img_dict = {"img":"images/misc/grocerylist.png"}
-            renpy.show_screen("flapButton", screens_to_show=screen_set["supermarket"],
-                                            img_to_use=img_set["supermarket"],
-                                            _transient=True)
-        elif currentScreen == "workprep":
-            renpy.show_screen("flapButton", screens_to_show=screen_set["workprep"],
-                                            img_to_use=img_set["workprep"],
-                                            _transient=True)
-
-
-transform t_flapButton:
-    yanchor 1.0
-    zoom 0.3
-    on show:
-        ypos 1.0
-        yoffset 130
-        linear 0.3 yoffset 0
-    on hide:
-        linear 0.3 yoffset 130
-
-transform t_instructions:
-    on show:
-        yoffset 700
-        linear 0.6 yoffset 0
-    on hide:
-        linear 0.6 yoffset 700
-
-transform t_flyingimage:
-    xanchor 0.5
-    yanchor 0.5
-    xpos 0.5
-    ypos 0.5
-    on show:
-        yoffset 700
-        linear 0.5 yoffset 0
-    on hide:
-        yoffset 0
-        linear 0.5 yoffset 700
+        # For supermarket
+        currentItemCost = 0
+        for item in shopItems:
+            shopItems[item].onhand = 0
+    return

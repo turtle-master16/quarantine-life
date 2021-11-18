@@ -15,13 +15,13 @@ define charcolor = {
 # The Characters
 define pl = Character("[player_name]", color=charcolor['Player'])
 define plt = Character("[player_name]", color=charcolor['Player'], what_color=charcolor['Thoughts'], what_italic=True)
-define pr = Character("PRINCE", color=charcolor['Prince'])
-define c = Character("CARLA", color=charcolor['Carla'])
-define i = Character("IAN", color=charcolor['Ian'])
-define m = Character("MARK", color=charcolor['Mark'])
-define js = Character("JASON", color=charcolor['Jason'])
-define jl = Character("JILLIAN", color=charcolor['Jillian'])
-define ky = Character("KYLE", color=charcolor['Kyle'])
+define pr = Character("Prince", color=charcolor['Prince'])
+define c = Character("Carla", color=charcolor['Carla'])
+define i = Character("Ian", color=charcolor['Ian'])
+define m = Character("Mark", color=charcolor['Mark'])
+define js = Character("Jason", color=charcolor['Jason'])
+define jl = Character("Jillian", color=charcolor['Jillian'])
+define ky = Character("Kyle", color=charcolor['Kyle'])
 define nar = Character(None, what_color=charcolor['Narration'])
 define ins = Character(None, what_color=charcolor['Instruction'])
 
@@ -68,47 +68,51 @@ label start(retmode=False):
         if not player_name:
              player_name = "Coby"
 
-        if player_name != "xc@lu@g99":
+        if player_name != "ch3@t":
             renpy.jump("start.mainstart")
 
     define player_name = "COBY"
 
-    call screen testmode
+    # call screen testmode
 
     label .mainstart:
-        $ is_route_unlocked["start.mainstart"] = True
+        $ persistent.is_route_unlocked["start.mainstart"] = True
 
         scene black
         stop music
 
         show screen quickToggle
 
-        nar "It all changed so fast."
+        nar """
+        It all changed so fast.
 
-        nar "You would never expect that everything would change in just a blink of an eye."
+        You would never expect that everything would change in just a blink of an eye.
 
-        nar "One day you were just having fun, laughing with family and friends, going places wherever and whenever."
+        One day you were just having fun, laughing with family and friends, going places wherever and whenever.
 
-        nar "Simply enjoying spending time outside your home, but the next thing you know, you’re stuck at home."
+        Simply enjoying spending time outside your home, but the next thing you know, you’re stuck at home.
 
-        nar "Being unable to go out and do the things you normally enjoy."
+        Being unable to go out and do the things you normally enjoy.
 
-        nar "No more parties, going to the mall and eating out, or even visit friends or family."
+        No more parties, going to the mall and eating out, or even visit friends or family.
 
-        nar "How could something so small ruin an economy? To cause social disruption? To turn people’s lives upside down?"
+        How could something so small ruin an economy? To cause social disruption? To turn people’s lives upside down?
+        """
 
-        scene bg livingroom broom onlayer background
+        scene lvroom onlayer background
         with fade
 
         $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         show screen patientOverlay(date="January 2020, Week 4|08:00 AM", status='happy')
 
-        plt "AH! What a peaceful morning."
+        plt """
+        AH! What a peaceful morning.
 
-        plt "(Such a wonderful day to spend my day off. I got my morning coffee and I have nothing else to do today.)"
+        (Such a wonderful day to spend my day off. I got my morning coffee and I have nothing else to do today.)
 
-        plt "(Maybe I can visit my friend later this afternoon.)"
+        (Maybe I can visit my friend later this afternoon.)
+        """
 
         with vpunch
         #--SFX (Whack!)
@@ -123,11 +127,13 @@ label start(retmode=False):
         show prince point1 onlayer middle:
             xpos 0.53 ypos 1.0 xanchor 0.5 yanchor 1.0
 
-        pr "Mom said to sweep the floor. Just because it’s your day off doesn’t mean you can laze around and ignore your chores."
+        pr """
+        Mom said to sweep the floor. Just because it’s your day off doesn’t mean you can laze around and ignore your chores.
 
-        pr "Mom’s words not mine."
+        Mom’s words not mine.
 
-        pr "Now hop to it!"
+        Now hop to it!
+        """
 
         hide prince
         with dissolve
@@ -226,7 +232,7 @@ label news:
     with dissolve
 
 label lockdown:
-    $ is_route_unlocked["lockdown"] = True
+    $ persistent.is_route_unlocked["lockdown"] = True
 
     call timeskip("bg livingroom back evening")
 
@@ -250,19 +256,23 @@ label lockdown:
     show bg livingroom left evening tvon onlayer background
     with dissolve
 
-    "Reporter" "The President has declared a state of public health emergency. {b}Classes have been suspended and work-from-home is sought{/b} amid the local Coronavirus cases."
+    "Reporter" """
+    The President has declared a state of public health emergency. {b}Classes have been suspended and work-from-home is sought{/b} amid the local Coronavirus cases.
 
-    "Reporter" "Strict {b}home quarantine{/b} is implemented in all households."
+    Strict {b}home quarantine{/b} is implemented in all households.
 
-    "Reporter" "Citizens must remain at home until further notice."
+    Citizens must remain at home until further notice.
+    """
 
     show screen patientOverlay(date="March 2020, Week 1|07:10 PM, ECQ", status="neutral")
 
-    "Reporter" "All government agencies and LGUs are hereby enjoined to render full assistance and cooperation and mobilize necessary resource..."
+    "Reporter" """
+    All government agencies and LGUs are hereby enjoined to render full assistance and cooperation and mobilize necessary resource...
 
-    "Reporter" "...to undertake critical, urgent, and appropriate response and measures in a timely manner to curtail and eliminate the Covid-19 threat."
+    ...to undertake critical, urgent, and appropriate response and measures in a timely manner to curtail and eliminate the Covid-19 threat.
 
-    "Reporter" "{b}Residents who refuse to follow the mandatory quarantine may be arrested{/b} under the state of public health emergency."
+    {b}Residents who refuse to follow the mandatory quarantine may be arrested{/b} under the state of public health emergency.
+    """
 
     show bg livingroom back evening tvon onlayer background
     with dissolve
@@ -281,7 +291,7 @@ label lockdown:
 
     menu:
         "I'm not staying home":
-            $ is_dialog_unchecked["mandatoryhomequarantine.notstayinghome"] = True
+            $ persistent.is_dialog_unchecked["mandatoryhomequarantine.notstayinghome"] = True
             $ renpy.pause(0.3)
 
             pl "There is no way I’m staying home for that long."
@@ -319,7 +329,7 @@ label lockdown:
                     jump getcaught
 
         "No work!":
-            $ is_dialog_unchecked["mandatoryhomequarantine.nowork"] = True
+            $ persistent.is_dialog_unchecked["mandatoryhomequarantine.nowork"] = True
             $ renpy.pause(0.3)
 
             pl "Alright! I can sleep whenever I want now that I don’t have to wake up early to go to work."
@@ -337,7 +347,7 @@ label lockdown:
             jump quarantine
 
         "We should remain positive":
-            $ is_dialog_unchecked["mandatoryhomequarantine.remainpositive"] = True
+            $ persistent.is_dialog_unchecked["mandatoryhomequarantine.remainpositive"] = True
             $ renpy.pause(0.3)
 
             pl "We just have to keep calm and stay positive. Everything will pass."
@@ -354,7 +364,7 @@ label lockdown:
             pr "Yes..."
 
 label quarantine:
-    $ is_route_unlocked["quarantine"] = True
+    $ persistent.is_route_unlocked["quarantine"] = True
 
     call timeskip("bg livingroom back")
 
@@ -408,24 +418,26 @@ label quarantine:
 
     $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskwork.png")
+    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskactivity.png")
 
     ins "Click the arrow to switch rooms and tap an object to interact with them."
 
     jump findActivity
 
 label newnormal:
-    $ is_route_unlocked["newnormal"] = True
+    $ persistent.is_route_unlocked["newnormal"] = True
 
     call timeskip("bg livingroom back")
     $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="May 2020, Week 1|11:00 AM, ECQ", status="neutral")
 
-    pl "How long do we have to keep this up?"
+    pl """
+    How long do we have to keep this up?
 
-    pl "It’s been months since quarantine started and I’m starting to feel restless."
+    It’s been months since quarantine started and I’m starting to feel restless.
 
-    pl "I have nothing else to do and I’m getting bored."
+    I have nothing else to do and I’m getting bored.
+    """
 
     show carla mad onlayer middle:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
@@ -466,11 +478,13 @@ label newnormal:
 
     $ showAchievementOverlay("ecq")
 
-    c "{b}MECQ or Modified ECQ{/b} still requires people to stay home."
+    c """
+    {b}MECQ or Modified ECQ{/b} still requires people to stay home.
 
-    c "However, some can go out as long as they follow safety protocols like wearing a face mask and maintain 2 meter social distance from others."
+    However, some can go out as long as they follow safety protocols like wearing a face mask and maintain 2 meter social distance from others.
 
-    c "Government workers can return to work while others remains at home."
+    Government workers can return to work while others remains at home.
+    """
 
     $ showAchievementOverlay("mecq")
 
@@ -490,11 +504,13 @@ label newnormal:
 
     show carla mad onlayer middle
 
-    c "I don’t think so young man."
+    c """
+    I don’t think so young man.
 
-    c "If I remember correctly your school is having {b}flexible learning{/b}."
+    If I remember correctly your school is having {b}flexible learning{/b}.
 
-    c "Be sure to study hard, you know what will happen if you get a bad grade."
+    Be sure to study hard, you know what will happen if you get a bad grade.
+    """
 
     $ showAchievementOverlay("flexible learning")
 
@@ -515,15 +531,16 @@ label newnormal:
     $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="June 2020, Week 1|08:00 PM, GCQ", status="neutral")
 
-    plt "(Everything is becoming repetitive.)"
+    plt """(Everything is becoming repetitive.)
 
-    plt "(My routine is the same every day.)"
+    (My routine is the same every day.)
 
-    plt "(Nothing too exciting.)"
+    (Nothing too exciting.)
 
-    plt "(I wonder when I will be able to return to work?)"
+    (I wonder when I will be able to return to work?)
 
-    plt "(Since the company is still wary of the current event. It would be better than being stuck at home.)"
+    (Since the company is still wary of the current event. It would be better than being stuck at home.)
+    """
 
     play sound "audio/phone vibrate.wav"
     with hpunch
@@ -539,28 +556,23 @@ label newnormal:
     plt "(The {b}new normal{/b}… I wonder what’s in store for me.)"
 
     label .collectandprogress:
-        $ is_route_unlocked["newnormal.collectandprogress"] = True
+        $ persistent.is_route_unlocked["newnormal.collectandprogress"] = True
 
         call timeskip("bg bedroom back evening")
         $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-        show screen patientOverlay(date="June 2020, Week 2|06:00 PM, GCQ", status="happy")
+        show screen patientOverlay(date="June 2020, Week 2|11:00 AM, GCQ", status="happy")
 
         plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
 
         pl "I have a list of items I should find, I’m sure they’re around here somewhere."
 
         call timeskip("bg livingroom back")
-        show screen patientOverlay(date="June 2020, Week 2|06:00 PM, GCQ", status="happy")
+        show screen patientOverlay(date="June 2020, Week 2|11:00 AM, GCQ", status="happy")
 
-        $ itemselected = itemchoices["Reset"]
-        $ currentScreen = "workprep"
-        $ renpy.show_screen("instruction")
-        $ renpy.show_screen("notify", img="images/misc/taskpopups/taskwork.png")
-        $ showFlapButtons()
-        jump workprep
+        call initMinigame("workprep")
 
 label commuting:
-    $ is_route_unlocked["commuting"] = True
+    $ persistent.is_route_unlocked["commuting"] = True
 
     call timeskip("bg shuttle")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -581,11 +593,13 @@ label commuting:
         "Eavesdrop":
             $ renpy.pause(0.3)
 
-            "Worker 2" "Yeah, I’m still getting used to wearing a facemask. I can’t exactly breathe properly with this covering the bottom half of my face."
+            "Worker 2" """
+            Yeah, I’m still getting used to wearing a facemask. I can’t exactly breathe properly with this covering the bottom half of my face.
 
-            "Worker 2" "Better safe than sorry since {b}facemasks suppress the transmission of the virus{/b}."
+            Better safe than sorry since {b}facemasks suppress the transmission of the virus{/b}.
 
-            "Worker 2" "The use of mask alone is not sufficient but it does help prevent respiratory droplets from reaching others."
+            The use of mask alone is not sufficient but it does help prevent respiratory droplets from reaching others.
+            """
 
             "Worker 1" "That’s true."
 
@@ -619,7 +633,7 @@ label office:
 
     menu:
         "Hey Ian.":
-            $ is_dialog_unchecked["convowithcoworker.heyian"] = True
+            $ persistent.is_dialog_unchecked["convowithcoworker.heyian"] = True
             $ renpy.pause(0.3)
 
             pl "Oh, hey Ian. It’s great to see you too. What’s up?"
@@ -643,7 +657,7 @@ label office:
 
             menu:
                 "Sure. I'll join.":
-                    $ is_dialog_unchecked["greetingyourcoworker.illjoin"] = True
+                    $ persistent.is_dialog_unchecked["greetingyourcoworker.illjoin"] = True
                     $ renpy.pause(0.3)
 
                     pl "I could do some outside activity for a change. Count me in."
@@ -653,7 +667,7 @@ label office:
                     jump friend
 
                 "Sorry. Maybe next time.":
-                    $ is_dialog_unchecked["greetingyourcoworker.nexttime"] = True
+                    $ persistent.is_dialog_unchecked["greetingyourcoworker.nexttime"] = True
                     $ renpy.pause(0.3)
 
                     pl "Sorry Ian, I have somewhere else to be after work. Maybe we can hang out together some other time."
@@ -665,7 +679,7 @@ label office:
                     jump home
 
         "I’m busy.":
-            $ is_dialog_unchecked["convowithcoworker.imbusy"] = True
+            $ persistent.is_dialog_unchecked["convowithcoworker.imbusy"] = True
             $ renpy.pause(0.3)
 
             pl "I’m kind of busy at the moment so can we talk later?"
@@ -676,7 +690,7 @@ label office:
 
             menu:
                 "Dinner sounds good.":
-                    $ is_dialog_unchecked["invitationfromcoworker.soundsgood"] = True
+                    $ persistent.is_dialog_unchecked["invitationfromcoworker.soundsgood"] = True
                     $ renpy.pause(0.3)
 
                     pl "Sure, I’ll be seeing you guys after work."
@@ -688,7 +702,7 @@ label office:
                     jump friend
 
                 "I can't tonight.":
-                    $ is_dialog_unchecked["invitationfromcoworker.icant"] = True
+                    $ persistent.is_dialog_unchecked["invitationfromcoworker.icant"] = True
                     $ renpy.pause(0.3)
 
                     pl "Not tonight. Maybe some other time."
@@ -700,7 +714,7 @@ label office:
                     jump home
 
         "Stay away!":
-            $ is_dialog_unchecked["convowithcoworker.stayaway"] = True
+            $ persistent.is_dialog_unchecked["convowithcoworker.stayaway"] = True
             $ renpy.pause(0.3)
 
             pl "Woah! Keep your distance please. At least five meters away, I don’t want to get infected by COVID."
@@ -722,7 +736,7 @@ label office:
 
 # ROUTE HOME
 label home:
-    $ is_route_unlocked["home"] = True
+    $ persistent.is_route_unlocked["home"] = True
 
     call timeskip("bg livingroom back")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -821,11 +835,13 @@ label home:
 
             $ showAchievementOverlay("online shopping")
 
-            pl "That way, you can complete your shopping without ever needing to go outside. It’s easy, convenient and a much safer option."
+            pl """
+            That way, you can complete your shopping without ever needing to go outside. It’s easy, convenient and a much safer option.
 
-            pl "Then all you have to do is wait for the goods to be delivered right to your doorstep."
+            Then all you have to do is wait for the goods to be delivered right to your doorstep.
 
-            pl "Now that’s taken care of, why don’t you go take a break? I’ll be in charge of making dinner tonight, mom."
+            Now that’s taken care of, why don’t you go take a break? I’ll be in charge of making dinner tonight, mom.
+            """
 
             c "Very well. I’ll be in the living room if you need me."
 
@@ -840,33 +856,31 @@ label intro_to_supermarket:
 
     pl "I have to do is complete the list and spend all 200.00 worth of grocery items."
 
-    $ currentScreen = "supermarket"
-
-    $ renpy.show_screen("instruction")
-    $ showFlapButtons()
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskshop.png")
-
-    jump supermarket
+    call initMinigame("supermarket")
 
 label cookadobo:
     call timeskip("bg kitchen")
     $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="July 2020, Week 4|04:00 PM, GCQ", status="happy")
 
-    pl "Since I’m in charge of dinner tonight I think I’ll just keep things simple."
+    pl """
+    Since I’m in charge of dinner tonight I think I’ll just keep things simple.
 
-    pl "These are all the ingredients that I need."
+    These are all the ingredients that I need.
 
-    pl "Alright. Time to get cooking!"
+    Alright. Time to get cooking!
+    """
 
     scene bg kitchen pot
     with dissolve
 
-    pl "First I put the cooking oil in the pan. Add the garlic and sear the chicken on until browned."
+    pl """
+    First I put the cooking oil in the pan. Add the garlic and sear the chicken on until browned.
 
-    pl "Next, add soy sauce and…"
+    Next, add soy sauce and…
 
-    pl "What should I add next?"
+    What should I add next?
+    """
 
     menu:
         "Oyster sauce":
@@ -891,11 +905,13 @@ label cookadobo:
             call .continuecookingadobo(3)
 
     label .continuecookingadobo(sauce=1):
-        pl "Add a cup of water and mix them all together to coat the chicken."
+        pl """
+        Add a cup of water and mix them all together to coat the chicken.
 
-        pl "Then I add the bay leaves, brown sugar, salt and pepper to taste. Mix it and simmer."
+        Then I add the bay leaves, brown sugar, salt and pepper to taste. Mix it and simmer.
 
-        pl "Now I just have to wait for it to cook before serving it. Good job me."
+        Now I just have to wait for it to cook before serving it. Good job me.
+        """
 
         scene bg kitchen
         with dissolve
@@ -955,7 +971,7 @@ label cookadobo:
         jump princegoingout
 
 label princegoingout:
-    $ is_route_unlocked["princegoingout"] = True
+    $ persistent.is_route_unlocked["princegoingout"] = True
 
     call timeskip("bg livingroom back")
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -1133,7 +1149,7 @@ label princedisappointed:
 
 # ROUTE FRIEND
 label friend:
-    $ is_route_unlocked["friend"] = True
+    $ persistent.is_route_unlocked["friend"] = True
 
     call timeskip("bg office afternoon")
     show screen patientOverlay(date="June 2020, Week 3|05:00 PM, GCQ", status="happy")
@@ -1222,11 +1238,13 @@ label restaurant:
     show ian discuss onlayer middle:
         zoom 1
 
-    i "Now, I can't visit because of the fear that I might get her sick or something, especially if we go out on dates."
+    i """
+    Now, I can't visit because of the fear that I might get her sick or something, especially if we go out on dates.
 
-    i "Sure we do home dates, but it’s nothing compared to actually being with each other, to be able to hold each other."
+    Sure we do home dates, but it’s nothing compared to actually being with each other, to be able to hold each other.
 
-    i "Sure, we call and text each other; we even go on virtual dates, but nothing could compare to actually having her by my side, physically."
+    Sure, we call and text each other; we even go on virtual dates, but nothing could compare to actually having her by my side, physically.
+    """
 
     show mark disgust onlayer middle
 
@@ -1256,11 +1274,13 @@ label restaurant:
 
             show mark confident onlayer middle
 
-            m "See? Great minds think alike."
+            m """
+            See? Great minds think alike.
 
-            m "And besides, going out for work is already scary enough as it is during the pandemic."
+            And besides, going out for work is already scary enough as it is during the pandemic.
 
-            m "Plus, I don't need to add another reason that would only cause more headaches."
+            Plus, I don't need to add another reason that would only cause more headaches.
+            """
 
         "Having a romantic partner sounds good.":
             $ renpy.pause(0.3)
@@ -1286,11 +1306,13 @@ label datesearch:
     $ renpy.music.play("audio/Waiting music.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="June 2020, Week 3|09:00 PM, GCQ", status="happy")
 
-    plt " (I never thought about being in a romantic relationship since I was in high school.)"
+    plt """
+    (I never thought about being in a romantic relationship since I was in high school.)
 
-    plt "(It sounds troublesome, but interesting at the same time.)"
+    (It sounds troublesome, but interesting at the same time.)
 
-    plt "(I suppose there’s no harm in trying to meet new people.)"
+    (I suppose there’s no harm in trying to meet new people.)
+    """
 
     call timeskip("bg livingroom back")
     show screen patientOverlay(date="July 2020, Week 1|01:00 PM, GCQ", status="happy")
@@ -1324,23 +1346,22 @@ label datesearch:
 
     menu:
         "Men":
-            $ is_dialog_unchecked["genderpreference.men"] = True
+            $ persistent.is_dialog_unchecked["genderpreference.men"] = True
             $ renpy.pause(0.3)
 
             jump phone
         "Women":
-            $ is_dialog_unchecked["genderpreference.women"] = True
+            $ persistent.is_dialog_unchecked["genderpreference.women"] = True
             $ renpy.pause(0.3)
 
             call phone(male=False)
 
 label phone(male=True):
-    call updateDate("July 2020, Week 1 | 01:10 PM, Living Room | GCQ")
     show screen patientOverlay(date="July 2020, Week 1|01:10 PM, GCQ", status="happy")
     scene bg livingroom back onlayer background
 
     if male:
-        $ is_route_unlocked["phonemale"] = True
+        $ persistent.is_route_unlocked["phonemale"] = True
 
         pl "I am definitely into guys."
 
@@ -1394,7 +1415,7 @@ label phone(male=True):
         call postdatesearch()
 
     else:
-        $ is_route_unlocked["phonefemale"] = True
+        $ persistent.is_route_unlocked["phonefemale"] = True
 
         pl "I prefer girls. Thank you very much."
 
@@ -1491,11 +1512,13 @@ label postdatesearch(male=True):
                 show prince shocked1  onlayer middle:
                     xpos 0.5 ypos 1.1 xanchor 0.5 yanchor 1.0
 
-                pr "It’s not like I’m against you going on dates, but are you sure it’s a good idea to go out on a date because, you know, with the whole COVID pandemic happening outside?"
+                pr """
+                It’s not like I’m against you going on dates, but are you sure it’s a good idea to go out on a date because, you know, with the whole COVID pandemic happening outside?
 
-                pl "Just because people are free to go out doesn't mean we should. It’s best to limit our activities outside the house."
+                Just because people are free to go out doesn't mean we should. It’s best to limit our activities outside the house.
 
-                pl "We're meeting online so there's no worry about me going out. I just want to look nice at least."
+                We're meeting online so there's no worry about me going out. I just want to look nice at least.
+                """
 
                 show prince point2 onlayer middle:
                     xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0
@@ -1510,7 +1533,7 @@ label postdatesearch(male=True):
 
 label firstdate(male=True):
     if male:
-        $ is_route_unlocked["firstdatemale"] = True
+        $ persistent.is_route_unlocked["firstdatemale"] = True
 
         call timeskip("bg bedroom back afternoon")
         show screen patientOverlay(date="July 2020, Week 2|05:10 PM, GCQ", status="happy")
@@ -1557,7 +1580,7 @@ label firstdate(male=True):
         jump jason
 
     else:
-        $ is_route_unlocked["firstdatefemale"] = True
+        $ persistent.is_route_unlocked["firstdatefemale"] = True
 
         call timeskip("bg bedroom back")
         show screen patientOverlay(date="July 2020, Week 2|06:00 PM, GCQ", status="neutral")
@@ -1633,7 +1656,7 @@ label firstdate(male=True):
 
         menu:
             "Ask her what's wrong":
-                $ is_dialog_unchecked["talkingtojillian.whatswrong"] = True
+                $ persistent.is_dialog_unchecked["talkingtojillian.whatswrong"] = True
                 $ renpy.pause(0.3)
 
                 pl "Is there something wrong?"
@@ -1647,7 +1670,7 @@ label firstdate(male=True):
                 jump jillian
 
             "Hit her with a pick-up line":
-                $ is_dialog_unchecked["talkingtojillian.pickupline"] = True
+                $ persistent.is_dialog_unchecked["talkingtojillian.pickupline"] = True
                 $ renpy.pause(0.3)
 
                 pl "I’m no photographer, but I can picture us together."
@@ -1672,7 +1695,7 @@ label firstdate(male=True):
 
 # Kyle Route
 label kyle:
-    $ is_route_unlocked["kyle"] = True
+    $ persistent.is_route_unlocked["kyle"] = True
 
     call timeskip("bg office")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -1816,7 +1839,7 @@ label kylehome:
     call screen phone_reply2("Let's hang out.", "It's safer to stay home.")
 
     if itemselected == itemchoices['A']:
-        $ is_dialog_unchecked["reconnectingfriend.hangout"] = True
+        $ persistent.is_dialog_unchecked["reconnectingfriend.hangout"] = True
 
         call reply_message("Yeah, being able to catch up with an old friend sounds good.")
 
@@ -1831,7 +1854,7 @@ label kylehome:
         jump kylemeet
 
     elif itemselected == itemchoices['B']:
-        $ is_dialog_unchecked["reconnectingfriend.stayhome"] = True
+        $ persistent.is_dialog_unchecked["reconnectingfriend.stayhome"] = True
 
         call reply_message("I would prefer not to go out so much unless it’s necessary.")
 
@@ -1841,7 +1864,7 @@ label kylehome:
         call hide_phone_messages
 
         label .findhobby:
-            $ is_route_unlocked["kylehome.findhobby"] = True
+            $ persistent.is_route_unlocked["kylehome.findhobby"] = True
 
             call timeskip("bg office")
             $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -1933,7 +1956,7 @@ label kylehome:
                     jump proceed
 
 label kylemeet:
-    $ is_route_unlocked["kylemeet"] = True
+    $ persistent.is_route_unlocked["kylemeet"] = True
 
     call timeskip("bg outside")
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -2058,18 +2081,19 @@ label hospital:
 
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-    call updateDate("September 2020, Week 1 | --:-- PM, Hospital | GCQ")
     show screen patientOverlay(date="September 2020, Week 1|--:-- PM, GCQ", status="positive")
 
-    plt "(I feel restless. I wonder how my family is doing. I hope they’re doing well.)"
+    plt """
+    (I feel restless. I wonder how my family is doing. I hope they’re doing well.)
 
-    plt "(If it wasn’t for my carelessness I wouldn’t be caught up in this mess.)"
+    (If it wasn’t for my carelessness I wouldn’t be caught up in this mess.)
 
-    plt "(I don’t know how I’ll be able to face them after this.)"
+    (I don’t know how I’ll be able to face them after this.)
 
-    plt "(No. I can’t have these negative thoughts right now. I need to focus on getting better.)"
+    (No. I can’t have these negative thoughts right now. I need to focus on getting better.)
 
-    plt "(For my family.)"
+    (For my family.)
+    """
 
     $ renpy.hide_screen("displayDate")
     $ renpy.music.play("audio/bgm/bad end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -2174,23 +2198,25 @@ label jillian:
     $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="June 2020, Week 4|02:00 PM, GCQ", status="happy")
 
-    plt "(Jillian and I’s relationship have been going smoothly. I really enjoy spending time with her, even if we’ve only known each other virtually.)"
+    plt """
+    (Jillian and I’s relationship have been going smoothly. I really enjoy spending time with her, even if we’ve only known each other virtually.)
 
-    plt "(Fortunately, she doesn’t live too far from my area. That means I can go and actually meet up with her, in person.)"
+    (Fortunately, she doesn’t live too far from my area. That means I can go and actually meet up with her, in person.)
 
-    plt "(The pandemic is still continues so asking her out on a date could be a problem.)"
+    (The pandemic is still continues so asking her out on a date could be a problem.)
 
-    plt "(Should I ask her out?)"
+    (Should I ask her out?)
+    """
 
     menu:
         "Ask her out":
-            $ is_dialog_unchecked["hangoutwithjillian.askherout"] = True
+            $ persistent.is_dialog_unchecked["hangoutwithjillian.askherout"] = True
             $ renpy.pause(0.3)
 
             plt "(I’ll just ask her when I get home.)"
 
             label .restaurantdate:
-                $ is_route_unlocked["jillian.restaurantdate"] = True
+                $ persistent.is_route_unlocked["jillian.restaurantdate"] = True
 
                 call timeskip("bg bedroom back evening")
                 $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -2211,7 +2237,7 @@ label jillian:
                 jump jldate
 
         "Don't ask her out.":
-            $ is_dialog_unchecked["hangoutwithjillian.dontaskherout"] = True
+            $ persistent.is_dialog_unchecked["hangoutwithjillian.dontaskherout"] = True
             $ renpy.pause(0.3)
 
             plt "(Nah. Asking her out under these circumstances is not the best idea. I don’t want to risk her health or mine.)"
@@ -2219,7 +2245,7 @@ label jillian:
             plt "(I’m sure there are ways we can keep our virtual date more fun for both of us. But what?)"
 
             label .artsncraft:
-                $ is_route_unlocked["jillian.artsncraft"] = True
+                $ persistent.is_route_unlocked["jillian.artsncraft"] = True
 
                 call timeskip("bg bedroom back")
                 $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -2333,11 +2359,13 @@ label jason:
     scene bg livingroom left afternoon tvon onlayer background
     with dissolve
 
-    "Reporter" "In today’s report, the number of COVID-19 cases in the Philippines moved past the 316,000 mark."
+    "Reporter" """
+    In today’s report, the number of COVID-19 cases in the Philippines moved past the 316,000 mark.
 
-    "Reporter" "In other related news, 86 percent of adult Filipino have been experiencing great stress..."
+    In other related news, 86 percent of adult Filipino have been experiencing great stress...
 
-    "Reporter" "...due to involuntary hunger and that more Filipinos could slip into poverty and joblessness due to COVID-19 pandemic."
+    ...due to involuntary hunger and that more Filipinos could slip into poverty and joblessness due to COVID-19 pandemic.
+    """
 
     scene bg livingroom back afternoon onlayer background
     with dissolve
@@ -2360,7 +2388,7 @@ label jason:
     call screen phone_reply2("I’m not sure about that.", "Sounds good.")
 
     if itemselected == itemchoices["B"]:
-        $ is_dialog_unchecked["meetupwithjason.soundsgood"] = True
+        $ persistent.is_dialog_unchecked["meetupwithjason.soundsgood"] = True
 
         call reply_message("Sounds like a plan.")
 
@@ -2372,16 +2400,18 @@ label jason:
         call hide_phone_messages
 
         label .meetupjason:
-            $ is_route_unlocked["jason.meetupjason"] = True
+            $ persistent.is_route_unlocked["jason.meetupjason"] = True
 
             call timeskip("bg bedroom back evening")
             show screen patientOverlay(date="August 2020, Week 4|10:00 PM, GCQ", status="happy")
 
-            plt "(Everything is going smoothly between me and Jason.)"
+            plt """
+            (Everything is going smoothly between me and Jason.)
 
-            plt "(We’ve been talking to each other a lot nowadays. But I feel like something is off.)"
+            (We’ve been talking to each other a lot nowadays. But I feel like something is off.)
 
-            plt "(He hasn’t replied to any of my messages for a week now, usually he would reply by the end of the day. I hope he’s doing alright.)"
+            (He hasn’t replied to any of my messages for a week now, usually he would reply by the end of the day. I hope he’s doing alright.)
+            """
 
             play sound "audio/phone vibrate.wav"
             $ renpy.pause()
@@ -2447,7 +2477,7 @@ label jason:
                     jump proceed
 
     elif itemselected == itemchoices["A"]:
-        $ is_dialog_unchecked["meetupwithjason.notsure"] = True
+        $ persistent.is_dialog_unchecked["meetupwithjason.notsure"] = True
 
         call reply_message("I don’t think it’s a good idea to go out.")
 
@@ -2468,7 +2498,7 @@ label jason:
 
 # Endings
 label getcaught:
-    $ is_route_unlocked["getcaught"] = True
+    $ persistent.is_route_unlocked["getcaught"] = True
 
     call timeskip("bg livingroom back evening")
 
@@ -2593,7 +2623,7 @@ label jlend:
             jump proceed
 
 label jsexerciseend:
-    $ is_route_unlocked["jsexerciseend"] = True
+    $ persistent.is_route_unlocked["jsexerciseend"] = True
 
     call timeskip("bg livingroom back")
     show screen patientOverlay(date="August 2020, Week 2|09:00 AM, GCQ", status="happy")
@@ -2640,60 +2670,16 @@ label jsexerciseend:
             stop music fadeout 0.2
             jump proceed
 
-label mcend:
-    call timeskip("bg bedroom back")
-    $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-
-    pl "Even if I have fully recovered, I still need to isolate myself and limit my interactions with my family and friends."
-
-    pl "I am a COVID survivor and I am grateful to have another chance in life."
-
-    pl "To all the people I love, my family, my friends, the doctors and the frontliners who helped me recover, I am truly thankful."
-
-    pl "It was a hard road to recovery..."
-
-    pl "But it's not over yet..."
-
-    $ renpy.hide_screen("displayDate")
-    $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    scene black onlayer background
-    with dissolve
-    centered "{color=#fff}{b} End {/b}{/color}"
-
-    menu:
-        "Choose another route":
-            $ renpy.pause(0.3)
-
-            centered "You will now be returned to the previous decision point..."
-            stop music fadeout 2.0
-
-            jump kylehome
-
-        "Return to main menu":
-            $ renpy.pause(0.3)
-
-            stop music fadeout 0.2
-            jump proceed
-
 # Point and Click Scenarios
 label workprep:
     $ showFlapButtons()
-
-    call hideStuff()
-
-    if currentRoom == ROOMS['livingroom']:
-        scene bg livingroom back
-    elif currentRoom == ROOMS['bedroom']:
-        scene bg bedroom back
-    elif currentRoom == ROOMS['kitchen']:
-        scene bg kitchen
 
     if not(readyForWork()):
         call hideStuff()
         call screen workprep
         jump workprep
 
-    show screen patientOverlay(date="June 2020, Week 2|06:00 PM, GCQ", status="happy")
+    show screen patientOverlay(date="June 2020, Week 2|11:00 AM, GCQ", status="happy")
 
     $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
 
@@ -2729,8 +2715,6 @@ label findActivity:
             hide phoneless at phone_hide onlayer background
 
             plt "Wow, I’m learning a lot today."
-
-            "TODO FEATURE" "Insert Achievement: {b}Quiz Master{/b}, here."
 
             plt "There is so much information posted here. I need to keep myself updated."
 

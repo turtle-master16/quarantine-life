@@ -1,5 +1,5 @@
 init:
-    $ is_route_unlocked = {
+    define persistent.is_route_unlocked = {
         "start.mainstart": False,
         "lockdown": False,
         "getcaught": False,
@@ -56,16 +56,16 @@ screen storyroute:
         imagemap:
             ground "images/menu/storyroutes/bg storyroute.png"
 
-            showif not(is_route_unlocked["start.mainstart"]):
+            showif not(persistent.is_route_unlocked["start.mainstart"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.0165
                     yalign 0.445
                     action 0
             else:
-                hotspot route_coordinates["start.mainstart"] action [Hide("storyroute"), Jump("start.mainstart")]
+                hotspot route_coordinates["start.mainstart"] action [Hide("storyroute"), Hide("flapButtons"), Jump("start.mainstart")]
 
-            showif not(is_route_unlocked["lockdown"]):
+            showif not(persistent.is_route_unlocked["lockdown"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.114
@@ -74,7 +74,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["lockdown"] action [Hide("storyroute"), Jump("lockdown")]
 
-            showif not(is_route_unlocked["getcaught"]):
+            showif not(persistent.is_route_unlocked["getcaught"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.2305
@@ -83,7 +83,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["getcaught"] action [Hide("storyroute"), Jump("getcaught")]
 
-            showif not(is_route_unlocked["quarantine"]):
+            showif not(persistent.is_route_unlocked["quarantine"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.2305
@@ -92,7 +92,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["quarantine"] action [Hide("storyroute"), Jump("quarantine")]
 
-            showif not(is_route_unlocked["newnormal"]):
+            showif not(persistent.is_route_unlocked["newnormal"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.335
@@ -101,7 +101,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["newnormal"] action [Hide("storyroute"), Jump("newnormal")]
 
-            showif not(is_route_unlocked["newnormal.collectandprogress"]):
+            showif not(persistent.is_route_unlocked["newnormal.collectandprogress"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.4311
@@ -110,7 +110,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["newnormal.collectandprogress"] action [Hide("storyroute"), Jump("newnormal.collectandprogress")]
 
-            showif not(is_route_unlocked["commuting"]):
+            showif not(persistent.is_route_unlocked["commuting"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.5275
@@ -119,7 +119,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["commuting"] action [Hide("storyroute"), Jump("newnormal.collectandprogress")]
 
-            showif not(is_route_unlocked["friend"]):
+            showif not(persistent.is_route_unlocked["friend"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.6243
@@ -128,7 +128,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["friend"] action [Hide("storyroute"), Jump("friend")]
 
-            showif not(is_route_unlocked["home"]):
+            showif not(persistent.is_route_unlocked["home"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.6243
@@ -137,7 +137,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["home"] action [Hide("storyroute"), Jump("home")]
 
-            showif not(is_route_unlocked["phonemale"]):
+            showif not(persistent.is_route_unlocked["phonemale"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.7255
@@ -146,7 +146,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["phonemale"] action [Hide("storyroute"), Call("phone", male=True)]
 
-            showif not(is_route_unlocked["phonefemale"]):
+            showif not(persistent.is_route_unlocked["phonefemale"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.74
@@ -155,7 +155,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["phonefemale"] action [Hide("storyroute"), Call("phone", male=False)]
 
-            showif not(is_route_unlocked["princegoingout"]):
+            showif not(persistent.is_route_unlocked["princegoingout"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.7178
@@ -164,7 +164,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["princegoingout"] action [Hide("storyroute"), Jump("princegoingout")]
 
-            showif not(is_route_unlocked["firstdatemale"]):
+            showif not(persistent.is_route_unlocked["firstdatemale"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.829
@@ -173,7 +173,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["firstdatemale"] action [Hide("storyroute"), Call("firstdate", male=True)]
 
-            showif not(is_route_unlocked["firstdatefemale"]):
+            showif not(persistent.is_route_unlocked["firstdatefemale"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.8396
@@ -182,7 +182,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["firstdatefemale"] action [Hide("storyroute"), Call("firstdate", male=False)]
 
-            showif not(is_route_unlocked["kyle"]):
+            showif not(persistent.is_route_unlocked["kyle"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.8552
@@ -191,7 +191,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["kyle"] action [Hide("storyroute"), Jump("kyle")]
 
-            showif not(is_route_unlocked["jason.meetupjason"]):
+            showif not(persistent.is_route_unlocked["jason.meetupjason"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.9575
@@ -200,7 +200,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["jason.meetupjason"] action [Hide("storyroute"), Jump("jason.meetupjason")]
 
-            showif not(is_route_unlocked["jsexerciseend"]):
+            showif not(persistent.is_route_unlocked["jsexerciseend"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.9456
@@ -209,7 +209,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["jsexerciseend"] action [Hide("storyroute"), Jump("jsexerciseend")]
 
-            showif not(is_route_unlocked["jillian.restaurantdate"]):
+            showif not(persistent.is_route_unlocked["jillian.restaurantdate"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.9571
@@ -218,7 +218,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["jillian.restaurantdate"] action [Hide("storyroute"), Jump("jillian.restaurantdate")]
 
-            showif not(is_route_unlocked["jillian.artsncraft"]):
+            showif not(persistent.is_route_unlocked["jillian.artsncraft"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.9817
@@ -227,7 +227,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["jillian.artsncraft"] action [Hide("storyroute"), Jump("jillian.artsncraft")]
 
-            showif not(is_route_unlocked["kylemeet"]):
+            showif not(persistent.is_route_unlocked["kylemeet"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.9755
@@ -236,7 +236,7 @@ screen storyroute:
             else:
                 hotspot route_coordinates["kylemeet"] action [Hide("storyroute"), Jump("kylemeet")]
 
-            showif not(is_route_unlocked["kylehome.findhobby"]):
+            showif not(persistent.is_route_unlocked["kylehome.findhobby"]):
                 imagebutton:
                     idle "images/menu/storyroutes/lockedroute.png"
                     xalign 0.96

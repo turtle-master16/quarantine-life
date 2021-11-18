@@ -53,13 +53,28 @@ transform alpha_dissolve:
 
 # Cropped images positioning convenience
 transform left_corner:
-    xanchor 0.0
-    yanchor 1.0
-    xpos 0.0
-    ypos 1.0
+    xalign 0.0
+    yalign 1.0
 
 transform right_corner:
-    xanchor 1.0
+    xalign 1.0
+    yalign 1.0
+
+# Hide and Show animations for UI stuff
+transform t_flapButton:
     yanchor 1.0
-    xpos 1.0
-    ypos 1.0
+    zoom 0.3
+    on show:
+        ypos 1.0
+        yoffset 130
+        linear 0.3 yoffset 0
+    on hide:
+        linear 0.3 yoffset 130
+
+transform t_price_list:
+    on show:
+        yoffset 700
+        linear 0.8 yoffset 0
+    on hide:
+        yoffset 0
+        linear 0.8 yoffset 700
