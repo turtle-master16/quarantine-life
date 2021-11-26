@@ -1,15 +1,18 @@
 # Since it's a 'short' screen, I mixed it in with find activity screen
 screen broomfind():
+    $ renpy.choice_for_skipping()
     imagemap:
-        xanchor 1.0
-        yanchor 1.0
-        ypos 1.0
-        xpos 1.0
+        at transform:
+            xanchor 1.0
+            yanchor 1.0
+            ypos 1.0
+            xpos 1.0
         ground "images/clickables/broom.png"
         hotspot (34,313,62,405) action Return(0)
 
 # Activity Pick ------------------
 screen findActivity():
+    $ renpy.choice_for_skipping()
     layer "background"
     $ lvroom_items = {
         "tv":(986, 296, 118, 234),
@@ -21,7 +24,7 @@ screen findActivity():
     }
     if currentRoom == ROOMS['livingroom']:
         imagemap:
-            ground "images/bg/bg livingroom back.png"
+            ground "clickables/lvroom_frm7.png"
             hotspot lvroom_items["tv"] action Return('tv')
         imagebutton:
             idle "images/misc/arrow.png"

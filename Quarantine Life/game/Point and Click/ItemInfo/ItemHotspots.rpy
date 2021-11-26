@@ -31,64 +31,108 @@ screen spk:
                 add "spark":
                     pos lvroom_itemsC["tv"].sparklepos
                 add "spark":
-                    pos (991, 514)
+                    pos (1007, 420) # Hard coded sparkle
             if not(onhand["bedkey"]):
                 for item2 in lvroom_left:
                     add "spark":
-                        pos lvroom_left[item2].sparklepos
+                        pos (141, 579)
     elif currentRoom == ROOMS["kitchen"]:
         for item in kitchen_items:
             if kitchen_items[item].is_grouped:
-                for cent in kitchen_items[item].sparklepos:
+                for sparklepos in kitchen_items[item].sparklepos:
                     add "spark":
-                        pos cent
+                        pos sparklepos
             else:
                 if not(item == "sanitizer") or not(onhand["sanitizer"]):
                     add "spark":
                         pos kitchen_items[item].sparklepos
+                if not(onhand['sanitizer']):
+                    add "spark":
+                        pos getRectCenter((1200,232,25,69)) # HArd cOdEd Spark go BrrRrr
+
     elif currentRoom == ROOMS["bedroom"]:
         for item in bdroom_items:
-            add "spark":
-                pos bdroom_items[item].sparklepos
+            if bdroom_items[item].is_grouped:
+                for sparklepos in bdroom_items[item].sparklepos:
+                    add "spark":
+                        pos sparklepos
+            else:
+                add "spark":
+                    pos bdroom_items[item].sparklepos
         add "spark":
-            pos (250, 300)
+            pos getRectCenter((174,188,157,150)) # HArd cOdEd Spark go BrrRrr requiem
 
 
 # WORKPREP -------------------------------------------------------
 default lvroom_itemsC = {
-    "drawerLvrm":    ClickableItems(dialogue=object_dialogue['drawerLvrm'],   hspot=(35, 573, 199, 141)),
-    "correctPlant":  ClickableItems(dialogue=object_dialogue['correctPlant'], hspot=(854, 419, 54, 84)),
-    "pictureLvrm":   ClickableItems(dialogue=object_dialogue['pictureLvrm'],  hspot=(127, 198, 42, 158), yoff=-80),
-    "wrongPlant":    ClickableItems(dialogue=object_dialogue['wrongPlant'],   hspot=[(288, 416, 57, 72),
-                                                                                    (518, 324, 50, 67),
-                                                                                    (733, 318, 50, 73)]),
-    "tv":            ClickableItems(dialogue=object_dialogue['tv'],           hspot=(1014, 283, 132, 218)),
-    "mugs":          ClickableItems(dialogue=object_dialogue['mugs'],         hspot=(448, 461, 102, 45)),
-    "sofa":          ClickableItems(dialogue=object_dialogue['sofa'],         hspot=(242, 501, 151, 183)),
-    "window":        ClickableItems(dialogue=object_dialogue['window'],       hspot=(293, 178, 660, 123)),
+    "apple":          ClickableItems(dialogue=object_dialogue['apple'],        hspot=(624,214,46,46)),
+    "bulb":           ClickableItems(dialogue=object_dialogue['bulb'],         hspot=(511,531,65,50)),
+    "chime":          ClickableItems(dialogue=object_dialogue['chime'],        hspot=(750,25,30,70)),
+    "correctPlant":   ClickableItems(dialogue=object_dialogue['correctPlant'], hspot=(769, 152, 67, 107)),
+    "pictureLvrm":    ClickableItems(dialogue=object_dialogue['pictureLvrm'],  hspot=(74, 111, 66, 174)),
+    "headphone":      ClickableItems(dialogue=object_dialogue['headphone'],    hspot=(1030,471,101,58)),
+    "keyboard":       ClickableItems(dialogue=object_dialogue['keyboard'],     hspot=(768,484,44,28)),
+    "lamp":           ClickableItems(dialogue=object_dialogue['lamp'],         hspot=(34,398,86,158)),
+    "monitor":        ClickableItems(dialogue=object_dialogue['monitor'],      hspot=(824,396,108,120)),
+    "mugs":           ClickableItems(dialogue=object_dialogue['mugs'],         hspot=(442,320,119,65)),
+    "pencil":         ClickableItems(dialogue=object_dialogue['pencil'],       hspot=(138,539,38,23)),
+    "screws":         ClickableItems(dialogue=object_dialogue['screws'],       hspot=(775,615,101,47)),
+    "shoes":          ClickableItems(dialogue=object_dialogue['shoes'],        hspot=(1109,608,137,102)),
+    "tablet":         ClickableItems(dialogue=object_dialogue['tablet'],       hspot=(765,302,47,68)),
+    "trumpet":        ClickableItems(dialogue=object_dialogue['trumpet'],      hspot=(219,396,119,62)),
+    "tv":             ClickableItems(dialogue=object_dialogue['tv'],           hspot=(1056,164,146,208)),
+    "unit":           ClickableItems(dialogue=object_dialogue['unit'],         hspot=(649,388,87,120)),
+    "wrongPlant":     ClickableItems(dialogue=object_dialogue['wrongPlant'],   hspot=[(280,278,64,98),
+                                                                                     (512,152,69,104),
+                                                                                     (876,278,66,103)]),
 }
 default lvroom_right = {
-    "tv":            ClickableItems(dialogue=object_dialogue['tv'],           hspot=(84, 277, 131, 205)),
-    "faceshield":    ClickableItems(dialogue=object_dialogue['faceshield'],   hspot=(21, 489, 73, 49)),
+    "faceshield":    ClickableItems(dialogue=object_dialogue['faceshield'],   hspot=(21,391,73,54)),
 }
 default lvroom_left = {
-    "drawerLvrm":    ClickableItems(dialogue=object_dialogue['drawerLvrm'],   hspot=(97, 553, 84, 49)),
+    "drawerLvrm":    ClickableItems(dialogue=object_dialogue['drawerLvrm'],   hspot=(114,571,68,49)),
 }
 define bdroom_items = {
-    "bed":        ClickableItems(dialogue=object_dialogue['bed'],         hspot=(91, 434, 624, 182)),
-    "phone":      ClickableItems(dialogue=object_dialogue['phone'],       hspot=(206, 364, 75, 32)),
-    "dumbell":    ClickableItems(dialogue=object_dialogue['dumbell'],     hspot=(903, 365, 178, 133)),
-    "books":      ClickableItems(dialogue=object_dialogue['books'],       hspot=(195, 33, 171, 121), yoff=20),
-    "pictureBdrm":ClickableItems(dialogue=object_dialogue['pictureBdrm'], hspot=(60, 60, 64, 115)),
-    "drawerBdrm": ClickableItems(dialogue=object_dialogue['drawerBdrm'],  hspot=(556, 284, 253, 131)),
-    "window":     ClickableItems(dialogue=object_dialogue['window'],      hspot=(1076, 7, 117, 397)),
-    "plant":      ClickableItems(dialogue=object_dialogue['plant'],       hspot=(462, 53, 72, 109)),
+    "books":      ClickableItems(dialogue=object_dialogue['books'],       hspot=[(214,34,217,100),
+                                                                                 (505,529,76,77),
+                                                                                 (559,462,97,63),
+                                                                                 (659,244,87,51),
+                                                                                 (299,508,89,63),
+                                                                                 (505,529,76,77)]),
+    "drawerBdrm": ClickableItems(dialogue=object_dialogue['drawerBdrm'],  hspot=(580,306,266,144)),
+    "dumbell":    ClickableItems(dialogue=object_dialogue['dumbell'],     hspot=(949,345,169,146)),
+    "gameboy":    ClickableItems(dialogue=object_dialogue['gameboy'],     hspot=(428,496,62,58)),
+    "lampB":    ClickableItems(dialogue=object_dialogue['lampB'],     hspot=(30,582,90,134)),
+    "laptop":    ClickableItems(dialogue=object_dialogue['laptop'],     hspot=(1086,514,122,164)),
+    "pencilCan":ClickableItems(dialogue=object_dialogue['pencilCan'], hspot=(599,226,33,68)),
+    "pictureBdrm":ClickableItems(dialogue=object_dialogue['pictureBdrm'], hspot=(30,40,89,180)),
+    "pillow":     ClickableItems(dialogue=object_dialogue['pillow'],         hspot=(76,450,130,114)),
+    "phone":      ClickableItems(dialogue=object_dialogue['phone'],       hspot=(202,360,86,71)),
+    "plant":      ClickableItems(dialogue=object_dialogue['plant'],       hspot=[(758,160,88,130),
+                                                                                 (476,4,74,122)]),
+    "poster":      ClickableItems(dialogue=object_dialogue['poster'],       hspot=(758,472,143,100)),
+    "sofa":      ClickableItems(dialogue=object_dialogue['sofa'],       hspot=(359,262,156,189)),
 }
 define kitchen_items = {
-    "cans":       ClickableItems(dialogue=object_dialogue['cans'],      hspot=(237, 3, 260, 97), xoff=80),
-    "cabinet":    ClickableItems(dialogue=object_dialogue['cabinet'],   hspot=(557, 288, 317, 207)),
-    "stove":      ClickableItems(dialogue=object_dialogue['stove'],     hspot=(388, 189, 121, 121)),
-    "sanitizer":  ClickableItems(dialogue=object_dialogue['sanitizer'], hspot=(845, 181, 45, 60)),
+    "greenApple": ClickableItems(dialogue=object_dialogue['greenApple'],  hspot=(786,235,35,43)),
+    "bread":      ClickableItems(dialogue=object_dialogue['bread'],       hspot=(621,288,57,91)),
+    "broom":      ClickableItems(dialogue=object_dialogue['broom'],       hspot=(1158,344,113,365)),
+    "cans":       ClickableItems(dialogue=object_dialogue['cans'],        hspot=[(536,16,79,49),
+                                                                                 (630,6,60,39),
+                                                                                 (628,104,66,42),
+                                                                                 (719,6,46,35),
+                                                                                 (784,0,37,34),
+                                                                                 (781,89,39,39)]),
+    "faucet":     ClickableItems(dialogue=object_dialogue['faucet'],      hspot=(1052,214,17,56)),
+    "mugs":       ClickableItems(dialogue=object_dialogue['mugs'],        hspot=[(562,404,144,105),
+                                                                                  (524,120,95,64),
+                                                                                  (899,251,29,34)]),
+    "painting":   ClickableItems(dialogue=object_dialogue['painting'],    hspot=(855,441,200,117)),
+    "plant":      ClickableItems(dialogue=object_dialogue['plant'],       hspot=(840,178,46,87)),
+    "milk":       ClickableItems(dialogue=object_dialogue['milk'],        hspot=(719,79,45,80)),
+    "saucepan":   ClickableItems(dialogue=object_dialogue['saucepan'],    hspot=(689,270,89,61)),
+    "tissue":     ClickableItems(dialogue=object_dialogue['tissue'],      hspot=(1089,234,41,38)),
+    "tray":       ClickableItems(dialogue=object_dialogue['tray'],        hspot=(856,606,272,115)),
 }
 
 # SUPERMARKET --------------------

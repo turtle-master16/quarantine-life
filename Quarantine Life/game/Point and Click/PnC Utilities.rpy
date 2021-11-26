@@ -23,17 +23,17 @@ label hideStuff():
     python:
         location = {
             ROOMS['livingroom']: ["faceshield", "bedkey"],
-            ROOMS['bedroom']: ["wallet", "facemask"],
-            ROOMS['kitchen']: ["sanitizer"],
+            ROOMS['bedroom']:    ["wallet", "facemask"],
+            ROOMS['kitchen']:    ["sanitizer"],
         }
         left_side = {
-            "facemask":"bedleft",
-            "bedkey":"livingleft"
+            "facemask": "bedleft",
+            "bedkey":   "livingleft"
         }
         right_side = {
-            "faceshield":"livingright",
-            "wallet":"bedright",
-            "sanitizer":"kitchenright"
+            "faceshield": "livingright",
+            "wallet":     "bedright",
+            "sanitizer":  "kitchenright"
         }
         for item in location[currentRoom]:
             if item == "facemask":
@@ -57,11 +57,11 @@ label hideStuff():
 label objDialogue(dia, from_inputbox=False):
     # Keeps the items visible/not visible while in this label
     if currentRoom == ROOMS['livingroom']:
-        scene bg livingroom back
+        scene livingroom_workprep
     elif currentRoom == ROOMS['bedroom']:
-        scene bg bedroom back
+        scene bedroom_workprep
     elif currentRoom == ROOMS['kitchen']:
-        scene bg kitchen
+        scene kitchen_workprep
 
     call hideStuff()
 
@@ -87,7 +87,10 @@ label initMinigame(name):
     $ taskpopout = "images/misc/taskpopups/{}.png".format(name)
     show screen notify(img=taskpopout) # Pop out Notif
 
+    $ renpy.choice_for_skipping()
+
     $ renpy.jump(name) # Start minigame
+
     return
 
 # Reset the state of minigames in order to prevent the Minigames from

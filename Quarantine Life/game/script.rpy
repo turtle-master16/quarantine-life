@@ -1,12 +1,25 @@
+# define charcolor = {
+#     "Prince": "#0033a9",
+#     "Carla": "#f5d442",
+#     "Ian": "#fefe55",
+#     "Mark": "#46a5d3",
+#     "Jason": "#01a9a1",
+#     "Jillian": "#7e4000",
+#     "Kyle": "#f7927b",
+#     "Player": "#ffa500",
+#     "Thoughts":"#add8e6",
+#     "Narration":"#1e81b0",
+#     "Instruction":"#0f0",
+# }
 define charcolor = {
-    "Prince": "#0033a9",
-    "Carla": "#f5d442",
-    "Ian": "#fefe55",
-    "Mark": "#46a5d3",
-    "Jason": "#01a9a1",
-    "Jillian": "#7e4000",
-    "Kyle": "#f7927b",
-    "Player": "#ffa500",
+    "Prince": "#000",
+    "Carla": "#000",
+    "Ian": "#000",
+    "Mark": "#000",
+    "Jason": "#000",
+    "Jillian": "#000",
+    "Kyle": "#000",
+    "Player": "#000",
     "Thoughts":"#add8e6",
     "Narration":"#1e81b0",
     "Instruction":"#0f0",
@@ -59,7 +72,7 @@ label start(retmode=False):
         call hide_phone_messages
 
     # Ask name
-    centered "What is your name?"
+    "What is your name?"
     window hide
     call inputter
     python:
@@ -78,10 +91,12 @@ label start(retmode=False):
     label .mainstart:
         $ persistent.is_route_unlocked["start.mainstart"] = True
 
+        show screen rback
+
         scene black
         stop music
 
-        show screen quickToggle
+        show screen ui_start
 
         nar """
         It all changed so fast.
@@ -104,7 +119,7 @@ label start(retmode=False):
 
         $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-        show screen patientOverlay(date="January 2020, Week 4|08:00 AM", status='happy')
+        show screen patientOverlay(date="January 2020, Week 4|08:00 AM|---", status='happy')
 
         plt """
         AH! What a peaceful morning.
@@ -151,6 +166,10 @@ label start(retmode=False):
 
         $ renpy.show_screen("notify", img="images/misc/taskpopups/taskbroom.png")
 
+        call timeskip("lvroom_frm7")
+
+        show screen patientOverlay(date="January 2020, Week 4|08:00 AM|---", status='happy')
+
         call screen broomfind
 
         $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
@@ -161,9 +180,9 @@ label start(retmode=False):
         jump news
 
 label news:
-    call timeskip("bg livingroom back tvon")
+    call timeskip("tvon")
 
-    show screen patientOverlay(date="February 2020, Week 1|11:00 AM")
+    show screen patientOverlay(date="February 2020, Week 1|11:00 AM|---")
 
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
@@ -172,14 +191,14 @@ label news:
 
     plt "(Oh! It’s mom watching some TV. Maybe I should go join her.)"
 
-    scene bg livingroom left tvon onlayer background
+    scene tvviewon onlayer background
     with dissolve
 
-    "Reporter" "This just in, the Philippines has been suspending flights from Wuhan City, China due to the spread of the {b}COVID virus{/b}."
+    "{color=#000}Reporter{/color}" "This just in, the Philippines has been suspending flights from Wuhan City, China due to the spread of the {b}COVID virus{/b}."
 
-    "Reporter" "Flights from other parts of China will also be strictly monitored to prevent the virus from entering the country..."
+    "{color=#000}Reporter{/color}" "Flights from other parts of China will also be strictly monitored to prevent the virus from entering the country..."
 
-    show bg livingroom back onlayer background
+    show tvon onlayer background
     with dissolve
 
     pl "Man, what’s with this new Coronavirus? I’ve been hearing about them a lot lately."
@@ -234,11 +253,11 @@ label news:
 label lockdown:
     $ persistent.is_route_unlocked["lockdown"] = True
 
-    call timeskip("bg livingroom back evening")
+    call timeskip("lvroom_evening")
 
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-    show screen patientOverlay(date="March 2020, Week 1|07:00 PM", status='neutral')
+    show screen patientOverlay(date="March 2020, Week 1|07:00 PM|---", status='neutral')
 
     plt "(It’s been a couple of months since the COVID-19 virus was first announced.)"
 
@@ -253,10 +272,10 @@ label lockdown:
 
     hide prince
 
-    show bg livingroom left evening tvon onlayer background
+    show tvviewon_evening onlayer background
     with dissolve
 
-    "Reporter" """
+    "{color=#000}Reporter{/color}" """
     The President has declared a state of public health emergency. {b}Classes have been suspended and work-from-home is sought{/b} amid the local Coronavirus cases.
 
     Strict {b}home quarantine{/b} is implemented in all households.
@@ -264,9 +283,9 @@ label lockdown:
     Citizens must remain at home until further notice.
     """
 
-    show screen patientOverlay(date="March 2020, Week 1|07:10 PM, ECQ", status="neutral")
+    show screen patientOverlay(date="March 2020, Week 1|07:10 PM|ECQ", status="neutral")
 
-    "Reporter" """
+    "{color=#000}Reporter{/color}" """
     All government agencies and LGUs are hereby enjoined to render full assistance and cooperation and mobilize necessary resource...
 
     ...to undertake critical, urgent, and appropriate response and measures in a timely manner to curtail and eliminate the Covid-19 threat.
@@ -274,7 +293,7 @@ label lockdown:
     {b}Residents who refuse to follow the mandatory quarantine may be arrested{/b} under the state of public health emergency.
     """
 
-    show bg livingroom back evening tvon onlayer background
+    show tvon_evening onlayer background
     with dissolve
 
     show prince happy2 at bounce, left onlayer middle:
@@ -366,11 +385,11 @@ label lockdown:
 label quarantine:
     $ persistent.is_route_unlocked["quarantine"] = True
 
-    call timeskip("bg livingroom back")
+    call timeskip("lvroom")
 
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-    show screen patientOverlay(date="April 2020, Week 1|09:00 AM, ECQ", status="happy")
+    show screen patientOverlay(date="April 2020, Week 1|09:00 AM|ECQ", status="happy")
 
     plt "(Ever since the lockdown started I have been able to have some time to myself and just relax, not worrying about anything else for the most part.)"
 
@@ -427,9 +446,9 @@ label quarantine:
 label newnormal:
     $ persistent.is_route_unlocked["newnormal"] = True
 
-    call timeskip("bg livingroom back")
+    call timeskip("lvroom")
     $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="May 2020, Week 1|11:00 AM, ECQ", status="neutral")
+    show screen patientOverlay(date="May 2020, Week 1|11:00 AM|ECQ", status="neutral")
 
     pl """
     How long do we have to keep this up?
@@ -448,18 +467,18 @@ label newnormal:
     hide carla handstop
     with dissolve
 
-    scene bg livingroom left tvon onlayer background
+    scene tvviewon onlayer background
     with dissolve
 
-    "Reporter" "Good afternoon and welcome to ABC News Network…"
+    "{color=#000}Reporter{/color}" "Good afternoon and welcome to ABC News Network…"
 
-    "Reporter" "Areas under MECQ and GCQ may allow business activities to resume, requiring strict compliance with {b}minimum public health standards{/b}."
+    "{color=#000}Reporter{/color}" "Areas under MECQ and GCQ may allow business activities to resume, requiring strict compliance with {b}minimum public health standards{/b}."
 
     $ showAchievementOverlay("minimum public health standard")
 
-    "Reporter" "Public transportations is limited and crossing over to other regions remains banned…"
+    "{color=#000}Reporter{/color}" "Public transportations is limited and crossing over to other regions remains banned…"
 
-    show bg livingroom back tvon onlayer background
+    show tvon onlayer background
     with dissolve
 
     show prince explain1 onlayer middle:
@@ -527,9 +546,9 @@ label newnormal:
     hide prince
     with dissolve
 
-    call timeskip("bg bedroom back evening")
+    call timeskip("bedroom_evening")
     $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="June 2020, Week 1|08:00 PM, GCQ", status="neutral")
+    show screen patientOverlay(date="June 2020, Week 1|08:00 PM|GCQ", status="neutral")
 
     plt """(Everything is becoming repetitive.)
 
@@ -558,16 +577,16 @@ label newnormal:
     label .collectandprogress:
         $ persistent.is_route_unlocked["newnormal.collectandprogress"] = True
 
-        call timeskip("bg bedroom back evening")
+        call timeskip("bedroom_evening")
         $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-        show screen patientOverlay(date="June 2020, Week 2|11:00 AM, GCQ", status="happy")
+        show screen patientOverlay(date="June 2020, Week 2|11:00 AM|GCQ", status="happy")
 
         plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
 
         pl "I have a list of items I should find, I’m sure they’re around here somewhere."
 
-        call timeskip("bg livingroom back")
-        show screen patientOverlay(date="June 2020, Week 2|11:00 AM, GCQ", status="happy")
+        call timeskip("livingroom_workprep")
+        show screen patientOverlay(date="June 2020, Week 2|11:00 AM|GCQ", status="happy")
 
         call initMinigame("workprep")
 
@@ -576,7 +595,7 @@ label commuting:
 
     call timeskip("bg shuttle")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="June 2020, Week 3|06:00 AM, GCQ", status="happy")
+    show screen patientOverlay(date="June 2020, Week 3|06:00 AM|GCQ", status="happy")
 
     #--SFX (yawn)
     plt "I’m so sleepy. Staying up all night on social media was not the best idea."
@@ -621,7 +640,7 @@ label commuting:
 label office:
     call timeskip("bg office")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="June 2020, Week 3|07:30 AM, GCQ", status="happy")
+    show screen patientOverlay(date="June 2020, Week 3|07:30 AM|GCQ", status="happy")
 
     pl "First day back on the job and I am loaded with paper work. My back hurts from sitting all day, I need to stretch."
 
@@ -738,9 +757,9 @@ label office:
 label home:
     $ persistent.is_route_unlocked["home"] = True
 
-    call timeskip("bg livingroom back")
+    call timeskip("lvroom")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="July 2020, Week 4|02:00 PM, GCQ", status="happy")
+    show screen patientOverlay(date="July 2020, Week 4|02:00 PM|GCQ", status="happy")
 
     plt "Day offs are such a blessing. Work can be too much to handle sometimes."
 
@@ -769,7 +788,7 @@ label home:
     $ renpy.pause(0.7)
     hide prince
 
-    show screen patientOverlay(date="July 2020, Week 4|02:10 PM, GCQ", status="happy")
+    show screen patientOverlay(date="July 2020, Week 4|02:10 PM|GCQ", status="happy")
 
     pl "Hey mom, what are you writing?"
 
@@ -850,7 +869,7 @@ label home:
 label intro_to_supermarket:
     call timeskip("bg supermarket")
     $ renpy.music.play("audio/bgm/grocery.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="July 2020, Week 4|03:00 PM, GCQ", status="happy")
+    show screen patientOverlay(date="July 2020, Week 4|03:00 PM|GCQ", status="happy")
 
     pl "I’m here. Now let’s check the items on the list."
 
@@ -861,7 +880,7 @@ label intro_to_supermarket:
 label cookadobo:
     call timeskip("bg kitchen")
     $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="July 2020, Week 4|04:00 PM, GCQ", status="happy")
+    show screen patientOverlay(date="July 2020, Week 4|04:00 PM|GCQ", status="happy")
 
     pl """
     Since I’m in charge of dinner tonight I think I’ll just keep things simple.
@@ -915,7 +934,7 @@ label cookadobo:
 
         scene bg kitchen
         with dissolve
-        show screen patientOverlay(date="July 2020, Week 4|06:00 PM, GCQ", status="happy")
+        show screen patientOverlay(date="July 2020, Week 4|06:00 PM|GCQ", status="happy")
 
         if sauce == 1 or sauce == 2:
             $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -973,9 +992,9 @@ label cookadobo:
 label princegoingout:
     $ persistent.is_route_unlocked["princegoingout"] = True
 
-    call timeskip("bg livingroom back")
+    call timeskip("lvroom")
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="August 2020, Week 3|10:00 AM, GCQ", status="happy")
+    show screen patientOverlay(date="August 2020, Week 3|10:00 AM|GCQ", status="happy")
 
     show prince explain1 at left onlayer middle:
         subpixel True xpos -0.01 ypos 1.0 yanchor 1.0 xzoom -1.0 rotate None
@@ -1058,7 +1077,7 @@ label princegoingout:
 label princedisappointed:
     call timeskip("bg prince bedroom")
     $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="August 2020, Week 3|11:00 AM, GCQ", status="neutral")
+    show screen patientOverlay(date="August 2020, Week 3|11:00 AM|GCQ", status="neutral")
 
     show prince disgust2 onlayer middle
     with dissolve
@@ -1152,7 +1171,7 @@ label friend:
     $ persistent.is_route_unlocked["friend"] = True
 
     call timeskip("bg office afternoon")
-    show screen patientOverlay(date="June 2020, Week 3|05:00 PM, GCQ", status="happy")
+    show screen patientOverlay(date="June 2020, Week 3|05:00 PM|GCQ", status="happy")
 
     show mark greet onlayer middle:
         xpos -0.04 ypos 0.04 xzoom -1.0
@@ -1179,7 +1198,7 @@ label friend:
 label restaurant:
     call timeskip("bg restaurant evening")
     $ renpy.music.play("audio/Fratto kibun.wav", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="June 2020, Week 3|06:30 PM, GCQ", status="happy")
+    show screen patientOverlay(date="June 2020, Week 3|06:30 PM|GCQ", status="happy")
 
     show ian happy onlayer middle:
         xpos 0.25 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1
@@ -1302,9 +1321,9 @@ label restaurant:
     jump datesearch
 
 label datesearch:
-    call timeskip("bg bedroom back evening")
+    call timeskip("bedroom_evening")
     $ renpy.music.play("audio/Waiting music.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="June 2020, Week 3|09:00 PM, GCQ", status="happy")
+    show screen patientOverlay(date="June 2020, Week 3|09:00 PM|GCQ", status="happy")
 
     plt """
     (I never thought about being in a romantic relationship since I was in high school.)
@@ -1314,8 +1333,8 @@ label datesearch:
     (I suppose there’s no harm in trying to meet new people.)
     """
 
-    call timeskip("bg livingroom back")
-    show screen patientOverlay(date="July 2020, Week 1|01:00 PM, GCQ", status="happy")
+    call timeskip("lvroom")
+    show screen patientOverlay(date="July 2020, Week 1|01:00 PM|GCQ", status="happy")
 
     plt "(I just came home from work and ended up downloading a dating app either way.)"
 
@@ -1357,8 +1376,8 @@ label datesearch:
             call phone(male=False)
 
 label phone(male=True):
-    show screen patientOverlay(date="July 2020, Week 1|01:10 PM, GCQ", status="happy")
-    scene bg livingroom back onlayer background
+    show screen patientOverlay(date="July 2020, Week 1|01:10 PM|GCQ", status="happy")
+    scene lvroom onlayer background
 
     if male:
         $ persistent.is_route_unlocked["phonemale"] = True
@@ -1431,7 +1450,7 @@ label postdatesearch(male=True):
     if male:
         call timeskip("bg office")
         $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-        show screen patientOverlay(date="July 2020, Week 2|10:00 AM, GCQ", status="happy")
+        show screen patientOverlay(date="July 2020, Week 2|10:00 AM|GCQ", status="happy")
 
         show ian discuss onlayer middle
         with dissolve
@@ -1467,8 +1486,8 @@ label postdatesearch(male=True):
 
         i "Yeah."
 
-        call timeskip("bg bedroom back afternoon")
-        show screen patientOverlay(date="July 2020, Week 2|05:00 PM, GCQ", status="happy")
+        call timeskip("bedroom_afternoon")
+        show screen patientOverlay(date="July 2020, Week 2|05:00 PM|GCQ", status="happy")
         $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         plt "(Hair. Check. Clothes. Check. [player_name]? Oh yeah, I’m looking good and ready.)"
@@ -1535,8 +1554,8 @@ label firstdate(male=True):
     if male:
         $ persistent.is_route_unlocked["firstdatemale"] = True
 
-        call timeskip("bg bedroom back afternoon")
-        show screen patientOverlay(date="July 2020, Week 2|05:10 PM, GCQ", status="happy")
+        call timeskip("bedroom_afternoon")
+        show screen patientOverlay(date="July 2020, Week 2|05:10 PM|GCQ", status="happy")
         $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         show phone_tindah onlayer middle:
@@ -1582,8 +1601,8 @@ label firstdate(male=True):
     else:
         $ persistent.is_route_unlocked["firstdatefemale"] = True
 
-        call timeskip("bg bedroom back")
-        show screen patientOverlay(date="July 2020, Week 2|06:00 PM, GCQ", status="neutral")
+        call timeskip("bedroom")
+        show screen patientOverlay(date="July 2020, Week 2|06:00 PM|GCQ", status="neutral")
         $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         play sound "audio/phone tapping.wav"
@@ -1699,7 +1718,7 @@ label kyle:
 
     call timeskip("bg office")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="July 2020, Week 4|01:00 PM, GCQ", status="neutral")
+    show screen patientOverlay(date="July 2020, Week 4|01:00 PM|GCQ", status="neutral")
 
     #--SFX (sigh)
     pl "*sigh*"
@@ -1787,9 +1806,9 @@ label kyle:
     jump kylehome
 
 label kylehome:
-    call timeskip("bg livingroom back evening")
+    call timeskip("lvroom_evening")
     $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="July 2020, Week 4|07:00 PM, GCQ", status="happy")
+    show screen patientOverlay(date="July 2020, Week 4|07:00 PM|GCQ", status="happy")
 
     pl "I'm home."
 
@@ -1812,8 +1831,8 @@ label kylehome:
     pl "Alright."
     #--SFX (Footsteps -> Shower)
 
-    call timeskip("bg livingroom back evening")
-    show screen patientOverlay(date="July 2020, Week 4|07:30 PM, GCQ", status="happy")
+    call timeskip("lvroom_evening")
+    show screen patientOverlay(date="July 2020, Week 4|07:30 PM|GCQ", status="happy")
 
     pl "That's better."
 
@@ -1868,7 +1887,7 @@ label kylehome:
 
             call timeskip("bg office")
             $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-            show screen patientOverlay(date="August 2020, Week 1|09:00 AM, GCQ", status="neutral")
+            show screen patientOverlay(date="August 2020, Week 1|09:00 AM|GCQ", status="neutral")
 
             show ian discuss onlayer middle
             with dissolve
@@ -1898,9 +1917,9 @@ label kylehome:
 
             plt "({b}Find a new hobby{/b}… What should I try?)"
 
-            call timeskip("bg bedroom back")
+            call timeskip("bedroom")
             $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-            show screen patientOverlay(date="August 2020, Week 2|01:00 PM, GCQ", status="happy")
+            show screen patientOverlay(date="August 2020, Week 2|01:00 PM|GCQ", status="happy")
 
             show prince embarrased onlayer middle:
                 subpixel True xpos 0.22 ypos 1.0 xanchor 0.5 yanchor 1.0 rotate None
@@ -1960,7 +1979,7 @@ label kylemeet:
 
     call timeskip("bg outside")
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="August 2020, Week 2|11:00 AM, GCQ", status="happy")
+    show screen patientOverlay(date="August 2020, Week 2|11:00 AM|GCQ", status="happy")
 
     pl "It’s nice to be able to reunite with an old pal again."
 
@@ -2020,16 +2039,16 @@ label kylemeet:
 
             pl "Nothing."
 
-    call timeskip("bg bedroom back")
+    call timeskip("bedroom")
     $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="August 2020, Week 3|09:00 AM, GCQ", status="sick")
+    show screen patientOverlay(date="August 2020, Week 3|09:00 AM|GCQ", status="sick")
 
     plt "(I don’t feel so good.)"
 
     pl "I should just sleep it off, I’m sure I’m just tired from all the work I have to do at the office."
 
-    call timeskip("bg bedroom back")
-    show screen patientOverlay(date="August 2020, Week 4|01:30 PM, GCQ", status="sick")
+    call timeskip("bedroom")
+    show screen patientOverlay(date="August 2020, Week 4|01:30 PM|GCQ", status="sick")
 
     pl "I feel worse."
 
@@ -2081,7 +2100,7 @@ label hospital:
 
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-    show screen patientOverlay(date="September 2020, Week 1|--:-- PM, GCQ", status="positive")
+    show screen patientOverlay(date="September 2020, Week 1|--:-- PM|GCQ", status="positive")
 
     plt """
     (I feel restless. I wonder how my family is doing. I hope they’re doing well.)
@@ -2156,9 +2175,9 @@ label jillian:
 
     $ Hide("phone_call", transition=Dissolve(0.3))()
 
-    call timeskip("bg livingroom back evening")
+    call timeskip("lvroom_evening")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="July 2020, Week 2|08:00 PM, GCQ", status="happy")
+    show screen patientOverlay(date="July 2020, Week 2|08:00 PM|GCQ", status="happy")
 
     show carla happy onlayer middle:
         xpos 0.19 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0 zoom 0.84
@@ -2196,7 +2215,7 @@ label jillian:
 
     call timeskip("bg office afternoon")
     $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="June 2020, Week 4|02:00 PM, GCQ", status="happy")
+    show screen patientOverlay(date="June 2020, Week 4|02:00 PM|GCQ", status="happy")
 
     plt """
     (Jillian and I’s relationship have been going smoothly. I really enjoy spending time with her, even if we’ve only known each other virtually.)
@@ -2218,9 +2237,9 @@ label jillian:
             label .restaurantdate:
                 $ persistent.is_route_unlocked["jillian.restaurantdate"] = True
 
-                call timeskip("bg bedroom back evening")
+                call timeskip("bedroom_evening")
                 $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-                show screen patientOverlay(date="July 2020, Week 4|07:30 PM, GCQ", status="happy")
+                show screen patientOverlay(date="July 2020, Week 4|07:30 PM|GCQ", status="happy")
 
                 show phone_tindah onlayer middle at phone_pickup
                 $ renpy.pause(0.5)
@@ -2247,9 +2266,9 @@ label jillian:
             label .artsncraft:
                 $ persistent.is_route_unlocked["jillian.artsncraft"] = True
 
-                call timeskip("bg bedroom back")
+                call timeskip("bedroom")
                 $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-                show screen patientOverlay(date="August 2020, Week 2|10:00 AM, GCQ", status="happy")
+                show screen patientOverlay(date="August 2020, Week 2|10:00 AM|GCQ", status="happy")
 
                 show phone onlayer middle at phone_pickup
                 $ renpy.pause(0.6)
@@ -2294,7 +2313,7 @@ label jillian:
 label jldate:
     call timeskip("bg restaurant")
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="August 2020, Week 1|11:30 AM, GCQ", status="neutral")
+    show screen patientOverlay(date="August 2020, Week 1|11:30 AM|GCQ", status="neutral")
 
     pl "Well, this isn’t what I was expecting."
 
@@ -2325,9 +2344,9 @@ label jldate:
 
     jl "Sure."
 
-    call timeskip("bg bedroom back")
+    call timeskip("bedroom")
     $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="August 2020, Week 1|03:00 PM, GCQ", status="neutral")
+    show screen patientOverlay(date="August 2020, Week 1|03:00 PM|GCQ", status="neutral")
 
     show phone onlayer middle at phone_pickup
     $ renpy.pause(0.6)
@@ -2350,16 +2369,16 @@ label jldate:
 
 # Jason Route
 label jason:
-    call timeskip("bg livingroom back afternoon")
+    call timeskip("lvroom_afternoon")
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="August 2020, Week 1|05:00 PM, GCQ", status="neutral")
+    show screen patientOverlay(date="August 2020, Week 1|05:00 PM|GCQ", status="neutral")
 
     plt "(It’s been a while since I last talked to Jason. He hasn’t been replying to any of my messages. I wonder how he’s doing. I hope he’s alright.)"
 
-    scene bg livingroom left afternoon tvon onlayer background
+    scene tvon_afternoon onlayer background
     with dissolve
 
-    "Reporter" """
+    "{color=#000}Reporter{/color}" """
     In today’s report, the number of COVID-19 cases in the Philippines moved past the 316,000 mark.
 
     In other related news, 86 percent of adult Filipino have been experiencing great stress...
@@ -2367,7 +2386,7 @@ label jason:
     ...due to involuntary hunger and that more Filipinos could slip into poverty and joblessness due to COVID-19 pandemic.
     """
 
-    scene bg livingroom back afternoon onlayer background
+    scene lvroom_afternoon onlayer background
     with dissolve
 
     plt "(When will this pandemic ever end?)"
@@ -2402,8 +2421,8 @@ label jason:
         label .meetupjason:
             $ persistent.is_route_unlocked["jason.meetupjason"] = True
 
-            call timeskip("bg bedroom back evening")
-            show screen patientOverlay(date="August 2020, Week 4|10:00 PM, GCQ", status="happy")
+            call timeskip("bedroom_evening")
+            show screen patientOverlay(date="August 2020, Week 4|10:00 PM|GCQ", status="happy")
 
             plt """
             (Everything is going smoothly between me and Jason.)
@@ -2430,7 +2449,7 @@ label jason:
 
             call reply_message("But what about you? There’s high chance you get sick too since you’re the one who {b}monitor their symptoms regularly{/b}.")
 
-            call message(js, "Oh. We {b}prepared a separate room for them, and keep the room well ventilated{/b}.")
+            call message(js, "Oh. We {b}prepared a separate room for them, and kept the room well ventilated{/b}.")
             $ renpy.pause()
 
             call reply_message("Do you {b}wear a medical mask if you’re in the same room as the sick person?{/b}")
@@ -2500,11 +2519,11 @@ label jason:
 label getcaught:
     $ persistent.is_route_unlocked["getcaught"] = True
 
-    call timeskip("bg livingroom back evening")
+    call timeskip("lvroom_evening")
 
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-    show screen patientOverlay(date="March 2020, Week 2|06:00 PM, ECQ", status="neutral")
+    show screen patientOverlay(date="March 2020, Week 2|06:00 PM|ECQ", status="neutral")
 
     plt "(One week into quarantine and I’m already bored out of my mind. There is literally nothing else to do.)"
 
@@ -2515,7 +2534,7 @@ label getcaught:
     scene bg outside evening onlayer background
     with dissolve
 
-    show screen patientOverlay(date="March 2020, Week 2|06:05 PM, ECQ", status="neutral")
+    show screen patientOverlay(date="March 2020, Week 2|06:05 PM|ECQ", status="neutral")
 
     plt "(Wow. I’ve never seen the neighborhood so quiet before.)"
 
@@ -2582,7 +2601,7 @@ label getcaught:
 label jlend:
     call timeskip("bg kitchen")
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    show screen patientOverlay(date="August 2020, Week 3|12:00 PM, GCQ", status="happy")
+    show screen patientOverlay(date="August 2020, Week 3|12:00 PM|GCQ", status="happy")
 
     show jillian dump onlayer middle
     with dissolve
@@ -2625,8 +2644,8 @@ label jlend:
 label jsexerciseend:
     $ persistent.is_route_unlocked["jsexerciseend"] = True
 
-    call timeskip("bg livingroom back")
-    show screen patientOverlay(date="August 2020, Week 2|09:00 AM, GCQ", status="happy")
+    call timeskip("lvroom")
+    show screen patientOverlay(date="August 2020, Week 2|09:00 AM|GCQ", status="happy")
 
     show phone_tindah onlayer middle at phone_pickup
     $ renpy.pause(0.6)
@@ -2679,7 +2698,9 @@ label workprep:
         call screen workprep
         jump workprep
 
-    show screen patientOverlay(date="June 2020, Week 2|11:00 AM, GCQ", status="happy")
+    hide screen spk
+
+    show screen patientOverlay(date="June 2020, Week 2|11:00 AM|GCQ", status="happy")
 
     $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
 
@@ -2691,9 +2712,11 @@ label findActivity:
     # Choices: (A = Watch TV) (B = Return to Point & Click)
     $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
+    call timeskip("lvroom_frm7")
+
     call screen findActivity()
 
-    scene bg livingroom back onlayer background
+    scene lvroom_frm7 onlayer background
 
     if _return == 'tv':
         plt "(I have nothing else to do right now. Maybe I should binge watch some of my favorite TV series.)"
@@ -2789,8 +2812,8 @@ label findActivity:
 
         pl "Yeah! I can feel my body changing already. Quarantine bod here I come."
 
-        call timeskip("bg livingroom back afternoon")
-        show screen patientOverlay(date="April 2020, Week 1|05:00 PM, ECQ", status="happy")
+        call timeskip("lvroom_afternoon")
+        show screen patientOverlay(date="April 2020, Week 1|05:00 PM|ECQ", status="happy")
 
         play sound "audio/eating.mp3"
         pl "*munch munch*"
