@@ -2729,6 +2729,7 @@ label findActivity:
 
         show phoneless at phone_pickup onlayer background
         $ renpy.pause(0.5)
+        call resetItems()
         $ renpy.show_screen("quiz", _transient=True)
         $ renpy.pause(hard=True)
 

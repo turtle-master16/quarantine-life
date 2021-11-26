@@ -147,10 +147,18 @@ screen workprep():
             yalign 0.6
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
                     Show("patientOverlay", date="June 2020, Week 2|11:00 AM|GCQ", status="happy")]
+    python:
+        if renpy.get_screen("spk"):
+            spk_tog = "on"
+        else:
+            spk_tog = "off"
+    imagebutton:
+        idle "images/misc/spk_{}.png".format(spk_tog)
+        at transform:
+            xalign 0.9
+            yalign 0.03
+            zoom 0.5
 
-    textbutton "Toggle Sparkles":
-        xalign 0.95
-        yalign 0.2
         action ToggleScreen("spk")
 
 screen workitem_list():

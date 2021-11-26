@@ -1,5 +1,5 @@
 screen quickMenu:
-    zorder 1
+    zorder 20
     layer "screens"
     imagebutton:
         idle "gui/quick/navigation_open.png"
@@ -44,7 +44,7 @@ screen quickMenu:
             action Show("storyroute")
 
 screen quickToggle:
-    zorder 1
+    zorder 20
     layer "screens"
     $ isMenuOpen = renpy.get_screen("quickMenu")
     if not(isMenuOpen):
@@ -59,6 +59,7 @@ screen quickToggle:
             action [Hide("quickToggle"), Show("quickMenu")]
 
 screen ui_start:
+    zorder 20
     imagebutton:
         idle "gui/quick/settings_icon.png"
         xalign 0.99

@@ -110,4 +110,8 @@ label resetItems():
         currentItemCost = 0
         for item in shopItems:
             shopItems[item].onhand = 0
+
+        # For quiz game
+        correctans = 0
+        currentQuestion = 1
     return
