@@ -27,27 +27,34 @@ screen storyroute:
     zorder 50
 
     $ route_coordinates = {
-        "start.mainstart": (66, 377, 306, 51),
-        "lockdown": (459, 378, 306, 47),
-        "getcaught": (935, 339, 306, 45),
-        "quarantine": (935, 450, 306, 47),
-        "newnormal": (1360, 497, 307, 46),
-        "newnormal.collectandprogress": (1750, 388, 306, 49),
-        "commuting": (2142, 421, 303, 50),
-        "friend": (2530, 347, 307, 45),
-        "home": (2530, 567, 306, 46),
-        "phonemale": (2944, 287, 306, 47),
-        "phonefemale": (2999, 483, 307, 48),
-        "princegoingout": (2913, 654, 309, 48),
-        "firstdatemale": (3363, 211, 307, 49),
-        "firstdatefemale": (3407, 430, 310, 49),
-        "kyle": (3472, 654, 306, 47),
-        "jason.meetupjason": (3880, 96, 311, 49),
-        "jsexerciseend": (3840, 256, 309, 49),
-        "jillian.restaurantdate": (3883, 358, 306, 49),
-        "jillian.artsncraft": (3981, 531, 304, 44),
-        "kylemeet": (3957, 611, 307, 47),
-        "kylehome.findhobby": (3898, 769, 307, 46)
+        "start.mainstart": (283, 318, 304, 37),
+        "lockdown": (679, 433, 304, 37),
+        "getcaught": (1119, 512, 304, 37),
+        "quarantine": (1119, 352, 304, 37),
+        "newnormal": (1517, 262, 304, 37),
+        "newnormal.collectandprogress": (1920, 449, 304, 37),
+        "commuting": (2330, 364, 304, 37),
+        "friend": (2761, 251, 304, 37),
+        "home": (2792, 487, 304, 37),
+        "phonemale": (3233, 139, 304, 37),
+        "phonefemale": (3211, 386, 304, 37),
+        "princegoingout": (3240, 605, 304, 37),
+        "firstdatemale": (3619, 140, 304, 37),
+        "firstdatefemale": (3668, 325, 304, 37),
+        "kyle": (3701, 536, 304, 37),
+        "jason.meetupjason": (4122, 44, 304, 37),
+        "jsexerciseend": (4079, 186, 304, 37),
+        "jillian.restaurantdate": (4122, 263, 304, 37),
+        "jillian.artsncraft": (4160, 407, 304, 37),
+        "kylemeet": (4121, 487, 304, 37),
+        "kylehome.findhobby": (4168, 639, 304, 37)
+    }
+
+    $ called_routes = {
+        "phonemale": Call("phone", male=True),
+        "phonefemale": Call("phone", male=False),
+        "firstdatemale": Call("firstdate", male=True),
+        "firstdatefemale": Call("firstdate", male=False),
     }
 
     viewport id "storyroute":
@@ -56,194 +63,24 @@ screen storyroute:
         imagemap:
             ground "images/menu/storyroutes/bg storyroute.png"
 
-            showif not(persistent.is_route_unlocked["start.mainstart"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.0165
-                    yalign 0.445
+            imagebutton:
+                    idle "images/menu/storyroutes/storyroute title.png"
+                    xalign 0.005
+                    yalign 0.03
                     action 0
-            else:
-                hotspot route_coordinates["start.mainstart"] action [Hide("storyroute"), Hide("flapButtons"), Jump("start.mainstart")]
 
-            showif not(persistent.is_route_unlocked["lockdown"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.114
-                    yalign 0.445
-                    action 0
-            else:
-                hotspot route_coordinates["lockdown"] action [Hide("storyroute"), Jump("lockdown")]
-
-            showif not(persistent.is_route_unlocked["getcaught"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.2305
-                    yalign 0.4
-                    action 0
-            else:
-                hotspot route_coordinates["getcaught"] action [Hide("storyroute"), Jump("getcaught")]
-
-            showif not(persistent.is_route_unlocked["quarantine"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.2305
-                    yalign 0.53
-                    action 0
-            else:
-                hotspot route_coordinates["quarantine"] action [Hide("storyroute"), Jump("quarantine")]
-
-            showif not(persistent.is_route_unlocked["newnormal"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.335
-                    yalign 0.583
-                    action 0
-            else:
-                hotspot route_coordinates["newnormal"] action [Hide("storyroute"), Jump("newnormal")]
-
-            showif not(persistent.is_route_unlocked["newnormal.collectandprogress"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.4311
-                    yalign 0.456
-                    action 0
-            else:
-                hotspot route_coordinates["newnormal.collectandprogress"] action [Hide("storyroute"), Jump("newnormal.collectandprogress")]
-
-            showif not(persistent.is_route_unlocked["commuting"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.5275
-                    yalign 0.499
-                    action 0
-            else:
-                hotspot route_coordinates["commuting"] action [Hide("storyroute"), Jump("newnormal.collectandprogress")]
-
-            showif not(persistent.is_route_unlocked["friend"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.6243
-                    yalign 0.41
-                    action 0
-            else:
-                hotspot route_coordinates["friend"] action [Hide("storyroute"), Jump("friend")]
-
-            showif not(persistent.is_route_unlocked["home"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.6243
-                    yalign 0.665
-                    action 0
-            else:
-                hotspot route_coordinates["home"] action [Hide("storyroute"), Jump("home")]
-
-            showif not(persistent.is_route_unlocked["phonemale"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.7255
-                    yalign 0.339
-                    action 0
-            else:
-                hotspot route_coordinates["phonemale"] action [Hide("storyroute"), Call("phone", male=True)]
-
-            showif not(persistent.is_route_unlocked["phonefemale"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.74
-                    yalign 0.568
-                    action 0
-            else:
-                hotspot route_coordinates["phonefemale"] action [Hide("storyroute"), Call("phone", male=False)]
-
-            showif not(persistent.is_route_unlocked["princegoingout"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.7178
-                    yalign 0.769
-                    action 0
-            else:
-                hotspot route_coordinates["princegoingout"] action [Hide("storyroute"), Jump("princegoingout")]
-
-            showif not(persistent.is_route_unlocked["firstdatemale"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.829
-                    yalign 0.248
-                    action 0
-            else:
-                hotspot route_coordinates["firstdatemale"] action [Hide("storyroute"), Call("firstdate", male=True)]
-
-            showif not(persistent.is_route_unlocked["firstdatefemale"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.8396
-                    yalign 0.508
-                    action 0
-            else:
-                hotspot route_coordinates["firstdatefemale"] action [Hide("storyroute"), Call("firstdate", male=False)]
-
-            showif not(persistent.is_route_unlocked["kyle"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.8552
-                    yalign 0.767
-                    action 0
-            else:
-                hotspot route_coordinates["kyle"] action [Hide("storyroute"), Jump("kyle")]
-
-            showif not(persistent.is_route_unlocked["jason.meetupjason"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.9575
-                    yalign 0.117
-                    action 0
-            else:
-                hotspot route_coordinates["jason.meetupjason"] action [Hide("storyroute"), Jump("jason.meetupjason")]
-
-            showif not(persistent.is_route_unlocked["jsexerciseend"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.9456
-                    yalign 0.303
-                    action 0
-            else:
-                hotspot route_coordinates["jsexerciseend"] action [Hide("storyroute"), Jump("jsexerciseend")]
-
-            showif not(persistent.is_route_unlocked["jillian.restaurantdate"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.9571
-                    yalign 0.425
-                    action 0
-            else:
-                hotspot route_coordinates["jillian.restaurantdate"] action [Hide("storyroute"), Jump("jillian.restaurantdate")]
-
-            showif not(persistent.is_route_unlocked["jillian.artsncraft"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.9817
-                    yalign 0.625
-                    action 0
-            else:
-                hotspot route_coordinates["jillian.artsncraft"] action [Hide("storyroute"), Jump("jillian.artsncraft")]
-
-            showif not(persistent.is_route_unlocked["kylemeet"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.9755
-                    yalign 0.721
-                    action 0
-            else:
-                hotspot route_coordinates["kylemeet"] action [Hide("storyroute"), Jump("kylemeet")]
-
-            showif not(persistent.is_route_unlocked["kylehome.findhobby"]):
-                imagebutton:
-                    idle "images/menu/storyroutes/lockedroute.png"
-                    xalign 0.96
-                    yalign 0.904
-                    action 0
-            else:
-                hotspot route_coordinates["kylehome.findhobby"] action [Hide("storyroute"), Jump("kylehome.findhobby")]
+            for route in route_coordinates:
+                showif not(persistent.is_route_unlocked[route]):
+                    imagebutton:
+                        idle "images/menu/storyroutes/lockedroute.png"
+                        xpos route_coordinates[route][0]
+                        ypos route_coordinates[route][1]
+                        action 0
+                else:
+                    if route in called_routes:
+                         hotspot route_coordinates[route] action [Hide("storyroute"), Hide("flapButtons"), called_routes[route]]
+                    else:
+                        hotspot route_coordinates[route] action [Hide("storyroute"), Hide("flapButtons"), Jump(route)]
 
     imagebutton:
         idle "images/misc/black close.png"

@@ -30,130 +30,120 @@ init python:
         persistent.is_achievement_unlocked[achievement] = True
         renpy.show_screen("achievementoverlay", achievement=achievement)
         renpy.with_statement(Dissolve(1.0))
-        renpy.pause(0.5)
+        renpy.pause(1.0)
         renpy.hide_screen("achievementoverlay")
-        renpy.with_statement(Dissolve(1.0))
-        renpy.pause(0.25)
+        renpy.with_statement(Dissolve(1.5))
+        renpy.pause(1.5)
         renpy.save_persistent()
 
+transform popupzoom:
+    zoom 1.3
+    xalign 0.5
+    yalign 0.9
+
 screen achievementoverlay(achievement):
+    add Solid("#F9B83455")
+
     if achievement == "minimum public health standard":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Minimum Public Health Standard.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "ecq":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Enhanced Community Quarantine.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "mecq":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Modified Enhanced Community Quarantine.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "gcq":
         imagebutton:
             idle "images/menu/achievements/achievement popups/General Community Quarantine.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "flexible learning":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Flexible Learning.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "public transportation":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Public Transportation.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "company shuttle":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Company Shuttle.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "food establishment operation":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Food Establishment Operation.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "grocery shopping":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Grocery Shopping.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "online shopping":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Online Shopping.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "quarantine age restriction":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Quarantine Age Restriction.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "restaurant operation":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Restaurant Operation.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "home work out":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Home Work Out.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "what to do if someone is sick":
         imagebutton:
             idle "images/menu/achievements/achievement popups/What To Do If Someone Is Sick.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "covid symptoms":
         imagebutton:
             idle "images/menu/achievements/achievement popups/COVID-19 Symptoms.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "prevent the spread of covid19":
         imagebutton:
             idle "images/menu/achievements/achievement popups/Prevent the Spread of COVID-19.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
     elif achievement == "how to properly wear a mask":
         imagebutton:
             idle "images/menu/achievements/achievement popups/How to Properly Wear a Mask.png"
-            xalign 0.98
-            yalign 0.02
+            at popupzoom
             action 0
 
 screen achievements:
@@ -333,17 +323,31 @@ screen achievements:
             else:
                 hotspot (0,99,382,86) action SetVariable("current_achievement_page", "how to properly wear a mask pt 1")
 
-    imagebutton:
-        idle "images/menu/achievements/sidebar prev btn.png"
-        action SetVariable("current_achievement_sidebar", If(current_achievement_sidebar>1, current_achievement_sidebar-1, 1))
-        xalign 0.248
-        yalign 0.93
+    showif current_achievement_sidebar == 1:
+        imagebutton:
+            idle "images/menu/achievements/sidebar inactive prev btn.png"
+            action 0
+            xalign 0.248
+            yalign 0.93
+    else:
+        imagebutton:
+            idle "images/menu/achievements/sidebar prev btn.png"
+            action SetVariable("current_achievement_sidebar", If(current_achievement_sidebar>1, current_achievement_sidebar-1, 1))
+            xalign 0.248
+            yalign 0.93
 
-    imagebutton:
-        idle "images/menu/achievements/sidebar next btn.png"
-        action SetVariable("current_achievement_sidebar", If(current_achievement_sidebar<4, current_achievement_sidebar+1, 4))
-        xalign 0.298
-        yalign 0.928
+    showif current_achievement_sidebar == 4:
+        imagebutton:
+                idle "images/menu/achievements/sidebar inactive next btn.png"
+                action 0
+                xalign 0.298
+                yalign 0.928
+    else:
+        imagebutton:
+            idle "images/menu/achievements/sidebar next btn.png"
+            action SetVariable("current_achievement_sidebar", If(current_achievement_sidebar<4, current_achievement_sidebar+1, 4))
+            xalign 0.298
+            yalign 0.928
 
     showif current_achievement_page == 'minimum public health standard pt 1':
         imagemap:

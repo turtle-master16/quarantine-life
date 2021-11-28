@@ -78,7 +78,7 @@ label reply_message(what, skip=False):
     hide screen phone_message3
     hide screen phone_message_image
     $ renpy.pause(0.1)
-    show screen phone_message3(what)
+    show screen phone_message3(what, _transient=True)
     return
 
 label message_img(who, what,img):
@@ -166,6 +166,7 @@ image phone = "images/phone/phone.png"
 screen phone_message(who, what):
     vbox at incoming_message:
         style_group "phone_message"
+        ypos 0.23
         add "images/phone/bubble-tip.png" at phone_message_bubble_tip
 
         frame:
@@ -181,6 +182,7 @@ screen phone_message2(who, what):
         style_group "phone_message"
         xoffset -384
         xalign 1.0
+        ypos 0.23
         # this one adds the triangular tip for the bubble, if you change colors you change this images too
         add "images/phone/bubble-tip2.png" at phone_message_bubble_tip2
 
@@ -199,6 +201,7 @@ screen phone_message3(what):
         style_group "phone_message"
         xoffset -384
         xalign 1.0
+        ypos 0.23
         # this one adds the triangular tip for the bubble, if you change colors you change this images too
         add "images/phone/bubble-tip2.png" at phone_message_bubble_tip2
 
