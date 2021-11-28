@@ -437,9 +437,11 @@ label quarantine:
 
     $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskactivity.png")
+    $ renpy.show_screen("notify", img="images/misc/taskpopups/findActivity.png")
 
     ins "Click the arrow to switch rooms and tap an object to interact with them."
+
+    $ currentScreen = "findActivity"
 
     jump findActivity
 
@@ -2834,14 +2836,15 @@ label findActivity:
 
     $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
     $ currentRoom = ROOMS['livingroom']
+    hide screen spk
     jump newnormal
 
 label supermarket:
-    $ showFlapButtons()
-
     call screen supermarket
     jump supermarket
     label .shop_win_conditions:
+        hide screen basketMenu
+        hide screen spk
         if not(hasAcquiredNeedItems()):
             pl "I still have some missing items from the list."
             jump supermarket

@@ -18,49 +18,67 @@ init python:
         return [int(rect[0] + rect[2] * 0.5), int(rect[1] + rect[3] * 0.5)]
 
 screen spk:
-    if currentRoom == ROOMS["livingroom"]:
-        for item in lvroom_itemsC:
-            if lvroom_itemsC[item].is_grouped:
-                for cent in lvroom_itemsC[item].sparklepos:
-                    add "spark":
-                        pos cent
-            else:
-                add "spark":
-                    pos lvroom_itemsC[item].sparklepos
-            if not(onhand["faceshield"]):
-                add "spark":
-                    pos lvroom_itemsC["tv"].sparklepos
-                add "spark":
-                    pos (1007, 420) # Hard coded sparkle
-            if not(onhand["bedkey"]):
-                for item2 in lvroom_left:
-                    add "spark":
-                        pos (141, 579)
-    elif currentRoom == ROOMS["kitchen"]:
-        for item in kitchen_items:
-            if kitchen_items[item].is_grouped:
-                for sparklepos in kitchen_items[item].sparklepos:
-                    add "spark":
-                        pos sparklepos
-            else:
-                if not(item == "sanitizer") or not(onhand["sanitizer"]):
-                    add "spark":
-                        pos kitchen_items[item].sparklepos
-                if not(onhand['sanitizer']):
-                    add "spark":
-                        pos getRectCenter((1200,232,25,69)) # HArd cOdEd Spark go BrrRrr
+    if currentScreen == "supermarket":
+        for item in mart_items:
+            add "spark":
+                pos getRectCenter(mart_items[item])
 
-    elif currentRoom == ROOMS["bedroom"]:
-        for item in bdroom_items:
-            if bdroom_items[item].is_grouped:
-                for sparklepos in bdroom_items[item].sparklepos:
+    elif currentScreen == "findActivity":
+        if currentRoom == ROOMS["livingroom"]:
+            add "spark":
+                pos getRectCenter((986, 296, 118, 234))
+        elif currentRoom == ROOMS["bedroom"]:
+            add "spark":
+                pos getRectCenter((195, 338, 80, 52))
+            add "spark":
+                pos getRectCenter((918, 374, 158, 121))
+            add "spark":
+                pos getRectCenter((64, 424, 632, 157))
+
+    elif currentScreen == "workprep":
+        if currentRoom == ROOMS["livingroom"]:
+            for item in lvroom_itemsC:
+                if lvroom_itemsC[item].is_grouped:
+                    for cent in lvroom_itemsC[item].sparklepos:
+                        add "spark":
+                            pos cent
+                else:
                     add "spark":
-                        pos sparklepos
-            else:
-                add "spark":
-                    pos bdroom_items[item].sparklepos
-        add "spark":
-            pos getRectCenter((174,188,157,150)) # HArd cOdEd Spark go BrrRrr requiem
+                        pos lvroom_itemsC[item].sparklepos
+                if not(onhand["faceshield"]):
+                    add "spark":
+                        pos lvroom_itemsC["tv"].sparklepos
+                    add "spark":
+                        pos (1007, 420) # Hard coded sparkle
+                if not(onhand["bedkey"]):
+                    for item2 in lvroom_left:
+                        add "spark":
+                            pos (141, 579)
+        elif currentRoom == ROOMS["kitchen"]:
+            for item in kitchen_items:
+                if kitchen_items[item].is_grouped:
+                    for sparklepos in kitchen_items[item].sparklepos:
+                        add "spark":
+                            pos sparklepos
+                else:
+                    if not(item == "sanitizer") or not(onhand["sanitizer"]):
+                        add "spark":
+                            pos kitchen_items[item].sparklepos
+                    if not(onhand['sanitizer']):
+                        add "spark":
+                            pos getRectCenter((1200,232,25,69)) # HArd cOdEd Spark go BrrRrr
+
+        elif currentRoom == ROOMS["bedroom"]:
+            for item in bdroom_items:
+                if bdroom_items[item].is_grouped:
+                    for sparklepos in bdroom_items[item].sparklepos:
+                        add "spark":
+                            pos sparklepos
+                else:
+                    add "spark":
+                        pos bdroom_items[item].sparklepos
+            add "spark":
+                pos getRectCenter((174,188,157,150)) # HArd cOdEd Spark go BrrRrr requiem
 
 
 # WORKPREP -------------------------------------------------------
@@ -151,4 +169,7 @@ define mart_items = {
     "facemask":    (808,416,462,242),
     "hygiene":     (494, 476, 179, 240),
     "hygiene2":    (355, 516, 139, 203),
+    "bread":       (897, 291, 174, 67),
+    "spray":       (241, 300, 62, 61),
+    "oatmeal":     (225, 399, 147, 59),
 }

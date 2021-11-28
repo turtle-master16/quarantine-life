@@ -10,6 +10,9 @@ screen broomfind():
         ground "images/clickables/broom.png"
         hotspot (34,313,62,405) action Return(0)
 
+        add "spark":
+            pos getRectCenter((34,313,62,405))
+
 # Activity Pick ------------------
 screen findActivity():
     $ renpy.choice_for_skipping()
@@ -43,3 +46,12 @@ screen findActivity():
             yalign 0.5
             action [SetVariable("currentRoom" ,ROOMS['livingroom']),
                     Show("patientOverlay", date="April 2020, Week 1|09:00 AM, ECQ", status="happy")]
+                    
+    imagebutton:
+        idle "spark_toggle"
+        at transform:
+            xalign 0.9
+            yalign 0.03
+            zoom 0.5
+
+        action ToggleScreen("spk")

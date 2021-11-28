@@ -2,10 +2,15 @@
     Stuff in this file are stuff shared by all the Point N' Click Screens
 """
 
-# Conditional Variables
+# Conditional Variables (idunno wth are deez lol)
 default itemselected = ""
 default itemchoices = {"Reset":0, "A": 1, "B": 2, "C":3, "D":4, "E":5, "F":6}
 #--------------------
+
+image spark_toggle = ConditionSwitch(
+    "renpy.get_screen('spk')", "images/misc/spk_on.png",
+    "True", "images/misc/spk_off.png"
+)
 
 # For room switching
 define ROOMS = {
@@ -87,7 +92,7 @@ label initMinigame(name):
     $ taskpopout = "images/misc/taskpopups/{}.png".format(name)
     show screen notify(img=taskpopout) # Pop out Notif
 
-    $ renpy.choice_for_skipping()
+    $ renpy.choice_for_skipping() # Stop fast-skipping
 
     $ renpy.jump(name) # Start minigame
 
@@ -101,10 +106,6 @@ label resetItems():
         currentRoom = ROOMS["livingroom"]
         for item in onhand:
             onhand[item] = False
-        for item in lvroom_itemsC:
-            lvroom_itemsC[item].interacted = False
-        for item in lvroom_right:
-            lvroom_right[item].interacted = False
 
         # For supermarket
         currentItemCost = 0

@@ -99,7 +99,6 @@ screen workprep():
             imagemap:
                 at right_corner
                 ground "images/clickables/bedright.png"
-                # hotspot (478,372,155,106) action Call("objDialogue", object_dialogue["dumbell"])
                 hotspot (119,287,246,119) action [SetDict(onhand, "facemask", True),
                                                   SetDict(roomstatus, "drawerclosed", True),
                                                   Call("objDialogue", object_dialogue["facemask"])]
@@ -108,13 +107,9 @@ screen workprep():
             imagemap:
                 at left_corner
                 ground "images/clickables/bedleft.png"
-                # hotspot (56,56,68,122)    action Call("objDialogue", object_dialogue["pictureBdrm"])
-                # hotspot (201,47,173,115)  action Call("objDialogue", object_dialogue["books"])
                 hotspot (182,222,140,116) action [SetDict(onhand, "wallet", True),
                                                   SetDict(roomstatus, "boxclosed", True),
                                                   Call("objDialogue", object_dialogue["studyTable2"])]
-                # hotspot (203,358,63,29)   action Call("objDialogue", object_dialogue["phone"])
-                # hotspot (105,419,332,131) action Call("objDialogue", object_dialogue["bed"])
 
         imagebutton:
             idle im.Flip("images/misc/arrow.png", horizontal=True)
@@ -147,19 +142,16 @@ screen workprep():
             yalign 0.6
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
                     Show("patientOverlay", date="June 2020, Week 2|11:00 AM|GCQ", status="happy")]
-    python:
-        if renpy.get_screen("spk"):
-            spk_tog = "on"
-        else:
-            spk_tog = "off"
+
     imagebutton:
-        idle "images/misc/spk_{}.png".format(spk_tog)
+        idle "spark_toggle"
         at transform:
             xalign 0.9
             yalign 0.03
             zoom 0.5
 
         action ToggleScreen("spk")
+
 
 screen workitem_list():
     modal True
