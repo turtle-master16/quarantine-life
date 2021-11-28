@@ -11,7 +11,7 @@ init python:
 
     screen_set = {
         "supermarket": [
-            "price_list",
+            "basketMenu",
             ("flyingImage", "images/misc/grocerylist.png"),
         ],
         "workprep":[
@@ -21,6 +21,7 @@ init python:
 
     def showFlapButtons():
         if currentScreen == "supermarket":
+            return
             img_dict = {"img":"images/misc/grocerylist.png"}
             renpy.show_screen("flapButton", screens_to_show=screen_set["supermarket"],
                                             img_to_use=img_set["supermarket"],
@@ -117,7 +118,6 @@ screen flyingImage(img_to_use):
         idle img_to_use
         at t_flyingimage
         action [Hide("flyingImage"), Function(showFlapButtons)]
-
 
 transform t_flapInstructions:
     xalign 0.96

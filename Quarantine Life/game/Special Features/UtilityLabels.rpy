@@ -17,5 +17,11 @@ label timeskip(img="black", mes=None):
         $ renpy.scene('background')
         $ renpy.show(img, layer='background')
         $ renpy.with_statement(wiperightlong)
-    show screen quickToggle
+    show screen ui_start
     return
+
+screen rback:
+    textbutton "Back":
+        xalign 0.5
+        yalign 0.9
+        action Rollback()

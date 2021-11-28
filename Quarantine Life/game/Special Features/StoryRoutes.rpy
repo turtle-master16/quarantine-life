@@ -25,6 +25,7 @@ init:
 
 screen storyroute:
     zorder 50
+    $ renpy.hide_screen("spk") # Hide sparks when route screen is opened
 
     $ route_coordinates = {
         "start.mainstart": (283, 318, 304, 37),

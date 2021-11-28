@@ -104,7 +104,8 @@ screen say(who, what):
     style_prefix "say"
 
     window:
-        # at t_say
+        at transform:
+            alpha 0.9
         id "window"
 
         if who is not None:
@@ -119,6 +120,8 @@ screen say(who, what):
                 xmaximum 1050
         else:
             text what id "what"
+
+    use quick_menu
 
 
 ## Make the namebox available for styling through the Character object.
@@ -274,8 +277,8 @@ screen quick_menu():
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
 ## the player has not explicitly hidden the interface.
-init python:
-    config.overlay_screens.append("quick_menu")
+# init python:
+    # config.overlay_screens.append("quick_menu")
 
 default quick_menu = True
 
@@ -1428,7 +1431,7 @@ style pref_vbox:
 ## that uses fewer and bigger buttons that are easier to touch.
 
 transform blinker:
-    zoom 1.2
+    zoom 1.1
     alpha 1.0
     linear 0.5 alpha 0.0
     repeat
@@ -1438,46 +1441,46 @@ screen quick_menu():
 
     zorder 100
 
-    if quick_menu:
+    # if quick_menu:
 
-        hbox:
-            style_prefix "quick"
+    hbox:
+        style_prefix "quick"
 
-            xalign 0.95
-            yalign 0.98
+        xalign 0.85
+        yalign 0.761
 
-            # textbutton _("Back") text_size 20 action Rollback()
-            # textbutton _("Skip") text_size 20 action Skip() alternate Skip(fast=True, confirm=True)
-            # textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")
-            # textbutton _("Menu") text_size 20 action ShowMenu()
+        # textbutton _("Back") text_size 20 action Rollback()
+        # textbutton _("Skip") text_size 20 action Skip() alternate Skip(fast=True, confirm=True)
+        # textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")
+        # textbutton _("Menu") text_size 20 action ShowMenu()
 
+        imagebutton:
+            idle "gui/quick/back.png"
+            at transform:
+                zoom 1.1
+            action Rollback()
+        null width 50
+        if not(preferences.afm_enable):
             imagebutton:
-                idle "gui/quick/back.png"
+                idle "gui/quick/auto.png"
                 at transform:
-                    zoom 1.2
-                action Rollback()
-            null width 45
-            if not(preferences.afm_enable):
-                imagebutton:
-                    idle "gui/quick/auto.png"
-                    at transform:
-                        zoom 1.2
-                    action Preference("auto-forward", "enable")
-            elif preferences.afm_enable:
-                $ print preferences.afm_enable
-                imagebutton:
-                    idle "gui/quick/auto.png"
-                    at blinker
-                    action Preference("auto-forward", "disable")
-            null width 45
+                    zoom 1.1
+                action Preference("auto-forward", "enable")
+        elif preferences.afm_enable:
+            $ print preferences.afm_enable
             imagebutton:
-                idle "gui/quick/skip.png"
-                at transform:
-                    zoom 1.2
-                action Skip() alternate Skip(fast=True, confirm=True)
+                idle "gui/quick/auto.png"
+                at blinker
+                action Preference("auto-forward", "disable")
+        null width 50
+        imagebutton:
+            idle "gui/quick/skip.png"
+            at transform:
+                zoom 1.1
+            action Skip() alternate Skip(fast=True, confirm=True)
 
-            # textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")
-            # textbutton _("Menu") text_size 20 action ShowMenu()
+        # textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")
+        # textbutton _("Menu") text_size 20 action ShowMenu()
 
 
 style window:

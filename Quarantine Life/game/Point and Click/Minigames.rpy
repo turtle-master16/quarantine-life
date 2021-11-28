@@ -9,12 +9,13 @@ init python:
             return self.onhand * self.price
         def takeItem(self, qnty):
             self.onhand += qnty
-            self.updateOverallCost()
-        def updateOverallCost(self):
-            cost = 0
-            for item in shopItems:
-                cost += shopItems[item].totalAmount()
+            updateOverallCost()
+    def updateOverallCost():
+        cost = 0
+        for item in shopItems:
+            cost += shopItems[item].totalAmount()
             globals()['currentItemCost'] = cost
+        print currentItemCost
 
     def createDelay(start, stp):
         return renpy.random.randint(start, stp)

@@ -2,10 +2,15 @@
     Stuff in this file are stuff shared by all the Point N' Click Screens
 """
 
-# Conditional Variables
+# Conditional Variables (idunno wth are deez lol)
 default itemselected = ""
 default itemchoices = {"Reset":0, "A": 1, "B": 2, "C":3, "D":4, "E":5, "F":6}
 #--------------------
+
+image spark_toggle = ConditionSwitch(
+    "renpy.get_screen('spk')", "images/misc/spk_on.png",
+    "True", "images/misc/spk_off.png"
+)
 
 # For room switching
 define ROOMS = {
@@ -23,17 +28,17 @@ label hideStuff():
     python:
         location = {
             ROOMS['livingroom']: ["faceshield", "bedkey"],
-            ROOMS['bedroom']: ["wallet", "facemask"],
-            ROOMS['kitchen']: ["sanitizer"],
+            ROOMS['bedroom']:    ["wallet", "facemask"],
+            ROOMS['kitchen']:    ["sanitizer"],
         }
         left_side = {
-            "facemask":"bedleft",
-            "bedkey":"livingleft"
+            "facemask": "bedleft",
+            "bedkey":   "livingleft"
         }
         right_side = {
-            "faceshield":"livingright",
-            "wallet":"bedright",
-            "sanitizer":"kitchenright"
+            "faceshield": "livingright",
+            "wallet":     "bedright",
+            "sanitizer":  "kitchenright"
         }
         for item in location[currentRoom]:
             if item == "facemask":
@@ -57,11 +62,11 @@ label hideStuff():
 label objDialogue(dia, from_inputbox=False):
     # Keeps the items visible/not visible while in this label
     if currentRoom == ROOMS['livingroom']:
-        scene bg livingroom back
+        scene livingroom_workprep
     elif currentRoom == ROOMS['bedroom']:
-        scene bg bedroom back
+        scene bedroom_workprep
     elif currentRoom == ROOMS['kitchen']:
-        scene bg kitchen
+        scene kitchen_workprep
 
     call hideStuff()
 
@@ -87,7 +92,10 @@ label initMinigame(name):
     $ taskpopout = "images/misc/taskpopups/{}.png".format(name)
     show screen notify(img=taskpopout) # Pop out Notif
 
+    $ renpy.choice_for_skipping() # Stop fast-skipping
+
     $ renpy.jump(name) # Start minigame
+
     return
 
 # Reset the state of minigames in order to prevent the Minigames from
@@ -98,13 +106,13 @@ label resetItems():
         currentRoom = ROOMS["livingroom"]
         for item in onhand:
             onhand[item] = False
-        for item in lvroom_itemsC:
-            lvroom_itemsC[item].interacted = False
-        for item in lvroom_right:
-            lvroom_right[item].interacted = False
 
         # For supermarket
         currentItemCost = 0
         for item in shopItems:
             shopItems[item].onhand = 0
+
+        # For quiz game
+        correctans = 0
+        currentQuestion = 1
     return

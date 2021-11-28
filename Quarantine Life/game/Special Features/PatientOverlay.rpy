@@ -17,21 +17,22 @@ screen patientOverlay(date=None, status=None):
         xpos 0.0
         ypos 0.02
         yoffset -10
-        xoffset 40
+        xoffset 5
+        alpha 0.8
 
     use p_date(date=date)
     use p_status(status=status)
 
 
 screen p_date(date=None):
-    if not(date == None):
+    if not(date is None):
         $ p_date = date
 
     $ newDate = p_date.split("|")
 
     vbox:
-        xpos 0.08
-        ypos 0.02
+        xpos 0.113
+        ypos 0.03
         at transform:
             on show:
                 linear 0.2 zoom 1.1
@@ -39,12 +40,17 @@ screen p_date(date=None):
             on replace:
                 linear 0.2 zoom 1.1
                 linear 0.2 zoom 1.0
-        text newDate[0]:
-            size 23
-            color "#fff"
-        text newDate[1]:
-            size 23
-            color "#fff"
+        for index, partition in enumerate(newDate):
+            if index < 2:
+                text "{b}[partition]{/b}":
+                    size 23
+                    color "#000"
+            elif index == 2:
+                text "{b}[partition]{/b}":
+                    size 23
+                    color "#fff"
+
+            null height 5
 
 screen p_status(status):
     if not(status == None):
@@ -53,19 +59,21 @@ screen p_status(status):
         $ p_status = "happy"
     add STATUSES[p_status]:
         at transform:
-            xanchor 0.0
-            yanchor 0.0
-            xpos 0.0
-            ypos 0.0
-            zoom 0.6
+            xanchor 0.5
+            yanchor 0.5
+            xpos 0.055
+            ypos 0.1
+            xoffset 3
+            zoom 0.85
+            alpha 0.7
             on show:
                 alpha 0.0
-                linear 0.3 alpha 1.0
+                linear 0.3 alpha 0.7
             on replaced:
-                zoom 0.6
-                linear 0.2 zoom 0.7
+                zoom 0.8
+                linear 0.2 zoom 0.85
                 alpha 0.0
             on replace:
                 pause 0.2
-                zoom 0.7
-                linear 0.2 zoom 0.6
+                zoom 0.8
+                linear 0.2 zoom 0.85

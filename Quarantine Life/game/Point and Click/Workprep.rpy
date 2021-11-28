@@ -35,7 +35,7 @@ screen workprep():
     layer "background"
     if currentRoom == ROOMS["livingroom"]:
         imagemap:
-            ground "images/bg/bg livingroom back.png"
+            ground "images/clickables/livingroom_workprep.png"
             for item in lvroom_itemsC:
                 if lvroom_itemsC[item].is_grouped:
                     for hspot in lvroom_itemsC[item].hspot:
@@ -43,12 +43,10 @@ screen workprep():
                 else:
                     hotspot lvroom_itemsC[item].hspot action Function(lvroom_itemsC[item].sayDialogue)
 
-
         if not(onhand['faceshield']):
             imagemap:
                 at right_corner
                 ground "images/clickables/livingright.png"
-                hotspot lvroom_right["tv"].hspot           action [SetField(lvroom_itemsC["tv"], "interacted", True), Function(lvroom_right["tv"].sayDialogue)]
                 hotspot lvroom_right["faceshield"].hspot   action [SetDict(onhand, "faceshield", True), Function(lvroom_right["faceshield"].sayDialogue)]
 
         if not(onhand['bedkey']):
@@ -60,28 +58,32 @@ screen workprep():
 
         imagebutton:
             idle "images/misc/arrow.png"
-            yalign 0.5
+            yalign 0.75
             action [SetVariable("currentRoom", ROOMS["bedroom"]),
-                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM, GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM|GCQ", status="happy")]
         imagebutton:
             idle im.Flip("images/misc/arrow.png", horizontal=True)
             xalign 1.0
-            yalign 0.5
+            yalign 0.75
             action [SetVariable("currentRoom", ROOMS["kitchen"]),
-                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM, GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM|GCQ", status="happy")]
 
     elif currentRoom == ROOMS['bedroom']:
         imagemap:
-            ground "images/bg/bg bedroom back.png"
+            ground "images/clickables/bedroom_workprep.png"
             for item in bdroom_items:
-                hotspot bdroom_items[item].hspot action Function(bdroom_items[item].sayDialogue)
+                if bdroom_items[item].is_grouped:
+                    for hspot in bdroom_items[item].hspot:
+                        hotspot hspot action Function(bdroom_items[item].sayDialogue)
+                else:
+                    hotspot bdroom_items[item].hspot action Function(bdroom_items[item].sayDialogue)
 
             if roomstatus['boxclosed']:
                 if onhand['wallet']:
-                    hotspot (182, 228, 103, 113) action Call("objDialogue", object_dialogue["studyTable3"])
+                    hotspot (174,188,157,150) action Call("objDialogue", object_dialogue["studyTable3"])
 
                 elif not(onhand['wallet']):
-                    hotspot (182, 228, 103, 113) action Call("objDialogue", object_dialogue["studyTable"], from_inputbox=True)
+                    hotspot (174,188,157,150) action Call("objDialogue", object_dialogue["studyTable"], from_inputbox=True)
 
             if roomstatus['drawerclosed']:
                 if onhand['bedkey']:
@@ -97,8 +99,6 @@ screen workprep():
             imagemap:
                 at right_corner
                 ground "images/clickables/bedright.png"
-                hotspot (478,372,155,106) action Call("objDialogue", object_dialogue["dumbell"])
-                hotspot (646,0,77,344)    action Call("objDialogue", object_dialogue["window"])
                 hotspot (119,287,246,119) action [SetDict(onhand, "facemask", True),
                                                   SetDict(roomstatus, "drawerclosed", True),
                                                   Call("objDialogue", object_dialogue["facemask"])]
@@ -107,24 +107,20 @@ screen workprep():
             imagemap:
                 at left_corner
                 ground "images/clickables/bedleft.png"
-                hotspot (56,56,68,122)    action Call("objDialogue", object_dialogue["pictureBdrm"])
-                hotspot (201,47,173,115)  action Call("objDialogue", object_dialogue["books"])
                 hotspot (182,222,140,116) action [SetDict(onhand, "wallet", True),
                                                   SetDict(roomstatus, "boxclosed", True),
                                                   Call("objDialogue", object_dialogue["studyTable2"])]
-                hotspot (203,358,63,29)   action Call("objDialogue", object_dialogue["phone"])
-                hotspot (105,419,332,131) action Call("objDialogue", object_dialogue["bed"])
 
         imagebutton:
             idle im.Flip("images/misc/arrow.png", horizontal=True)
             xalign 1.0
-            yalign 0.5
+            yalign 0.75
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
-                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM, GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM|GCQ", status="happy")]
 
     elif currentRoom == ROOMS['kitchen']:
         imagemap:
-            ground "images/bg/bg kitchen.png"
+            ground "images/clickables/kitchen_workprep.png"
             for item in kitchen_items:
                 if kitchen_items[item].is_grouped:
                     for hspot in kitchen_items[item].hspot:
@@ -137,19 +133,25 @@ screen workprep():
             imagemap:
                 at right_corner
                 ground "images/clickables/kitchenright.png"
-                hotspot (11, 181, 34, 63) action [SetDict(onhand, "sanitizer", True),
+                hotspot (30,232,22,70) action [SetDict(onhand, "sanitizer", True),
                                                   Call("objDialogue", object_dialogue["sanitizer"])]
 
         imagebutton:
             idle "images/misc/arrow.png"
-            yalign 0.5
+            xalign 0.2
+            yalign 0.6
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
-                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM, GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 AM|GCQ", status="happy")]
 
-    textbutton "Click me":
-        xalign 0.9
-        yalign 0.2
+    imagebutton:
+        idle "spark_toggle"
+        at transform:
+            xalign 0.9
+            yalign 0.03
+            zoom 0.5
+
         action ToggleScreen("spk")
+
 
 screen workitem_list():
     modal True
