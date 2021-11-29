@@ -79,9 +79,9 @@ screen storyroute:
                         action 0
                 else:
                     if route in called_routes:
-                         hotspot route_coordinates[route] action [Hide("storyroute"), Hide("flapButtons"), called_routes[route]]
+                         hotspot route_coordinates[route] action [Hide("storyroute"), Function(hideGameScreens), called_routes[route]]
                     else:
-                        hotspot route_coordinates[route] action [Hide("storyroute"), Hide("flapButtons"), Jump(route)]
+                        hotspot route_coordinates[route] action [Hide("storyroute"), Function(hideGameScreens), Jump(route)]
 
     imagebutton:
         idle "images/misc/black close.png"

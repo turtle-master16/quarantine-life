@@ -1,7 +1,26 @@
 # Supermart ------------------
 init python:
+    class MartItem():
+        def __init__(self, name, price, onhand, alt_name):
+            self.name = name
+            self.price = price
+            self.onhand = onhand
+            self.alt_name = alt_name
+        def totalAmount(self):
+            return self.onhand * self.price
+        def takeItem(self, qnty):
+            self.onhand += qnty
+            updateOverallCost()
+
+    def updateOverallCost():
+        cost = 0
+        for item in shopItems:
+            cost += shopItems[item].totalAmount()
+            globals()['currentItemCost'] = cost
+
     def getCost():
         return currentItemCost
+
     def hasAcquiredNeedItems():
         enufHygiene =     shopItems['hygiene'].onhand >= 2
         enufToiletPaper = shopItems['toiletroll'].onhand >= 3
@@ -15,6 +34,8 @@ init python:
             trtd_str = str.replace("{}".format(str[-1]), "")
             return trtd_str
         return str
+
+
 
 default currentItemCost = 0
 
@@ -39,7 +60,7 @@ screen supermarket():
         ground "images/bg/bg supermarket.png"
         for item in mart_items:
             $ item_dialogue = truncateNumber(item)
-            hotspot mart_items[item] action Show("shopItemTakeMenu", shopItem=item_dialogue)
+            hotspot mart_items[item] action ShowTransient("shopItemTakeMenu", shopItem=item_dialogue)
 
     use supermarket_ui
 
@@ -47,7 +68,7 @@ screen supermarket():
         idle "spark_toggle"
         at transform:
             xalign 0.9
-            yalign 0.03
+            yalign 0.04
             zoom 0.5
 
         action ToggleScreen("spk")
@@ -61,7 +82,7 @@ screen shopItemTakeMenu(shopItem="redcan"):
     add "images/supermarket/price_overlay.png":
         xalign 0.5
         yalign 0.5
-    text "{}s in the basket:{}".format(shopItems[shopItem].alt_name ,shopItems[shopItem].onhand):
+    text "{}s in the basket: {}".format(shopItems[shopItem].alt_name ,shopItems[shopItem].onhand):
         xalign 0.6
         yalign 0.35
     hbox:
@@ -70,7 +91,7 @@ screen shopItemTakeMenu(shopItem="redcan"):
         imagebutton:
             idle "images/supermarket/sub_item_btn.png"
             sensitive If(itemIncrementer > 1)
-            action [SensitiveIf(itemIncrementer > 0) ,SetVariable("itemIncrementer", itemIncrementer-1)]
+            action [SensitiveIf(itemIncrementer > 1) ,SetVariable("itemIncrementer", itemIncrementer-1)]
 
         null width 35
 
@@ -81,7 +102,8 @@ screen shopItemTakeMenu(shopItem="redcan"):
             text "{}".format(itemIncrementer):
                 xalign 0.5
                 yalign 0.5
-
+                color "#000"
+                size 40
         null width 35
 
         imagebutton:
@@ -189,9 +211,9 @@ screen supermarket_ui:
         idle "images/supermarket/basket_btn.png"
         xalign 0.98
         yalign 0.95
-        action Show("basketMenu")
+        action ShowTransient("basketMenu")
     imagebutton:
         idle "images/supermarket/groceryList_icon.png"
         xalign 0.83
         yalign 0.95
-        action Show("fly_in_image", img="images/supermarket/grocery_list.png")
+        action ShowTransient("fly_in_image", img="images/supermarket/grocery_list.png")

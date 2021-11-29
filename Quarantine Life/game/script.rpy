@@ -11,6 +11,7 @@
 #     "Narration":"#1e81b0",
 #     "Instruction":"#0f0",
 # }
+
 define charcolor = {
     "Prince": "#000",
     "Carla": "#000",
@@ -53,8 +54,16 @@ style image_button:
 style hotspot:
     activate_sound "audio/click.mp3"
 
+default isSaveOnStart = True
+
 # The game starts here.
 label start(retmode=False):
+    python:
+        if renpy.newest_slot() and isSaveOnStart:
+            isSaveOnStart = False
+            renpy.retain_after_load()
+            renpy.load(renpy.newest_slot())
+
     # Resets the camera and layers positions
     $ camera_reset()
     $ layer_move("background", 1840)
@@ -91,7 +100,7 @@ label start(retmode=False):
     label .mainstart:
         $ persistent.is_route_unlocked["start.mainstart"] = True
 
-        show screen rback
+        # show screen rback
 
         scene black
         stop music
@@ -164,20 +173,23 @@ label start(retmode=False):
 
         ins "Click to interact with objects around the room."
 
-        $ renpy.show_screen("notify", img="images/misc/taskpopups/taskbroom.png")
-
         call timeskip("lvroom_frm7")
 
         show screen patientOverlay(date="January 2020, Week 4|08:00 AM|---", status='happy')
 
-        call screen broomfind
+        call initMinigame("broomfind")
 
-        $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
+        label broomfind:
+            call screen broomfind
+            if not(_return == "broom"):
+                jump broomfind
 
-        pl "Here it is. Now let’s start cleaning!"
-        #--SFX (Sweeping)
+            $ minigame_end()
 
-        jump news
+            pl "Here it is. Now let’s start cleaning!"
+            #--SFX (Sweeping)
+
+            jump news
 
 label news:
     call timeskip("tvon")
@@ -426,7 +438,7 @@ label quarantine:
     pr "Ugh! I hate this."
 
     show prince sad1 onlayer middle:
-        subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 rotate None
+        xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0
         parallel:
             xpos 0.5
             linear 0.7 xpos -0.15
@@ -437,13 +449,7 @@ label quarantine:
 
     $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/findActivity.png")
-
-    ins "Click the arrow to switch rooms and tap an object to interact with them."
-
-    $ currentScreen = "findActivity"
-
-    jump findActivity
+    call initMinigame("findActivity")
 
 label newnormal:
     $ persistent.is_route_unlocked["newnormal"] = True
@@ -581,14 +587,14 @@ label newnormal:
 
         call timeskip("bedroom_evening")
         $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-        show screen patientOverlay(date="June 2020, Week 2|11:00 AM|GCQ", status="happy")
+        show screen patientOverlay(date="June 2020, Week 2|11:00 PM|GCQ", status="happy")
 
         plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
 
         pl "I have a list of items I should find, I’m sure they’re around here somewhere."
 
         call timeskip("livingroom_workprep")
-        show screen patientOverlay(date="June 2020, Week 2|11:00 AM|GCQ", status="happy")
+        show screen patientOverlay(date="June 2020, Week 2|11:00 PM|GCQ", status="happy")
 
         call initMinigame("workprep")
 
@@ -606,7 +612,7 @@ label commuting:
 
     $ showAchievementOverlay("public transportation")
 
-    "Worker 1" "These past few months have been rough."
+    "{color=#000}Worker 1{/color}" "These past few months have been rough."
 
     plt "(They’re so loud they need to keep their voices down. Should I listen or just ignore them?)"
 
@@ -614,7 +620,7 @@ label commuting:
         "Eavesdrop":
             $ renpy.pause(0.3)
 
-            "Worker 2" """
+            "{color=#000}Worker 2{/color}" """
             Yeah, I’m still getting used to wearing a facemask. I can’t exactly breathe properly with this covering the bottom half of my face.
 
             Better safe than sorry since {b}facemasks suppress the transmission of the virus{/b}.
@@ -622,13 +628,13 @@ label commuting:
             The use of mask alone is not sufficient but it does help prevent respiratory droplets from reaching others.
             """
 
-            "Worker 1" "That’s true."
+            "{color=#000}Worker 1{/color}" "That’s true."
 
             plt "(Right. It’s best to {b}avoid crowded places too{/b}.)"
 
-            "Worker 1" "How can we protect ourselves from COVID?"
+            "{color=#000}Worker 1{/color}" "How can we protect ourselves from COVID?"
 
-            "Worker 2" "Other the {b}social distancing{/b}, you should also {b}practice proper cough etiquette and proper hand washing using soap and water{/b}."
+            "{color=#000}Worker 2{/color}" "Other the {b}social distancing{/b}, you should also {b}practice proper cough etiquette and proper hand washing using soap and water{/b}."
 
             $ showAchievementOverlay("prevent the spread of covid19")
 
@@ -1211,7 +1217,8 @@ label restaurant:
 
     m "I’m glad the quarantine rules have eased and now we’re allowed to eat at restaurants."
 
-    show mark agree onlayer middle
+    show mark agree onlayer middle:
+        xpos 0.72 zoom 0.99
 
     m "Sure, there are take-outs and food delivery services, but nothing beats eating outside of your own home."
 
@@ -1241,23 +1248,24 @@ label restaurant:
     i "Alright! Time to dig in."
 
     show ian sigh onlayer middle:
-        subpixel True xpos 0.27 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0 rotate None
+        subpixel True xpos 0.26 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0 rotate None
 
     play sound "audio/eating.mp3"
 
     i "You know, ever since this whole pandemic thing started. I’ve been feeling rather lonely these days."
 
     show mark ask onlayer middle:
-        subpixel True xpos 0.67 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom 1.0 yzoom 1.0 rotate None
+        xpos 0.72 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom 1.0 yzoom 1.0 rotate None
 
     m "Huh? Don’t you have a girlfriend to keep you company?"
 
-    show ian whoa onlayer middle
+    show ian whoa onlayer middle:
+        xoffset 40 zoom 0.97
 
     i "Well, yeah. But we haven't been able to see each other since the pandemic started. Normally, we'd see each other. "
 
     show ian discuss onlayer middle:
-        zoom 1
+        xoffset 20 yoffset 13 zoom 1.06
 
     i """
     Now, I can't visit because of the fear that I might get her sick or something, especially if we go out on dates.
@@ -1267,23 +1275,27 @@ label restaurant:
     Sure, we call and text each other; we even go on virtual dates, but nothing could compare to actually having her by my side, physically.
     """
 
-    show mark disgust onlayer middle
+    show mark disgust onlayer middle:
+        xpos 0.68
 
     m "Oh Barf. Since when were you this sappy? I never took you for a romantic."
 
-    show ian sigh onlayer middle
+    show ian sigh onlayer middle:
+        xoffset -10 zoom 0.99
 
-    i "There are a lot of things you don’t know about me."
+    i "There are a lot of things you don’t know about me pal."
 
     show mark discuss onlayer middle
 
     m "Oh puh-lease. Romance just gets in the way of my work. I prefer to focus on myself and my goals."
 
-    show ian discuss1 onlayer middle
+    show ian discuss1 onlayer middle:
+        xoffset 45
 
     i "I expect nothing more from you. You’re basically married to your work."
 
-    show ian discuss2 onlayer middle
+    show ian discuss2 onlayer middle:
+        xoffset -5
 
     i "What about you [player_name]? What do you think?"
 
@@ -1316,7 +1328,8 @@ label restaurant:
 
             m "Will you stop that? If you talk about romance one more time I’ll walk out the door and make you pay for my dinner."
 
-            show ian whoa onlayer middle
+            show ian whoa onlayer middle:
+                xoffset 40 zoom 0.97
 
             i "Fine, fine. I'll stop."
 
@@ -1398,13 +1411,13 @@ label phone(male=True):
 
         call screen phone_reply("Hi!", "I like your hair", "I should do a pickup line.")
 
-        if itemselected == itemchoices['A']:
+        if _return == 1:
             call reply_message("Hi, it's very nice to meet you.")
 
             call message(js, "It’s very nice to meet you too")
             $ renpy.pause()
 
-        elif itemselected == itemchoices['B']:
+        elif _return == 2:
             call reply_message("Your hair, it looks good. I like it.")
 
             call message(js, "My hair?")
@@ -1415,7 +1428,7 @@ label phone(male=True):
             call message(js, "Oh. Haha. Thank you, I appreciate the compliment.")
             $ renpy.pause()
 
-        elif itemselected == itemchoices['C']:
+        elif _return == 3:
             call reply_message("What's cookin', good looking?")
 
             call message(js, "Oh, very forward, aren't we?")
@@ -1424,8 +1437,6 @@ label phone(male=True):
             call reply_message("I'm just a natural when it comes to charming people.")
 
             $ renpy.pause()
-
-        $ itemselected = ""
 
         call hide_phone_messages
 
@@ -1629,7 +1640,7 @@ label firstdate(male=True):
 
         call screen phone_reply("Compliment her", "Flirt with her", "Greet her politely")
 
-        if itemselected == itemchoices["A"]:
+        if _return == 1:
             call reply_message("Hello.")
 
             call message(jl, "I know this is too straight forward, but can we video chat instead?")
@@ -1638,7 +1649,7 @@ label firstdate(male=True):
             call reply_message("Sure. If that’s what you’re comfortable with.")
             $ renpy.pause()
 
-        elif itemselected == itemchoices["B"]:
+        elif _return == 2:
             call reply_message("Damn girl, you’re looking fine.")
 
             call message(jl, "Uh… Thanks?")
@@ -1651,7 +1662,7 @@ label firstdate(male=True):
 
             jump kyle
 
-        else:
+        elif _return == 3:
             call reply_message("Hello. It’s nice to meet you.")
 
             call message(jl, "It’s nice to meet you too. You’re rather polite, I like that.")
@@ -1712,8 +1723,6 @@ label firstdate(male=True):
 
                 jump kyle
 
-        $ itemselected = ""
-
 # Kyle Route
 label kyle:
     $ persistent.is_route_unlocked["kyle"] = True
@@ -1770,11 +1779,10 @@ label kyle:
     $ renpy.pause(0.6)
 
     call message(ky, "Hey [player_name], remember me?")
-    $ renpy.pause()
 
     call screen phone_reply("Who?", "I remember you.", "Not really.")
 
-    if itemselected == itemchoices["A"]:
+    if _return == 1:
         call reply_message("Remind me, who are you again?")
 
         call message(ky, "Seriously? It's me, your old buddy from high school.")
@@ -1782,10 +1790,10 @@ label kyle:
 
         call reply_message("Oh yeah. Now I remember.")
 
-    elif itemselected == itemchoices["B"]:
+    elif _return == 2:
         call reply_message("Kyle, my old friend. It's been years!")
 
-    elif itemselected == itemchoices["C"]:
+    elif _return == 3:
         call reply_message("Which Kyle?")
 
         call message(ky , "How could you forget your old buddy from high school?!")
@@ -1793,12 +1801,10 @@ label kyle:
 
         call reply_message("You should've been more specific. I know a lot of Kyles.")
 
-    $ itemselected = ""
-
     call message(ky , "It's been so long since we talked. How are things? Are you busy right now?")
     $ renpy.pause()
 
-    pl "Yeah, I'm actually at the office right now."
+    call reply_message("Yeah, I'm actually at the office right now.")
 
     call message(ky , "Oh. Sorry to disturb you, I’ll talk to you later. I don’t want you getting in trouble because of me.")
     $ renpy.pause()
@@ -1859,7 +1865,7 @@ label kylehome:
 
     call screen phone_reply2("Let's hang out.", "It's safer to stay home.")
 
-    if itemselected == itemchoices['A']:
+    if _return == 1:
         $ persistent.is_dialog_unchecked["reconnectingfriend.hangout"] = True
 
         call reply_message("Yeah, being able to catch up with an old friend sounds good.")
@@ -1874,7 +1880,7 @@ label kylehome:
 
         jump kylemeet
 
-    elif itemselected == itemchoices['B']:
+    elif _return == 2:
         $ persistent.is_dialog_unchecked["reconnectingfriend.stayhome"] = True
 
         call reply_message("I would prefer not to go out so much unless it’s necessary.")
@@ -2408,7 +2414,7 @@ label jason:
 
     call screen phone_reply2("I’m not sure about that.", "Sounds good.")
 
-    if itemselected == itemchoices["B"]:
+    if _return == 2:
         $ persistent.is_dialog_unchecked["meetupwithjason.soundsgood"] = True
 
         call reply_message("Sounds like a plan.")
@@ -2416,7 +2422,6 @@ label jason:
         call message(js, "Great. I’ll text you the details later. See you then.")
         $ renpy.pause()
 
-        $ itemselected = ""
 
         call hide_phone_messages
 
@@ -2457,7 +2462,6 @@ label jason:
             call reply_message("Do you {b}wear a medical mask if you’re in the same room as the sick person?{/b}")
 
             call message(js, "Yes. Using {b}separate dishes, cups, eating utensils and bedding{/b} can also reduce contact. I even went overboard when {b}cleaning and disinfecting the surfaces I frequently touched{/b}.")
-            $ renpy.pause()
 
             $ showAchievementOverlay("what to do if someone is sick")
 
@@ -2497,12 +2501,10 @@ label jason:
                     stop music fadeout 0.2
                     jump proceed
 
-    elif itemselected == itemchoices["A"]:
+    elif _return == 1:
         $ persistent.is_dialog_unchecked["meetupwithjason.notsure"] = True
 
         call reply_message("I don’t think it’s a good idea to go out.")
-
-        $ itemselected = ""
 
         call message(js, "It’s fine. I don’t want to make you uncomfortable or anything. But I do want our time together exciting even if it’s just a virtual date.")
         $ renpy.pause()
@@ -2605,22 +2607,19 @@ label jlend:
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="August 2020, Week 3|12:00 PM|GCQ", status="happy")
 
-    show jillian dump onlayer middle
-    with dissolve
+    show phone onlayer middle at phone_pickup
+    $ renpy.pause(0.6)
 
-    jl "It’s not really a fine-dining experience, but kudos to you for suggesting it."
+    call phone_call(jl, "dump", "It’s not really a fine-dining experience, but kudos to you for suggesting it.")
 
     pl "Do you not like it?"
 
-    show jillian greet onlayer middle
-
-    jl "It’s new to me, but I think this is going to be fun."
+    call phone_call(jl, "greet", "It’s new to me, but I think this is going to be fun.")
 
     pl "Good. I wanted to make up for last time we went out."
 
-    show jillian happy2 onlayer middle
 
-    jl "I don’t blame you. But I’m hoping that this could be a regular thing."
+    call phone_call(jl, "happy2", "I don’t blame you. But I’m hoping that this could be a regular thing.")
 
     $ renpy.hide_screen("displayDate")
     $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -2700,11 +2699,9 @@ label workprep:
         call screen workprep
         jump workprep
 
-    hide screen spk
+    $ minigame_end()
 
-    show screen patientOverlay(date="June 2020, Week 2|11:00 AM|GCQ", status="happy")
-
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
+    show screen patientOverlay(date="June 2020, Week 2|12:00 PM|GCQ", status="happy")
 
     plt "(Great. Now I have everything set, I am ready for tomorrow.)"
 
@@ -2720,6 +2717,9 @@ label findActivity:
 
     scene lvroom_frm7 onlayer background
 
+    if _return:
+        $ hideGameScreens()
+
     if _return == 'tv':
         plt "(I have nothing else to do right now. Maybe I should binge watch some of my favorite TV series.)"
 
@@ -2732,13 +2732,14 @@ label findActivity:
         show phoneless at phone_pickup onlayer background
         $ renpy.pause(0.5)
         call resetItems()
+        $ renpy.choice_for_skipping()
         $ renpy.show_screen("quiz", _transient=True)
         $ renpy.pause(hard=True)
 
         label .postquiz:
             "You got [correctans] correct answers!"
 
-            hide phoneless at phone_hide onlayer background
+            hide phoneless at phone_hide
 
             plt "Wow, I’m learning a lot today."
 
@@ -2796,17 +2797,9 @@ label findActivity:
 
         pl "One. Two. Three. Four. Five. Six. Seven. Eight. Next."
 
-        $camera_move(0, 0, 0, 0, duration=0)
-        $focus_set(1000, duration=0)
-        $dof_set(9999999, duration=0)
-
         $all_moves(camera_check_points={'z': [(1000, 0.0, 'linear'), (0, 4.0, 'linear')]})
 
         pl "One. Two. Three. Four. Five. Six. Seven. Eight."
-
-        $camera_move(0, 0, 0, 0, duration=0)
-        $focus_set(1000, duration=0)
-        $dof_set(9999999, duration=0)
 
         pl "Now for some jumping jacks."
 
@@ -2834,9 +2827,8 @@ label findActivity:
     else:
         jump findActivity
 
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
-    $ currentRoom = ROOMS['livingroom']
-    hide screen spk
+    $ minigame_end()
+
     jump newnormal
 
 label supermarket:
@@ -2854,6 +2846,8 @@ label supermarket:
         elif getCost() > 200:
             pl "I’m out of budget. I need to remove some items."
             jump supermarket
+
+    $ minigame_end()
 
     pl "I have everything I need. Time to check out."
 

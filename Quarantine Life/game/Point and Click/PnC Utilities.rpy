@@ -1,11 +1,22 @@
 """
     Stuff in this file are stuff shared by all the Point N' Click Screens
 """
-
-# Conditional Variables (idunno wth are deez lol)
-default itemselected = ""
-default itemchoices = {"Reset":0, "A": 1, "B": 2, "C":3, "D":4, "E":5, "F":6}
 #--------------------
+
+init python:
+    # Used at the end of minigames/Use of story route
+    def hideGameScreens():
+        renpy.hide_screen("spark_toggle")
+        renpy.hide_screen("spk")
+        renpy.hide_screen("flapButton")
+        renpy.hide_screen("phone_message")
+        currentScreen = ""
+        return
+
+    def minigame_end():
+        hideGameScreens()
+        renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
+        currentRoom = ROOMS["livingroom"]
 
 image spark_toggle = ConditionSwitch(
     "renpy.get_screen('spk')", "images/misc/spk_on.png",
@@ -61,12 +72,19 @@ label hideStuff():
 # Calls the say screen when an hotspot/imgbtn is clicked
 label objDialogue(dia, from_inputbox=False):
     # Keeps the items visible/not visible while in this label
-    if currentRoom == ROOMS['livingroom']:
-        scene livingroom_workprep
-    elif currentRoom == ROOMS['bedroom']:
-        scene bedroom_workprep
-    elif currentRoom == ROOMS['kitchen']:
-        scene kitchen_workprep
+    if currentScreen == "workprep":
+        if currentRoom == ROOMS['livingroom']:
+            scene livingroom_workprep
+        elif currentRoom == ROOMS['bedroom']:
+            scene bedroom_workprep
+        elif currentRoom == ROOMS['kitchen']:
+            scene kitchen_workprep
+
+    if currentScreen == "broomfind":
+        scene lvroom_frm7
+        show broom at right_corner
+        $ onhand["bedkey"] = True
+        $ onhand["faceshield"] = True
 
     call hideStuff()
 
@@ -87,10 +105,12 @@ label initMinigame(name):
     $ renpy.call("resetItems") # Start game from scratch
 
     $ currentScreen = name
-    show screen instruction # Show instructions before start
+    # show screen instruction # Show instructions before start
 
     $ taskpopout = "images/misc/taskpopups/{}.png".format(name)
     show screen notify(img=taskpopout) # Pop out Notif
+
+    show screen spark_toggle
 
     $ renpy.choice_for_skipping() # Stop fast-skipping
 
@@ -106,6 +126,7 @@ label resetItems():
         currentRoom = ROOMS["livingroom"]
         for item in onhand:
             onhand[item] = False
+        attempt = [0, 0, 0, 0]
 
         # For supermarket
         currentItemCost = 0

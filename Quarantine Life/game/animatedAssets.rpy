@@ -1,5 +1,5 @@
 image lvroom:
-    zoom 1.1
+
     "bg/bg living room animated/0.png"
     pause 0.5
     "bg/bg living room animated/1.png"
@@ -61,7 +61,7 @@ image lvroom:
     repeat
 
 image lvroom_afternoon:
-    zoom 1.1
+
     "bg/bg living room afternoon animated/0.png"
     pause 0.5
     "bg/bg living room afternoon animated/1.png"
@@ -123,7 +123,7 @@ image lvroom_afternoon:
     repeat
 
 image lvroom_evening:
-    zoom 1.1
+
     "bg/bg living room evening animated/0.png"
     pause 0.5
     "bg/bg living room evening animated/1.png"
@@ -185,7 +185,7 @@ image lvroom_evening:
     repeat
 
 image tvon:
-    zoom 1.1
+
     "bg/bg living room tvon animated/0.png"
     pause 0.5
     "bg/bg living room tvon animated/1.png"
@@ -247,7 +247,7 @@ image tvon:
     repeat
 
 image tvon_afternoon:
-    zoom 1.1
+
     "bg/bg living room afternoon tvon animated/0.png"
     pause 0.5
     "bg/bg living room afternoon tvon animated/1.png"
@@ -309,7 +309,7 @@ image tvon_afternoon:
     repeat
 
 image tvon_evening:
-    zoom 1.1
+
     "bg/bg living room evening tvon animated/0.png"
     pause 0.5
     "bg/bg living room evening tvon animated/1.png"
@@ -371,7 +371,7 @@ image tvon_evening:
     repeat
 
 image tvviewon:
-    zoom 1.1
+
     "bg/bg living room tvview morning tvon animated/0.png"
     pause 0.5
     "bg/bg living room tvview morning tvon animated/1.png"
@@ -433,7 +433,7 @@ image tvviewon:
     repeat
 
 image tvviewon_evening:
-    zoom 1.1
+
     "bg/bg living room tvview evening tvon animated/0.png"
     pause 0.5
     "bg/bg living room tvview evening tvon animated/1.png"
@@ -495,7 +495,7 @@ image tvviewon_evening:
     repeat
 
 image bedroom:
-    zoom 1.1
+
     "bg/bg bedroom animated/0.png"
     pause 0.5
     "bg/bg bedroom animated/1.png"
@@ -557,7 +557,7 @@ image bedroom:
     repeat
 
 image bedroom_afternoon:
-    zoom 1.1
+
     "bg/bg bedroom afternoon animated/0.png"
     pause 0.5
     "bg/bg bedroom afternoon animated/1.png"
@@ -619,7 +619,7 @@ image bedroom_afternoon:
     repeat
 
 image bedroom_evening:
-    zoom 1.1
+
     "bg/bg bedroom evening animated/0.png"
     pause 0.5
     "bg/bg bedroom evening animated/1.png"

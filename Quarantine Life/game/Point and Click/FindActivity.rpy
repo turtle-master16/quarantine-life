@@ -1,18 +1,3 @@
-# Since it's a 'short' screen, I mixed it in with find activity screen
-screen broomfind():
-    $ renpy.choice_for_skipping()
-    imagemap:
-        at transform:
-            xanchor 1.0
-            yanchor 1.0
-            ypos 1.0
-            xpos 1.0
-        ground "images/clickables/broom.png"
-        hotspot (34,313,62,405) action Return(0)
-
-        add "spark":
-            pos getRectCenter((34,313,62,405))
-
 # Activity Pick ------------------
 screen findActivity():
     $ renpy.choice_for_skipping()
@@ -33,7 +18,7 @@ screen findActivity():
             idle "images/misc/arrow.png"
             yalign 0.5
             action [SetVariable("currentRoom" ,ROOMS['bedroom']),
-                    Show("patientOverlay", date="April 2020, Week 1|09:00 AM, ECQ", status="happy")]
+                    Show("patientOverlay", date="April 2020, Week 1|09:00 AM|ECQ", status="happy")]
     elif currentRoom == ROOMS['bedroom']:
         imagemap:
             ground "images/bg/bg bedroom back.png"
@@ -45,13 +30,6 @@ screen findActivity():
             xalign 1.0
             yalign 0.5
             action [SetVariable("currentRoom" ,ROOMS['livingroom']),
-                    Show("patientOverlay", date="April 2020, Week 1|09:00 AM, ECQ", status="happy")]
-                    
-    imagebutton:
-        idle "spark_toggle"
-        at transform:
-            xalign 0.9
-            yalign 0.03
-            zoom 0.5
+                    Show("patientOverlay", date="April 2020, Week 1|09:00 AM|ECQ", status="happy")]
 
-        action ToggleScreen("spk")
+    use spark_toggle

@@ -125,7 +125,7 @@ init 5:
         xpadding 10
 
     style phone_message_frame2:
-        background Solid(charcolor['Player'])
+        background Solid("#ffa500")
         ypadding 10
         xpadding 10
 
@@ -156,7 +156,7 @@ init 5:
         xalign 0.5
         xsize 275
         background Solid("#666")
-        hover_background Solid(charcolor['Player'])
+        hover_background Solid("#ffa500")
         ypadding 10
         xpadding 10
 
@@ -207,7 +207,7 @@ screen phone_message3(what):
 
         frame:
             style_group "phone_message2"
-            background Solid(charcolor['Player'])#"#78E8A0")
+            background Solid("#ffa500")#"#78E8A0")
             xsize 200
 
             vbox:
@@ -224,9 +224,9 @@ screen phone_reply(reply1, reply2, reply3):
         yalign 0.65
         spacing 2
 
-        textbutton "[reply1]" action [SetVariable('itemselected', itemchoices['A']), Return(None)] style "phone_reply"
-        textbutton "[reply2]" action [SetVariable('itemselected', itemchoices['B']), Return(None)] style "phone_reply"
-        textbutton "[reply3]" action [SetVariable('itemselected', itemchoices['C']), Return(None)] style "phone_reply"
+        textbutton "[reply1]" action Return(1) style "phone_reply"
+        textbutton "[reply2]" action Return(2) style "phone_reply"
+        textbutton "[reply3]" action Return(3) style "phone_reply"
 
 # here is a new menu that has more options than two
 # basically i just added one more textbutton here, and the additional labels needed in the call
@@ -239,8 +239,8 @@ screen phone_reply2(reply1, reply2):
         yalign 0.65
         spacing 2
 
-        textbutton "[reply1]" action [SetVariable('itemselected', itemchoices['A']), Return(None)] style "phone_reply"
-        textbutton "[reply2]" action [SetVariable('itemselected', itemchoices['B']), Return(None)] style "phone_reply"
+        textbutton "[reply1]" action Return(1) style "phone_reply"
+        textbutton "[reply2]" action Return(2) style "phone_reply"
 
 screen phone_call(who, emotion, status=1):
     layer "middle"

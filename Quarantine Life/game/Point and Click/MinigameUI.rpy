@@ -30,7 +30,7 @@ init python:
             renpy.show_screen("flapButton", screens_to_show=screen_set["workprep"],
                                             img_to_use=img_set["workprep"],
                                             _transient=True)
-        renpy.show_screen("flap_instruction", _transient=True)
+        # renpy.show_screen("flap_instruction", _transient=True)
 
 define instructions = {
     "supermarket":
@@ -119,11 +119,28 @@ screen flyingImage(img_to_use):
         at t_flyingimage
         action [Hide("flyingImage"), Function(showFlapButtons)]
 
+screen spark_toggle:
+    zorder 5
+    if not(currentScreen == ""):
+        imagebutton:
+            idle "spark_toggle"
+            at transform:
+                xalign 0.9
+                yalign 0.04
+                zoom 0.5
+                on show:
+                    alpha 0.0
+                    linear 0.3 alpha 1.0
+                on hide:
+                    alpha 1.0
+                    linear 0.3 alpha 0.0
+
+            action ToggleScreen("spk")
+
+
 transform t_flapInstructions:
-    xalign 0.96
-    yalign 0.06
-    xanchor 0.5
-    yanchor 0.5
+    xalign 0.96 yalign 0.06
+    xanchor 0.5 yanchor 0.5
     zoom 0.2
     on show:
         yoffset -100

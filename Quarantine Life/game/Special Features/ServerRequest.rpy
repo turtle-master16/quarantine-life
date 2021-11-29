@@ -46,4 +46,4 @@ init python:
         req = requests.put(url, json=jsonBin, headers=headers)
 
 
-    updateTraversedRouteRecords(username="testuser3", password="testuserpassword3", traversed_routes=["mainstart", "test1", "test2"])
+    # updateTraversedRouteRecords(username="testuser3", password="testuserpassword3", traversed_routes=["mainstart", "test1", "test2"])
