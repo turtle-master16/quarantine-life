@@ -65,7 +65,7 @@ screen storyroute:
                     xpos route_coordinates[currentRoute][0]
                     ypos route_coordinates[currentRoute][1]
                     xoffset 50
-                    yoffset -30
+                    yoffset -35
 
             imagebutton:
                     idle "images/menu/storyroutes/storyroute title.png"
@@ -82,9 +82,9 @@ screen storyroute:
                         action 0
                 else:
                     if route in called_routes:
-                         hotspot route_coordinates[route] action [Hide("storyroute"), Function(hideGameScreens), called_routes[route]]
+                         hotspot route_coordinates[route] action [Function(hideGameScreens), called_routes[route]]
                     else:
-                        hotspot route_coordinates[route] action [Hide("storyroute"), Function(hideGameScreens), Jump(route)]
+                        hotspot route_coordinates[route] action [Function(hideGameScreens), Jump(route)]
 
     imagebutton:
         idle "images/misc/black close.png"

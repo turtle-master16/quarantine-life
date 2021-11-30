@@ -9,18 +9,19 @@ init python:
         renpy.hide_screen("spark_toggle")
         renpy.hide_screen("spk")
         renpy.hide_screen("phone_message")
+        renpy.hide_screen("workprep_ui")
+        renpy.hide_screen("supermarket_ui")
+        renpy.hide_screen("storyroute")
+        globals()['currentScreen'] = ""
+        globals()['currentRoom'] = ROOMS["livingroom"]
         return
 
     def minigame_end():
+        persistent.minigame_completed[currentScreen] = True
+        curScr = currentScreen
         hideGameScreens()
         renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
-        currentScreen = ""
-        currentRoom = ROOMS["livingroom"]
-
-image spark_toggle = ConditionSwitch(
-    "renpy.get_screen('spk')", "images/misc/spk_on.png",
-    "True", "images/misc/spk_off.png"
-)
+        renpy.jump(post_minigame_label_jump_to[curScr])
 
 # For room switching
 define ROOMS = {
@@ -130,6 +131,7 @@ label initMinigame(name):
 label resetItems():
     python:
         # For workprep
+        currentScreen = ""
         currentRoom = ROOMS["livingroom"]
         for item in onhand:
             onhand[item] = False

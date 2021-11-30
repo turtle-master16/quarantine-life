@@ -57,13 +57,3 @@ screen quickToggle:
                     alpha 0.0
                     linear 0.2 alpha 0.7
             action [Hide("quickToggle"), Show("quickMenu")]
-
-screen ui_start:
-    zorder 20
-    imagebutton:
-        idle "gui/quick/settings_icon.png"
-        xalign 0.99
-        yalign 0.03
-        action ShowMenu("preferences")
-    use skip_stopper
-    use quickToggle

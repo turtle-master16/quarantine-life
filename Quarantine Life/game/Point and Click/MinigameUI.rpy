@@ -23,15 +23,28 @@ Click on the "i" button on the top right corner to review this instruction.
 """
 }
 
+define persistent.minigame_completed = {
+    "broomfind":    False,
+    "findActivity": False,
+    "workprep":     False,
+    "supermarket":  False,
+}
+define post_minigame_label_jump_to = {
+    "broomfind":    "post_broomfind",
+    "findActivity": "newnormal",
+    "workprep":     "workprep.post_workprep",
+    "supermarket":  "supermarket.post_supermarket",
+}
+
 screen spark_toggle:
     zorder 5
     if not(currentScreen == ""):
         imagebutton:
             idle "spark_toggle"
             at transform:
-                xalign 0.9
-                yalign 0.04
-                zoom 0.5
+                xalign 0.5
+                yalign 0.96
+                zoom 0.6
                 on show:
                     alpha 0.0
                     linear 0.3 alpha 1.0
@@ -61,6 +74,25 @@ screen workprep_ui:
         at transform:
             zoom 0.3
         action ShowTransient("workitem_list")
+
+screen ui_start:
+    zorder 20
+    imagebutton:
+        idle "gui/quick/settings_icon.png"
+        xalign 0.99 yalign 0.03
+        action ShowMenu("preferences")
+    if not(currentScreen == ""):
+        imagebutton:
+            idle "gui/quick/instructions_icon.png"
+            xalign 0.9 yalign 0.03
+            # action Instruction Screen Here
+        if persistent.minigame_completed[currentScreen]:
+            imagebutton:
+                idle "gui/quick/skip.png"
+                xalign 0.84 yalign 0.00
+                action Function(minigame_end)
+    use skip_stopper
+    use quickToggle
 
 transform t_flyingimage:
     xalign 0.5

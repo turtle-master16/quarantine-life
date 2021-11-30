@@ -26,7 +26,7 @@ screen broomfind():
     imagemap:
         xalign 1.0 yalign 1.0
         ground "bg/bg living room animated/6.png"
-        hotspot (1177, 363, 95, 351) action [Return("broom"), Function(hideGameScreens)]
+        hotspot (1177, 363, 95, 351) action Return("broom")
         for item in lvroom_items:
             if isinstance(lvroom_items[item], list):
                 for subitem in lvroom_items[item]:

@@ -64,15 +64,6 @@ screen supermarket():
 
     use supermarket_ui
 
-    imagebutton:
-        idle "spark_toggle"
-        at transform:
-            xalign 0.9
-            yalign 0.04
-            zoom 0.5
-
-        action ToggleScreen("spk")
-
 default itemIncrementer = 1
 
 screen shopItemTakeMenu(shopItem="redcan"):
@@ -83,7 +74,7 @@ screen shopItemTakeMenu(shopItem="redcan"):
         xalign 0.5
         yalign 0.5
     text "{}s in the basket: {}".format(shopItems[shopItem].alt_name ,shopItems[shopItem].onhand):
-        xalign 0.6
+        xalign 0.65
         yalign 0.35
     hbox:
         xalign 0.7
@@ -126,7 +117,7 @@ screen shopItemTakeMenu(shopItem="redcan"):
         idle "images/supermarket/cancel_btn.png"
         xalign 0.85
         yalign 0.18
-        action Hide("shopItemTakeMenu")
+        action [Hide("shopItemTakeMenu"), SetVariable("itemIncrementer", 1)]
 
 screen basketMenu:
     zorder 2

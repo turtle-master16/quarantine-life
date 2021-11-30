@@ -94,6 +94,7 @@ style frame:
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
 screen say(who, what):
+    zorder 6
     style_prefix "say"
 
     window:

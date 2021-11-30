@@ -179,6 +179,7 @@ label start():
 
             $ minigame_end()
 
+        label post_broomfind:
             pl "Here it is. Now let’s start cleaning!"
             #--SFX (Sweeping)
 
@@ -2567,11 +2568,13 @@ label workprep:
 
     $ minigame_end()
 
-    show screen patientOverlay(date="June 2020, Week 2|12:00 PM|GCQ", status="happy")
+    label .post_workprep:
 
-    plt "(Great. Now I have everything set, I am ready for tomorrow.)"
+        show screen patientOverlay(date="June 2020, Week 2|12:00 PM|GCQ", status="happy")
 
-    jump commuting
+        plt "(Great. Now I have everything set, I am ready for tomorrow.)"
+
+        jump commuting
 
 label findActivity:
     # Choices: (A = Watch TV) (B = Return to Point & Click)
@@ -2582,9 +2585,6 @@ label findActivity:
     call screen findActivity()
 
     scene lvroom_frm7 onlayer background
-
-    if _return:
-        $ hideGameScreens()
 
     if _return == 'tv':
         plt "(I have nothing else to do right now. Maybe I should binge watch some of my favorite TV series.)"
@@ -2712,9 +2712,11 @@ label supermarket:
 
     $ minigame_end()
 
-    pl "I have everything I need. Time to check out."
+    label .post_supermarket:
 
-    jump princegoingout
+        pl "I have everything I need. Time to check out."
+
+        jump princegoingout
 
 # Temporary Event ~ Sends player back to main menu upon jumping here
 label proceed:
