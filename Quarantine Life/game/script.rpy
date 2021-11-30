@@ -55,11 +55,12 @@ style hotspot:
     activate_sound "audio/click.mp3"
 
 default isSaveOnStart = True
+default istestmode = True
 
 # The game starts here.
-label start(retmode=False):
+label start():
     python:
-        if renpy.newest_slot() and isSaveOnStart:
+        if renpy.newest_slot() and isSaveOnStart and not(istestmode):
             isSaveOnStart = False
             renpy.retain_after_load()
             renpy.load(renpy.newest_slot())
@@ -72,13 +73,6 @@ label start(retmode=False):
 
     scene black
     stop music
-
-    #### Test Jumps Start
-    # $ renpy.hide_screen("returnbutton")
-    #### Test Jumps End
-
-    if retmode:
-        call hide_phone_messages
 
     # Ask name
     "What is your name?"
@@ -98,9 +92,8 @@ label start(retmode=False):
     # call screen testmode
 
     label .mainstart:
+        $ setPersistent("start.mainstart")
         $ persistent.is_route_unlocked["start.mainstart"] = True
-
-        # show screen rback
 
         scene black
         stop music
@@ -263,6 +256,7 @@ label news:
     with dissolve
 
 label lockdown:
+    $ setPersistent("lockdown")
     $ persistent.is_route_unlocked["lockdown"] = True
 
     call timeskip("lvroom_evening")
@@ -395,6 +389,7 @@ label lockdown:
             pr "Yes..."
 
 label quarantine:
+    $ setPersistent("quarantine")
     $ persistent.is_route_unlocked["quarantine"] = True
 
     call timeskip("lvroom")
@@ -452,6 +447,7 @@ label quarantine:
     call initMinigame("findActivity")
 
 label newnormal:
+    $ setPersistent("newnormal")
     $ persistent.is_route_unlocked["newnormal"] = True
 
     call timeskip("lvroom")
@@ -571,8 +567,8 @@ label newnormal:
 
     play sound "audio/phone vibrate.wav"
     with hpunch
-    $ renpy.pause()
-    stop sound
+
+    plt "(Looks like i got a message from our company)"
 
     plt "(An announcement?)"
 
@@ -583,6 +579,7 @@ label newnormal:
     plt "(The {b}new normal{/b}… I wonder what’s in store for me.)"
 
     label .collectandprogress:
+        $ setPersistent("newnormal.collectandprogress")
         $ persistent.is_route_unlocked["newnormal.collectandprogress"] = True
 
         call timeskip("bedroom_evening")
@@ -599,6 +596,7 @@ label newnormal:
         call initMinigame("workprep")
 
 label commuting:
+    $ setPersistent("commuting")
     $ persistent.is_route_unlocked["commuting"] = True
 
     call timeskip("bg shuttle")
@@ -763,6 +761,7 @@ label office:
 
 # ROUTE HOME
 label home:
+    $ setPersistent("home")
     $ persistent.is_route_unlocked["home"] = True
 
     call timeskip("lvroom")
@@ -998,6 +997,7 @@ label cookadobo:
         jump princegoingout
 
 label princegoingout:
+    $ setPersistent("princegoingout")
     $ persistent.is_route_unlocked["princegoingout"] = True
 
     call timeskip("lvroom")
@@ -1153,29 +1153,11 @@ label princedisappointed:
 
     pl "You’re on!"
 
-    $ renpy.hide_screen("displayDate")
-    $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    scene black onlayer background
-    with dissolve
-    centered "{color=#fff}{b} End {/b}{/color}"
-
-    menu:
-        "Choose another route":
-            $ renpy.pause(0.3)
-
-            centered "You will now be returned to the previous decision point..."
-            stop music fadeout 2.0
-
-            jump office
-
-        "Return to main menu":
-            $ renpy.pause(0.3)
-
-            stop music fadeout 0.2
-            jump proceed
+    call ending_reached("good")
 
 # ROUTE FRIEND
 label friend:
+    $ setPersistent("friend")
     $ persistent.is_route_unlocked["friend"] = True
 
     call timeskip("bg office afternoon")
@@ -1395,6 +1377,7 @@ label phone(male=True):
     scene lvroom onlayer background
 
     if male:
+        $ setPersistent("phonemale")
         $ persistent.is_route_unlocked["phonemale"] = True
 
         pl "I am definitely into guys."
@@ -1447,6 +1430,7 @@ label phone(male=True):
         call postdatesearch()
 
     else:
+        $ setPersistent("phonefemale")
         $ persistent.is_route_unlocked["phonefemale"] = True
 
         pl "I prefer girls. Thank you very much."
@@ -1565,6 +1549,7 @@ label postdatesearch(male=True):
 
 label firstdate(male=True):
     if male:
+        $ setPersistent("firstdatemale")
         $ persistent.is_route_unlocked["firstdatemale"] = True
 
         call timeskip("bedroom_afternoon")
@@ -1612,6 +1597,7 @@ label firstdate(male=True):
         jump jason
 
     else:
+        $ setPersistent("firstdatefemale")
         $ persistent.is_route_unlocked["firstdatefemale"] = True
 
         call timeskip("bedroom")
@@ -1725,6 +1711,7 @@ label firstdate(male=True):
 
 # Kyle Route
 label kyle:
+    $ setPersistent("kyle")
     $ persistent.is_route_unlocked["kyle"] = True
 
     call timeskip("bg office")
@@ -1891,6 +1878,7 @@ label kylehome:
         call hide_phone_messages
 
         label .findhobby:
+            $ setPersistent("kylehome.findhobby")
             $ persistent.is_route_unlocked["kylehome.findhobby"] = True
 
             call timeskip("bg office")
@@ -1961,28 +1949,10 @@ label kylehome:
 
             pr "Fine."
 
-            $ renpy.hide_screen("displayDate")
-            $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-            scene black onlayer background
-            with dissolve
-            centered "{color=#fff}{b} End {/b}{/color}"
-
-            menu:
-                "Choose another route":
-                    $ renpy.pause(0.3)
-
-                    centered "You will now be returned to the previous decision point..."
-                    stop music fadeout 2.0
-
-                    jump office
-
-                "Return to main menu":
-                    $ renpy.pause(0.3)
-
-                    stop music fadeout 0.2
-                    jump proceed
+            call ending_reached("good")
 
 label kylemeet:
+    $ setPersistent("kylemeet")
     $ persistent.is_route_unlocked["kylemeet"] = True
 
     call timeskip("bg outside")
@@ -2122,24 +2092,7 @@ label hospital:
     (For my family.)
     """
 
-    $ renpy.hide_screen("displayDate")
-    $ renpy.music.play("audio/bgm/bad end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    scene black onlayer background
-    with dissolve
-    centered "{color=#f00}{b}Bad End{/b}{/color}"
-
-    menu:
-        "Choose another route":
-            $ renpy.pause(0.3)
-
-            centered "You will now be returned to a previous decision point..."
-            jump kylehome
-
-        "Return to main menu":
-            $ renpy.pause(0.3)
-
-            stop sound fadeout 0.2
-            jump proceed
+    call ending_reached("bad")
 
 # Jillian Route
 label jillian:
@@ -2243,6 +2196,7 @@ label jillian:
             plt "(I’ll just ask her when I get home.)"
 
             label .restaurantdate:
+                $ setPersistent("jillian.restaurantdate")
                 $ persistent.is_route_unlocked["jillian.restaurantdate"] = True
 
                 call timeskip("bedroom_evening")
@@ -2272,6 +2226,7 @@ label jillian:
             plt "(I’m sure there are ways we can keep our virtual date more fun for both of us. But what?)"
 
             label .artsncraft:
+                $ setPersistent("artsncraft")
                 $ persistent.is_route_unlocked["jillian.artsncraft"] = True
 
                 call timeskip("bedroom")
@@ -2297,26 +2252,7 @@ label jillian:
 
                 call phone_call(jl, "flattered", "Can’t wait.")
 
-                $ renpy.hide_screen("displayDate")
-                $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-                scene black onlayer background
-                with dissolve
-                centered "{color=#fff}{b} End {/b}{/color}"
-
-                menu:
-                    "Choose another route":
-                        $ renpy.pause(0.3)
-
-                        centered "You will now be returned to the previous decision point..."
-                        stop music fadeout 2.0
-
-                        jump office
-
-                    "Return to main menu":
-                        $ renpy.pause(0.3)
-
-                        stop music fadeout 0.2
-                        jump proceed
+                call ending_reached("good")
 
 label jldate:
     call timeskip("bg restaurant")
@@ -2426,6 +2362,7 @@ label jason:
         call hide_phone_messages
 
         label .meetupjason:
+            $ setPersistent("jason.meetupjason")
             $ persistent.is_route_unlocked["jason.meetupjason"] = True
 
             call timeskip("bedroom_evening")
@@ -2480,26 +2417,7 @@ label jason:
 
             call hide_phone_messages
 
-            $ renpy.hide_screen("displayDate")
-            $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-            scene black onlayer background
-            with dissolve
-            centered "{color=#fff}{b} End {/b}{/color}"
-
-            menu:
-                "Choose another route":
-                    $ renpy.pause(0.3)
-
-                    centered "You will now be returned to the previous decision point..."
-                    stop music fadeout 2.0
-
-                    jump office
-
-                "Return to main menu":
-                    $ renpy.pause(0.3)
-
-                    stop music fadeout 0.2
-                    jump proceed
+            call ending_reached("good")
 
     elif _return == 1:
         $ persistent.is_dialog_unchecked["meetupwithjason.notsure"] = True
@@ -2521,6 +2439,7 @@ label jason:
 
 # Endings
 label getcaught:
+    $ setPersistent("getcaught")
     $ persistent.is_route_unlocked["getcaught"] = True
 
     call timeskip("lvroom_evening")
@@ -2583,24 +2502,7 @@ label getcaught:
 
                 "Police" "You are under arrest for quarantine protocol violation."
 
-    $ renpy.hide_screen("displayDate")
-    $ renpy.music.play("audio/bgm/bad end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    scene black onlayer background
-    with dissolve
-    centered "{color=#f00}{b}Bad End{/b}{/color}"
-
-    menu:
-        "Choose another route":
-            $ renpy.pause(0.3)
-
-            centered "You will now be returned to a previous decision point..."
-            jump lockdown
-
-        "Return to main menu":
-            $ renpy.pause(0.3)
-
-            stop sound fadeout 0.2
-            jump proceed
+    call ending_reached("bad")
 
 label jlend:
     call timeskip("bg kitchen")
@@ -2618,34 +2520,16 @@ label jlend:
 
     pl "Good. I wanted to make up for last time we went out."
 
-
     call phone_call(jl, "happy2", "I don’t blame you. But I’m hoping that this could be a regular thing.")
 
-    $ renpy.hide_screen("displayDate")
-    $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    scene black onlayer background
-    with dissolve
-    centered "{color=#fff}{b} End {/b}{/color}"
-
-    menu:
-        "Choose another route":
-            $ renpy.pause(0.3)
-
-            centered "You will now be returned to the previous decision point..."
-            stop music fadeout 2.0
-
-            call firstdate(male=False)
-
-        "Return to main menu":
-            $ renpy.pause(0.3)
-
-            stop music fadeout 0.2
-            jump proceed
+    call ending_reached("good")
 
 label jsexerciseend:
+    $ setPersistent("jsexerciseend")
     $ persistent.is_route_unlocked["jsexerciseend"] = True
 
     call timeskip("lvroom")
+    $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="August 2020, Week 2|09:00 AM|GCQ", status="happy")
 
     show phone_tindah onlayer middle at phone_pickup
@@ -2669,30 +2553,12 @@ label jsexerciseend:
 
     pl "Ugh!"
 
-    $ renpy.hide_screen("displayDate")
-    $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
-    scene black onlayer background
-    with dissolve
-    centered "{color=#fff}{b} End {/b}{/color}"
-
-    menu:
-        "Choose another route":
-            $ renpy.pause(0.3)
-
-            centered "You will now be returned to the previous decision point..."
-            stop music fadeout 2.0
-
-            jump jason
-
-        "Return to main menu":
-            $ renpy.pause(0.3)
-
-            stop music fadeout 0.2
-            jump proceed
+    call ending_reached("good")
 
 # Point and Click Scenarios
 label workprep:
-    $ showFlapButtons()
+    $ renpy.show_screen("workprep_ui", _transient=True)
+    # show screen workprep_ui
 
     if not(readyForWork()):
         call hideStuff()
@@ -2733,8 +2599,7 @@ label findActivity:
         $ renpy.pause(0.5)
         call resetItems()
         $ renpy.choice_for_skipping()
-        $ renpy.show_screen("quiz", _transient=True)
-        $ renpy.pause(hard=True)
+        call screen quiz
 
         label .postquiz:
             "You got [correctans] correct answers!"
@@ -2766,21 +2631,21 @@ label findActivity:
 
         plt "Oh, it’s dad. It’s been a while since we last talked. I should answer his call."
 
-        "Dad" "Hey kiddo, glad you picked up. How are you doing?"
+        "{color=#000}Dad{/color}" "Hey kiddo, glad you picked up. How are you doing?"
 
         pl "I’m doing fine dad. How’s things over your side?"
 
-        "Dad" "I’m doing good. Fortunately, I haven’t lost my job to the COVID pandemic. A heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
+        "{color=#000}Dad{/color}" "I’m doing good. Fortunately, I haven’t lost my job to the COVID pandemic. A heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
 
         pl "Yeah, there are around 13,000 OFW returning this month. It’s quite sad."
 
         pl "After their arrival they are required to undergo a 14-day facility-based quarantine."
 
-        "Dad" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
+        "{color=#000}Dad{/color}" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
 
         pl "The house has become livelier than ever now that we have to stay home 24/7."
 
-        "Dad" "Don’t drive your mom too crazy with your antics."
+        "{color=#000}Dad{/color}" "Don’t drive your mom too crazy with your antics."
 
         pl "No promises. Let me tell you that one time when Prince got mad over a video game..."
 
@@ -2835,8 +2700,6 @@ label supermarket:
     call screen supermarket
     jump supermarket
     label .shop_win_conditions:
-        hide screen basketMenu
-        hide screen spk
         if not(hasAcquiredNeedItems()):
             pl "I still have some missing items from the list."
             jump supermarket
@@ -2850,8 +2713,6 @@ label supermarket:
     $ minigame_end()
 
     pl "I have everything I need. Time to check out."
-
-    $ renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
 
     jump princegoingout
 

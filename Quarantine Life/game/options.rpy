@@ -50,6 +50,17 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+Credits to:
+
+{b}Mark Lawrence Feliciano{/b} - Programmer/Game Documentation/Backgrounds
+
+{b}Ghyllan Denola{/b} - UI assets/Narrative
+
+{b}Ian Carl Caballero{/b} - Character Sprites
+
+{b}Prince Malana{/b} - Music/SFX
+
+{b}Kyle Andrae Mendiola{/b} - Programmer
 """)
 
 
@@ -139,7 +150,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## Controls the default text speed. The default, 0, is infinite, while any other
 ## number is the number of characters per second to type out.
 
-default preferences.text_cps = 0
+default preferences.text_cps = 50
 
 
 ## The default auto-forward delay. Larger numbers lead to longer waits, with 0

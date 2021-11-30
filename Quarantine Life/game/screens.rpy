@@ -92,13 +92,6 @@ style frame:
 ## and id "window" to apply style properties.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
-transform t_say:
-    on show:
-        alpha 0.0
-        linear 0.2 alpha 1.0
-    on hide:
-        alpha 0.5
-        linear 0.2 alpha 0.0
 
 screen say(who, what):
     style_prefix "say"
@@ -120,8 +113,8 @@ screen say(who, what):
                 xmaximum 1050
         else:
             text what id "what"
-
-    use quick_menu
+    if not(quickMenuHide):
+        use quick_menu
 
 
 ## Make the namebox available for styling through the Character object.
@@ -187,15 +180,6 @@ screen input(prompt):
 
         text prompt xalign 0.5    # forces this text to stay at center of line
         input id "input" xalign 0.5
-    # window:
-    #     vbox:
-    #         xalign gui.dialogue_text_xalign
-    #         xpos gui.dialogue_xpos
-    #         xsize gui.dialogue_width
-    #         ypos gui.dialogue_ypos
-    #
-    #         text prompt style "input_prompt"
-    #         input id "input"
 
 style input_prompt is default
 
@@ -313,15 +297,15 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            textbutton _("Play") action Start()
 
         else:
 
             textbutton _("History") action ShowMenu("history")
 
-            textbutton _("Save") action ShowMenu("save")
-
-        textbutton _("Load")  action ShowMenu("load")
+        #     textbutton _("Save") action ShowMenu("save")
+        #
+        # textbutton _("Load")  action ShowMenu("load")
 
         textbutton _("Preferences") action ShowMenu("preferences")
 
@@ -331,7 +315,7 @@ screen navigation():
 
         elif not main_menu:
 
-            textbutton _("Main Menu") action MainMenu()
+            textbutton _("Main Menu") action MainMenu(confirm=False)
 
         textbutton _("About") action ShowMenu("about")
 
@@ -1447,19 +1431,13 @@ screen quick_menu():
         style_prefix "quick"
 
         xalign 0.85
-        yalign 0.761
-
-        # textbutton _("Back") text_size 20 action Rollback()
-        # textbutton _("Skip") text_size 20 action Skip() alternate Skip(fast=True, confirm=True)
-        # textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")
-        # textbutton _("Menu") text_size 20 action ShowMenu()
+        yalign 0.79
 
         imagebutton:
             idle "gui/quick/back.png"
             at transform:
                 zoom 1.1
             action Rollback()
-        null width 50
         if not(preferences.afm_enable):
             imagebutton:
                 idle "gui/quick/auto.png"
@@ -1472,15 +1450,11 @@ screen quick_menu():
                 idle "gui/quick/auto.png"
                 at blinker
                 action Preference("auto-forward", "disable")
-        null width 50
         imagebutton:
             idle "gui/quick/skip.png"
             at transform:
                 zoom 1.1
             action Skip() alternate Skip(fast=True, confirm=True)
-
-        # textbutton _("Auto") text_size 20 action Preference("auto-forward", "toggle")
-        # textbutton _("Menu") text_size 20 action ShowMenu()
 
 
 style window:
@@ -1572,8 +1546,8 @@ screen countdown:
     if time >= 3:
         text str(time) xpos .45 ypos .45  outlines [ (absolute(1), "#FFF", absolute(0), absolute(0)) ] size 150 at alpha_dissolve
     elif time == 2:
-        text str(time) xpos .45 ypos .45 color "#FF9B9B" outlines [(absolute(1), "#FFF", absolute(0), absolute(0))] size 150 at alpha_dissolve
+        text str(time) xpos .45 ypos .45 color "#ffd9b2" outlines [(absolute(1), "#FFF", absolute(0), absolute(0))] size 150 at alpha_dissolve
     elif time == 1:
-        text str(time) xpos .45 ypos .45 color "#FF6262" outlines [(absolute(1), "#FFF", absolute(0), absolute(0))] size 150 at alpha_dissolve
+        text str(time) xpos .45 ypos .45 color "#f79862" outlines [(absolute(1), "#FFF", absolute(0), absolute(0))] size 150 at alpha_dissolve
     else:
-        text str(time) xpos .45 ypos .45 color "#F72424" outlines [(absolute(1), "#FFF", absolute(0), absolute(0))] size 150 at alpha_dissolve
+        text str(time) xpos .45 ypos .45 color "#f05E23" outlines [(absolute(1), "#FFF", absolute(0), absolute(0))] size 150 at alpha_dissolve

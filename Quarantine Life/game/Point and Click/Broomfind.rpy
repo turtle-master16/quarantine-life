@@ -24,8 +24,7 @@ screen broomfind():
         "chime":  "One of those noisy chimes.",
     }
     imagemap:
-        xalign 1.0
-        yalign 1.0
+        xalign 1.0 yalign 1.0
         ground "bg/bg living room animated/6.png"
         hotspot (1177, 363, 95, 351) action [Return("broom"), Function(hideGameScreens)]
         for item in lvroom_items:

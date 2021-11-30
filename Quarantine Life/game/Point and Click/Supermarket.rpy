@@ -151,7 +151,7 @@ screen basketMenu:
     imagebutton:
         idle "images/supermarket/cancel_btn.png"
         xalign 0.85 yalign 0.18
-        action [Hide("basketMenu"), showFlapButtons()]
+        action Hide("basketMenu")
     viewport:
         xalign 0.3
         yalign 0.58
@@ -195,25 +195,3 @@ screen basketMenu:
                             imagebutton:
                                 idle "images/supermarket/removeItem_btn.png"
                                 action Function(shopItems[item].takeItem, -1)
-
-screen fly_in_image(img):
-    zorder 2
-    modal True
-    imagebutton:
-        idle img
-        at t_flyingimage
-        action Hide("fly_in_image")
-
-screen supermarket_ui:
-    $ renpy.hide_screen("flapButton")
-    $ renpy.hide_screen("instructions")
-    imagebutton:
-        idle "images/supermarket/basket_btn.png"
-        xalign 0.98
-        yalign 0.95
-        action ShowTransient("basketMenu")
-    imagebutton:
-        idle "images/supermarket/groceryList_icon.png"
-        xalign 0.83
-        yalign 0.95
-        action ShowTransient("fly_in_image", img="images/supermarket/grocery_list.png")

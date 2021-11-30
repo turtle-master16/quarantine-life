@@ -143,42 +143,6 @@ screen workprep():
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
                     Show("patientOverlay", date="June 2020, Week 2|11:00 PM|GCQ", status="happy")]
 
-screen workitem_button():
-    zorder 1
-    modal True
-    imagebutton:
-        idle "images/misc/paper.png"
-        at transform:
-            xalign 0.5 yalign 0.5 zoom 3.4
-            on show:
-                yoffset 700
-                linear 0.5 yoffset 0
-            on hide:
-                yoffset 0
-                linear 0.5 yoffset 700
-        action [Hide("workitem_button"), showFlapButtons()]
-    vbox:
-        xalign 0.5 xoffset 12
-        ypos 0.4 yanchor 0.5
-        text "ITEM CHECKLIST":
-            xalign 0.5
-            color "#000"
-
-        null height 20
-
-        $ items_needed = [item for item in onhand if not(item == 'bedkey')]
-        for item in items_needed:
-            $ it_cap = item.capitalize()
-            showif onhand[item]:
-                text "{s}[it_cap]{/s}":
-                    xalign 0.5
-                    color "#000"
-            else:
-                text "[it_cap]":
-                    xalign 0.5
-                    color "#000"
-            null height 15
-
 screen workitem_list():
     modal True
     zorder 1
@@ -189,10 +153,10 @@ screen workitem_list():
             zoom 3.4
             on show:
                 yoffset 700
-                linear 0.5 yoffset 0
+                linear 0.3 yoffset 0
             on hide:
                 yoffset 0
-                linear 0.5 yoffset 700
+                linear 0.3 yoffset 700
     vbox:
         xalign 0.5
         xoffset 12
@@ -201,10 +165,10 @@ screen workitem_list():
         at transform:
             on show:
                 yoffset 700
-                linear 0.5 yoffset 0
+                linear 0.3 yoffset 0
             on hide:
                 yoffset 0
-                linear 0.5 yoffset 700
+                linear 0.3 yoffset 700
         text "ITEM CHECKLIST":
             xalign 0.5
             color "#000"
@@ -229,4 +193,4 @@ screen workitem_list():
         textbutton "Tap to close":
             xalign 0.5
             text_color "#000"
-            action [Hide("workitem_list"), Function(showFlapButtons)]
+            action Hide("workitem_list")

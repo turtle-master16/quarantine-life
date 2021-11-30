@@ -8,14 +8,13 @@ init python:
     def hideGameScreens():
         renpy.hide_screen("spark_toggle")
         renpy.hide_screen("spk")
-        renpy.hide_screen("flapButton")
         renpy.hide_screen("phone_message")
-        currentScreen = ""
         return
 
     def minigame_end():
         hideGameScreens()
         renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
+        currentScreen = ""
         currentRoom = ROOMS["livingroom"]
 
 image spark_toggle = ConditionSwitch(
@@ -101,18 +100,26 @@ label objDialogue(dia, from_inputbox=False):
         call inputbox()
     return
 
+# Initialize the minigame
+
 label initMinigame(name):
+
     $ renpy.call("resetItems") # Start game from scratch
 
     $ currentScreen = name
-    # show screen instruction # Show instructions before start
 
     $ taskpopout = "images/misc/taskpopups/{}.png".format(name)
     show screen notify(img=taskpopout) # Pop out Notif
 
     show screen spark_toggle
 
+    if renpy.is_skipping():
+        $ Skip()
     $ renpy.choice_for_skipping() # Stop fast-skipping
+
+    $ mgame_with_ui = ["workprep", "supermarket"] # List of minigames with extra UI
+    if name in mgame_with_ui:
+        $ renpy.show_screen("{}_ui".format(name), _transient=True)
 
     $ renpy.jump(name) # Start minigame
 

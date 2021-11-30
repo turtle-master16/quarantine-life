@@ -64,5 +64,6 @@ screen ui_start:
         idle "gui/quick/settings_icon.png"
         xalign 0.99
         yalign 0.03
-        action ShowMenu()
+        action ShowMenu("preferences")
+    use skip_stopper
     use quickToggle

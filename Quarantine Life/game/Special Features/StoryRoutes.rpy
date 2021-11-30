@@ -25,7 +25,6 @@ init:
 
 screen storyroute:
     zorder 50
-    $ renpy.hide_screen("spk") # Hide sparks when route screen is opened
 
     $ route_coordinates = {
         "start.mainstart": (283, 318, 304, 37),
@@ -57,12 +56,16 @@ screen storyroute:
         "firstdatemale": Call("firstdate", male=True),
         "firstdatefemale": Call("firstdate", male=False),
     }
-
     viewport id "storyroute":
         draggable True
-
         imagemap:
             ground "images/menu/storyroutes/bg storyroute.png"
+            if not(currentRoute == ""):
+                text "You are here":
+                    xpos route_coordinates[currentRoute][0]
+                    ypos route_coordinates[currentRoute][1]
+                    xoffset 50
+                    yoffset -30
 
             imagebutton:
                     idle "images/menu/storyroutes/storyroute title.png"
