@@ -100,9 +100,6 @@ label start():
 
         show screen ui_start
 
-        show front_endscene
-        $ renpy.pause()
-
         nar """
         It all changed so fast.
 

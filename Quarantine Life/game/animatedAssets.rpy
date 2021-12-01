@@ -866,6 +866,68 @@ image front_endscene:
     pause 3.0
     repeat
 
+image livingroom_endscene:
+    xalign 0.5 yalign 0.5
+    "bg/bg living room animated ending/0.png"
+    pause 0.5
+    "bg/bg living room animated ending/1.png"
+    pause 0.2
+    "bg/bg living room animated ending/2.png"
+    pause 0.5
+    "bg/bg living room animated ending/3.png"
+    pause 0.2
+    "bg/bg living room animated ending/4.png"
+    pause 0.5
+    "bg/bg living room animated ending/5.png"
+    pause 0.2
+    "bg/bg living room animated ending/6.png"
+    pause 0.5
+    "bg/bg living room animated ending/7.png"
+    pause 0.2
+    "bg/bg living room animated ending/8.png"
+    pause 0.5
+    "bg/bg living room animated ending/9.png"
+    pause 0.2
+    "bg/bg living room animated ending/10.png"
+    pause 0.5
+    "bg/bg living room animated ending/11.png"
+    pause 0.2
+    "bg/bg living room animated ending/12.png"
+    pause 0.5
+    "bg/bg living room animated ending/13.png"
+    pause 0.2
+    "bg/bg living room animated ending/14.png"
+    pause 0.5
+    "bg/bg living room animated ending/13.png"
+    pause 0.2
+    "bg/bg living room animated ending/12.png"
+    pause 0.5
+    "bg/bg living room animated ending/11.png"
+    pause 0.2
+    "bg/bg living room animated ending/10.png"
+    pause 0.5
+    "bg/bg living room animated ending/9.png"
+    pause 0.2
+    "bg/bg living room animated ending/8.png"
+    pause 0.5
+    "bg/bg living room animated ending/7.png"
+    pause 0.2
+    "bg/bg living room animated ending/6.png"
+    pause 0.5
+    "bg/bg living room animated ending/5.png"
+    pause 0.2
+    "bg/bg living room animated ending/4.png"
+    pause 0.5
+    "bg/bg living room animated ending/3.png"
+    pause 0.2
+    "bg/bg living room animated ending/2.png"
+    pause 0.5
+    "bg/bg living room animated ending/1.png"
+    pause 0.2
+    "bg/bg living room animated ending/0.png"
+    pause 3.0
+    repeat
+
 image spark:
     xanchor 0.5
     yanchor 0.5
