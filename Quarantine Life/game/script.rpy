@@ -55,7 +55,7 @@ style hotspot:
     activate_sound "audio/click.mp3"
 
 default isSaveOnStart = True
-default istestmode = True
+default istestmode = False
 
 # The game starts here.
 label start():
@@ -2212,7 +2212,7 @@ label jillian:
             plt "(I’m sure there are ways we can keep our virtual date more fun for both of us. But what?)"
 
             label .artsncraft:
-                $ setPersistent("artsncraft")
+                $ setPersistent("jillian.artsncraft")
 
                 call timeskip("bedroom")
                 $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
