@@ -90,7 +90,8 @@ screen ui_start:
             imagebutton:
                 idle "gui/quick/skip.png"
                 xalign 0.84 yalign 0.00
-                action Function(minigame_end)
+                action Show("confirm", message="Do you want to skip this minigame?", yes_action=Function(minigame_end), no_action=Hide("confirm"))
+                # action Function(minigame_end)
     use skip_stopper
     use quickToggle
 

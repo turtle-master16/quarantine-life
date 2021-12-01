@@ -93,12 +93,13 @@ label start():
 
     label .mainstart:
         $ setPersistent("start.mainstart")
-        $ persistent.is_route_unlocked["start.mainstart"] = True
 
         scene black
         stop music
 
         show screen ui_start
+
+        $ renpy.pause()
 
         nar """
         It all changed so fast.
@@ -258,7 +259,6 @@ label news:
 
 label lockdown:
     $ setPersistent("lockdown")
-    $ persistent.is_route_unlocked["lockdown"] = True
 
     call timeskip("lvroom_evening")
 
@@ -391,7 +391,6 @@ label lockdown:
 
 label quarantine:
     $ setPersistent("quarantine")
-    $ persistent.is_route_unlocked["quarantine"] = True
 
     call timeskip("lvroom")
 
@@ -449,7 +448,6 @@ label quarantine:
 
 label newnormal:
     $ setPersistent("newnormal")
-    $ persistent.is_route_unlocked["newnormal"] = True
 
     call timeskip("lvroom")
     $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -581,7 +579,6 @@ label newnormal:
 
     label .collectandprogress:
         $ setPersistent("newnormal.collectandprogress")
-        $ persistent.is_route_unlocked["newnormal.collectandprogress"] = True
 
         call timeskip("bedroom_evening")
         $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -598,7 +595,6 @@ label newnormal:
 
 label commuting:
     $ setPersistent("commuting")
-    $ persistent.is_route_unlocked["commuting"] = True
 
     call timeskip("bg shuttle")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -763,7 +759,6 @@ label office:
 # ROUTE HOME
 label home:
     $ setPersistent("home")
-    $ persistent.is_route_unlocked["home"] = True
 
     call timeskip("lvroom")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -999,7 +994,6 @@ label cookadobo:
 
 label princegoingout:
     $ setPersistent("princegoingout")
-    $ persistent.is_route_unlocked["princegoingout"] = True
 
     call timeskip("lvroom")
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -1159,7 +1153,6 @@ label princedisappointed:
 # ROUTE FRIEND
 label friend:
     $ setPersistent("friend")
-    $ persistent.is_route_unlocked["friend"] = True
 
     call timeskip("bg office afternoon")
     show screen patientOverlay(date="June 2020, Week 3|05:00 PM|GCQ", status="happy")
@@ -1379,7 +1372,6 @@ label phone(male=True):
 
     if male:
         $ setPersistent("phonemale")
-        $ persistent.is_route_unlocked["phonemale"] = True
 
         pl "I am definitely into guys."
 
@@ -1432,7 +1424,6 @@ label phone(male=True):
 
     else:
         $ setPersistent("phonefemale")
-        $ persistent.is_route_unlocked["phonefemale"] = True
 
         pl "I prefer girls. Thank you very much."
 
@@ -1551,7 +1542,6 @@ label postdatesearch(male=True):
 label firstdate(male=True):
     if male:
         $ setPersistent("firstdatemale")
-        $ persistent.is_route_unlocked["firstdatemale"] = True
 
         call timeskip("bedroom_afternoon")
         show screen patientOverlay(date="July 2020, Week 2|05:10 PM|GCQ", status="happy")
@@ -1599,7 +1589,6 @@ label firstdate(male=True):
 
     else:
         $ setPersistent("firstdatefemale")
-        $ persistent.is_route_unlocked["firstdatefemale"] = True
 
         call timeskip("bedroom")
         show screen patientOverlay(date="July 2020, Week 2|06:00 PM|GCQ", status="neutral")
@@ -1713,7 +1702,6 @@ label firstdate(male=True):
 # Kyle Route
 label kyle:
     $ setPersistent("kyle")
-    $ persistent.is_route_unlocked["kyle"] = True
 
     call timeskip("bg office")
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -1880,7 +1868,6 @@ label kylehome:
 
         label .findhobby:
             $ setPersistent("kylehome.findhobby")
-            $ persistent.is_route_unlocked["kylehome.findhobby"] = True
 
             call timeskip("bg office")
             $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -1954,7 +1941,6 @@ label kylehome:
 
 label kylemeet:
     $ setPersistent("kylemeet")
-    $ persistent.is_route_unlocked["kylemeet"] = True
 
     call timeskip("bg outside")
     $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -2198,7 +2184,6 @@ label jillian:
 
             label .restaurantdate:
                 $ setPersistent("jillian.restaurantdate")
-                $ persistent.is_route_unlocked["jillian.restaurantdate"] = True
 
                 call timeskip("bedroom_evening")
                 $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -2228,7 +2213,6 @@ label jillian:
 
             label .artsncraft:
                 $ setPersistent("artsncraft")
-                $ persistent.is_route_unlocked["jillian.artsncraft"] = True
 
                 call timeskip("bedroom")
                 $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -2364,7 +2348,6 @@ label jason:
 
         label .meetupjason:
             $ setPersistent("jason.meetupjason")
-            $ persistent.is_route_unlocked["jason.meetupjason"] = True
 
             call timeskip("bedroom_evening")
             show screen patientOverlay(date="August 2020, Week 4|10:00 PM|GCQ", status="happy")
@@ -2441,7 +2424,6 @@ label jason:
 # Endings
 label getcaught:
     $ setPersistent("getcaught")
-    $ persistent.is_route_unlocked["getcaught"] = True
 
     call timeskip("lvroom_evening")
 
@@ -2527,7 +2509,6 @@ label jlend:
 
 label jsexerciseend:
     $ setPersistent("jsexerciseend")
-    $ persistent.is_route_unlocked["jsexerciseend"] = True
 
     call timeskip("lvroom")
     $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
@@ -2580,118 +2561,164 @@ label findActivity:
     # Choices: (A = Watch TV) (B = Return to Point & Click)
     $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-    call timeskip("lvroom_frm7")
+    if not(_return):
+        call timeskip("lvroom_frm7")
 
     call screen findActivity()
 
     scene lvroom_frm7 onlayer background
 
     if _return == 'tv':
-        plt "(I have nothing else to do right now. Maybe I should binge watch some of my favorite TV series.)"
+        plt "(Should I watch TV?)"
+        menu:
+            "Yes":
+                $ hideGameScreens()
+                $ currentScreen = "findActivity"
+
+                plt "(I have nothing else to do right now. Maybe I should binge watch some of my favorite TV series.)"
+            "No":
+                plt "(How about something else instead?)"
+
+                jump findActivity
 
     elif _return == 'phone':
         scene bg bedroom back onlayer background
-        plt "I’ve been hearing a lot of COVID related news, but so far I only know that one of the symptoms of the virus is difficulty in breathing and fever."
 
-        plt "I should look up for more Coronavirus information, just to be sure."
+        plt "(Should I use my phone?)"
+        menu:
+            "Yes":
+                $ hideGameScreens()
 
-        show phoneless at phone_pickup onlayer background
-        $ renpy.pause(0.5)
-        call resetItems()
-        $ renpy.choice_for_skipping()
-        call screen quiz
+                plt "I’ve been hearing a lot of COVID related news, but so far I only know that one of the symptoms of the virus is difficulty in breathing and fever."
 
-        label .postquiz:
-            "You got [correctans] correct answers!"
+                plt "I should look up for more Coronavirus information, just to be sure."
 
-            hide phoneless at phone_hide
+                show phoneless at phone_pickup onlayer background
+                $ renpy.pause(0.5)
+                call resetItems()
+                $ renpy.choice_for_skipping()
+                call screen quiz
 
-            plt "Wow, I’m learning a lot today."
+                label .postquiz:
+                    "You got [correctans] correct answers!"
 
-            plt "There is so much information posted here. I need to keep myself updated."
+                    hide phoneless at phone_hide
+
+                    plt "Wow, I’m learning a lot today."
+
+                    plt "There is so much information posted here. I need to keep myself updated."
+
+            "No":
+                plt "(How about something else instead?)"
+
+                jump findActivity
 
     elif _return == 'bed':
         scene bg bedroom back onlayer background
-        plt "(Ugh. Everything is so boring, nothing else to do and we have to do this for who knows how long.)"
 
-        plt "(I think I’ll just lay down and take a nap.)"
+        plt "(Should I take a nap?)"
 
-        play sound "audio/phone ring.mp3"
+        menu:
+            "Yes":
+                $ hideGameScreens()
 
-        "..."
+                plt "(Ugh. Everything is so boring, nothing else to do and we have to do this for who knows how long.)"
 
-        stop sound
+                plt "(I think I’ll just lay down and take a nap.)"
 
-        plt "Huh? Who could that be?"
+                play sound "audio/phone ring.mp3"
 
-        show phone onlayer middle at phone_pickup
-        $ renpy.pause(0.6)
+                "..."
 
-        show screen phone_notif("images/phone/dad profile.png", "Dad")
+                stop sound
 
-        plt "Oh, it’s dad. It’s been a while since we last talked. I should answer his call."
+                plt "Huh? Who could that be?"
 
-        "{color=#000}Dad{/color}" "Hey kiddo, glad you picked up. How are you doing?"
+                show phone onlayer middle at phone_pickup
+                $ renpy.pause(0.6)
 
-        pl "I’m doing fine dad. How’s things over your side?"
+                show screen phone_notif("images/phone/dad profile.png", "Dad")
 
-        "{color=#000}Dad{/color}" "I’m doing good. Fortunately, I haven’t lost my job to the COVID pandemic. A heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
+                plt "Oh, it’s dad. It’s been a while since we last talked. I should answer his call."
 
-        pl "Yeah, there are around 13,000 OFW returning this month. It’s quite sad."
+                "{color=#000}Dad{/color}" "Hey kiddo, glad you picked up. How are you doing?"
 
-        pl "After their arrival they are required to undergo a 14-day facility-based quarantine."
+                pl "I’m doing fine dad. How’s things over your side?"
 
-        "{color=#000}Dad{/color}" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
+                "{color=#000}Dad{/color}" "I’m doing good. Fortunately, I haven’t lost my job to the COVID pandemic. A heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
 
-        pl "The house has become livelier than ever now that we have to stay home 24/7."
+                pl "Yeah, there are around 13,000 OFW returning this month. It’s quite sad."
 
-        "{color=#000}Dad{/color}" "Don’t drive your mom too crazy with your antics."
+                pl "After their arrival they are required to undergo a 14-day facility-based quarantine."
 
-        pl "No promises. Let me tell you that one time when Prince got mad over a video game..."
+                "{color=#000}Dad{/color}" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
 
-        hide screen phone_notif
+                pl "The house has become livelier than ever now that we have to stay home 24/7."
 
-        $ Hide("phone_call", transition=Dissolve(2.0))()
+                "{color=#000}Dad{/color}" "Don’t drive your mom too crazy with your antics."
+
+                pl "No promises. Let me tell you that one time when Prince got mad over a video game..."
+
+                hide screen phone_notif
+
+                $ Hide("phone_call", transition=Dissolve(2.0))()
+
+            "No":
+                plt "(How about something else instead?)"
+
+                jump findActivity
 
     elif _return == 'dumbells':
         scene bg bedroom back onlayer background
 
-        plt "(Alright, time to work hard and get my quarantine bod. Starting with simple stretches.)"
+        plt "(Should I exercise?)"
 
-        $all_moves(camera_check_points={'z': [(0, 0, None), (1000, 4.0, 'linear')]})
+        menu:
+            "Yes":
+                $ hideGameScreens()
 
-        pl "One. Two. Three. Four. Five. Six. Seven. Eight. Next."
+                plt "(Alright, time to work hard and get my quarantine bod. Starting with simple stretches.)"
 
-        $all_moves(camera_check_points={'z': [(1000, 0.0, 'linear'), (0, 4.0, 'linear')]})
+                $all_moves(camera_check_points={'z': [(0, 0, None), (1000, 4.0, 'linear')]})
 
-        pl "One. Two. Three. Four. Five. Six. Seven. Eight."
+                pl "One. Two. Three. Four. Five. Six. Seven. Eight. Next."
 
-        pl "Now for some jumping jacks."
+                $all_moves(camera_check_points={'z': [(1000, 0.0, 'linear'), (500, 4.0, 'linear')]})
 
-        $all_moves(camera_check_points={'y': [(0, 0, None), (-756, 0.5, 'linear'), (-104, 1.0, 'linear')]}, y_loop=True)
-        pl "One. Two. Three. Four. Five. Six. Seven. Eight."
+                pl "One. Two. Three. Four. Five. Six. Seven. Eight."
 
-        pl "Yeah! I can feel my body changing already. Quarantine bod here I come."
+                pl "Now for some jumping jacks."
 
-        call timeskip("lvroom_afternoon")
-        show screen patientOverlay(date="April 2020, Week 1|05:00 PM|ECQ", status="happy")
+                $all_moves(camera_check_points={'y': [(0, 0, None), (-756, 0.5, 'linear'), (-104, 1.0, 'linear')]}, y_loop=True)
+                pl "One. Two. Three. Four. Five. Six. Seven. Eight."
 
-        play sound "audio/eating.mp3"
-        pl "*munch munch*"
+                pl "Yeah! I can feel my body changing already. Quarantine bod here I come."
 
-        show prince talking1 onlayer middle
-        with dissolve
+                call timeskip("lvroom_afternoon")
+                show screen patientOverlay(date="April 2020, Week 1|05:00 PM|ECQ", status="happy")
 
-        pr "Weren’t you exercising not too long ago?"
+                play sound "audio/eating.mp3"
+                pl "*munch munch*"
 
-        pl "I got lazy. I’ll continue tomorrow."
+                show prince talking1 onlayer middle
+                with dissolve
 
-        show prince confident onlayer middle
+                pr "Weren’t you exercising not too long ago?"
 
-        pr "Suuure. Whatever you say."
+                pl "I got lazy. I’ll continue tomorrow."
+
+                show prince confident onlayer middle
+
+                pr "Suuure. Whatever you say."
+
+            "No":
+                plt "(How about something else instead?)"
+
+                jump findActivity
     else:
         jump findActivity
 
+    $ currentScreen = "findActivity"
     $ minigame_end()
 
     jump newnormal

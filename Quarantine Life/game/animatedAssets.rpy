@@ -681,7 +681,6 @@ image bedroom_evening:
     repeat
 
 image kitchen_endscene:
-    xalign 0.5 yalign 0.5
     "bg/bg kitchen animated ending/0.png"
     pause 0.5
     "bg/bg kitchen animated ending/1.png"
@@ -957,3 +956,8 @@ image spark:
     pause 0.08
     "misc/spark/11.png"
     repeat
+
+transform pan_to_left:
+    xalign 1.0
+    yalign 0.5
+    linear 7.5 xalign 0.0

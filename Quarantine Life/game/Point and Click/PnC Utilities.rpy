@@ -5,6 +5,8 @@
 
 init python:
     # Used at the end of minigames/Use of story route
+    import copy
+
     def hideGameScreens():
         renpy.hide_screen("spark_toggle")
         renpy.hide_screen("spk")
@@ -19,9 +21,11 @@ init python:
     def minigame_end():
         persistent.minigame_completed[currentScreen] = True
         curScr = currentScreen
+        renpy.hide_screen("confirm")
         hideGameScreens()
         renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
         renpy.jump(post_minigame_label_jump_to[curScr])
+        return
 
 # For room switching
 define ROOMS = {
