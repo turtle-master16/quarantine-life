@@ -100,6 +100,9 @@ label start():
 
         show screen ui_start
 
+        # show bedroom_endscene
+        # $ renpy.pause()
+
         nar """
         It all changed so fast.
 
