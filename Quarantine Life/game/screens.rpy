@@ -544,6 +544,7 @@ style return_button:
 ## example of how to make a custom screen.
 
 screen about():
+    zorder 100
 
     tag menu
 
@@ -713,7 +714,7 @@ style slot_button_text:
 ## https://www.renpy.org/doc/html/screen_special.html#preferences
 
 screen preferences():
-
+    zorder 100
     tag menu
 
     use game_menu(_("Preferences"), scroll="viewport"):
@@ -880,6 +881,7 @@ style slider_vbox:
 ## https://www.renpy.org/doc/html/history.html
 
 screen history():
+    zorder 100
 
     tag menu
 
