@@ -33,13 +33,13 @@ screen quickMenu:
         imagebutton:
             idle "gui/quick/narrative_icon.png"
             at transform:
-                xoffset -10
+                xoffset -5
                 yoffset 60
             action Show("dialogevents")
         imagebutton:
             idle "gui/quick/timeline_icon.png"
             at transform:
-                xoffset -12
+                xoffset -7
                 yoffset 90
             action Show("storyroute")
 
@@ -49,7 +49,8 @@ screen quickToggle:
     $ isMenuOpen = renpy.get_screen("quickMenu")
     if not(isMenuOpen):
         imagebutton:
-            idle "gui/quick/navigation_close.png"
+            idle "gui/quick/inactive_navigation_close.png"
+            hover "gui/quick/navigation_close.png"
             xalign 1.0
             yalign 0.3
             at transform:

@@ -209,6 +209,8 @@ screen phone_message3(what):
             style_group "phone_message2"
             background Solid("#ffa500")#"#78E8A0")
             xsize 200
+            ypadding 10
+            xpadding 10
 
             vbox:
                 style "phone_message_contents"

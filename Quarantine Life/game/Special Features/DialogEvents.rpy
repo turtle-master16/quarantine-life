@@ -31,8 +31,8 @@ screen dialogevents:
 
     imagebutton:
             idle "images/misc/close.png"
-            xalign 0.99
-            yalign 0.02
+            xalign 0.975
+            yalign 0.05
             action Hide("dialogevents")
 
     frame:

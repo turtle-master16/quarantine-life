@@ -45,6 +45,7 @@ screen showCorrectAnswer:
 transform t_quiz:
     xpos 0.5 ypos 0.89 xanchor 0.5 yanchor 1.0
     xoffset -2
+    zoom 1.01
     on show:
         alpha 0
         linear 0.3 alpha 1
@@ -55,6 +56,7 @@ transform t_quiz:
 transform t_quizAns:
     xpos 0.5 ypos 0.89 xanchor 0.5 yanchor 1.0
     xoffset -2
+    zoom 1.01
     # on show:
     #     alpha 0
     #     linear 0.3 alpha 1

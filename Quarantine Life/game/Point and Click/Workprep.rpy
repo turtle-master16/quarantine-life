@@ -57,12 +57,14 @@ screen workprep():
                                                                   Call("objDialogue", object_dialogue["drawerLvrm"])]
 
         imagebutton:
-            idle "images/misc/arrow.png"
+            idle "images/misc/inactive_arrow.png"
+            hover "images/misc/arrow.png"
             yalign 0.75
             action [SetVariable("currentRoom", ROOMS["bedroom"]),
                     Show("patientOverlay", date="June 2020, Week 2|11:00 PM|GCQ", status="happy")]
         imagebutton:
-            idle im.Flip("images/misc/arrow.png", horizontal=True)
+            idle im.Flip("images/misc/inactive_arrow.png", horizontal=True)
+            hover im.Flip("images/misc/arrow.png", horizontal=True)
             xalign 1.0
             yalign 0.75
             action [SetVariable("currentRoom", ROOMS["kitchen"]),
@@ -112,7 +114,8 @@ screen workprep():
                                                   Call("objDialogue", object_dialogue["studyTable2"])]
 
         imagebutton:
-            idle im.Flip("images/misc/arrow.png", horizontal=True)
+            idle im.Flip("images/misc/inactive_arrow.png", horizontal=True)
+            hover im.Flip("images/misc/arrow.png", horizontal=True)
             xalign 1.0
             yalign 0.75
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
@@ -137,7 +140,8 @@ screen workprep():
                                                   Call("objDialogue", object_dialogue["sanitizer"])]
 
         imagebutton:
-            idle "images/misc/arrow.png"
+            idle "images/misc/inactive_arrow.png"
+            hover "images/misc/arrow.png"
             xalign 0.2
             yalign 0.6
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
@@ -146,7 +150,10 @@ screen workprep():
 screen workitem_list():
     modal True
     zorder 1
-    add Image("images/misc/paper.png"):
+    add Solid("#ffffff44")
+
+    imagebutton:
+        idle "images/misc/paper.png"
         at transform:
             xalign 0.5
             yalign 0.5
@@ -157,11 +164,11 @@ screen workitem_list():
             on hide:
                 yoffset 0
                 linear 0.3 yoffset 700
+        action Hide("workitem_list")
+
     vbox:
         xalign 0.5
-        xoffset 12
-        ypos 0.4
-        yanchor 0.5
+        ypos 0.18
         at transform:
             on show:
                 yoffset 700
@@ -169,28 +176,26 @@ screen workitem_list():
             on hide:
                 yoffset 0
                 linear 0.3 yoffset 700
-        text "ITEM CHECKLIST":
+        text "CHECKLIST":
             xalign 0.5
-            color "#000"
+            color "#333"
+            size 55
+            bold True
 
-        null height 20
-
-        $ items_needed = [item for item in onhand if not(item == 'bedkey')]
-        for item in items_needed:
-            $ it_cap = item.capitalize()
-            showif onhand[item]:
-                text "{s}[it_cap]{/s}":
-                    xalign 0.5
-                    color "#000"
-            else:
-                text "[it_cap]":
-                    xalign 0.5
-                    color "#000"
-            null height 15
-
-        null height 20
-
-        textbutton "Tap to close":
+        vbox:
             xalign 0.5
-            text_color "#000"
-            action Hide("workitem_list")
+            ypos 0.1
+            $ items_needed = [item for item in onhand if not(item == 'bedkey')]
+            for item in items_needed:
+                $ it_cap = item.capitalize()
+                showif onhand[item]:
+                    text "{s}[it_cap]{/s}":
+                        xalign 0.5
+                        color "#bbb"
+                        size 50
+                else:
+                    text "[it_cap]":
+                        xalign 0.5
+                        color "#555"
+                        size 50
+                null height 15

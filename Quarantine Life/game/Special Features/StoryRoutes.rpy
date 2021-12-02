@@ -61,17 +61,10 @@ screen storyroute:
         imagemap:
             ground "images/menu/storyroutes/bg storyroute.png"
             if not(currentRoute == ""):
-                text "You are here":
+                add "images/menu/storyroutes/currentroute.png":
                     xpos route_coordinates[currentRoute][0]
                     ypos route_coordinates[currentRoute][1]
-                    xoffset 50
                     yoffset -35
-
-            imagebutton:
-                    idle "images/menu/storyroutes/storyroute title.png"
-                    xalign 0.005
-                    yalign 0.03
-                    action 0
 
             for route in route_coordinates:
                 showif not(persistent.is_route_unlocked[route]):
@@ -87,7 +80,13 @@ screen storyroute:
                         hotspot route_coordinates[route] action [Function(hideGameScreens), Jump(route)]
 
     imagebutton:
+        idle "images/menu/storyroutes/storyroute title.png"
+        xalign 0.03
+        yalign 0.04
+        action 0
+
+    imagebutton:
         idle "images/misc/black close.png"
-        xalign 0.99
-        yalign 0.02
+        xalign 0.975
+        yalign 0.05
         action Hide("storyroute")

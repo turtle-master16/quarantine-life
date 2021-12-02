@@ -90,7 +90,7 @@ screen ui_start:
             # action Instruction Screen Here
         if persistent.minigame_completed[currentScreen]:
             imagebutton:
-                idle "gui/quick/skip.png"
+                idle "gui/quick/skipGame_btn.png"
                 xalign 0.84 yalign 0.00
                 action Show("confirm", message="Do you want to skip this minigame?", yes_action=Function(minigame_end), no_action=Hide("confirm"))
                 # action Function(minigame_end)
