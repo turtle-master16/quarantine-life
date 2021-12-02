@@ -56,7 +56,8 @@ screen spark_toggle:
 
 screen supermarket_ui:
     imagebutton:
-        idle "images/supermarket/basket_btn.png"
+        idle "images/supermarket/inactive_basket_btn.png"
+        hover "images/supermarket/basket_btn.png"
         xalign 0.98
         yalign 0.95
         action ShowTransient("basketMenu")
@@ -64,6 +65,7 @@ screen supermarket_ui:
         idle "images/supermarket/groceryList_icon.png"
         xalign 0.83
         yalign 0.95
+        at third
         action ShowTransient("fly_in_image", img="images/supermarket/grocery_list.png")
 
 screen workprep_ui:
@@ -108,6 +110,8 @@ transform t_flyingimage:
 screen fly_in_image(img):
     zorder 2
     modal True
+    add Solid("#61564388")
+
     imagebutton:
         idle img
         at t_flyingimage

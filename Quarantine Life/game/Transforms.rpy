@@ -78,3 +78,9 @@ transform t_price_list:
     on hide:
         yoffset 0
         linear 0.8 yoffset 700
+
+transform double:
+    zoom 2.0
+
+transform third:
+    zoom 1.3
