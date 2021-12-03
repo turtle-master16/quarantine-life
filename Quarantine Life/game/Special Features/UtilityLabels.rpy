@@ -68,6 +68,7 @@ label ending_reached(end_type=""):
 screen skip_stopper:
     zorder 100
     if renpy.is_skipping():
+        add Solid("#ffc50033")
         imagebutton:
             idle "gui/quick/skip_stopper.png"
             at delayed_blink(0.0, 1.0)

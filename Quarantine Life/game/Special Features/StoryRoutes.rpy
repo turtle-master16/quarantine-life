@@ -61,10 +61,15 @@ screen storyroute:
         imagemap:
             ground "images/menu/storyroutes/bg storyroute.png"
             if not(currentRoute == ""):
+                add "images/menu/storyroutes/selectedroute.png":
+                    xpos route_coordinates[currentRoute][0]
+                    ypos route_coordinates[currentRoute][1]
+                    yoffset -8
+                    xoffset 8
                 add "images/menu/storyroutes/currentroute.png":
                     xpos route_coordinates[currentRoute][0]
                     ypos route_coordinates[currentRoute][1]
-                    yoffset -35
+                    yoffset -40
 
             for route in route_coordinates:
                 showif not(persistent.is_route_unlocked[route]):

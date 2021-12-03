@@ -55,7 +55,7 @@ style hotspot:
     activate_sound "audio/click.mp3"
 
 default isSaveOnStart = True
-default istestmode = True
+default istestmode = False
 
 # The game starts here.
 label start():
@@ -2582,7 +2582,7 @@ label findActivity:
                 jump findActivity
 
     elif _return == 'phone':
-        scene bg bedroom back onlayer background
+        scene bedroom_frm7 onlayer background
 
         plt "(Should I use my phone?)"
         menu:
@@ -2614,7 +2614,7 @@ label findActivity:
                 jump findActivity
 
     elif _return == 'bed':
-        scene bg bedroom back onlayer background
+        scene bedroom_frm7 onlayer background
 
         plt "(Should I take a nap?)"
 
@@ -2669,7 +2669,7 @@ label findActivity:
                 jump findActivity
 
     elif _return == 'dumbells':
-        scene bg bedroom back onlayer background
+        scene bedroom_frm7 onlayer background
 
         plt "(Should I exercise?)"
 

@@ -22,7 +22,7 @@ screen findActivity():
                     Show("patientOverlay", date="April 2020, Week 1|09:00 AM|ECQ", status="happy")]
     elif currentRoom == ROOMS['bedroom']:
         imagemap:
-            ground "images/bg/bg bedroom back.png"
+            ground "clickables/bedroom_frm7.png"
             hotspot bdroom_items["phone"] action Return('phone')
             hotspot bdroom_items["dumbells"] action Return('dumbells')
             hotspot bdroom_items["bed"] action Return('bed')
