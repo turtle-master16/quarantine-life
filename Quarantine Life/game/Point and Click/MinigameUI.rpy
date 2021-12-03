@@ -54,6 +54,40 @@ screen spark_toggle:
 
             action ToggleScreen("spk")
 
+default current_page = 0
+
+screen instruction:
+    $ i = instruct_data["supermarket"]
+    imagebutton:
+        idle "black"
+        action [If(current_page == i.pages, [Hide("instruction"), Show("ui_start"), SetVariable("current_page", 0)],
+                                             SetVariable("current_page", current_page + 1))]
+
+    frame:
+        at transform:
+            xalign 0.5 yalign 0.30 zoom 0.7
+
+        add i.bg alpha 0.5
+
+        for e in i.btn_set:
+            if e == i.btn_set[current_page]:
+                add e.img:
+                    at transform:
+                        xalign e.xalign
+                        yalign e.yalign
+                        zoom e.zoom
+                        alpha 1.0
+            else:
+                add e.img:
+                    at transform:
+                        xalign e.xalign
+                        yalign e.yalign
+                        zoom e.zoom
+                        alpha 0.2
+
+    text "{{b}}{}{{/b}}".format(instruct_data["supermarket"].btn_set[current_page].desc):
+        xalign 0.5 yalign 0.9
+
 screen supermarket_ui:
     imagebutton:
         idle "images/supermarket/inactive_basket_btn.png"
@@ -87,13 +121,12 @@ screen ui_start:
         imagebutton:
             idle "gui/quick/instructions_icon.png"
             xalign 0.9 yalign 0.03
-            # action Instruction Screen Here
+            action [ShowTransient("instruction"), Hide("ui_start"), Hide("spark_toggle")]
         if persistent.minigame_completed[currentScreen]:
             imagebutton:
                 idle "gui/quick/skipGame_btn.png"
                 xalign 0.84 yalign 0.00
                 action Show("confirm", message="Do you want to skip this minigame?", yes_action=Function(minigame_end), no_action=Hide("confirm"))
-                # action Function(minigame_end)
     use skip_stopper
     use quickToggle
 

@@ -1,12 +1,5 @@
-"""
-    Stuff in this file are stuff shared by all the Point N' Click Screens
-"""
-#--------------------
-
 init python:
     # Used at the end of minigames/Use of story route
-    import copy
-
     def hideGameScreens():
         renpy.hide_screen("spark_toggle")
         renpy.hide_screen("spk")

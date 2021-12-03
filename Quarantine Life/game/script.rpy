@@ -55,7 +55,7 @@ style hotspot:
     activate_sound "audio/click.mp3"
 
 default isSaveOnStart = True
-default istestmode = False
+default istestmode = True
 
 # The game starts here.
 label start():
