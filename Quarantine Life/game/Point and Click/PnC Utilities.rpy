@@ -7,6 +7,8 @@ init python:
         renpy.hide_screen("workprep_ui")
         renpy.hide_screen("supermarket_ui")
         renpy.hide_screen("storyroute")
+        renpy.hide_screen("confirm")
+        globals()['quickMenuHide'] = False
         globals()['currentScreen'] = ""
         globals()['currentRoom'] = ROOMS["livingroom"]
         return
@@ -14,7 +16,6 @@ init python:
     def minigame_end():
         persistent.minigame_completed[currentScreen] = True
         curScr = currentScreen
-        renpy.hide_screen("confirm")
         hideGameScreens()
         renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
         renpy.jump(post_minigame_label_jump_to[curScr])
@@ -105,6 +106,8 @@ label initMinigame(name):
     $ renpy.call("resetItems") # Start game from scratch
 
     $ currentScreen = name
+
+    $ quickMenuHide = True
 
     $ taskpopout = "images/misc/taskpopups/{}.png".format(name)
     show screen notify(img=taskpopout) # Pop out Notif

@@ -1,28 +1,3 @@
-define instructions = {
-    "supermarket":
-"""Get all the required items from the list (which can be viewed with the list
-button on the lower left corner of the screen) and use your remaining budget for
-buying extra items of your choice. The total cost of the required items and the
-extra items should be EXACTLY ₱200.
-
-Get items by tapping the item you want. After tapping, you will be asked to
-choose how many of that item you would want to take or return one piece of that
-item if you have any. You can use the ₱ button on the lower left part of
-the screen to see the price of each item, how many items you have on hand, and
-total cost of your items on hand.
-
-Click on the cash register button on the lower right corner if you are done shopping.
-""",
-    "workprep":
-"""Get all the items on the item checklist on the lower left corner of the screen.
-Tap on objects to interact with them. Tap the arrows on the left or right side
-of the screen to go to the other rooms. The item checklist will indicate which
-items you already have and items still missing.
-
-Click on the "i" button on the top right corner to review this instruction.
-"""
-}
-
 define persistent.minigame_completed = {
     "broomfind":    False,
     "findActivity": False,
@@ -88,7 +63,7 @@ screen instruction:
                         at transform:
                             xalign e.xalign
                             yalign e.yalign
-                            zoom e.zoom
+                            zoom e.zoom xzoom e.xzoom
                             alpha 1.0
                 else:
                     # If e is a menu element or e is the skip element but it's unavailable, hide it
@@ -97,29 +72,32 @@ screen instruction:
                             at transform:
                                 xalign e.xalign
                                 yalign e.yalign
-                                zoom e.zoom
+                                zoom e.zoom xzoom e.xzoom
                                 alpha 0.0
                     else:                           # Fade the rest of the elements
                         add e.img:
                             at transform:
                                 xalign e.xalign
                                 yalign e.yalign
-                                zoom e.zoom
+                                zoom e.zoom xzoom e.xzoom
                                 alpha 0.2
 
     if current_page == -1:                               # Objective
         text "{{b}}Objective: {}{{/b}}".format(i.objective):
             xalign 0.5 ycenter 0.90
             xsize 0.8 text_align 0.5
+            size 25
     else:
         if isinstance(i.btn_set[current_page], str):     # Text Instruction (No emphasized element)
             text "{{b}}{}{{/b}}".format(i.btn_set[current_page]):
                 xalign 0.5 ycenter 0.90
                 xsize 0.8 text_align 0.5
+                size 25
         else:                                            # If it is a InstructionElement Object, get it's desc field
             text "{{b}}{}{{/b}}".format(i.btn_set[current_page].desc):
                 xalign 0.5 ycenter 0.90
                 xsize 0.8 text_align 0.5
+                size 25
 
 screen supermarket_ui:
     imagebutton:
@@ -154,7 +132,7 @@ screen ui_start:
         imagebutton:
             idle "gui/quick/instructions_icon.png"
             xalign 0.9 yalign 0.03
-            action [ShowTransient("instruction"), Hide("spark_toggle")]
+            action [ShowTransient("instruction")]
         if persistent.minigame_completed[currentScreen]:
             imagebutton:
                 idle "gui/quick/skipGame_btn.png"
@@ -162,16 +140,6 @@ screen ui_start:
                 action Show("confirm", message="Do you want to skip this minigame?", yes_action=Function(minigame_end), no_action=Hide("confirm"))
     use skip_stopper
     use quickToggle
-
-transform t_flyingimage:
-    xalign 0.5
-    yalign 0.5
-    on show:
-        yoffset 700
-        linear 0.5 yoffset 0
-    on hide:
-        yoffset 0
-        linear 0.5 yoffset 700
 
 screen fly_in_image(img):
     zorder 2
@@ -182,3 +150,13 @@ screen fly_in_image(img):
         idle img
         at t_flyingimage
         action Hide("fly_in_image")
+
+transform t_flyingimage:
+    xalign 0.5
+    yalign 0.5
+    on show:
+        yoffset 700
+        linear 0.5 yoffset 0
+    on hide:
+        yoffset 0
+        linear 0.5 yoffset 700
