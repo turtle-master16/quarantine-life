@@ -2450,7 +2450,7 @@ label getcaught:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
     with dissolve
 
-    "Police" "Hey you! Stop right there."
+    "{color=#000}{color=#000}Police{/color}{/color}" "Hey you! Stop right there."
 
     plt "(Oh shoot! What should I do?)"
 
@@ -2469,7 +2469,7 @@ label getcaught:
             #--SFX (Running/Panting then Crash)
             pl "!!!"
 
-            "Police" "You are under arrest for quarantine violation."
+            "{color=#000}Police{/color}" "You are under arrest for quarantine violation."
 
         "Stay in place.":
             $ renpy.pause(0.3)
@@ -2483,7 +2483,7 @@ label getcaught:
                 show tanod arrest onlayer middle:
                     xpos 0.45 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
 
-                "Police" "You are under arrest for quarantine protocol violation."
+                "{color=#000}Police{/color}" "You are under arrest for quarantine protocol violation."
 
     call ending_reached("bad")
 

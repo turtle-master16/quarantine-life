@@ -54,39 +54,72 @@ screen spark_toggle:
 
             action ToggleScreen("spk")
 
-default current_page = 0
+default current_page = -1
 
+# When current page is -1, it's currently at the objective page (first page of
+# instruction)
 screen instruction:
-    $ i = instruct_data["supermarket"]
+    zorder 30
+    modal True
+    $ i = instruct_data[currentScreen]
+    $ isSkipAvailable = persistent.minigame_completed[currentScreen]
+    $ last_page = i.pages if isSkipAvailable else i.pages - 1
     imagebutton:
         idle "black"
-        action [If(current_page == i.pages, [Hide("instruction"), Show("ui_start"), SetVariable("current_page", 0)],
-                                             SetVariable("current_page", current_page + 1))]
+        action [If(current_page == last_page, [Hide("instruction"), SetVariable("current_page", -1)],
+                                              SetVariable("current_page", current_page + 1))]
 
     frame:
         at transform:
             xalign 0.5 yalign 0.30 zoom 0.7
 
-        add i.bg alpha 0.5
+        if current_page <= 0:
+            add i.bg alpha 1.0
+        else:
+            add i.bg alpha 0.5
+
+        add "gui/quick/settings_icon.png":
+            xalign 0.99 yalign 0.03 alpha 0.5
 
         for e in i.btn_set:
-            if e == i.btn_set[current_page]:
-                add e.img:
-                    at transform:
-                        xalign e.xalign
-                        yalign e.yalign
-                        zoom e.zoom
-                        alpha 1.0
-            else:
-                add e.img:
-                    at transform:
-                        xalign e.xalign
-                        yalign e.yalign
-                        zoom e.zoom
-                        alpha 0.2
+            if not(isinstance(e, str)):             # Only display e if it's not a string (string logic is after loop)
+                if e == i.btn_set[current_page] and current_page > -1:
+                    add e.img:                      # Emphasize the current element (based on current page)
+                        at transform:
+                            xalign e.xalign
+                            yalign e.yalign
+                            zoom e.zoom
+                            alpha 1.0
+                else:
+                    # If e is a menu element or e is the skip element but it's unavailable, hide it
+                    if e.isMenu or (not(isSkipAvailable) and e == general_btns["skip"]):
+                        add e.img:
+                            at transform:
+                                xalign e.xalign
+                                yalign e.yalign
+                                zoom e.zoom
+                                alpha 0.0
+                    else:                           # Fade the rest of the elements
+                        add e.img:
+                            at transform:
+                                xalign e.xalign
+                                yalign e.yalign
+                                zoom e.zoom
+                                alpha 0.2
 
-    text "{{b}}{}{{/b}}".format(instruct_data["supermarket"].btn_set[current_page].desc):
-        xalign 0.5 yalign 0.9
+    if current_page == -1:                               # Objective
+        text "{{b}}Objective: {}{{/b}}".format(i.objective):
+            xalign 0.5 ycenter 0.90
+            xsize 0.8 text_align 0.5
+    else:
+        if isinstance(i.btn_set[current_page], str):     # Text Instruction (No emphasized element)
+            text "{{b}}{}{{/b}}".format(i.btn_set[current_page]):
+                xalign 0.5 ycenter 0.90
+                xsize 0.8 text_align 0.5
+        else:                                            # If it is a InstructionElement Object, get it's desc field
+            text "{{b}}{}{{/b}}".format(i.btn_set[current_page].desc):
+                xalign 0.5 ycenter 0.90
+                xsize 0.8 text_align 0.5
 
 screen supermarket_ui:
     imagebutton:
@@ -121,7 +154,7 @@ screen ui_start:
         imagebutton:
             idle "gui/quick/instructions_icon.png"
             xalign 0.9 yalign 0.03
-            action [ShowTransient("instruction"), Hide("ui_start"), Hide("spark_toggle")]
+            action [ShowTransient("instruction"), Hide("spark_toggle")]
         if persistent.minigame_completed[currentScreen]:
             imagebutton:
                 idle "gui/quick/skipGame_btn.png"
