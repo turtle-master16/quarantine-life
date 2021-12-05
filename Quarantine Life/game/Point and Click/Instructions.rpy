@@ -80,7 +80,7 @@ init python:
             InstructionElement("images/instructions/i_itemtake.png",         btn_desc_set["supermarket"][1], 0.5,    0.5,     1.0,  True),
             InstructionElement("images/instructions/i_itemtake.png",         btn_desc_set["supermarket"][2], 0.5,    0.5,     1.0,  True),
             InstructionElement("images/supermarket/groceryList_icon.png",    btn_desc_set["supermarket"][3], 0.83,   0.95),
-            InstructionElement("images/supermarket/inactive_basket_btn.png", btn_desc_set["supermarket"][4], 0.98,   0.95),
+            InstructionElement("images/supermarket/basket_btn.png", btn_desc_set["supermarket"][4], 0.98,   0.95),
             InstructionElement("images/Instructions/i_basketMenu.png",       btn_desc_set["supermarket"][5], 0.5,    0.5,     1.0,  True),
             general_btns["spark_toggle"],
             general_btns["instructions"],

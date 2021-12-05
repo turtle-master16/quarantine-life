@@ -1,43 +1,21 @@
-# define charcolor = {
-#     "Prince": "#0033a9",
-#     "Carla": "#f5d442",
-#     "Ian": "#fefe55",
-#     "Mark": "#46a5d3",
-#     "Jason": "#01a9a1",
-#     "Jillian": "#7e4000",
-#     "Kyle": "#f7927b",
-#     "Player": "#ffa500",
-#     "Thoughts":"#add8e6",
-#     "Narration":"#1e81b0",
-#     "Instruction":"#0f0",
-# }
-
 define charcolor = {
-    "Prince": "#000",
-    "Carla": "#000",
-    "Ian": "#000",
-    "Mark": "#000",
-    "Jason": "#000",
-    "Jillian": "#000",
-    "Kyle": "#000",
-    "Player": "#000",
     "Thoughts":"#add8e6",
     "Narration":"#1e81b0",
     "Instruction":"#0f0",
 }
 
 # The Characters
-define pl = Character("[player_name]", color=charcolor['Player'])
-define plt = Character("[player_name]", color=charcolor['Player'], what_color=charcolor['Thoughts'], what_italic=True)
-define pr = Character("Prince", color=charcolor['Prince'])
-define c = Character("Carla", color=charcolor['Carla'])
-define i = Character("Ian", color=charcolor['Ian'])
-define m = Character("Mark", color=charcolor['Mark'])
-define js = Character("Jason", color=charcolor['Jason'])
-define jl = Character("Jillian", color=charcolor['Jillian'])
-define ky = Character("Kyle", color=charcolor['Kyle'])
-define nar = Character(None, what_color=charcolor['Narration'])
-define ins = Character(None, what_color=charcolor['Instruction'])
+define pl = Character("[player_name]")
+define plt = Character("[player_name]", what_color=charcolor['Thoughts'], what_italic=True)
+define pr = Character("Prince")
+define c = Character("Carla")
+define i = Character("Ian")
+define m = Character("Mark")
+define js = Character("Jason")
+define jl = Character("Jillian")
+define ky = Character("Kyle")
+define nar = Character(what_color=charcolor['Narration'])
+define ins = Character(what_color=charcolor['Instruction'])
 
 style choice_button is default:
     activate_sound "audio/select.mp3"
@@ -98,8 +76,6 @@ label start():
         stop music
 
         show screen ui_start
-
-        $ renpy.pause()
 
         nar """
         It all changed so fast.
@@ -201,9 +177,9 @@ label news:
     scene tvviewon onlayer background
     with dissolve
 
-    "{color=#000}Reporter{/color}" "This just in, the Philippines has been suspending flights from Wuhan City, China due to the spread of the {b}COVID virus{/b}."
+    "Reporter" "This just in, the Philippines has been suspending flights from Wuhan City, China due to the spread of the {b}COVID virus{/b}."
 
-    "{color=#000}Reporter{/color}" "Flights from other parts of China will also be strictly monitored to prevent the virus from entering the country..."
+    "Reporter" "Flights from other parts of China will also be strictly monitored to prevent the virus from entering the country..."
 
     show tvon onlayer background
     with dissolve
@@ -282,7 +258,7 @@ label lockdown:
     show tvviewon_evening onlayer background
     with dissolve
 
-    "{color=#000}Reporter{/color}" """
+    "Reporter" """
     The President has declared a state of public health emergency. {b}Classes have been suspended and work-from-home is sought{/b} amid the local Coronavirus cases.
 
     Strict {b}home quarantine{/b} is implemented in all households.
@@ -292,7 +268,7 @@ label lockdown:
 
     show screen patientOverlay(date="March 2020, Week 1|07:10 PM|ECQ", status="neutral")
 
-    "{color=#000}Reporter{/color}" """
+    "Reporter" """
     All government agencies and LGUs are hereby enjoined to render full assistance and cooperation and mobilize necessary resource...
 
     ...to undertake critical, urgent, and appropriate response and measures in a timely manner to curtail and eliminate the Covid-19 threat.
@@ -473,13 +449,13 @@ label newnormal:
     scene tvviewon onlayer background
     with dissolve
 
-    "{color=#000}Reporter{/color}" "Good afternoon and welcome to ABC News Network…"
+    "Reporter" "Good afternoon and welcome to ABC News Network…"
 
-    "{color=#000}Reporter{/color}" "Areas under MECQ and GCQ may allow business activities to resume, requiring strict compliance with {b}minimum public health standards{/b}."
+    "Reporter" "Areas under MECQ and GCQ may allow business activities to resume, requiring strict compliance with {b}minimum public health standards{/b}."
 
     $ showAchievementOverlay("minimum public health standard")
 
-    "{color=#000}Reporter{/color}" "Public transportations is limited and crossing over to other regions remains banned…"
+    "Reporter" "Public transportations is limited and crossing over to other regions remains banned…"
 
     show tvon onlayer background
     with dissolve
@@ -607,7 +583,7 @@ label commuting:
 
     $ showAchievementOverlay("public transportation")
 
-    "{color=#000}Worker 1{/color}" "These past few months have been rough."
+    "Worker 1" "These past few months have been rough."
 
     plt "(They’re so loud they need to keep their voices down. Should I listen or just ignore them?)"
 
@@ -615,7 +591,7 @@ label commuting:
         "Eavesdrop":
             $ renpy.pause(0.3)
 
-            "{color=#000}Worker 2{/color}" """
+            "Worker 2" """
             Yeah, I’m still getting used to wearing a facemask. I can’t exactly breathe properly with this covering the bottom half of my face.
 
             Better safe than sorry since {b}facemasks suppress the transmission of the virus{/b}.
@@ -623,13 +599,13 @@ label commuting:
             The use of mask alone is not sufficient but it does help prevent respiratory droplets from reaching others.
             """
 
-            "{color=#000}Worker 1{/color}" "That’s true."
+            "}Worker 1" "That’s true."
 
             plt "(Right. It’s best to {b}avoid crowded places too{/b}.)"
 
-            "{color=#000}Worker 1{/color}" "How can we protect ourselves from COVID?"
+            "Worker 1" "How can we protect ourselves from COVID?"
 
-            "{color=#000}Worker 2{/color}" "Other the {b}social distancing{/b}, you should also {b}practice proper cough etiquette and proper hand washing using soap and water{/b}."
+            "Worker 2" "Other the {b}social distancing{/b}, you should also {b}practice proper cough etiquette and proper hand washing using soap and water{/b}."
 
             $ showAchievementOverlay("prevent the spread of covid19")
 
@@ -2307,7 +2283,7 @@ label jason:
     scene tvon_afternoon onlayer background
     with dissolve
 
-    "{color=#000}Reporter{/color}" """
+    "Reporter" """
     In today’s report, the number of COVID-19 cases in the Philippines moved past the 316,000 mark.
 
     In other related news, 86 percent of adult Filipino have been experiencing great stress...
@@ -2450,7 +2426,7 @@ label getcaught:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
     with dissolve
 
-    "{color=#000}{color=#000}Police{/color}{/color}" "Hey you! Stop right there."
+    "Police" "Hey you! Stop right there."
 
     plt "(Oh shoot! What should I do?)"
 
@@ -2469,7 +2445,7 @@ label getcaught:
             #--SFX (Running/Panting then Crash)
             pl "!!!"
 
-            "{color=#000}Police{/color}" "You are under arrest for quarantine violation."
+            "Police" "You are under arrest for quarantine violation."
 
         "Stay in place.":
             $ renpy.pause(0.3)
@@ -2483,7 +2459,7 @@ label getcaught:
                 show tanod arrest onlayer middle:
                     xpos 0.45 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
 
-                "{color=#000}Police{/color}" "You are under arrest for quarantine protocol violation."
+                "Police" "You are under arrest for quarantine protocol violation."
 
     call ending_reached("bad")
 
@@ -2539,9 +2515,6 @@ label jsexerciseend:
 
 # Point and Click Scenarios
 label workprep:
-    $ renpy.show_screen("workprep_ui", _transient=True)
-    # show screen workprep_ui
-
     if not(readyForWork()):
         call hideStuff()
         call screen workprep
@@ -2641,21 +2614,21 @@ label findActivity:
 
                 plt "Oh, it’s dad. It’s been a while since we last talked. I should answer his call."
 
-                "{color=#000}Dad{/color}" "Hey kiddo, glad you picked up. How are you doing?"
+                "Dad" "Hey kiddo, glad you picked up. How are you doing?"
 
                 pl "I’m doing fine dad. How’s things over your side?"
 
-                "{color=#000}Dad{/color}" "I’m doing good. Fortunately, I haven’t lost my job to the COVID pandemic. A heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
+                "Dad" "I’m doing good. Fortunately, I haven’t lost my job to the COVID pandemic. A heard a lot of OFW lost their jobs amid pandemic and are forced to go back home."
 
                 pl "Yeah, there are around 13,000 OFW returning this month. It’s quite sad."
 
                 pl "After their arrival they are required to undergo a 14-day facility-based quarantine."
 
-                "{color=#000}Dad{/color}" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
+                "Dad" "By the way, how are your mom and brother holding up? I’ve been getting complaints about yours and Prince’s bickering."
 
                 pl "The house has become livelier than ever now that we have to stay home 24/7."
 
-                "{color=#000}Dad{/color}" "Don’t drive your mom too crazy with your antics."
+                "Dad" "Don’t drive your mom too crazy with your antics."
 
                 pl "No promises. Let me tell you that one time when Prince got mad over a video game..."
 

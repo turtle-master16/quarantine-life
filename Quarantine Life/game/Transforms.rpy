@@ -60,17 +60,6 @@ transform right_corner:
     xalign 1.0
     yalign 1.0
 
-# Hide and Show animations for UI stuff
-transform t_flapButton:
-    yanchor 1.0
-    zoom 0.3
-    on show:
-        ypos 1.0
-        yoffset 130
-        linear 0.3 yoffset 0
-    on hide:
-        linear 0.3 yoffset 130
-
 transform t_price_list:
     on show:
         yoffset 700

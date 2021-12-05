@@ -4,7 +4,7 @@ init python:
         renpy.hide_screen("spark_toggle")
         renpy.hide_screen("spk")
         renpy.hide_screen("phone_message")
-        renpy.hide_screen("workprep_ui")
+        xTraHide("workprep_ui")
         renpy.hide_screen("supermarket_ui")
         renpy.hide_screen("storyroute")
         renpy.hide_screen("confirm")
@@ -17,7 +17,8 @@ init python:
         persistent.minigame_completed[currentScreen] = True
         curScr = currentScreen
         hideGameScreens()
-        renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
+        if not(renpy.is_skipping()):
+            renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
         renpy.jump(post_minigame_label_jump_to[curScr])
         return
 
@@ -96,7 +97,8 @@ label objDialogue(dia, from_inputbox=False):
     call hideStuff()
 
     if from_inputbox:
-        call inputbox()
+        $ xTraHide("ui_start")
+        show screen inputboxB
     return
 
 # Initialize the minigame
@@ -110,17 +112,15 @@ label initMinigame(name):
     $ quickMenuHide = True
 
     $ taskpopout = "images/misc/taskpopups/{}.png".format(name)
-    show screen notify(img=taskpopout) # Pop out Notif
-
-    show screen spark_toggle
 
     if renpy.is_skipping():
-        $ Skip()
-    $ renpy.choice_for_skipping() # Stop fast-skipping
-
-    $ mgame_with_ui = ["workprep", "supermarket"] # List of minigames with extra UI
-    if name in mgame_with_ui:
-        $ renpy.show_screen("{}_ui".format(name), _transient=True)
+        if persistent.skip_complete_games and persistent.minigame_completed[currentScreen]:
+            $ minigame_end()
+        else:
+            show screen notify(img=taskpopout)
+            $ Skip() # Stop skip
+    else:
+        show screen notify(img=taskpopout)
 
     $ renpy.jump(name) # Start minigame
 
@@ -135,7 +135,7 @@ label resetItems():
         currentRoom = ROOMS["livingroom"]
         for item in onhand:
             onhand[item] = False
-        attempt = [0, 0, 0, 0]
+        ansA=ansB=ansC=ansD = 0
 
         # For supermarket
         currentItemCost = 0

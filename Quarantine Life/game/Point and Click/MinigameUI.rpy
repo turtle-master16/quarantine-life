@@ -114,13 +114,14 @@ screen supermarket_ui:
         action ShowTransient("fly_in_image", img="images/supermarket/grocery_list.png")
 
 screen workprep_ui:
-    imagebutton:
-        idle "images/misc/flapcheck.png"
-        xalign 0.8
-        yalign 1.0
-        at transform:
-            zoom 0.3
-        action ShowTransient("workitem_list")
+    if not(renpy.get_screen("inputboxB")):
+        imagebutton:
+            idle "images/misc/flapcheck.png"
+            xalign 0.8
+            yalign 1.0
+            at transform:
+                zoom 0.3
+            action ShowTransient("workitem_list")
 
 screen ui_start:
     zorder 20
@@ -138,6 +139,10 @@ screen ui_start:
                 idle "gui/quick/skipGame_btn.png"
                 xalign 0.84 yalign 0.00
                 action Show("confirm", message="Do you want to skip this minigame?", yes_action=Function(minigame_end), no_action=Hide("confirm"))
+            $ mgame_with_ui = ["workprep", "supermarket"] # List of minigames with extra UI
+            if name in mgame_with_ui:
+                $ renpy.show_screen("{}_ui".format(name))
+    use spark_toggle
     use skip_stopper
     use quickToggle
 

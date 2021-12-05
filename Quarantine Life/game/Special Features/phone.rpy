@@ -103,7 +103,7 @@ label phone_call(who, emotion,  what, status=1):
     hide screen phone_call
     hide screen phone_notif
     show screen phone_call(who.name, emotion, status)
-    "[who.name]" "[what]" (who_color=charcolor[who.name])
+    "[who.name]" "[what]" (who_color="#000")
     return
 
 label phone_notif(sprite, who):
@@ -188,7 +188,7 @@ screen phone_message2(who, what):
 
         frame:
             style_group "phone_message2"
-            background Solid(charcolor[who])
+            background Solid("#ffa404")
             xsize 200
 
             vbox:

@@ -1,5 +1,6 @@
 default currentRoute = ""
 default quickMenuHide = False
+define persistent.skip_complete_games = False
 
 init python:
     def setPersistent(route):
@@ -74,9 +75,3 @@ screen skip_stopper:
             at delayed_blink(0.0, 1.0)
             xalign 0.5 yalign 0.5
             action Skip() alternate Skip(fast=True, confirm=True)
-
-screen rback:
-    textbutton "Back":
-        xalign 0.5
-        yalign 0.9
-        action Rollback()
