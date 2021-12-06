@@ -100,6 +100,7 @@ screen instruction:
                 size 25
 
 screen supermarket_ui:
+
     imagebutton:
         idle "images/supermarket/inactive_basket_btn.png"
         hover "images/supermarket/basket_btn.png"
@@ -114,7 +115,7 @@ screen supermarket_ui:
         action ShowTransient("fly_in_image", img="images/supermarket/grocery_list.png")
 
 screen workprep_ui:
-    if not(renpy.get_screen("inputboxB")):
+    if not(renpy.get_screen("inputboxB") and not(currentScreen == "")):
         imagebutton:
             idle "images/misc/flapcheck.png"
             xalign 0.8
@@ -150,7 +151,6 @@ screen fly_in_image(img):
     zorder 2
     modal True
     add Solid("#61564388")
-
     imagebutton:
         idle img
         at t_flyingimage
