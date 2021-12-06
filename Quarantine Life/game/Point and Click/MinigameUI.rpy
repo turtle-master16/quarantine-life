@@ -13,7 +13,7 @@ define post_minigame_label_jump_to = {
 
 screen spark_toggle:
     zorder 5
-    if not(currentScreen == ""):
+    if not(currentScreen is None) and (renpy.get_screen("say") is None):
         imagebutton:
             idle "spark_toggle"
             at transform:
@@ -100,7 +100,6 @@ screen instruction:
                 size 25
 
 screen supermarket_ui:
-
     imagebutton:
         idle "images/supermarket/inactive_basket_btn.png"
         hover "images/supermarket/basket_btn.png"
@@ -115,7 +114,7 @@ screen supermarket_ui:
         action ShowTransient("fly_in_image", img="images/supermarket/grocery_list.png")
 
 screen workprep_ui:
-    if not(renpy.get_screen("inputboxB") and not(currentScreen == "")):
+    if not(currentScreen is None) and renpy.get_screen("say") is None:
         imagebutton:
             idle "images/misc/flapcheck.png"
             xalign 0.8
@@ -130,19 +129,19 @@ screen ui_start:
         idle "gui/quick/settings_icon.png"
         xalign 0.99 yalign 0.03
         action ShowMenu("preferences")
-    if not(currentScreen == ""):
+    if not(currentScreen is None):
         imagebutton:
             idle "gui/quick/instructions_icon.png"
             xalign 0.9 yalign 0.03
             action [ShowTransient("instruction")]
+        $ mgame_with_ui = ["workprep", "supermarket"] # List of minigames with extra UI
+        if currentScreen in mgame_with_ui:
+            $ renpy.show_screen("{}_ui".format(currentScreen))
         if persistent.minigame_completed[currentScreen]:
             imagebutton:
                 idle "gui/quick/skipGame_btn.png"
                 xalign 0.84 yalign 0.00
                 action Show("confirm", message="Do you want to skip this minigame?", yes_action=Function(minigame_end), no_action=Hide("confirm"))
-            $ mgame_with_ui = ["workprep", "supermarket"] # List of minigames with extra UI
-            if name in mgame_with_ui:
-                $ renpy.show_screen("{}_ui".format(name))
     use spark_toggle
     use skip_stopper
     use quickToggle

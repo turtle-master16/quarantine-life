@@ -33,7 +33,8 @@ style hotspot:
     activate_sound "audio/click.mp3"
 
 default isSaveOnStart = True
-default istestmode = False
+default istestmode = True
+default player_name = "Coby"
 
 # The game starts here.
 label start():
@@ -42,12 +43,6 @@ label start():
             isSaveOnStart = False
             renpy.retain_after_load()
             renpy.load(renpy.newest_slot())
-
-    # Resets the camera and layers positions
-    $ camera_reset()
-    $ layer_move("background", 1840)
-    $ layer_move("middle", 1500)
-    $ layer_move("forward", 1000)
 
     scene black
     stop music
@@ -61,13 +56,6 @@ label start():
         player_name = player_name.strip()
         if not player_name:
              player_name = "Coby"
-
-        if player_name != "ch3@t":
-            renpy.jump("start.mainstart")
-
-    define player_name = "COBY"
-
-    # call screen testmode
 
     label .mainstart:
         $ setPersistent("start.mainstart")

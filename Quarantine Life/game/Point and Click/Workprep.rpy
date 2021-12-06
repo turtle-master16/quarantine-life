@@ -20,16 +20,12 @@ default roomstatus = {
     "drawerclosed": True
 }
 
-label inputbox():
-    call hideStuff()
-    call screen inputbox()
-    return
-    label .after_attempt(correct):
-        if correct:
-            pl "I unlocked it..."
-            $ roomstatus['boxclosed'] = False
-        else:
-            pl "Seems like the code is wrong..."
+label inputbox(correct):
+    if correct:
+        pl "I unlocked it..."
+        $ roomstatus['boxclosed'] = False
+    else:
+        pl "Seems like the code is wrong..."
 
 screen workprep():
     layer "background"

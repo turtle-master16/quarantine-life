@@ -9,7 +9,7 @@ init python:
         renpy.hide_screen("storyroute")
         renpy.hide_screen("confirm")
         globals()['quickMenuHide'] = False
-        globals()['currentScreen'] = ""
+        globals()['currentScreen'] = None
         globals()['currentRoom'] = ROOMS["livingroom"]
         return
 
@@ -29,7 +29,7 @@ define ROOMS = {
     "kitchen":3
 }
 default currentRoom = ROOMS['livingroom']
-default currentScreen = "" # Tells which minigame is on screen at the moment
+default currentScreen = None # Tells which minigame is on screen at the moment
 
 label hideStuff():
     # (Mainly for workprep minigame)
@@ -71,6 +71,7 @@ label hideStuff():
 # Calls the say screen when an hotspot/imgbtn is clicked
 label objDialogue(dia, from_inputbox=False):
     # Keeps the items visible/not visible while in this label
+    show screen ui_start
     if currentScreen == "workprep":
         if currentRoom == ROOMS['livingroom']:
             scene livingroom_workprep
@@ -97,12 +98,11 @@ label objDialogue(dia, from_inputbox=False):
     call hideStuff()
 
     if from_inputbox:
-        $ xTraHide("ui_start")
-        show screen inputboxB
+        show screen inputbox
+    return
     return
 
 # Initialize the minigame
-
 label initMinigame(name):
 
     $ renpy.call("resetItems") # Start game from scratch
@@ -131,7 +131,7 @@ label initMinigame(name):
 label resetItems():
     python:
         # For workprep
-        currentScreen = ""
+        currentScreen = None
         currentRoom = ROOMS["livingroom"]
         for item in onhand:
             onhand[item] = False

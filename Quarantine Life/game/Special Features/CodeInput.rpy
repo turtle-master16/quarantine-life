@@ -3,21 +3,21 @@ init python:
     ansA=ansB=ansC=ansD= 0
 
     def checkAttempt():
+        renpy.show_screen("ui_start")
         answer = "{}{}{}{}".format(ansA, ansB, ansC, ansD)
         if answer == "7021":
-            renpy.call("inputbox.after_attempt", True)
+            renpy.call("inputbox", True)
         else:
-            renpy.call("inputbox.after_attempt", False)
+            renpy.call("inputbox", False)
 
-    # Use this if a particular screen just can't hide properly with renpy.hidescreen()
+    # Use this if a particular screen JUST can't hide properly with renpy.hide_screen()
     def xTraHide(scr):
         while renpy.get_screen(scr):
             renpy.hide_screen(scr)
 
-screen inputboxB:
+screen inputbox:
     modal True
-    zorder 50
-    $ renpy.hide_screen("ui_start")
+    zorder 10
     imagemap:
         xalign .5 yalign .4
         at transform:
@@ -47,14 +47,14 @@ screen inputboxB:
         imagebutton:
             idle "images/misc/white close.png"
             xalign 0.99 yalign 0.02
-            action [Hide("inputboxB"), Show("ui_start")]
+            action [Hide("inputbox"), Show("ui_start")]
 
         imagebutton:
             xalign .5 yalign 1.3
             at transform:
                 zoom 0.7
             idle "images/misc/enter_code.png"
-            action [Hide("inputboxB"), Show("ui_start"), Function(checkAttempt)]
+            action [Hide("inputbox"), Function(checkAttempt)]
 
 transform inv:
     alpha 0.0
