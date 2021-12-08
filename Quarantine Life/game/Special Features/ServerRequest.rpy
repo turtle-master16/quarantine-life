@@ -1,3 +1,6 @@
+init:
+    define persistent.traversed_route_records = {}
+
 init python:
     import requests
     import json

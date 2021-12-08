@@ -55,7 +55,7 @@ style hotspot:
     activate_sound "audio/click.mp3"
 
 default isSaveOnStart = True
-default istestmode = False
+default istestmode = True
 
 # The game starts here.
 label start():
@@ -70,6 +70,8 @@ label start():
     $ layer_move("background", 1840)
     $ layer_move("middle", 1500)
     $ layer_move("forward", 1000)
+
+    $_dismiss_pause = True
 
     scene black
     stop music
@@ -100,6 +102,8 @@ label start():
         show screen ui_start
 
         $ renpy.pause()
+
+        # jump endingScenes
 
         nar """
         It all changed so fast.
@@ -1148,13 +1152,14 @@ label princedisappointed:
 
     pl "You’re on!"
 
-    call ending_reached("good")
+    call endingScenes(ending_name="safety is priority")
 
 # ROUTE FRIEND
 label friend:
     $ setPersistent("friend")
 
     call timeskip("bg office afternoon")
+    $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="June 2020, Week 3|05:00 PM|GCQ", status="happy")
 
     show mark greet onlayer middle:
@@ -1367,6 +1372,7 @@ label datesearch:
             call phone(male=False)
 
 label phone(male=True):
+    $ renpy.music.play("audio/Waiting music.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="July 2020, Week 1|01:10 PM|GCQ", status="happy")
     scene lvroom onlayer background
 
@@ -1937,7 +1943,7 @@ label kylehome:
 
             pr "Fine."
 
-            call ending_reached("good")
+            call endingScenes(ending_name="trying a new hobby")
 
 label kylemeet:
     $ setPersistent("kylemeet")
@@ -2079,7 +2085,7 @@ label hospital:
     (For my family.)
     """
 
-    call ending_reached("bad")
+    call endingScenes(ending_name="reconnect with a friend")
 
 # Jillian Route
 label jillian:
@@ -2237,7 +2243,7 @@ label jillian:
 
                 call phone_call(jl, "flattered", "Can’t wait.")
 
-                call ending_reached("good")
+                call endingScenes(ending_name="arts n craft")
 
 label jldate:
     call timeskip("bg restaurant")
@@ -2350,6 +2356,7 @@ label jason:
             $ setPersistent("jason.meetupjason")
 
             call timeskip("bedroom_evening")
+            $ renpy.music.play("audio/bgm/moody.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
             show screen patientOverlay(date="August 2020, Week 4|10:00 PM|GCQ", status="happy")
 
             plt """
@@ -2397,11 +2404,12 @@ label jason:
             call reply_message("Sure. Take care.")
 
             call message(js, "You too.")
+
             $ renpy.pause()
 
             call hide_phone_messages
 
-            call ending_reached("good")
+            call endingScenes(ending_name="lets meet up")
 
     elif _return == 1:
         $ persistent.is_dialog_unchecked["meetupwithjason.notsure"] = True
@@ -2450,7 +2458,7 @@ label getcaught:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
     with dissolve
 
-    "Police" "Hey you! Stop right there."
+    "{color=#000}Police{/color}" "Hey you! Stop right there."
 
     plt "(Oh shoot! What should I do?)"
 
@@ -2469,7 +2477,7 @@ label getcaught:
             #--SFX (Running/Panting then Crash)
             pl "!!!"
 
-            "Police" "You are under arrest for quarantine violation."
+            "{color=#000}Police{/color}" "You are under arrest for quarantine violation."
 
         "Stay in place.":
             $ renpy.pause(0.3)
@@ -2483,9 +2491,9 @@ label getcaught:
                 show tanod arrest onlayer middle:
                     xpos 0.45 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
 
-                "Police" "You are under arrest for quarantine protocol violation."
+                "{color=#000}Police{/color}" "You are under arrest for quarantine protocol violation."
 
-    call ending_reached("bad")
+    call endingScenes(ending_name="quarantine violator")
 
 label jlend:
     call timeskip("bg kitchen")
@@ -2505,7 +2513,7 @@ label jlend:
 
     call phone_call(jl, "happy2", "I don’t blame you. But I’m hoping that this could be a regular thing.")
 
-    call ending_reached("good")
+    call endingScenes(ending_name="a virtual lunch date")
 
 label jsexerciseend:
     $ setPersistent("jsexerciseend")
@@ -2535,7 +2543,7 @@ label jsexerciseend:
 
     pl "Ugh!"
 
-    call ending_reached("good")
+    call endingScenes(ending_name="an exercise date")
 
 # Point and Click Scenarios
 label workprep:

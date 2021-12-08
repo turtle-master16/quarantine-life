@@ -682,249 +682,241 @@ image bedroom_evening:
 
 image kitchen_endscene:
     "bg/bg kitchen animated ending/0.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/1.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/2.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/3.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/4.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/5.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/6.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/7.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/8.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/9.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/10.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/11.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/12.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/13.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/14.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/13.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/12.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/11.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/10.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/9.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/8.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/7.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/6.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/5.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/4.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/3.png"
-    pause 0.2
+    pause 0.1
     "bg/bg kitchen animated ending/2.png"
-    pause 0.5
+    pause 0.4
     "bg/bg kitchen animated ending/1.png"
-    pause 0.2
-    "bg/bg kitchen animated ending/0.png"
-    pause 3.0
+    pause 0.1
     repeat
 
 image bedroom_endscene:
     xalign 0.5 yalign 0.5
     "bg/bg bedroom animated ending/0.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/1.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/2.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/3.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/4.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/5.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/6.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/7.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/8.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/9.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/10.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/11.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/12.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/13.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/14.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/13.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/12.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/11.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/10.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/9.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/8.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/7.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/6.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/5.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/4.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/3.png"
-    pause 0.2
+    pause 0.05
     "bg/bg bedroom animated ending/2.png"
-    pause 0.5
+    pause 0.1
     "bg/bg bedroom animated ending/1.png"
-    pause 0.2
-    "bg/bg bedroom animated ending/0.png"
-    pause 3.0
+    pause 0.05
     repeat
 
 image front_endscene:
     xalign 0.5 yalign 0.5
     "bg/bg front house animated ending/0.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/1.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/2.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/3.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/4.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/5.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/6.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/7.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/8.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/9.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/10.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/11.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/12.png"
-    pause 0.5
-    "bg/bg front house animated ending/13.png"
     pause 0.2
+    "bg/bg front house animated ending/13.png"
+    pause 0.1
     "bg/bg front house animated ending/14.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/13.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/12.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/11.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/10.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/9.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/8.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/7.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/6.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/5.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/4.png"
-    pause 0.5
+    pause 0.2
     "bg/bg front house animated ending/3.png"
-    pause 0.2
+    pause 0.1
     "bg/bg front house animated ending/2.png"
-    pause 0.5
-    "bg/bg front house animated ending/1.png"
     pause 0.2
-    "bg/bg front house animated ending/0.png"
-    pause 3.0
+    "bg/bg front house animated ending/1.png"
+    pause 0.1
     repeat
 
 image livingroom_endscene:
     xalign 0.5 yalign 0.5
     "bg/bg living room animated ending/0.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/1.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/2.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/3.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/4.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/5.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/6.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/7.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/8.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/9.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/10.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/11.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/12.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/13.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/14.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/13.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/12.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/11.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/10.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/9.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/8.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/7.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/6.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/5.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/4.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/3.png"
-    pause 0.2
+    pause 0.1
     "bg/bg living room animated ending/2.png"
-    pause 0.5
+    pause 0.4
     "bg/bg living room animated ending/1.png"
-    pause 0.2
-    "bg/bg living room animated ending/0.png"
-    pause 3.0
+    pause 0.1
     repeat
 
 image spark:
