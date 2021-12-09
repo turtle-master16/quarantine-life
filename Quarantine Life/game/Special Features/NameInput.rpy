@@ -16,6 +16,7 @@ init python:
     text_group=1
 
 label inputter:
+    $ renpy.hide_screen("confirm")
     if text_group==1:
           $text_list=text_list1
     elif text_group==2:
@@ -72,6 +73,8 @@ label inputter:
            $text_group=2
            jump inputter
     elif button_selection=="Done":
+           $ renpy.show_screen("confirm", message="Are you sure with this name? (This cannot be changed in the future)", yes_action=[Hide("confirm"), Jump("start.mainstart")], no_action=Jump("inputter"))
+           $ renpy.pause()
            return
     $ select_text=button_selection
 

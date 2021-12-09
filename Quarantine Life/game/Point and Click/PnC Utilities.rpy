@@ -1,29 +1,24 @@
-"""
-    Stuff in this file are stuff shared by all the Point N' Click Screens
-"""
-#--------------------
-
 init python:
     # Used at the end of minigames/Use of story route
-    import copy
-
     def hideGameScreens():
         renpy.hide_screen("spark_toggle")
         renpy.hide_screen("spk")
         renpy.hide_screen("phone_message")
-        renpy.hide_screen("workprep_ui")
+        xTraHide("workprep_ui")
         renpy.hide_screen("supermarket_ui")
         renpy.hide_screen("storyroute")
-        globals()['currentScreen'] = ""
+        renpy.hide_screen("confirm")
+        globals()['quickMenuHide'] = False
+        globals()['currentScreen'] = None
         globals()['currentRoom'] = ROOMS["livingroom"]
         return
 
     def minigame_end():
         persistent.minigame_completed[currentScreen] = True
         curScr = currentScreen
-        renpy.hide_screen("confirm")
         hideGameScreens()
-        renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
+        if not(renpy.is_skipping()):
+            renpy.show_screen("notify", img="images/misc/taskpopups/taskcomplete.png")
         renpy.jump(post_minigame_label_jump_to[curScr])
         return
 
@@ -34,7 +29,7 @@ define ROOMS = {
     "kitchen":3
 }
 default currentRoom = ROOMS['livingroom']
-default currentScreen = "" # Tells which minigame is on screen at the moment
+default currentScreen = None # Tells which minigame is on screen at the moment
 
 label hideStuff():
     # (Mainly for workprep minigame)
@@ -76,6 +71,7 @@ label hideStuff():
 # Calls the say screen when an hotspot/imgbtn is clicked
 label objDialogue(dia, from_inputbox=False):
     # Keeps the items visible/not visible while in this label
+    show screen ui_start
     if currentScreen == "workprep":
         if currentRoom == ROOMS['livingroom']:
             scene livingroom_workprep
@@ -102,29 +98,29 @@ label objDialogue(dia, from_inputbox=False):
     call hideStuff()
 
     if from_inputbox:
-        call inputbox()
+        show screen inputbox
+    return
     return
 
 # Initialize the minigame
-
 label initMinigame(name):
 
     $ renpy.call("resetItems") # Start game from scratch
 
     $ currentScreen = name
 
-    $ taskpopout = "images/misc/taskpopups/{}.png".format(name)
-    show screen notify(img=taskpopout) # Pop out Notif
+    $ quickMenuHide = True
 
-    show screen spark_toggle
+    $ taskpopout = "images/misc/taskpopups/{}.png".format(name)
 
     if renpy.is_skipping():
-        $ Skip()
-    $ renpy.choice_for_skipping() # Stop fast-skipping
-
-    $ mgame_with_ui = ["workprep", "supermarket"] # List of minigames with extra UI
-    if name in mgame_with_ui:
-        $ renpy.show_screen("{}_ui".format(name), _transient=True)
+        if persistent.skip_complete_games and persistent.minigame_completed[currentScreen]:
+            $ minigame_end()
+        else:
+            show screen notify(img=taskpopout)
+            $ Skip() # Stop skip
+    else:
+        show screen notify(img=taskpopout)
 
     $ renpy.jump(name) # Start minigame
 
@@ -135,11 +131,11 @@ label initMinigame(name):
 label resetItems():
     python:
         # For workprep
-        currentScreen = ""
+        currentScreen = None
         currentRoom = ROOMS["livingroom"]
         for item in onhand:
             onhand[item] = False
-        attempt = [0, 0, 0, 0]
+        ansA=ansB=ansC=ansD = 0
 
         # For supermarket
         currentItemCost = 0

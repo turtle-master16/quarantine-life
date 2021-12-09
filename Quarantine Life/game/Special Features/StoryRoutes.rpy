@@ -1,6 +1,6 @@
 init:
     define persistent.is_route_unlocked = {
-        "start.mainstart": False,
+        "start.mainstart": True, # Unlocked by default
         "lockdown": False,
         "getcaught": False,
         "quarantine": False,
@@ -58,6 +58,7 @@ screen storyroute:
     }
     viewport id "storyroute":
         draggable True
+        xinitial route_coordinates[currentRoute][0] - 600
         imagemap:
             ground "images/menu/storyroutes/bg storyroute.png"
             if not(currentRoute == ""):
@@ -80,7 +81,7 @@ screen storyroute:
                         action 0
                 else:
                     if route in called_routes:
-                         hotspot route_coordinates[route] action [Function(hideGameScreens), called_routes[route]]
+                        hotspot route_coordinates[route] action [Function(hideGameScreens), called_routes[route]]
                     else:
                         hotspot route_coordinates[route] action [Function(hideGameScreens), Jump(route)]
 
