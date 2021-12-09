@@ -33,7 +33,7 @@ style hotspot:
     activate_sound "audio/click.mp3"
 
 default isSaveOnStart = True
-default istestmode = True
+default istestmode = False
 default player_name = "Coby"
 
 # The game starts here.
