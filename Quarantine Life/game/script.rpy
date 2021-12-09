@@ -103,8 +103,6 @@ label start():
 
         $ renpy.pause()
 
-        # jump endingScenes
-
         nar """
         It all changed so fast.
 
@@ -1148,6 +1146,8 @@ label princedisappointed:
 
     show prince disgust2 onlayer middle
 
+    stop music fadeout 2.0
+
     pr "Thanks. Now, how about another round?"
 
     pl "You’re on!"
@@ -1221,7 +1221,7 @@ label restaurant:
 
     m "I can’t wait for the pandemic to be over so this can be a regular thing again."
 
-    "Waiter" "Here are your orders. Enjoy."
+    "{color=#000}Waiter{/color}" "Here are your orders. Enjoy."
 
     show ian greet onlayer middle:
         xpos 0.19 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0
@@ -1937,6 +1937,8 @@ label kylehome:
 
             c "Stop screaming both of you. You’re disturbing the neighbours. "
 
+            stop music fadeout 2.0
+
             c "And Prince, stop teasing [player_name]."
 
             show prince slouch onlayer middle
@@ -2079,6 +2081,11 @@ label hospital:
     (If it wasn’t for my carelessness I wouldn’t be caught up in this mess.)
 
     (I don’t know how I’ll be able to face them after this.)
+    """
+
+    stop music fadeout 2.0
+
+    plt """
 
     (No. I can’t have these negative thoughts right now. I need to focus on getting better.)
 
@@ -2236,6 +2243,8 @@ label jillian:
                 pl "Since I can’t take you out on a date personally, I just I’d keep things lively between us by doing some activities together."
 
                 call phone_call(jl, "flattered", "I’m loving this idea. We should do this more often.")
+
+                stop music fadeout 2.0
 
                 call phone_call(jl, "happy2", "It’s more fun and exciting than just talking. Maybe next time I get to choose what activity we do? That way we can share each other’s hobbies. Wouldn’t that be interesting?")
 
@@ -2401,6 +2410,8 @@ label jason:
             call message(js, "Will do. I’ll talk to you later.")
             $ renpy.pause()
 
+            stop music fadeout 2.0
+
             call reply_message("Sure. Take care.")
 
             call message(js, "You too.")
@@ -2475,6 +2486,8 @@ label getcaught:
             with vpunch
             with vpunch
             #--SFX (Running/Panting then Crash)
+            stop music fadeout 2.0
+
             pl "!!!"
 
             "{color=#000}Police{/color}" "You are under arrest for quarantine violation."
@@ -2483,6 +2496,8 @@ label getcaught:
             $ renpy.pause(0.3)
 
             label .failescape:
+                stop music fadeout 2.0
+
                 hide screen countdown
                 with hpunch
                 pl "What are you doing?! Let go of me!"
@@ -2508,6 +2523,8 @@ label jlend:
     pl "Do you not like it?"
 
     call phone_call(jl, "greet", "It’s new to me, but I think this is going to be fun.")
+
+    stop music fadeout 2.0
 
     pl "Good. I wanted to make up for last time we went out."
 
@@ -2536,6 +2553,8 @@ label jsexerciseend:
     pl "I suppose having someone to exercise with is much more fun and motivating than doing it alone."
 
     call phone_call(js, "discuss2", "Great! This will be our own thing. Just the two of us.")
+
+    stop music fadeout 2.0
 
     pl "Yeah."
 

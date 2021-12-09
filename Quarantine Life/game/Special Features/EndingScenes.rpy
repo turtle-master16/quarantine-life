@@ -1,14 +1,43 @@
 init:
     $ current_bgm_timestamp = 0.0
     $ ending_choices = {
-        "quarantine violator": [],
-        "safety is priority": [],
-        "lets meet up": [],
-        "an exercise date": [],
-        "arts n craft": [],
-        "a virtual lunch date": [],
-        "reconnect with a friend": [],
-        "trying a new hobby": []
+        "quarantine violator": [
+            "told Carla that you will not be staying at home during the quarantine."
+        ],
+        "safety is priority": [
+            "told Carla that you will be staying at home during the quarantine.",
+            "turned down Ian's invitation to hang out."
+        ],
+        "lets meet up": [
+            "told Carla that you will be staying at home during the quarantine.",
+            "went out to eat with your coworkers.",
+            "accepted Jason's invitation to meet up."
+        ],
+        "an exercise date": [
+            "told Carla that you will be staying at home during the quarantine.",
+            "went out to eat with your coworkers.",
+            "did not accept Jason's invitation to meet up."
+        ],
+        "arts n craft": [
+            "told Carla that you will be staying at home during the quarantine.",
+            "went out to eat with your coworkers.",
+            "did not invite Jillian to go out."
+        ],
+        "a virtual lunch date": [
+            "told Carla that you will be staying at home during the quarantine.",
+            "went out to eat with your coworkers.",
+            "invited Jillian to go out."
+        ],
+        "reconnect with a friend": [
+            "told Carla that you will be staying at home during the quarantine.",
+            "went out to eat with your coworkers.",
+            "accepted Kyle's invitation to hang out."
+        ],
+        "trying a new hobby": [
+            "told Carla that you will be staying at home during the quarantine.",
+            "went out to eat with your coworkers.",
+            "did not accept Kyle's invitation to hang out."
+        ]
     }
 
 init python:
@@ -28,20 +57,28 @@ init python:
         global current_bgm_timestamp
         current_bgm_timestamp = 0.0
 
+    print(persistent.userDeviceID)
+
 label endingScenes(ending_name):
-    scene black onlayer background
+    $_dismiss_pause = False
     $ renpy.choice_for_skipping()
-    $ resetBgmTimeStamp()
 
     $ renpy.hide_screen("patientOverlay")
     $ renpy.hide_screen("ui_start")
     $ renpy.hide_screen("quickMenu")
     $ renpy.hide_screen("quickToggle")
 
+    show screen plainWhite
+    with Dissolve(0.6)
+
+    $ getLatestTraversedEndingRecords()
+
+    $ resetBgmTimeStamp()
     $ renpy.music.play("audio/bgm/ending song.mp3", loop=True, fadein=5.0)
 
+    hide screen plainWhite
+    scene black onlayer background
     $ renpy.show("bg {}".format(ending_name), layer="background")
-    $_dismiss_pause = False
     $ dissolveAfterTimestamp(3.0)
 
     $ playAfterTimestamp(5.5)
@@ -75,13 +112,38 @@ label endingScenes(ending_name):
         yalign 0.5
         linear 10.0 xpos 0.0001
 
+    if not (ending_name == "quarantine violator" or ending_name == "safety is priority"):
+        $ playAfterTimestamp(24.5)
+        $ renpy.show_screen("endingSummary", summary="You and {} of players {}".format(
+            getEndingTraversePercentage("quarantine violator", reverse=True),
+            ending_choices[ending_name][0])
+        )
+        $ dissolveAfterTimestamp(25.0)
+
     $ playAfterTimestamp(28.0)
+    $ renpy.hide_screen("endingSummary")
     hide kitchen_endscene onlayer background
     show bedroom_endscene onlayer background:
         yalign 0.5
         linear 4.0 xalign 0.4
 
+    if ending_name == "safety is priority":
+        $ playAfterTimestamp(28.5)
+        $ renpy.show_screen("endingSummary", summary="You and {} of players {}".format(
+            getEndingTraversePercentage("quarantine violator", reverse=True),
+            ending_choices[ending_name][0])
+        )
+        $ dissolveAfterTimestamp(29.0)
+    elif ending_name != "quarantine violator":
+        $ playAfterTimestamp(28.5)
+        $ renpy.show_screen("endingSummary", summary="You and {} of players {}".format(
+            getEndingTraversePercentage("safety is priority", reverse=True),
+            ending_choices[ending_name][1])
+        )
+        $ dissolveAfterTimestamp(29.0)
+
     $ playAfterTimestamp(32.0)
+    $ renpy.hide_screen("endingSummary")
     hide bedroom_endscene onlayer background
     show bg bedroom ending onlayer background:
         xalign 0
@@ -94,19 +156,47 @@ label endingScenes(ending_name):
         yalign 0.5
         linear 11.0 xalign 0.75
 
+    if ending_name == "quarantine violator":
+        $ playAfterTimestamp(41.0)
+        $ renpy.show_screen("endingSummary", summary="You and {} of players {}".format(
+            getEndingTraversePercentage("quarantine violator"),
+            ending_choices[ending_name][0])
+        )
+        $ dissolveAfterTimestamp(41.5)
+    elif ending_name == "safety is priority":
+        $ playAfterTimestamp(41.0)
+        $ renpy.show_screen("endingSummary", summary="You and {} of players {}".format(
+            getEndingTraversePercentage("safety is priority"),
+            ending_choices[ending_name][1])
+        )
+        $ dissolveAfterTimestamp(41.5)
+    else:
+        $ playAfterTimestamp(41.0)
+        $ renpy.show_screen("endingSummary", summary="You and {} of players {}".format(
+            getEndingTraversePercentage(ending_name),
+            ending_choices[ending_name][2])
+        )
+        $ dissolveAfterTimestamp(41.5)
+
     $ playAfterTimestamp(44.5)
+    $ renpy.hide_screen("endingSummary")
     hide livingroom_endscene onlayer background
     show bg living room ending onlayer background:
         xalign 0.4
         yalign 0.5
         linear 2.0 xalign 0.2
 
-    $ playAfterTimestamp(46.5)
+    $ playAfterTimestamp(46.0)
     hide bg living room ending onlayer background
     show front_endscene onlayer background:
         yalign 0.5
 
+    $ playAfterTimestamp(51.0)
+    $ renpy.show_screen("endingSummary", summary="You and {} of players reached this ending.".format(getEndingTraversePercentage(ending_name)))
+    $ dissolveAfterTimestamp(51.5)
+
     $ playAfterTimestamp(54.5)
+    $ renpy.hide_screen("endingSummary")
     hide front_endscene onlayer background
     show bg front house 2 ending onlayer background:
         xalign 1.1
@@ -139,9 +229,13 @@ label endingScenes(ending_name):
 
     label .savePoint:
         $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadein=5.0, if_changed=True)
+        scene black onlayer background
         show bg main ending onlayer background:
             xalign 0.5
+            yalign 0
             yanchor 0.05
+
+        $ saveLatestTraversedEndingRecords()
 
         label .repick:
             menu:
@@ -173,3 +267,14 @@ screen skipEndingScenes:
         xalign 1.02 yalign 0.94
         at double
         action Show("confirm", message="Skip the ending scenes?", yes_action=[Hide("confirm"), Hide("skipEndingScenes"), Jump("endingScenes.savePoint")], no_action=Hide("confirm"))
+
+screen endingSummary(summary):
+    add Solid("#00000055")
+
+    text "{}".format(summary):
+        xalign 0.5
+        yalign 0.5
+        color "#ddd"
+        size 40
+        justify True
+        text_align 0.5
