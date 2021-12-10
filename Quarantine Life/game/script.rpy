@@ -107,7 +107,7 @@ label start():
         pl "What the-?! Why did you hit me?"
 
         show prince point1 onlayer middle:
-            xpos 0.53 ypos 1.0 xanchor 0.5 yanchor 1.0
+            xpos 0.53 ypos 1.0 xanchor 0.5 yanchor 1.0 xoffset 30 zoom 0.98
 
         pr """
         Mom said to sweep the floor. Just because it’s your day off doesn’t mean you can laze around and ignore your chores.
@@ -190,15 +190,27 @@ label news:
 
             c "But still, I can’t help but worry for your father. I hope he’s doing ok. I’ll call him later after his work."
 
+            show carla onlayer middle:
+                subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84 rotate None
+                parallel:
+                    xpos 0.5
+                    linear 0.7 xpos -0.19
+
         "The government will handle it":
             $ renpy.pause(0.3)
 
             pl "I’m sure the government will do something about it."
 
             show carla scold onlayer middle:
-                xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0 zoom 0.84
+                xpos 0.5 ypos 1.00 xanchor 0.5 yanchor 1.0 zoom 0.82
 
             c "We can’t always depend on the government to do everything for us. We still have to do our part."
+
+            show carla onlayer middle:
+                subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.82 rotate None
+                parallel:
+                    xpos 0.5
+                    linear 0.7 xpos -0.19
 
         "We should be careful":
             $ renpy.pause(0.3)
@@ -209,11 +221,12 @@ label news:
 
             c "I’ll contact your father. Oh, I hope he is doing alright."
 
-    show carla onlayer middle:
-        subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84 rotate None
-        parallel:
-            xpos 0.5
-            linear 0.7 xpos -0.19
+            show carla onlayer middle:
+                subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84 rotate None
+                parallel:
+                    xpos 0.5
+                    linear 0.7 xpos -0.19
+
     $ renpy.pause(0.7)
 
     pl "Alright. Let’s just hope that everything is under control so nothing bad will happen."
@@ -234,8 +247,8 @@ label lockdown:
 
     plt "(I’ve been seeing a lot of reports regarding the virus. This is so scary it’s making me worry for the safety of myself and my family.)"
 
-    show prince sad1 onlayer middle
-    with dissolve
+    show prince sad1 onlayer middle with dissolve:
+        xalign 0.5 yalign 1.0 zoom 0.98
 
     pr "What do you think is going to happen now that there have been reported COVID cases in our country?"
 
@@ -392,7 +405,8 @@ label quarantine:
 
     pl "Just so you know, I’ve done my part of the chores. Now get to work, you couch potato."
 
-    show prince sad1 onlayer middle
+    show prince sad1 onlayer middle:
+        xoffset 30
 
     pr "Ugh! I hate this."
 
@@ -488,7 +502,8 @@ label newnormal:
 
     pr "Either way, I’m still stuck inside the house. If this goes on I might die of boredom."
 
-    show carla mad onlayer middle
+    show carla mad onlayer middle:
+        xoffset 15
 
     c """
     I don’t think so young man.
@@ -500,17 +515,23 @@ label newnormal:
 
     $ showAchievementOverlay("flexible learning")
 
-    show prince embarrased onlayer middle
+    show prince embarrased onlayer middle:
+        xoffset 20
 
-    #--SFX (gulp)
     pr "*gulp* Yes mom."
 
-    c "So when will you be returning to work?"
+    show prince embarrased onlayer middle:
+        linear 0.5 xoffset -600
+    $ renpy.pause(0.5)
+    hide prince
+
+    show carla discuss1 onlayer middle
+
+    c "So when will you be returning to work, [player_name]?"
 
     pl "Probably next month. I’ll just have to ask my manager just to be sure."
 
     hide carla
-    hide prince
     with dissolve
 
     call timeskip("bedroom_evening")
@@ -624,7 +645,8 @@ label office:
 
             pl "Oh, hey Ian. It’s great to see you too. What’s up?"
 
-            show ian farewell onlayer middle
+            show ian farewell onlayer middle:
+                zoom 1.03 xoffset -3
 
             i "Nothing much other than the whole pandemic thing. It’s nice being able to go out after being stuck home for months."
 
@@ -633,7 +655,7 @@ label office:
             pl "I need to at least roam around every once in a while."
 
             show ian discuss onlayer middle:
-                subpixel True xpos 0.47 ypos 1.02 xanchor 0.5 yanchor 1.0 rotate None zoom 1
+                subpixel True xpos 0.47 ypos 1.00 xanchor 0.5 yanchor 1.0 zoom 1.03 yoffset 10
 
             i "That’s true. Speaking of going out, some of our co-workers and I are eating out tonight after work since the {b}restaurants have reopened{/b}."
 
@@ -658,7 +680,8 @@ label office:
 
                     pl "Sorry Ian, I have somewhere else to be after work. Maybe we can hang out together some other time."
 
-                    show ian farewell onlayer middle
+                    show ian farewell onlayer middle:
+                        xoffset 30
 
                     i "It’s cool, next time then."
 
@@ -681,7 +704,8 @@ label office:
 
                     pl "Sure, I’ll be seeing you guys after work."
 
-                    show ian farewell onlayer middle
+                    show ian farewell onlayer middle:
+                        zoom 1.03
 
                     i "Sweet. I’ll let you do your work now. See you later."
 
@@ -693,7 +717,8 @@ label office:
 
                     pl "Not tonight. Maybe some other time."
 
-                    show ian farewell onlayer middle
+                    show ian farewell onlayer middle:
+                        zoom 1.03
 
                     i "Oh, some other time then. Talk to you later."
 
@@ -706,14 +731,14 @@ label office:
             pl "Woah! Keep your distance please. At least five meters away, I don’t want to get infected by COVID."
 
             show ian whoa onlayer middle:
-                xpos 0.45 ypos 1.06 xanchor 0.5 yanchor 1.05
+                xpos 0.45 ypos 1.06 xanchor 0.5 yanchor 1.05 zoom 0.99 yoffset 15
 
             i "Relax. I don’t have the virus."
 
             pl "Virus or no virus, we must {b}maintain proper social distancing{/b}."
 
             show ian sigh onlayer middle:
-                xpos 0.5 ypos 1.06 xanchor 0.5 yanchor 1.05
+                xpos 0.5 ypos 1.00 xanchor 0.5 yanchor 1.00
 
             #--SFX (sigh)
             i "Fine. I’ll see you around."
@@ -1155,7 +1180,7 @@ label restaurant:
         xpos 0.25 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1
 
     show mark discuss1 onlayer middle:
-        xpos 0.71 ypos 1.0 xanchor 0.5 yanchor 1.0
+        xpos 0.71 ypos 1.0 xanchor 0.5 yanchor 1.0 yoffset 10
     with dissolve
 
     m "I’m glad the quarantine rules have eased and now we’re allowed to eat at restaurants."
@@ -1190,8 +1215,12 @@ label restaurant:
 
     i "Alright! Time to dig in."
 
+    call timeskip("bg restaurant evening")
+    show screen patientOverlay(date="June 2020, Week 3|7:00 PM|GCQ", status="happy")
+
     show ian sigh onlayer middle:
         subpixel True xpos 0.26 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0 rotate None
+    with dissolve
 
     play sound "audio/eating.mp3"
 
@@ -1199,6 +1228,7 @@ label restaurant:
 
     show mark ask onlayer middle:
         xpos 0.72 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom 1.0 yzoom 1.0 rotate None
+    with dissolve
 
     m "Huh? Don’t you have a girlfriend to keep you company?"
 
