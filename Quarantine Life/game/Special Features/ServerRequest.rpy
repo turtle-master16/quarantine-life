@@ -122,16 +122,14 @@ init python:
             if ending_name == "quarantine violator" and reverse:
                 if ending_name in record["traversed_endings"] and len(record["traversed_endings"]) == 1:
                     number_of_ending_traversed += 1
-                    continue
+                continue
 
             if ending_name == "safety is priority" and reverse:
                 if ending_name in record["traversed_endings"] and len(record["traversed_endings"]) == 1:
                     number_of_ending_traversed += 1
-                    continue
-
-                if set([ending_name in record["traversed_endings"], "quarantine violator"]).issubset(record["traversed_endings"]) and len(record["traversed_endings"]) == 2:
+                elif set([ending_name in record["traversed_endings"], "quarantine violator"]).issubset(record["traversed_endings"]) and len(record["traversed_endings"]) == 2:
                     number_of_ending_traversed += 1
-                    continue
+                continue
 
             for current_ending in record["traversed_endings"]:
                 if current_ending == ending_name:
