@@ -10,7 +10,7 @@ init:
 init python:
     import requests
     import json
-    import subprocess
+    import uuid
     from datetime import date
 
     access_url = "https://api.jsonbin.io/v3/b/61a0951f62ed886f9154e4a5"
@@ -69,7 +69,9 @@ init python:
             renpy.hide_screen("saveEndingRecordScreen")
             renpy.hide_screen("failedSaveEndingRecordScreen")
 
-    persistent.user_device_id = str(subprocess.check_output('wmic csproduct get uuid'), 'utf-8').split('\n')[1].strip()
+    if not persistent.user_device_id:
+        persistent.user_device_id = str(uuid.getnode())
+        print("yo")
 
 
     def getLatestTraversedEndingRecords():
@@ -109,20 +111,40 @@ init python:
             return
 
     def getEndingTraversePercentage(ending_name, reverse=False):
-        number_of_ending_traversed = 0
+        if not persistent.server_ending_records:
+            return "0%"
 
+        number_of_ending_traversed = 0
         for index, record in enumerate(persistent.server_ending_records["server_ending_records"]):
-            print("**" + record["user_device_id"])
-            print("***" + persistent.user_device_id)
             if record["user_device_id"] == persistent.user_device_id:
                 continue
+
+            if ending_name == "quarantine violator" and reverse:
+                if ending_name in record["traversed_endings"] and len(record["traversed_endings"]) == 1:
+                    number_of_ending_traversed += 1
+                    continue
+
+            if ending_name == "safety is priority" and reverse:
+                if ending_name in record["traversed_endings"] and len(record["traversed_endings"]) == 1:
+                    number_of_ending_traversed += 1
+                    continue
+
+                if set([ending_name in record["traversed_endings"], "quarantine violator"]).issubset(record["traversed_endings"]) and len(record["traversed_endings"]) == 2:
+                    number_of_ending_traversed += 1
+                    continue
+
             for current_ending in record["traversed_endings"]:
                 if current_ending == ending_name:
                     number_of_ending_traversed += 1
 
+        print(len(persistent.server_ending_records["server_ending_records"]))
+        print(persistent.server_ending_records["server_ending_records"])
+        print(str(number_of_ending_traversed) + " endings")
+        print(number_of_ending_traversed / len(persistent.server_ending_records["server_ending_records"]))
+
         if reverse:
-            return str(((len(persistent.server_ending_records) - number_of_ending_traversed) / len(persistent.server_ending_records)) * 100) + "%"
-        return str((number_of_ending_traversed / len(persistent.server_ending_records)) * 100) + "%"
+            return str((float(len(persistent.server_ending_records["server_ending_records"]) - number_of_ending_traversed) / len(persistent.server_ending_records["server_ending_records"])) * 100) + "%"
+        return str((float(number_of_ending_traversed) / len(persistent.server_ending_records["server_ending_records"])) * 100) + "%"
 
 screen fetchEndingRecordScreen:
     zorder 100

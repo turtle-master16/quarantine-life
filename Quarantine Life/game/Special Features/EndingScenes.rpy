@@ -230,6 +230,7 @@ label endingScenes(ending_name):
     label .savePoint:
         $ renpy.music.play("audio/bgm/good end.mp3", loop=True, fadein=5.0, if_changed=True)
         scene black onlayer background
+        $ renpy.hide_screen("endingSummary")
         show bg main ending onlayer background:
             xalign 0.5
             yalign 0
