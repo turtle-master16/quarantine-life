@@ -122,7 +122,6 @@ label start():
 
         plt "(So much for a relaxing morning.)"
 
-        #--SFX (Sigh)
         plt "(Whatever. Let’s just get this over with.)"
 
         pl "Better finish sweeping before I get in trouble."
@@ -585,7 +584,6 @@ label commuting:
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="June 2020, Week 3|06:00 AM|GCQ", status="happy")
 
-    #--SFX (yawn)
     plt "I’m so sleepy. Staying up all night on social media was not the best idea."
 
     plt "(I can see that people are sitting {b}one-seat apart in public transportation{/b}, limiting the vehicle’s capacity. That’s good I suppose.)"
@@ -740,7 +738,6 @@ label office:
             show ian sigh onlayer middle:
                 xpos 0.5 ypos 1.00 xanchor 0.5 yanchor 1.00
 
-            #--SFX (sigh)
             i "Fine. I’ll see you around."
 
             jump home
@@ -1338,7 +1335,6 @@ label datesearch:
 
     pr "Oh! It’s a dating app! Alright, I’ll leave you to it then."
 
-    #--SFX (giggling + walking prince)
     hide prince
     with dissolve
 
@@ -1348,7 +1344,6 @@ label datesearch:
 
     plt "(And hopefully, Prince doesn’t come back to make fun of me.)"
 
-    #--SFX (typing)
     plt "(Now, what am I into?)"
 
     menu:
@@ -1705,7 +1700,6 @@ label kyle:
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="July 2020, Week 4|01:00 PM|GCQ", status="neutral")
 
-    #--SFX (sigh)
     pl "*sigh*"
 
     show mark greet onlayer middle:
@@ -1811,7 +1805,6 @@ label kylehome:
     c "No. Go take a shower this instant and sanitize your things. There is no such thing as going overboard when it comes to health."
 
     pl "Alright."
-    #--SFX (Footsteps -> Shower)
 
     call timeskip("lvroom_evening")
     show screen patientOverlay(date="July 2020, Week 4|07:30 PM|GCQ", status="happy")
@@ -2446,7 +2439,8 @@ label getcaught:
 
     plt "(Stores are closed you I can’t go out on a snack run. I could go out for walk, I’m sure nothing bad will happen.)"
 
-    #--SFX (door close + footsteps)
+    play sound("audio/door close.wav")
+    $ renpy.pause(0.5)
 
     scene bg outside evening onlayer background
     with dissolve
@@ -2455,7 +2449,7 @@ label getcaught:
 
     plt "(Wow. I’ve never seen the neighborhood so quiet before.)"
 
-    $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+    $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=0, if_changed=True)
 
     show tanod point onlayer middle:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
@@ -2477,7 +2471,7 @@ label getcaught:
             hide screen countdown
             with vpunch
             with vpunch
-            #--SFX (Running/Panting then Crash)
+            #--SFX (Running + Crash)
             stop music fadeout 2.0
 
             pl "!!!"
