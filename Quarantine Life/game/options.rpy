@@ -35,6 +35,9 @@ init -1 python hide:
 
     config.scene = scene
 
+init:
+    $ config.keymap['rollback'].remove('K_AC_BACK')
+
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
@@ -62,6 +65,7 @@ Credits to:
 
 {b}Kyle Andrae Mendiola{/b} - Programmer
 """)
+
 
 
 ## A short name for the game used for executables and directories in the built
