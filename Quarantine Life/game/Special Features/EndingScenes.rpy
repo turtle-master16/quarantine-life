@@ -239,6 +239,7 @@ label endingScenes(ending_name):
         $ saveLatestTraversedEndingRecords()
 
         label .repick:
+            $ renpy.block_rollback()
             menu:
                 with dissolve
                 "Choose another route":

@@ -49,7 +49,7 @@ screen spk:
                     add "spark":
                         pos lvroom_itemsC["tv"].sparklepos
                     add "spark":
-                        pos (1007, 420) # Hard coded sparkle
+                        pos (1007, 420)
                 if not(onhand["bedkey"]):
                     for item2 in lvroom_left:
                         add "spark":
@@ -66,7 +66,7 @@ screen spk:
                             pos kitchen_items[item].sparklepos
                     if not(onhand['sanitizer']):
                         add "spark":
-                            pos getRectCenter((1200,232,25,69)) # HArd cOdEd Spark go BrrRrr
+                            pos getRectCenter((1200,232,25,69))
 
         elif currentRoom == ROOMS["bedroom"]:
             for item in bdroom_items:
@@ -78,7 +78,7 @@ screen spk:
                     add "spark":
                         pos bdroom_items[item].sparklepos
             add "spark":
-                pos getRectCenter((174,188,157,150)) # HArd cOdEd Spark go BrrRrr requiem
+                pos getRectCenter((174,188,157,150))
 
 
 # WORKPREP -------------------------------------------------------
@@ -120,16 +120,16 @@ define bdroom_items = {
     "drawerBdrm": ClickableItems(dialogue=object_dialogue['drawerBdrm'],  hspot=(580,306,266,144)),
     "dumbell":    ClickableItems(dialogue=object_dialogue['dumbell'],     hspot=(949,345,169,146)),
     "gameboy":    ClickableItems(dialogue=object_dialogue['gameboy'],     hspot=(428,496,62,58)),
-    "lampB":    ClickableItems(dialogue=object_dialogue['lampB'],     hspot=(30,582,90,134)),
-    "laptop":    ClickableItems(dialogue=object_dialogue['laptop'],     hspot=(1086,514,122,164)),
-    "pencilCan":ClickableItems(dialogue=object_dialogue['pencilCan'], hspot=(599,226,33,68)),
+    "lampB":    ClickableItems(dialogue=object_dialogue['lampB'],         hspot=(30,582,90,134)),
+    "laptop":    ClickableItems(dialogue=object_dialogue['laptop'],       hspot=(1086,514,122,164)),
+    "pencilCan":ClickableItems(dialogue=object_dialogue['pencilCan'],     hspot=(599,226,33,68)),
     "pictureBdrm":ClickableItems(dialogue=object_dialogue['pictureBdrm'], hspot=(30,40,89,180)),
-    "pillow":     ClickableItems(dialogue=object_dialogue['pillow'],         hspot=(76,450,130,114)),
+    "pillow":     ClickableItems(dialogue=object_dialogue['pillow'],      hspot=(76,450,130,114)),
     "phone":      ClickableItems(dialogue=object_dialogue['phone'],       hspot=(202,360,86,71)),
-    "plant":      ClickableItems(dialogue=object_dialogue['wrongPlant'],       hspot=[(758,160,88,130),
+    "plant":      ClickableItems(dialogue=object_dialogue['wrongPlant'],  hspot=[(758,160,88,130),
                                                                                  (476,4,74,122)]),
-    "poster":      ClickableItems(dialogue=object_dialogue['poster'],       hspot=(758,472,143,100)),
-    "sofa":      ClickableItems(dialogue=object_dialogue['sofa'],       hspot=(359,262,156,189)),
+    "poster":      ClickableItems(dialogue=object_dialogue['poster'],     hspot=(758,472,143,100)),
+    "sofa":      ClickableItems(dialogue=object_dialogue['sofa'],         hspot=(359,262,156,189)),
 }
 define kitchen_items = {
     "greenApple": ClickableItems(dialogue=object_dialogue['greenApple'],  hspot=(786,235,35,43)),

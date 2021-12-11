@@ -125,23 +125,23 @@ screen workprep_ui:
 
 screen ui_start:
     zorder 20
-    imagebutton:
-        idle "gui/quick/settings_icon.png"
-        xalign 0.99 yalign 0.03
-        action ShowMenu("preferences")
-    if not(currentScreen is None):
+    hbox:
+        box_reverse True
+        xalign 1.0 ycenter 0.1
         imagebutton:
-            idle "gui/quick/instructions_icon.png"
-            xalign 0.9 yalign 0.03
-            action [ShowTransient("instruction")]
-        $ mgame_with_ui = ["workprep", "supermarket"] # List of minigames with extra UI
-        if currentScreen in mgame_with_ui:
-            $ renpy.show_screen("{}_ui".format(currentScreen))
-        if persistent.minigame_completed[currentScreen]:
+            idle "gui/quick/settings_icon.png"
+            action ShowMenu("preferences")
+        if not(currentScreen is None):
             imagebutton:
-                idle "gui/quick/skipGame_btn.png"
-                xalign 0.84 yalign 0.00
-                action Show("confirm", message="Do you want to skip this minigame?", yes_action=Function(minigame_end), no_action=Hide("confirm"))
+                idle "gui/quick/instructions_icon.png"
+                action ShowTransient("instruction")
+            $ mgame_with_ui = ["workprep", "supermarket"] # List of minigames with extra UI
+            if currentScreen in mgame_with_ui:
+                $ renpy.show_screen("{}_ui".format(currentScreen))
+            if persistent.minigame_completed[currentScreen]:
+                imagebutton:
+                    idle "gui/quick/skipGame_btn.png"
+                    action Show("confirm", message="Do you want to skip this minigame?", yes_action=Function(minigame_end), no_action=Hide("confirm"))
     use spark_toggle
     use skip_stopper
     use quickToggle
