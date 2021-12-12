@@ -1376,7 +1376,6 @@ label phone(male=True):
         pl "A match! That was quick."
 
         call message(js, "Hi.")
-        $ renpy.pause()
 
         call screen phone_reply("Hi!", "I like your hair", "I should do a pickup line.")
 
@@ -1450,17 +1449,17 @@ label postdatesearch(male=True):
         pl "I downloaded this dating app and met a guy who I’m texting right now. And I have to say, he’s really nice."
 
         show ian discuss onlayer middle:
-            xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.98
+            xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.0
 
         i "Look, it's nice that you're finally seeing someone, but please don't let it distract your work."
 
         show ian discuss1 onlayer middle:
-            xpos 0.48 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.98
+            xpos 0.48 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.99
 
         i "If the manager finds you slacking off you'll be in big trouble. Now drop your phone and focus on your work."
 
         show ian discuss2 onlayer middle:
-            xpos 0.51 ypos 1.0 xanchor 0.5 yanchor 1.0
+            xpos 0.51 ypos 1.0 xanchor 0.5 yanchor 1.0 xoffset 10
 
         i "You're lucky I'm such a nice friend and not let you get in trouble."
 
@@ -2331,7 +2330,6 @@ label jason:
     call reply_message("Oh no. It’s fine. I’m not upset.")
 
     call message(js, "I want to make it up to you. Since we live in the same area, how about we meet up?")
-    $ renpy.pause()
 
     call screen phone_reply2("I’m not sure about that.", "Sounds good.")
 
@@ -2341,8 +2339,7 @@ label jason:
         call reply_message("Sounds like a plan.")
 
         call message(js, "Great. I’ll text you the details later. See you then.")
-        $ renpy.pause()
-
+        $ renpy.pause(2.0)
 
         call hide_phone_messages
 
@@ -2413,7 +2410,6 @@ label jason:
         call reply_message("I don’t think it’s a good idea to go out.")
 
         call message(js, "It’s fine. I don’t want to make you uncomfortable or anything. But I do want our time together exciting even if it’s just a virtual date.")
-        $ renpy.pause()
 
         call message(js, "So how about we try something new other than just talking?")
         $ renpy.pause()

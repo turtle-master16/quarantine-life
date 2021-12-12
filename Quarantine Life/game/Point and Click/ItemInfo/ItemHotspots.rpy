@@ -123,7 +123,7 @@ define bdroom_items = {
     "lampB":    ClickableItems(dialogue=object_dialogue['lampB'],         hspot=(30,582,90,134)),
     "laptop":    ClickableItems(dialogue=object_dialogue['laptop'],       hspot=(1086,514,122,164)),
     "pencilCan":ClickableItems(dialogue=object_dialogue['pencilCan'],     hspot=(599,226,33,68)),
-    "pictureBdrm":ClickableItems(dialogue=object_dialogue['pictureBdrm'], hspot=(30,40,89,180)),
+    "pictureBdrm":ClickableItems(dialogue=object_dialogue['pictureBdrm'], hspot=(30,40,89,180), yoff=25),
     "pillow":     ClickableItems(dialogue=object_dialogue['pillow'],      hspot=(76,450,130,114)),
     "phone":      ClickableItems(dialogue=object_dialogue['phone'],       hspot=(202,360,86,71)),
     "plant":      ClickableItems(dialogue=object_dialogue['wrongPlant'],  hspot=[(758,160,88,130),

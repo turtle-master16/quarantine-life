@@ -72,7 +72,6 @@ label message(who, what, prepause=True):
     return
 
 label reply_message(what, skip=False):
-
     hide screen phone_message
     hide screen phone_message2
     hide screen phone_message3
@@ -176,6 +175,7 @@ screen phone_message(who, what):
                 style "phone_message_contents"
                 text who style "phone_message_who"
                 text what style "phone_message_what"
+    use quick_menu(phone_mode=True)
 
 screen phone_message2(who, what):
     vbox at incoming_message:
@@ -216,10 +216,13 @@ screen phone_message3(what):
                 style "phone_message_contents"
                 ##text who style "phone_message_who"
                 text what style "phone_message_what"
+    use quick_menu(phone_mode=True)
 
 screen phone_reply(reply1, reply2, reply3):
     modal True
     layer "middle"
+    if renpy.is_skipping():
+        $ renpy.choice_for_skipping()
     vbox:
         at delay
         xalign 0.529
@@ -229,6 +232,7 @@ screen phone_reply(reply1, reply2, reply3):
         textbutton "[reply1]" action Return(1) style "phone_reply"
         textbutton "[reply2]" action Return(2) style "phone_reply"
         textbutton "[reply3]" action Return(3) style "phone_reply"
+    use quick_menu(phone_mode=True)
 
 # here is a new menu that has more options than two
 # basically i just added one more textbutton here, and the additional labels needed in the call
@@ -236,6 +240,8 @@ screen phone_reply(reply1, reply2, reply3):
 screen phone_reply2(reply1, reply2):
     modal True
     layer "middle"
+    if renpy.is_skipping():
+        $ renpy.choice_for_skipping()
     vbox:
         xalign 0.529
         yalign 0.65
@@ -243,6 +249,7 @@ screen phone_reply2(reply1, reply2):
 
         textbutton "[reply1]" action Return(1) style "phone_reply"
         textbutton "[reply2]" action Return(2) style "phone_reply"
+    use quick_menu(phone_mode=True)
 
 screen phone_call(who, emotion, status=1):
     layer "middle"
@@ -304,23 +311,7 @@ screen phone_notif(sprite, who):
                 image "images/phone/phone end call.png":
                     zoom 1.2
 
-
 style phone_reply_text:
     xalign 0.5
-
-screen phone_message_image(who, what, img):
-    vbox at incoming_message:
-        style_group "phone_message"
-        add "images/phone/bubble-tip.png" at phone_message_bubble_tip
-
-        frame:
-            style_group "phone_message"
-
-            vbox:
-                style "phone_message_contents"
-                text who style "phone_message_who"
-                text what style "phone_message_what"
-                add img
-
 
 ############# phone code ends ############
