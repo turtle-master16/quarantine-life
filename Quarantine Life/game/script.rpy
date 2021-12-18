@@ -68,6 +68,7 @@ label start():
         stop music
 
         show screen ui_start
+        hide screen patientOverlay
 
         nar """
         It all changed so fast.
