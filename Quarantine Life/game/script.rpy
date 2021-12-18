@@ -34,11 +34,15 @@ style hotspot:
 
 default isSaveOnStart = True
 default istestmode = False
+define persistent.fromEnd = False
 default player_name = "Coby"
 
 # The game starts here.
 label start():
     python:
+        if persistent.fromEnd:
+            persistent.fromEnd = False
+            renpy.jump("start.mainstart")
         if renpy.newest_slot() and isSaveOnStart and not(istestmode):
             isSaveOnStart = False
             renpy.retain_after_load()
