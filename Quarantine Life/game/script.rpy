@@ -587,7 +587,7 @@ label commuting:
             The use of mask alone is not sufficient but it does help prevent respiratory droplets from reaching others.
             """
 
-            "}Worker 1" "That’s true."
+            "Worker 1" "That’s true."
 
             plt "(Right. It’s best to {b}avoid crowded places too{/b}.)"
 
