@@ -11,10 +11,11 @@ label timeskip(img="black", mes=None):
     hide screen patientOverlay
     hide screen quickMenu
     hide screen quickToggle
+    hide screen displayDate
+    scene black
     $ renpy.scene('middle')
     $ renpy.scene('background')
     show black onlayer background
-    hide screen displayDate
     if mes:
         $ renpy.with_statement(wipeleft)
         centered "[mes]"
