@@ -57,14 +57,16 @@ screen workprep():
             hover "images/misc/arrow.png"
             yalign 0.75
             action [SetVariable("currentRoom", ROOMS["bedroom"]),
-                    Show("patientOverlay", date="June 2020, Week 2|11:00 PM|GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 PM|GCQ", status="happy"),
+                    Hide("quickMenu")]
         imagebutton:
             idle im.Flip("images/misc/inactive_arrow.png", horizontal=True)
             hover im.Flip("images/misc/arrow.png", horizontal=True)
             xalign 1.0
             yalign 0.75
             action [SetVariable("currentRoom", ROOMS["kitchen"]),
-                    Show("patientOverlay", date="June 2020, Week 2|11:00 PM|GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 PM|GCQ", status="happy"),
+                    Hide("quickMenu")]
 
     elif currentRoom == ROOMS['bedroom']:
         imagemap:
@@ -115,7 +117,8 @@ screen workprep():
             xalign 1.0
             yalign 0.75
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
-                    Show("patientOverlay", date="June 2020, Week 2|11:00 PM|GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 PM|GCQ", status="happy"),
+                    Hide("quickMenu")]
 
     elif currentRoom == ROOMS['kitchen']:
         imagemap:
@@ -141,7 +144,8 @@ screen workprep():
             xalign 0.2
             yalign 0.6
             action [SetVariable("currentRoom", ROOMS["livingroom"]),
-                    Show("patientOverlay", date="June 2020, Week 2|11:00 PM|GCQ", status="happy")]
+                    Show("patientOverlay", date="June 2020, Week 2|11:00 PM|GCQ", status="happy"),
+                    Hide("quickMenu")]
 
 screen workitem_list():
     modal True

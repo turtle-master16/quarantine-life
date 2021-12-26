@@ -47,8 +47,8 @@ init python:
     general_btns = {
 #                                          Image of the button                         Description                     xalign  yalign  zoom*
         "spark_toggle":InstructionElement("spark_toggle",                              btn_desc_set["general"][0],     0.5,    0.97,   0.6),
-        "instructions":InstructionElement("gui/quick/instructions_icon.png",           btn_desc_set["general"][1],     0.9,    0.03),
-        "skip":        InstructionElement("gui/quick/skipGame_btn.png",                btn_desc_set["general"][2],     0.84,   0.0),
+        "instructions":InstructionElement("gui/quick/instructions_icon.png",           btn_desc_set["general"][1],     0.9,    0.023),
+        "skip":        InstructionElement("gui/quick/skipGame_btn.png",                btn_desc_set["general"][2],     0.81,   0.023),
     }
 
     btn_sets = {

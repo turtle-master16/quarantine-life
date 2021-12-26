@@ -93,7 +93,6 @@ style frame:
 screen say(who, what):
     zorder 6
     style_prefix "say"
-
     window:
         at transform:
             alpha 0.9
@@ -235,7 +234,7 @@ style choice_button_text is default:
 ## The quick menu is displayed in-game to provide easy access to the out-of-game
 ## menus.
 
-screen quick_menu():
+screen quick_menu(phone_mode=False):
 
     ## Ensure this appears on top of other screens.
     zorder 100
@@ -244,7 +243,6 @@ screen quick_menu():
 
         hbox:
             style_prefix "quick"
-
             xalign 0.5
             yalign 1.0
 
@@ -1422,7 +1420,7 @@ transform blinker:
     linear 0.5 alpha 0.0
     repeat
 
-screen quick_menu():
+screen quick_menu(phone_mode=False):
     variant "touch"
 
     zorder 100
@@ -1431,9 +1429,13 @@ screen quick_menu():
 
     hbox:
         style_prefix "quick"
-
-        xalign 0.85
-        yalign 0.79
+        if phone_mode:
+            xalign 0.5
+            yalign 0.89
+            spacing 28
+        else:
+            xalign 0.85
+            yalign 0.79
 
         imagebutton:
             idle "gui/quick/back.png"

@@ -34,11 +34,15 @@ style hotspot:
 
 default isSaveOnStart = True
 default istestmode = False
+define persistent.fromEnd = False
 default player_name = "Coby"
 
 # The game starts here.
 label start():
     python:
+        if persistent.fromEnd:
+            persistent.fromEnd = False
+            renpy.jump("start.mainstart")
         if renpy.newest_slot() and isSaveOnStart and not(istestmode):
             isSaveOnStart = False
             renpy.retain_after_load()
@@ -64,6 +68,7 @@ label start():
         stop music
 
         show screen ui_start
+        hide screen patientOverlay
 
         nar """
         It all changed so fast.
@@ -107,7 +112,7 @@ label start():
         pl "What the-?! Why did you hit me?"
 
         show prince point1 onlayer middle:
-            xpos 0.53 ypos 1.0 xanchor 0.5 yanchor 1.0
+            xpos 0.53 ypos 1.0 xanchor 0.5 yanchor 1.0 xoffset 30 zoom 0.98
 
         pr """
         Mom said to sweep the floor. Just because it’s your day off doesn’t mean you can laze around and ignore your chores.
@@ -122,7 +127,6 @@ label start():
 
         plt "(So much for a relaxing morning.)"
 
-        #--SFX (Sigh)
         plt "(Whatever. Let’s just get this over with.)"
 
         pl "Better finish sweeping before I get in trouble."
@@ -190,15 +194,27 @@ label news:
 
             c "But still, I can’t help but worry for your father. I hope he’s doing ok. I’ll call him later after his work."
 
+            show carla onlayer middle:
+                subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84 rotate None
+                parallel:
+                    xpos 0.5
+                    linear 0.7 xpos -0.19
+
         "The government will handle it":
             $ renpy.pause(0.3)
 
             pl "I’m sure the government will do something about it."
 
             show carla scold onlayer middle:
-                xpos 0.5 ypos 1.03 xanchor 0.5 yanchor 1.0 zoom 0.84
+                xpos 0.5 ypos 1.00 xanchor 0.5 yanchor 1.0 zoom 0.82
 
             c "We can’t always depend on the government to do everything for us. We still have to do our part."
+
+            show carla onlayer middle:
+                subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.82 rotate None
+                parallel:
+                    xpos 0.5
+                    linear 0.7 xpos -0.19
 
         "We should be careful":
             $ renpy.pause(0.3)
@@ -209,11 +225,12 @@ label news:
 
             c "I’ll contact your father. Oh, I hope he is doing alright."
 
-    show carla onlayer middle:
-        subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84 rotate None
-        parallel:
-            xpos 0.5
-            linear 0.7 xpos -0.19
+            show carla onlayer middle:
+                subpixel True xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84 rotate None
+                parallel:
+                    xpos 0.5
+                    linear 0.7 xpos -0.19
+
     $ renpy.pause(0.7)
 
     pl "Alright. Let’s just hope that everything is under control so nothing bad will happen."
@@ -234,8 +251,8 @@ label lockdown:
 
     plt "(I’ve been seeing a lot of reports regarding the virus. This is so scary it’s making me worry for the safety of myself and my family.)"
 
-    show prince sad1 onlayer middle
-    with dissolve
+    show prince sad1 onlayer middle with dissolve:
+        xalign 0.5 yalign 1.0 zoom 0.98
 
     pr "What do you think is going to happen now that there have been reported COVID cases in our country?"
 
@@ -392,7 +409,8 @@ label quarantine:
 
     pl "Just so you know, I’ve done my part of the chores. Now get to work, you couch potato."
 
-    show prince sad1 onlayer middle
+    show prince sad1 onlayer middle:
+        xoffset 30
 
     pr "Ugh! I hate this."
 
@@ -488,7 +506,8 @@ label newnormal:
 
     pr "Either way, I’m still stuck inside the house. If this goes on I might die of boredom."
 
-    show carla mad onlayer middle
+    show carla mad onlayer middle:
+        xoffset 15
 
     c """
     I don’t think so young man.
@@ -500,17 +519,23 @@ label newnormal:
 
     $ showAchievementOverlay("flexible learning")
 
-    show prince embarrased onlayer middle
+    show prince embarrased onlayer middle:
+        xoffset 20
 
-    #--SFX (gulp)
     pr "*gulp* Yes mom."
 
-    c "So when will you be returning to work?"
+    show prince embarrased onlayer middle:
+        linear 0.5 xoffset -600
+    $ renpy.pause(0.5)
+    hide prince
+
+    show carla discuss1 onlayer middle
+
+    c "So when will you be returning to work, [player_name]?"
 
     pl "Probably next month. I’ll just have to ask my manager just to be sure."
 
     hide carla
-    hide prince
     with dissolve
 
     call timeskip("bedroom_evening")
@@ -564,7 +589,6 @@ label commuting:
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="June 2020, Week 3|06:00 AM|GCQ", status="happy")
 
-    #--SFX (yawn)
     plt "I’m so sleepy. Staying up all night on social media was not the best idea."
 
     plt "(I can see that people are sitting {b}one-seat apart in public transportation{/b}, limiting the vehicle’s capacity. That’s good I suppose.)"
@@ -624,7 +648,8 @@ label office:
 
             pl "Oh, hey Ian. It’s great to see you too. What’s up?"
 
-            show ian farewell onlayer middle
+            show ian farewell onlayer middle:
+                zoom 1.03 xoffset -3
 
             i "Nothing much other than the whole pandemic thing. It’s nice being able to go out after being stuck home for months."
 
@@ -633,7 +658,7 @@ label office:
             pl "I need to at least roam around every once in a while."
 
             show ian discuss onlayer middle:
-                subpixel True xpos 0.47 ypos 1.02 xanchor 0.5 yanchor 1.0 rotate None zoom 1
+                subpixel True xpos 0.47 ypos 1.00 xanchor 0.5 yanchor 1.0 zoom 1.03 yoffset 10
 
             i "That’s true. Speaking of going out, some of our co-workers and I are eating out tonight after work since the {b}restaurants have reopened{/b}."
 
@@ -658,7 +683,8 @@ label office:
 
                     pl "Sorry Ian, I have somewhere else to be after work. Maybe we can hang out together some other time."
 
-                    show ian farewell onlayer middle
+                    show ian farewell onlayer middle:
+                        xoffset 30
 
                     i "It’s cool, next time then."
 
@@ -681,7 +707,8 @@ label office:
 
                     pl "Sure, I’ll be seeing you guys after work."
 
-                    show ian farewell onlayer middle
+                    show ian farewell onlayer middle:
+                        zoom 1.03
 
                     i "Sweet. I’ll let you do your work now. See you later."
 
@@ -693,7 +720,8 @@ label office:
 
                     pl "Not tonight. Maybe some other time."
 
-                    show ian farewell onlayer middle
+                    show ian farewell onlayer middle:
+                        zoom 1.03
 
                     i "Oh, some other time then. Talk to you later."
 
@@ -706,16 +734,15 @@ label office:
             pl "Woah! Keep your distance please. At least five meters away, I don’t want to get infected by COVID."
 
             show ian whoa onlayer middle:
-                xpos 0.45 ypos 1.06 xanchor 0.5 yanchor 1.05
+                xpos 0.45 ypos 1.06 xanchor 0.5 yanchor 1.05 zoom 0.99 yoffset 15
 
             i "Relax. I don’t have the virus."
 
             pl "Virus or no virus, we must {b}maintain proper social distancing{/b}."
 
             show ian sigh onlayer middle:
-                xpos 0.5 ypos 1.06 xanchor 0.5 yanchor 1.05
+                xpos 0.5 ypos 1.00 xanchor 0.5 yanchor 1.00
 
-            #--SFX (sigh)
             i "Fine. I’ll see you around."
 
             jump home
@@ -1155,7 +1182,7 @@ label restaurant:
         xpos 0.25 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1
 
     show mark discuss1 onlayer middle:
-        xpos 0.71 ypos 1.0 xanchor 0.5 yanchor 1.0
+        xpos 0.71 ypos 1.0 xanchor 0.5 yanchor 1.0 yoffset 10
     with dissolve
 
     m "I’m glad the quarantine rules have eased and now we’re allowed to eat at restaurants."
@@ -1190,8 +1217,12 @@ label restaurant:
 
     i "Alright! Time to dig in."
 
+    call timeskip("bg restaurant evening")
+    show screen patientOverlay(date="June 2020, Week 3|7:00 PM|GCQ", status="happy")
+
     show ian sigh onlayer middle:
         subpixel True xpos 0.26 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom -1.0 rotate None
+    with dissolve
 
     play sound "audio/eating.mp3"
 
@@ -1199,6 +1230,7 @@ label restaurant:
 
     show mark ask onlayer middle:
         xpos 0.72 ypos 1.0 xanchor 0.5 yanchor 1.0 xzoom 1.0 yzoom 1.0 rotate None
+    with dissolve
 
     m "Huh? Don’t you have a girlfriend to keep you company?"
 
@@ -1308,7 +1340,6 @@ label datesearch:
 
     pr "Oh! It’s a dating app! Alright, I’ll leave you to it then."
 
-    #--SFX (giggling + walking prince)
     hide prince
     with dissolve
 
@@ -1318,7 +1349,6 @@ label datesearch:
 
     plt "(And hopefully, Prince doesn’t come back to make fun of me.)"
 
-    #--SFX (typing)
     plt "(Now, what am I into?)"
 
     menu:
@@ -1351,7 +1381,6 @@ label phone(male=True):
         pl "A match! That was quick."
 
         call message(js, "Hi.")
-        $ renpy.pause()
 
         call screen phone_reply("Hi!", "I like your hair", "I should do a pickup line.")
 
@@ -1425,17 +1454,17 @@ label postdatesearch(male=True):
         pl "I downloaded this dating app and met a guy who I’m texting right now. And I have to say, he’s really nice."
 
         show ian discuss onlayer middle:
-            xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.98
+            xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 1.0
 
         i "Look, it's nice that you're finally seeing someone, but please don't let it distract your work."
 
         show ian discuss1 onlayer middle:
-            xpos 0.48 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.98
+            xpos 0.48 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.99
 
         i "If the manager finds you slacking off you'll be in big trouble. Now drop your phone and focus on your work."
 
         show ian discuss2 onlayer middle:
-            xpos 0.51 ypos 1.0 xanchor 0.5 yanchor 1.0
+            xpos 0.51 ypos 1.0 xanchor 0.5 yanchor 1.0 xoffset 10
 
         i "You're lucky I'm such a nice friend and not let you get in trouble."
 
@@ -1675,7 +1704,6 @@ label kyle:
     $ renpy.music.play("audio/bgm/sunny.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="July 2020, Week 4|01:00 PM|GCQ", status="neutral")
 
-    #--SFX (sigh)
     pl "*sigh*"
 
     show mark greet onlayer middle:
@@ -1781,7 +1809,6 @@ label kylehome:
     c "No. Go take a shower this instant and sanitize your things. There is no such thing as going overboard when it comes to health."
 
     pl "Alright."
-    #--SFX (Footsteps -> Shower)
 
     call timeskip("lvroom_evening")
     show screen patientOverlay(date="July 2020, Week 4|07:30 PM|GCQ", status="happy")
@@ -2308,7 +2335,6 @@ label jason:
     call reply_message("Oh no. It’s fine. I’m not upset.")
 
     call message(js, "I want to make it up to you. Since we live in the same area, how about we meet up?")
-    $ renpy.pause()
 
     call screen phone_reply2("I’m not sure about that.", "Sounds good.")
 
@@ -2318,8 +2344,7 @@ label jason:
         call reply_message("Sounds like a plan.")
 
         call message(js, "Great. I’ll text you the details later. See you then.")
-        $ renpy.pause()
-
+        $ renpy.pause(2.0)
 
         call hide_phone_messages
 
@@ -2390,7 +2415,6 @@ label jason:
         call reply_message("I don’t think it’s a good idea to go out.")
 
         call message(js, "It’s fine. I don’t want to make you uncomfortable or anything. But I do want our time together exciting even if it’s just a virtual date.")
-        $ renpy.pause()
 
         call message(js, "So how about we try something new other than just talking?")
         $ renpy.pause()
@@ -2416,7 +2440,8 @@ label getcaught:
 
     plt "(Stores are closed you I can’t go out on a snack run. I could go out for walk, I’m sure nothing bad will happen.)"
 
-    #--SFX (door close + footsteps)
+    play sound("audio/door close.wav")
+    $ renpy.pause(0.5)
 
     scene bg outside evening onlayer background
     with dissolve
@@ -2425,7 +2450,7 @@ label getcaught:
 
     plt "(Wow. I’ve never seen the neighborhood so quiet before.)"
 
-    $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+    $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=0, if_changed=True)
 
     show tanod point onlayer middle:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.8
@@ -2447,7 +2472,7 @@ label getcaught:
             hide screen countdown
             with vpunch
             with vpunch
-            #--SFX (Running/Panting then Crash)
+            #--SFX (Running + Crash)
             stop music fadeout 2.0
 
             pl "!!!"
