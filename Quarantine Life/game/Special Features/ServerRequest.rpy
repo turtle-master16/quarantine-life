@@ -71,7 +71,6 @@ init python:
 
     if not persistent.user_device_id:
         persistent.user_device_id = str(uuid.getnode())
-        print("yo")
 
 
     def getLatestTraversedEndingRecords():
