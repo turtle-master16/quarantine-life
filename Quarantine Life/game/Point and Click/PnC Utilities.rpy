@@ -98,8 +98,7 @@ label objDialogue(dia, from_inputbox=False):
     call hideStuff()
 
     if from_inputbox:
-        show screen inputbox
-    return
+        show screen inputbox(_transient=True)
     return
 
 # Initialize the minigame
