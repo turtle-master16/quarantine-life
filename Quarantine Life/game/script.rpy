@@ -1381,7 +1381,6 @@ label phone(male=True):
         pl "A match! That was quick."
 
         call message(js, "Hi.")
-        $ renpy.pause()
 
         call screen phone_reply("Hi!", "I like your hair", "I should do a pickup line.")
 
