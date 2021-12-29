@@ -39,10 +39,10 @@ init python:
 transform popupzoom:
     zoom 1.3
     xalign 0.5
-    yalign 0.9
+    yalign 0.65
 
 screen achievementoverlay(achievement):
-    add Solid("#F9B83455")
+    add Solid("#F9B83477")
 
     if achievement == "minimum public health standard":
         imagebutton:

@@ -3,6 +3,7 @@ screen quickMenu:
     layer "screens"
     imagebutton:
         idle "gui/quick/navigation_open.png"
+        xalign 0.999
         yalign 0.4
         if currentRoom == ROOMS["kitchen"]:
             at slide2
@@ -10,9 +11,9 @@ screen quickMenu:
             at slide1
         action [Hide("quickMenu"), Show("quickToggle")]
     vbox:
-        xalign 0.995
-        yalign 0.31
-        spacing 20
+        xalign 0.999
+        yalign 0.33
+        spacing 15
         if not(currentRoom == ROOMS["kitchen"]):
             at slide3
         else:
@@ -80,16 +81,16 @@ transform slide2:
 transform slide3:
     on show:
         xalign 1.2
-        linear 0.3 xalign 0.995
+        linear 0.3 xalign 0.999
     on hide:
-        xalign 0.995
+        xalign 0.999
         linear 0.8 xalign 1.2
 
 transform slide4:
     yalign 0.4
     on show:
         xalign -0.8
-        linear 0.3 xalign -0.005
+        linear 0.3 xalign 0.001
     on hide:
-        xalign -0.005
+        xalign 0.001
         linear 0.8 xalign -0.8
