@@ -12,7 +12,7 @@ label timeskip(img="black", mes=None):
     hide screen quickMenu
     hide screen quickToggle
     hide screen displayDate
-    scene black
+    window hide
     $ renpy.scene('middle')
     $ renpy.scene('background')
     show black onlayer background
