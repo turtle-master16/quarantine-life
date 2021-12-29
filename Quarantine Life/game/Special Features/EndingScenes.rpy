@@ -67,6 +67,7 @@ label endingScenes(ending_name):
     $ renpy.hide_screen("ui_start")
     $ renpy.hide_screen("quickMenu")
     $ renpy.hide_screen("quickToggle")
+    window hide
 
     show screen plainWhite
     with Dissolve(0.6)
