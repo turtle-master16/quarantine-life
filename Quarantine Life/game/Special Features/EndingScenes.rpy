@@ -268,8 +268,8 @@ screen skipEndingScenes:
     imagebutton:
         idle "gui/quick/inactive_skipEndings_btn.png"
         hover "gui/quick/skipEndings_btn.png"
-        xalign 1.02 yalign 0.94
-        at double
+        xalign 1.0 yalign 0.94
+        at half
         action Show("confirm", message="Skip the ending scenes?", yes_action=[Hide("confirm"), Hide("skipEndingScenes"), Jump("endingScenes.savePoint")], no_action=Hide("confirm"))
 
 screen endingSummary(summary):

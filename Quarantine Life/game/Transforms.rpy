@@ -73,3 +73,6 @@ transform double:
 
 transform third:
     zoom 1.3
+
+transform half:
+    zoom 1.5

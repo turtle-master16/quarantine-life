@@ -26,7 +26,7 @@ init:
 
 screen dialogevents:
     modal True
-    add Solid("#443467dd")
+    add Solid("#443467bb")
     zorder 50
 
     imagebutton:

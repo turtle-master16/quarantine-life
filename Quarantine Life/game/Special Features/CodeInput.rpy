@@ -17,11 +17,12 @@ init python:
 
 screen inputbox:
     modal True
+    add Solid("#00000088")
     zorder 10
     imagemap:
         xalign .5 yalign .4
         at transform:
-            alpha 0.75
+            alpha 0.5
         ground "images/misc/safe_bg.png"
         hotspot (66, 8, 111, 165)    action  If(ansA < 9,  SetVariable("ansA", ansA + 1), SetVariable("ansA", 0)) at inv
         hotspot (208, 9, 108, 166)   action  If(ansB < 9,  SetVariable("ansB", ansB + 1), SetVariable("ansB", 0)) at inv
@@ -46,11 +47,11 @@ screen inputbox:
 
         imagebutton:
             idle "images/misc/close.png"
-            xalign 0.96 yalign 0.12
+            xalign 0.97 yalign 0.03
             action [Hide("inputbox"), Show("ui_start")]
 
         imagebutton:
-            xalign .5 yalign 1.3
+            xalign .5 yalign 1.13
             at transform:
                 zoom 0.7
             idle "images/misc/enter_code.png"
