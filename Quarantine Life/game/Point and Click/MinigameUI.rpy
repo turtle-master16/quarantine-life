@@ -48,10 +48,7 @@ screen instruction:
         at transform:
             xalign 0.5 yalign 0.30 zoom 0.7
 
-        if current_page <= 0:
-            add i.bg alpha 1.0
-        else:
-            add i.bg alpha 0.5
+        add i.bg alpha 0.5
 
         add "gui/quick/settings_icon.png":
             xalign 0.99 yalign 0.03 alpha 0.5

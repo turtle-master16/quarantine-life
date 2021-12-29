@@ -37,16 +37,16 @@ screen inputbox:
         add "images/misc/safe_num.png":
             xalign .5 yalign .5
         hbox:
-            xalign 0.5 yalign 0.5
-            xoffset -5 spacing 111
+            xalign 0.52 yalign 0.5
+            xoffset 0 spacing 113
             text "{{b}}{}{{/b}}".format(ansA) color "#fff" size 50
             text "{{b}}{}{{/b}}".format(ansB) color "#fff" size 50
             text "{{b}}{}{{/b}}".format(ansC) color "#fff" size 50
             text "{{b}}{}{{/b}}".format(ansD) color "#fff" size 50
 
         imagebutton:
-            idle "images/misc/white close.png"
-            xalign 0.99 yalign 0.02
+            idle "images/misc/close.png"
+            xalign 0.96 yalign 0.12
             action [Hide("inputbox"), Show("ui_start")]
 
         imagebutton:
