@@ -94,6 +94,8 @@ screen say(who, what):
     zorder 6
     style_prefix "say"
     window:
+        if renpy.variant('medium'):
+            xoffset -50 yoffset -20
         at transform:
             alpha 0.9
         id "window"
@@ -103,10 +105,12 @@ screen say(who, what):
             window :
                 id "namebox"
                 style "namebox"
+                if renpy.variant('medium'):
+                    yoffset -12
                 text who:
                     id "who"
                     color u'#000000'
-        if renpy.variant("touch"):
+        if renpy.variant("small"):
             text what id "what":
                 xmaximum 1050
         else:
@@ -550,6 +554,8 @@ screen about():
         style_prefix "about"
 
         vbox:
+            if renpy.variant('medium'):
+                xoffset 25
 
             label "[config.name!t]"
             text _("Version [config.version!t]\n")
@@ -714,6 +720,8 @@ screen preferences():
     use game_menu(_("Preferences"), scroll="viewport"):
 
         vbox:
+            if renpy.variant('medium'):
+                xoffset 40
 
             hbox:
                 box_wrap True

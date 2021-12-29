@@ -131,7 +131,7 @@ label start():
 
         pl "Better finish sweeping before I get in trouble."
 
-        $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+        $ renpy.music.play("audio/Fratto kibun.wav", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         ins "Click to interact with objects around the room."
 
@@ -424,7 +424,7 @@ label quarantine:
 
     plt "(Now that’s out of the way. What should I do now?)"
 
-    $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+    $ renpy.music.play("audio/Fratto kibun.wav", loop=True, fadeout=2, fadein=2, if_changed=True)
 
     call initMinigame("findActivity")
 
@@ -570,7 +570,7 @@ label newnormal:
         $ setPersistent("newnormal.collectandprogress")
 
         call timeskip("bedroom_evening")
-        $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+        $ renpy.music.play("audio/Fratto kibun.wav", loop=True, fadeout=2, fadein=2, if_changed=True)
         show screen patientOverlay(date="June 2020, Week 2|11:00 PM|GCQ", status="happy")
 
         plt "(Tomorrow will be my first day back on the job. I should prepare my stuff for tomorrow.)"
@@ -812,7 +812,7 @@ label home:
 
             c "That's very thoughtful of you."
 
-            $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+            $ renpy.music.play("audio/Fratto kibun.wav", loop=True, fadeout=2, fadein=2, if_changed=True)
 
             c "I’ll give you a list and 200.00 worth of money."
 
@@ -873,7 +873,7 @@ label intro_to_supermarket:
 
 label cookadobo:
     call timeskip("bg kitchen")
-    $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+    $ renpy.music.play("audio/Fratto kibun.wav", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="July 2020, Week 4|04:00 PM|GCQ", status="happy")
 
     pl """
@@ -1312,7 +1312,6 @@ label restaurant:
 
 label datesearch:
     call timeskip("bedroom_evening")
-    $ renpy.music.play("audio/Waiting music.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="June 2020, Week 3|09:00 PM|GCQ", status="happy")
 
     plt """
@@ -1364,7 +1363,6 @@ label datesearch:
             call phone(male=False)
 
 label phone(male=True):
-    $ renpy.music.play("audio/Waiting music.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="July 2020, Week 1|01:10 PM|GCQ", status="happy")
     scene lvroom onlayer background
 
@@ -1379,6 +1377,8 @@ label phone(male=True):
         stop sound
 
         pl "A match! That was quick."
+
+        $ renpy.music.play("audio/bgm/dreamy.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
         call message(js, "Hi.")
 
@@ -2524,7 +2524,7 @@ label jsexerciseend:
     $ setPersistent("jsexerciseend")
 
     call timeskip("lvroom")
-    $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+    $ renpy.music.play("audio/Fratto kibun.wav", loop=True, fadeout=2, fadein=2, if_changed=True)
     show screen patientOverlay(date="August 2020, Week 2|09:00 AM|GCQ", status="happy")
 
     show phone_tindah onlayer middle at phone_pickup
@@ -2571,7 +2571,7 @@ label workprep:
 
 label findActivity:
     # Choices: (A = Watch TV) (B = Return to Point & Click)
-    $ renpy.music.play("audio/bgm/Fluffy Days.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
+    $ renpy.music.play("audio/Fratto kibun.wav", loop=True, fadeout=2, fadein=2, if_changed=True)
 
     if not(_return):
         call timeskip("lvroom_frm7")

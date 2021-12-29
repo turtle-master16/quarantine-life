@@ -241,6 +241,7 @@ label endingScenes(ending_name):
 
         label .repick:
             $ renpy.block_rollback()
+            $ persistent.fromEnd = True
             menu:
                 with dissolve
                 "Choose another route":
@@ -251,7 +252,6 @@ label endingScenes(ending_name):
                     jump start.mainstart
 
                 "Return to main menu":
-                    $ persistent.fromEnd = True
                     stop sound fadeout 0.2
                     jump proceed
 
