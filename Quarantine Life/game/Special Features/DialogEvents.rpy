@@ -26,7 +26,7 @@ init:
 
 screen dialogevents:
     modal True
-    add Solid("#595171dd")
+    add Solid("#443467dd")
     zorder 50
 
     imagebutton:
@@ -38,6 +38,12 @@ screen dialogevents:
     frame:
         at t_dialogevents_notebook
         background "images/menu/dialogevents/notebook bg.png"
+
+        imagebutton:
+            idle "images/menu/dialogevents/dialog route title.png"
+            xalign 0.07
+            yalign 0.005
+            action 0
 
         showif current_dialogevent_page == 1:
             imagemap:
@@ -247,7 +253,7 @@ screen dialogevents:
 
 transform t_dialogevents_notebook:
     xpos 0.15
-    ypos 0.01
+    ypos 0.02
 
 transform t_dialogevents_pages:
     xpos 0.027
