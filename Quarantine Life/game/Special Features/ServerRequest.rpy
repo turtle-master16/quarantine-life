@@ -111,7 +111,7 @@ init python:
 
     def getEndingTraversePercentage(ending_name, reverse=False):
         if not persistent.server_ending_records:
-            return "0%"
+            return "0.00%"
 
         number_of_ending_traversed = 0
         for index, record in enumerate(persistent.server_ending_records["server_ending_records"]):
@@ -140,8 +140,10 @@ init python:
         print(number_of_ending_traversed / len(persistent.server_ending_records["server_ending_records"]))
 
         if reverse:
-            return str((float(len(persistent.server_ending_records["server_ending_records"]) - number_of_ending_traversed) / len(persistent.server_ending_records["server_ending_records"])) * 100) + "%"
-        return str((float(number_of_ending_traversed) / len(persistent.server_ending_records["server_ending_records"])) * 100) + "%"
+            percentage = (float(len(persistent.server_ending_records["server_ending_records"]) - number_of_ending_traversed) / len(persistent.server_ending_records["server_ending_records"])) * 100
+            return str(round(percentage, 2)) + "%"
+        percentage = (float(number_of_ending_traversed) / len(persistent.server_ending_records["server_ending_records"])) * 100
+        return str(round(percentage, 2)) + "%"
 
 screen fetchEndingRecordScreen:
     zorder 100
