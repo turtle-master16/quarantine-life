@@ -919,6 +919,147 @@ image livingroom_endscene:
     pause 0.1
     repeat
 
+image main_menu_img:
+    xalign 0.5 yalign 0.5
+    "bg/bg main menu animated/00.png"
+    pause 0.2
+    "bg/bg main menu animated/01.png"
+    pause 0.2
+    "bg/bg main menu animated/02.png"
+    pause 0.2
+    "bg/bg main menu animated/03.png"
+    pause 0.2
+    "bg/bg main menu animated/04.png"
+    pause 0.2
+    "bg/bg main menu animated/05.png"
+    pause 0.2
+    "bg/bg main menu animated/06.png"
+    pause 0.2
+    "bg/bg main menu animated/07.png"
+    pause 0.2
+    "bg/bg main menu animated/08.png"
+    pause 0.2
+    "bg/bg main menu animated/09.png"
+    pause 0.2
+    "bg/bg main menu animated/10.png"
+    pause 0.2
+    "bg/bg main menu animated/11.png"
+    pause 0.2
+    "bg/bg main menu animated/12.png"
+    pause 0.2
+    "bg/bg main menu animated/13.png"
+    pause 0.2
+    "bg/bg main menu animated/14.png"
+    pause 0.2
+    "bg/bg main menu animated/15.png"
+    pause 0.2
+    "bg/bg main menu animated/16.png"
+    pause 0.2
+    "bg/bg main menu animated/17.png"
+    pause 0.2
+    "bg/bg main menu animated/18.png"
+    pause 0.2
+    "bg/bg main menu animated/19.png"
+    pause 0.2
+    "bg/bg main menu animated/20.png"
+    pause 0.2
+    "bg/bg main menu animated/21.png"
+    pause 0.2
+    "bg/bg main menu animated/22.png"
+    pause 0.2
+    "bg/bg main menu animated/23.png"
+    pause 0.2
+    "bg/bg main menu animated/24.png"
+    pause 0.2
+    "bg/bg main menu animated/25.png"
+    pause 0.2
+    "bg/bg main menu animated/26.png"
+    pause 0.2
+    "bg/bg main menu animated/27.png"
+    pause 0.2
+    "bg/bg main menu animated/28.png"
+    pause 0.2
+    "bg/bg main menu animated/29.png"
+    pause 0.2
+    "bg/bg main menu animated/30.png"
+    pause 0.2
+    "bg/bg main menu animated/31.png"
+    pause 0.2
+    "bg/bg main menu animated/32.png"
+    pause 0.2
+    "bg/bg main menu animated/33.png"
+    pause 0.2
+    "bg/bg main menu animated/34.png"
+    pause 0.2
+    "bg/bg main menu animated/35.png"
+    pause 0.2
+    "bg/bg main menu animated/34.png"
+    pause 0.2
+    "bg/bg main menu animated/33.png"
+    pause 0.2
+    "bg/bg main menu animated/32.png"
+    pause 0.2
+    "bg/bg main menu animated/31.png"
+    pause 0.2
+    "bg/bg main menu animated/30.png"
+    pause 0.2
+    "bg/bg main menu animated/29.png"
+    pause 0.2
+    "bg/bg main menu animated/28.png"
+    pause 0.2
+    "bg/bg main menu animated/26.png"
+    pause 0.2
+    "bg/bg main menu animated/25.png"
+    pause 0.2
+    "bg/bg main menu animated/24.png"
+    pause 0.2
+    "bg/bg main menu animated/23.png"
+    pause 0.2
+    "bg/bg main menu animated/22.png"
+    pause 0.2
+    "bg/bg main menu animated/21.png"
+    pause 0.2
+    "bg/bg main menu animated/20.png"
+    pause 0.2
+    "bg/bg main menu animated/19.png"
+    pause 0.2
+    "bg/bg main menu animated/18.png"
+    pause 0.2
+    "bg/bg main menu animated/17.png"
+    pause 0.2
+    "bg/bg main menu animated/16.png"
+    pause 0.2
+    "bg/bg main menu animated/14.png"
+    pause 0.2
+    "bg/bg main menu animated/13.png"
+    pause 0.2
+    "bg/bg main menu animated/12.png"
+    pause 0.2
+    "bg/bg main menu animated/11.png"
+    pause 0.2
+    "bg/bg main menu animated/10.png"
+    pause 0.2
+    "bg/bg main menu animated/09.png"
+    pause 0.2
+    "bg/bg main menu animated/08.png"
+    pause 0.2
+    "bg/bg main menu animated/07.png"
+    pause 0.2
+    "bg/bg main menu animated/06.png"
+    pause 0.2
+    "bg/bg main menu animated/05.png"
+    pause 0.2
+    "bg/bg main menu animated/04.png"
+    pause 0.2
+    "bg/bg main menu animated/03.png"
+    pause 0.2
+    "bg/bg main menu animated/02.png"
+    pause 0.2
+    "bg/bg main menu animated/01.png"
+    pause 0.2
+    "bg/bg main menu animated/00.png"
+    repeat
+
 image spark:
     xanchor 0.5
     yanchor 0.5
@@ -948,8 +1089,3 @@ image spark:
     pause 0.08
     "misc/spark/11.png"
     repeat
-
-transform pan_to_left:
-    xalign 1.0
-    yalign 0.5
-    linear 7.5 xalign 0.0
