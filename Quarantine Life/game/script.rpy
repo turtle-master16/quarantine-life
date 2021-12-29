@@ -62,6 +62,8 @@ label start():
              player_name = "Coby"
 
     label .mainstart:
+        $ renpy.force_autosave()
+
         $ setPersistent("start.mainstart")
 
         scene black
