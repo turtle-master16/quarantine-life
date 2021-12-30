@@ -127,7 +127,7 @@ screen ui_start:
         xalign 1.0 ycenter 0.1
         imagebutton:
             idle "gui/quick/settings_icon.png"
-            action ShowMenu("preferences")
+            action [renpy.force_autosave(), ShowMenu("preferences")]
         if not(currentScreen is None):
             imagebutton:
                 idle "gui/quick/instructions_icon.png"

@@ -6,6 +6,7 @@ init python:
     def setPersistent(route):
         persistent.is_route_unlocked[route] = True
         globals()['currentRoute'] = route
+        renpy.force_autosave()
 
 label timeskip(img="black", mes=None):
     hide screen patientOverlay
