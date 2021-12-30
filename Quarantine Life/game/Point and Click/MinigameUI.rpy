@@ -111,7 +111,7 @@ screen supermarket_ui:
         action ShowTransient("fly_in_image", img="images/supermarket/grocery_list.png")
 
 screen workprep_ui:
-    if not(currentScreen is None) and renpy.get_screen("say") is None:
+    if currentScreen == "workprep" and renpy.get_screen("say") is None:
         imagebutton:
             idle "images/misc/flapcheck.png"
             xalign 0.8
