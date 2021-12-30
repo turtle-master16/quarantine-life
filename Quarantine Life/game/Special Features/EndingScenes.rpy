@@ -364,7 +364,7 @@ screen credits1:
                 text "Furatto kibun@ furi":
                     style "style_credit_title"
                     yalign 0.5
-                text "Courtesy of BGM DOVA-SYNDROME OFFICIAL (Youtube Channel)":
+                text "Courtesy of BGM DOVA-SYNDROME OFFICIAL ({a=https://www.youtube.com/channel/UCq15_9MvmxT1r2-LLjtkokg}Youtube Channel{/a})":
                     style "style_credit_desc"
 
             vbox:
@@ -465,7 +465,7 @@ screen credits2:
                 text "Nokia Ringtone":
                     style "style_credit_title"
                     yalign 0.95
-                text "Courtesy of MobilesRingtones (http://www.mobileringtones.com/":
+                text "Courtesy of MobilesRingtones ({a=http://www.mobileringtones.com/}http://www.mobileringtones.com/{/a})":
                     style "style_credit_desc"
 
 screen credits3:
@@ -503,7 +503,7 @@ screen credits3:
                 text "Phone Vibrating Sound Effect":
                     style "style_credit_title"
                     yalign 0.95
-                text "Courtesy of GFX Sounds (https://gfxsounds.com/)":
+                text "Courtesy of GFX Sounds ({a=https://gfxsounds.com/}https://gfxsounds.com/{/a})":
                     style "style_credit_desc"
 
         vbox:
@@ -567,7 +567,7 @@ screen credits4:
                 text "The Lounge":
                     style "style_credit_title"
                     yalign 0.95
-                text "Courtesy of Bensound (https://www.bensound.com/)":
+                text "Courtesy of Bensound ({a=https://www.bensound.com/}https://www.bensound.com/{/a})":
                     style "style_credit_desc"
 
         vbox:
@@ -637,7 +637,7 @@ screen credits6:
     text "Phone Message System for RenPy":
         style "style_credit_title"
         yalign 0.5
-    text "Source: https://nadianova.itch.io/phone-message-system-for-renpy":
+    text "Source: {a=https://nadianova.itch.io/phone-message-system-for-renpy}https://nadianova.itch.io/phone-message-system-for-renpy{/a}":
         yalign 0.57
         style "style_credit_desc"
 
@@ -655,7 +655,7 @@ screen credits7:
     text "3D Camera in RenPy":
         style "style_credit_title"
         yalign 0.5
-    text "Source: https://github.com/kyouryuukunn/renpy-ActionEditor":
+    text "Source: {a=https://github.com/kyouryuukunn/renpy-ActionEditor}https://github.com/kyouryuukunn/renpy-ActionEditor{/a}":
         yalign 0.57
         style "style_credit_desc"
 
@@ -673,7 +673,7 @@ screen credits8:
     text "WHO & IATF Guidelines":
         style "style_credit_title"
         yalign 0.5
-    text "Source: https://doh.gov.ph/COVID-19/IATF-Resolutions":
+    text "Source: {a=https://doh.gov.ph/COVID-19/IATF-Resolutions}https://doh.gov.ph/COVID-19/IATF-Resolutions{/a}":
         yalign 0.57
         style "style_credit_desc"
 

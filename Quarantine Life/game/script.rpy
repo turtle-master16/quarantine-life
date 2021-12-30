@@ -5,8 +5,8 @@ define charcolor = {
 }
 
 # The Characters
-define pl = Character("[player_name]")
-define plt = Character("[player_name]", what_color=charcolor['Thoughts'], what_italic=True)
+define pl = Character("Coby")
+define plt = Character("Coby", what_color=charcolor['Thoughts'], what_italic=True)
 define pr = Character("Prince")
 define c = Character("Carla")
 define i = Character("Ian")
@@ -35,10 +35,19 @@ style hotspot:
 default isSaveOnStart = True
 default istestmode = False
 define persistent.fromEnd = False
-default player_name = "Coby"
+define persistent.player_name = None
 
 # The game starts here.
 label start():
+    scene black
+    stop music
+
+    # Ask name
+    if not persistent.player_name:
+        "What is your name?"
+        window hide
+        call inputter
+
     python:
         if persistent.fromEnd:
             persistent.fromEnd = False
@@ -48,23 +57,18 @@ label start():
             renpy.retain_after_load()
             renpy.load(renpy.newest_slot())
 
-    scene black
-    stop music
-
-    # Ask name
-    "What is your name?"
-    window hide
-    call inputter
-    python:
-        player_name = input_text
-        player_name = player_name.strip()
-        if not player_name:
-             player_name = "Coby"
-
     label .mainstart:
         $ renpy.force_autosave()
 
         $ setPersistent("start.mainstart")
+
+        python:
+            if not persistent.player_name:
+                persistent.player_name = input_text.strip()
+                if not persistent.player_name:
+                     persistent.player_name = "Coby"
+            pl = Character("[persistent.player_name]")
+            plt = Character("[persistent.player_name]", what_color=charcolor['Thoughts'], what_italic=True)
 
         scene black
         stop music
@@ -312,7 +316,7 @@ label lockdown:
             show carla mad onlayer middle:
                 xpos 1.11 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.795
 
-            c "[player_name], the government just said that everyone must remain inside. It’s the safest thing to do to avoid the virus."
+            c "[persistent.player_name], the government just said that everyone must remain inside. It’s the safest thing to do to avoid the virus."
 
             pl "I can make decisions for myself. I don’t need the government to tell me what I can and cannot do."
 
@@ -504,7 +508,7 @@ label newnormal:
 
     show prince slouch onlayer middle
 
-    pr "Since we’re under GCQ now that means [player_name] can go back to work, right? "
+    pr "Since we’re under GCQ now that means [persistent.player_name] can go back to work, right? "
 
     pr "Either way, I’m still stuck inside the house. If this goes on I might die of boredom."
 
@@ -533,7 +537,7 @@ label newnormal:
 
     show carla discuss1 onlayer middle
 
-    c "So when will you be returning to work, [player_name]?"
+    c "So when will you be returning to work, [persistent.player_name]?"
 
     pl "Probably next month. I’ll just have to ask my manager just to be sure."
 
@@ -641,7 +645,7 @@ label office:
         subpixel True xpos 0.35 ypos 0.05 xanchor None yanchor None rotate None
     with dissolve
 
-    i "Hey [player_name]! Great to see you again, how’s my old pal doing?"
+    i "Hey [persistent.player_name]! Great to see you again, how’s my old pal doing?"
 
     menu:
         "Hey Ian.":
@@ -1055,7 +1059,7 @@ label princegoingout:
             show carla happy at right onlayer middle:
                 subpixel True xpos 1.06 ypos 1.0 xanchor 1.0 yanchor 1.0 zoom 0.84 rotate None
 
-            c "Even if you try to convince me [player_name] my answer is still no. I care for you and I don’t want you getting sick"
+            c "Even if you try to convince me [persistent.player_name] my answer is still no. I care for you and I don’t want you getting sick"
 
             c "Please understand from my point of view as a mother that I just want to keep you safe."
 
@@ -1157,7 +1161,7 @@ label friend:
         xpos -0.04 ypos 0.04 xzoom -1.0
     with dissolve
 
-    m "Hey [player_name]. Glad to see you’ll be joining us tonight."
+    m "Hey [persistent.player_name]. Glad to see you’ll be joining us tonight."
 
     pl "Glad to be here."
 
@@ -1274,7 +1278,7 @@ label restaurant:
     show ian discuss2 onlayer middle:
         xoffset -5
 
-    i "What about you [player_name]? What do you think?"
+    i "What about you [persistent.player_name]? What do you think?"
 
     menu:
         "Romance is not for me.":
@@ -1478,7 +1482,7 @@ label postdatesearch(male=True):
         show screen patientOverlay(date="July 2020, Week 2|05:00 PM|GCQ", status="happy")
         $ renpy.music.play("audio/bgm/suspense.mp3", loop=True, fadeout=2, fadein=2, if_changed=True)
 
-        plt "(Hair. Check. Clothes. Check. [player_name]? Oh yeah, I’m looking good and ready.)"
+        plt "(Hair. Check. Clothes. Check. [persistent.player_name]? Oh yeah, I’m looking good and ready.)"
 
         show prince stretch  onlayer middle:
             xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0
@@ -1609,7 +1613,7 @@ label firstdate(male=True):
 
         pl "A match!"
 
-        plt "(Alright [player_name], calm down or else you’ll freak her out.)"
+        plt "(Alright [persistent.player_name], calm down or else you’ll freak her out.)"
 
         call message(jl, "Hi :)", prepause=False)
 
@@ -1752,7 +1756,7 @@ label kyle:
     show phone onlayer middle at phone_pickup
     $ renpy.pause(0.6)
 
-    call message(ky, "Hey [player_name], remember me?")
+    call message(ky, "Hey [persistent.player_name], remember me?")
 
     call screen phone_reply("Who?", "I remember you.", "Not really.")
 
@@ -1930,7 +1934,7 @@ label kylehome:
 
             stop music fadeout 2.0
 
-            c "And Prince, stop teasing [player_name]."
+            c "And Prince, stop teasing [persistent.player_name]."
 
             show prince slouch onlayer middle
 
@@ -2044,9 +2048,9 @@ label kylemeet:
         xpos 0.5 ypos 1.0 xanchor 0.5 yanchor 1.0 zoom 0.84
     with dissolve
 
-    c "[player_name], Prince told me you’re not feeling well. I think you need to go to see a doctor. It could be COVID."
+    c "[persistent.player_name], Prince told me you’re not feeling well. I think you need to go to see a doctor. It could be COVID."
 
-    c "[player_name]?"
+    c "[persistent.player_name]?"
 
     plt "(I can’t breathe properly.)"
 
