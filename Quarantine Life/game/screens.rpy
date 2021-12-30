@@ -564,6 +564,8 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
+            text "OTHER: \n{a=https://doh.gov.ph/COVID-19/IATF-Resolutions}WHO & IATF Guidelines{/a}\n"
+
             text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
 
 

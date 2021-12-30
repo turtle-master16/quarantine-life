@@ -56,11 +56,30 @@ Credits to:
 
 {b}Ghyllan Denola{/b} - UI assets/Narrative
 
-{b}Ian Carl Caballero{/b} - Character Sprites
+{b}Ian Carl Caballero{/b} - {a=https://vroid.com/en/studio}Character Sprites{/a}
 
 {b}Prince Malana{/b} - Music/SFX
 
 {b}Kyle Andrae Mendiola{/b} - Programmer
+
+EXTRA ASSETS AND RESOURCES:
+
+{b}kyouryuukunn{/b} - {a=https://github.com/kyouryuukunn/renpy-ActionEditor}RenPy 3D Camera/ActionEditor{/a}
+
+{b}nadia nova{/b} - {a=https://nadianova.itch.io/phone-message-system-for-renpy}Phone Message System for RenPy{/a}
+
+MUSIC:
+
+{b}{a=https://youtu.be/gNWV9FCU3xE}SeeeD Tribe{/a}{/b} - The Last
+
+{a=https://www.youtube.com/channel/UCq15_9MvmxT1r2-LLjtkokg}BGM DOVA-SYNDROME OFFICIAL{/a} - Fratto Kibun
+
+SFX:
+
+'Game Sounds', 'Blue Ingo', 'SR BEST SOUND EFFECTS', 'n Beats', 'DJ Sound FX', 'Nagaty Studio', 'MobilesRingtones', 'All Sounds'
+, {a=https://gfxsounds.com/}'GFX Sounds'{/a}, 'Oak Studios', 'Live music, Relax, Meditation', {a=https://www.bensound.com/}Bensound{/a},
+ AShamaluevMusic
+
 """)
 
 
