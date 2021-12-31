@@ -2,7 +2,7 @@ init:
     define persistent.server_ending_records = {}
     define persistent.traversed_endings = []
     define persistent.user_device_id = ""
-    define persistent.last_server_fetch_date = ""
+    # define persistent.last_server_fetch_date = ""
 
     define persistent.is_last_online_fetch_failed = False
     define persistent.is_last_online_save_failed = False
@@ -13,8 +13,8 @@ init python:
     import uuid
     from datetime import date
 
-    access_url = "https://api.jsonbin.io/v3/b/61a0951f62ed886f9154e4a5"
-    master_key = "$2b$10$zxcdZxYcJjoiLzjPPRQKDeBNULrV4/P1Y.J4XRHdn2MGPEkpBvA6u"
+    access_url = "https://api.jsonbin.io/v3/b/61cebe4fea3bf568213a8d17"
+    master_key = "$2b$10$F2gacFifPwjLXSDSWB2qnO8Teq5AkyUFzDhdaHqaLhVfmvtKiSuTW"
 
     def getJSONBin():
         url = access_url + "/latest"
@@ -77,12 +77,12 @@ init python:
         try:
             if persistent.is_last_online_fetch_failed:
                 persistent.is_last_online_fetch_failed = False
-            elif persistent.last_server_fetch_date == date.today().strftime("%B %d, %Y"):
-                return
+            # elif persistent.last_server_fetch_date == date.today().strftime("%B %d, %Y"):
+            #     return
 
             renpy.show_screen("fetchEndingRecordScreen")
             persistent.server_ending_records = json.loads(getJSONBin().encode("ascii","ignore"))
-            persistent.last_server_fetch_date = date.today().strftime("%B %d, %Y")
+            # persistent.last_server_fetch_date = date.today().strftime("%B %d, %Y")
 
             renpy.pause(3.0, hard="True")
 

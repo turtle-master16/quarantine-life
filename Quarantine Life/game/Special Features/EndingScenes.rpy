@@ -289,6 +289,9 @@ label endingScenes(ending_name):
         $ renpy.hide_screen("credits3")
         $ renpy.hide_screen("credits4")
         $ renpy.hide_screen("credits5")
+        $ renpy.hide_screen("credits6")
+        $ renpy.hide_screen("credits7")
+        $ renpy.hide_screen("credits8")
         show bg main ending onlayer background:
             xalign 0.5
             yalign 0

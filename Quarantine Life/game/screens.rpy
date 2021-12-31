@@ -561,10 +561,29 @@ screen about():
             text _("Version [config.version!t]\n")
 
             ## gui.about is usually set in options.rpy.
-            if gui.about:
-                text "[gui.about!t]\n"
+            # if gui.about:
+            #     text "[gui.about!t]\n"
 
-            text "OTHER: \n{a=https://doh.gov.ph/COVID-19/IATF-Resolutions}WHO & IATF Guidelines{/a}\n"
+            text "{b}Made with love by{b}:\n"
+            text "Ian Carl Caballero\n    {a=https://vroid.com/en/studio}Character Sprites{/a}\n"
+            text "Ghyllan Lyzzl Deñola\n    Narrative\n    User Interface\n"
+            text "Kyle Andrae Mendiola\n    Game Development\n"
+            text "Mark Lawrence Feliciano\n    Background Scenes\n    Documentation\n    Game Development\n"
+            text "Prince Jeremie Malana\n    Background Music\n    Sound Effects\n"
+
+            text "{b}Credits to:{b}\n"
+            text "kyouryuukunn\n    {a=https://github.com/kyouryuukunn/renpy-ActionEditor}RenPy 3D Camera/ActionEditor{/a}\n"
+            text "nadia nova\n    {a=https://nadianova.itch.io/phone-message-system-for-renpy}Phone Message System for RenPy{/a}\n"
+
+            text "{b}Background Music{b}\n"
+            text "{a=https://youtu.be/gNWV9FCU3xE}SeeeD Tribe{/a}\n    The Last\n"
+            text "{a=https://www.youtube.com/channel/UCq15_9MvmxT1r2-LLjtkokg}BGM DOVA-SYNDROME OFFICIAL{/a}\n    Fratto Kibun\n"
+
+            text "{b}Sound Effects{b}\n"
+            text "All Sounds\nAShamaluevMusic\n{a=https://www.bensound.com/}Bensound{/a}\nBlue Ingo\nDJ Sound FX\nGame Sounds\n{a=https://gfxsounds.com/}GFX Sounds{/a}\nLive music, Relax, Meditation\nMobilesRingtones\nn Beats\nNagaty Studio\nOak Studios\nSR BEST SOUND EFFECTS\n"
+
+            text "{b}Narrative{b}\n"
+            text "Referenced Information\n    {a=https://doh.gov.ph/COVID-19/IATF-Resolutions}WHO & IATF Guidelines{/a}\n\n"
 
             text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
 
