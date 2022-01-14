@@ -2612,6 +2612,8 @@ label findActivity:
 
                 plt "I should look up for more Coronavirus information, just to be sure."
 
+                $ config.skipping = False
+
                 show phoneless at phone_pickup onlayer background
                 $ renpy.pause(0.5)
                 call resetItems()
