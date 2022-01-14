@@ -60,6 +60,8 @@ init python:
     print(persistent.userDeviceID)
 
 label endingScenes(ending_name):
+    $ config.skipping = False
+
     $_dismiss_pause = False
     $ renpy.choice_for_skipping()
 
