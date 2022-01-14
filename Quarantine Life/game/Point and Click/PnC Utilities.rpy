@@ -118,7 +118,8 @@ label initMinigame(name):
         else:
             show screen notify(img=taskpopout)
             $ renpy.choice_for_skipping()
-            $ Skip() # Stop skip
+            $ Skip(fast=False, confirm=False) # Stop skip
+            $ config.skipping = False
     else:
         show screen notify(img=taskpopout)
 

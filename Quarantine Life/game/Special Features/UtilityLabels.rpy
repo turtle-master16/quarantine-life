@@ -70,7 +70,7 @@ label ending_reached(end_type=""):
 
 screen skip_stopper:
     zorder 100
-    if renpy.is_skipping():
+    if renpy.is_skipping() and not renpy.get_screen("choice") and currentScreen is None:
         add Solid("#ffc50033")
         imagebutton:
             idle "gui/quick/skip_stopper.png"

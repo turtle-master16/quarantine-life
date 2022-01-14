@@ -1233,8 +1233,10 @@ screen skip_indicator():
 
         hbox:
             spacing 6
-
-            text _("Skipping")
+            if renpy.get_screen("choice"):
+                text _("Making a choice")
+            else:
+                text _("Skipping")
 
             text "▸" at delayed_blink(0.0, 1.0) style "skip_triangle"
             text "▸" at delayed_blink(0.2, 1.0) style "skip_triangle"
